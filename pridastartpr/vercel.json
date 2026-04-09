@@ -8,7 +8,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "api/home.py"
+      "dest": "api/proba1.html"
     }
   ]
   
