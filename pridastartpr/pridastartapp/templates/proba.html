@@ -1,0 +1,212 @@
+<!--<!DOCTYPE html>-->
+{% extends 'base.html' %}
+{% block content %}
+<!--<html lang="en">-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% csrf_token %}
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col">
+                <h1>PRIDA</h1>
+            <form method="post" action="{% url 'proba1' %}">
+                {% csrf_token %}
+                <button class="btn btn-primary btn-lg">Table 2</button>
+            </form>
+
+                <div class="container">
+
+                        <div class="row mt-5">
+
+                            <form method="post" action="{% url 'proba' %}">
+                                {% csrf_token %}
+                                <input type="checkbox" name="prida_list_data" value="birth_year">Birth Year
+                                <input type="checkbox" name="prida_list_data" value="age">Age
+                                <input type="checkbox" name="prida_list_data" value="fvl">FVL
+                                <input type="checkbox" name="prida_list_data" value="prothr">PROTHR
+                                <input type="checkbox" name="prida_list_data" value="pai">PAI
+                                <input type="checkbox" name="prida_list_data" value="mthfr">MTHFR
+<!--                                <input type="checkbox" name="ss" value="hemoglobin">Hemoglobin-->
+                                <button class="btn btn-primary btn-lg">Submit</button>
+                               <div class="container">
+                                   <table>
+                                       <tr>
+                                           {% for ch_box in prida_list %}
+<!--                                           {{ prida_list }}-->
+                                           <th scope="col">Параметър</th>
+<!--                                           {% if ch_box == 'birth_year' %}-->
+<!--                                           <th scope="col">Birth Year</th>-->
+<!--                                           {% elif ch_box == 'age' %}-->
+<!--                                           <th scope="col">Age</th>-->
+<!--                                           {% elif ch_box == 'fvl' %}-->
+<!--                                           <th scope="col">FVL</th>-->
+<!--                                           {% elif ch_box == 'prothr' %}-->
+<!--                                           <th scope="col">PROTHR</th>-->
+<!--                                           {% elif ch_box == "pai" %}-->
+<!--                                           <th scope="col">PAI</th>-->
+<!--                                           {% elif ch_box == "mthfr" %}-->
+<!--                                           <th scope="col">MTHFR</th>-->
+<!--                                           {% endif %}-->
+                                           <th scope="col">Извадка (Брой редове)</th>
+                                           <th scope="col">Брой Единици</th>
+                                           <th scope="col">Процентно съотношение (брой единици)</th>
+                                           {% endfor %}
+<!--                                           <th scope="col">number 1</th>-->
+                                       </tr>
+<!--                                       <tr>-->
+<!--                                           <td>-->
+<!--                                               {{ count_fvl }}-->
+<!--                                           </td>-->
+<!--                                       </tr>-->
+                                       <tr>
+                                           <td>
+                                               {{ prida_list_data }}
+                                           </td>
+                                           {% if prida_list_data == 'fvl' %}
+                                           <td>
+                                               {{ count_fvl_0 }}
+                                           </td>
+                                           <td>
+                                               {{ count_fvl }}
+
+                                           </td>
+                                           <td>
+                                               {{ fvl_1_percent }}
+                                           </td>
+                                           {% elif prida_list_data == 'prothr' %}
+                                           <td>
+                                               {{ count_prothr_0 }}
+                                           </td>
+                                           <td>
+                                               {{ count_prothr }}
+                                           </td>
+                                           <td>
+                                               {{ prothr_1_percent }}
+                                           </td>
+                                           {% elif prida_list_data == 'mthfr' %}
+                                           <td>
+                                               {{ count_mthfr_0 }}
+                                           </td>
+                                           <td>
+                                               {{ count_mthfr }}
+                                           </td>
+                                           <td>
+                                               {{ mthfr_1_percent }}
+                                           </td>
+
+                                           {% elif prida_list_data == 'pai' %}
+                                           <td>
+                                               {{ count_pai_0 }}
+                                           </td>
+                                           <td>
+                                               {{ count_pai }}
+                                           </td>
+                                           <td>
+                                               {{ pai_1_percent }}
+                                           </td>
+
+                                           {% endif %}
+
+                                       </tr>
+<!--                                       {% for prida_line in prida %}-->
+<!--                                       <tr>-->
+<!--                                           {% for ch_box in prida_list %}-->
+<!--                                           {% if ch_box == 'birth_year' %}-->
+<!--                                           <td>{{ prida_line.birth_year }}</td>-->
+<!--                                           {% elif ch_box == 'age' %}-->
+<!--                                           <td>{{ prida_line.age }}</td>-->
+<!--                                           {% elif ch_box == 'fvl' %}-->
+<!--                                           <td>-->
+<!--&lt;!&ndash;                                       {{ prida_line.fvl }}&ndash;&gt;-->
+<!--                                           {{ count_fvl }}</td>-->
+<!--                                           {% endif %}-->
+<!--                                           {% endfor %}-->
+
+<!--                                       </tr>-->
+<!--                                       {% endfor %}-->
+                                   </table>
+                               </div>
+
+
+
+<!--                                    <p>Kakvo se sluchva</p>-->
+<!--                                    {{ list_age }}-->
+<!--                                    {{ list_birth_year }}-->
+                                    <tr>
+
+                                    </tr>
+                            </form>
+                        </div>
+                    </div>
+            <div style="height: 500px; overflow-x:auto;">
+
+                <table>
+                    {% csrf_token %}
+<!--                    <form method="post" action="{% url 'proba' %}">-->
+<!--                        {% csrf_token %}-->
+<!--                        <input type="file" name="myfile" />-->
+<!--                        <button name="submit" class="btn btn-primary btn-lg">Upload</button>-->
+<!--                    </form>-->
+
+
+
+
+
+                    <form method="post" action="{% url 'proba' %}">
+                        {% csrf_token %}
+<!--        <input type="file" name="my_file" />-->
+<!--        <button name="submit">Upload</button>-->
+                        <tr>
+                            <th>Code</th>
+                            <th>Birth Year</th>
+                            <th>Number</th>
+                            <th>Age</th>
+                            <th>Sex</th>
+                            <th>FVL</th>
+                            <th>PROTHR</th>
+                            <th>PAI</th>
+                            <th>MTHFR</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            {% for field in prida_form %}
+                            <td>
+                                {{ field }}
+                            </td>
+                            {% endfor %}
+                            <td>
+                                <button name="save" class="btn btn-primary btn-lg">Save</button></td>
+                        </tr>
+                        {% for score in prida %}
+                        <tr>
+                            <td>{{ score.code }}</td>
+                            <td>{{ score.birth_year }}</td>
+                            <td>{{ score.number }}</td>
+                            <td>{{ score.age }}</td>
+                            <td>{{ score.sex }}</td>
+                            <td>{{ score.fvl }}</td>
+                            <td>{{ score.prothr }}</td>
+                            <td>{{ score.pai }}</td>
+                            <td>{{ score.mthfr }}</td>
+                            <td>
+                                <button name="edit" class="btn btn-primary btn-lg">Edit</button>
+                                <button name="delete" class="btn btn-primary btn-lg">Delete</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </form>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!--</html>-->
+{% endblock %}

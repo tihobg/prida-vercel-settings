@@ -1,0 +1,966 @@
+<!--<!DOCTYPE html>-->
+{% extends 'base-emi.html' %}
+{% block content %}
+{% load static %}
+<head>
+
+<!--    <link rel="stylesheet" href="style.css">-->
+    <link rel="stylesheet" href="{% static 'css.css' %}">
+    <title>Title</title>
+
+
+</head>
+<br/><br/><br/><br/><br/>
+<body>
+{% csrf_token %}
+<!--            <div style="height: 500px; overflow-x:auto;">-->
+<div class="container">
+    <div class="row mt-4">
+        <div class="col">
+            <h1>PRIDA</h1>
+            <form method="post" action="{% url 'controli' %}">
+                {% csrf_token %}
+                <button class="btn btn-primary btn-lg">Table Controls</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row mt-4">
+<!--        <div class="col">-->
+            <div style="height: 270px; overflow-x:auto; width: 1200px; overflow-y:auto;">
+                <h1>Моля въведете данни за пациента! (Please enter the Patient!)</h1>
+                <table>
+                    <tr>
+                        <th rowspan="2"><div align="center"> Name</div></th>
+                        <th rowspan="2"><div align="center">Age</div></th>
+                        <th rowspan="2"><div align="center">Aborts</div></th>
+                        <th colspan="2"><div align="center">FVL Mutation</div></th>
+                        <th colspan="2"><div align="center">Prothrombin Mutation</div> </th>
+                        <th colspan="2"><div align="center">PAI I</div> </th>
+                        <th colspan="2"><div align="center">MTHFR</div> </th>
+                        <th colspan="2"><div align="center">Action</div></th>
+                    </tr>
+                    <tr>
+                        <th>Hetero<br>zygous<br></th>
+                        <th>Homo<br>zygous<br></th>
+                        <th>Hetero<br>zygous<br></th>
+                        <th>Homo<br>zygous<br></th>
+                        <th>Hetero<br>zygous<br></th>
+                        <th>Homo<br>zygous<br></th>
+                        <th>Hetero<br>zygous<br></th>
+                        <th>Homo<br>zygous<br></th>
+                        <th></th>
+<!--                    </tr>-->
+<!--                        {% for pm in prida_mutations2 %}-->
+<!--&lt;!&ndash;                        <td></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.abort }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.fvl_hetero }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.fvl_homo }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.prothr_hetero }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.prothr_homo }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.pai_hetero }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.pai_hetero }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.mthfr_hetero }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.mthfr_hetero }}</td>&ndash;&gt;-->
+
+
+<!--                        {% endfor %}-->
+                        {% if not prida_mutations_form.instance.id %}
+                        <tr>
+                            {% include 'save.html' %}
+                        </tr>
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container">
+    <div class="row mt-5">
+        <form method="post" action="{% url 'proba1' %}">
+            <table>
+                {% csrf_token %}
+                <tr>
+                    <th> <div align="center"> AGE </div> </th>
+                    <th> <div align="center"> ABORTS </div></th>
+                    <th> <div align="center"> Factor V Leiden </div> </th>
+                    <th> <div align="center"> Factor II (Prothrombin) </div> </th>
+                    <th> <div align="center"> PAI I </div> </th>
+                    <th> <div align="center"> MTHFR </div> </th>
+                </tr>
+                <tr>
+                    <td>
+
+                        <input type="radio" checked name="age" value="age1" style="height:20px; width:20px;">&nbsp;
+                        Age between 20 and 30 years
+                    </td>
+                    <td>
+                        <input type="radio" checked name="abort" value="abort_1" style="height:20px; width:20px;">1 Abort
+                    </td>
+                    <td>
+                        <input type="checkbox" name="prida_list_data" value="fvl_ng" style="height:20px; width:20px;">&nbsp;
+                        Factor V Leiden Normal Genotype
+                    </td>
+                    <td>
+                        <input type="checkbox" name="prida_list_data" value="prothr_ng" style="height:20px; width:20px;">&nbsp;
+                        Factor II (Prothrombin) Normal Genotype
+                    </td>
+                    <td>
+                        <input type="checkbox" name="prida_list_data" value="pai_ng" style="height:20px; width:20px;">&nbsp; PAI I Normal Genotype
+                    </td>
+                    <td>
+                        <input type="checkbox" name="prida_list_data" value="mthfr_ng" style="height:20px; width:20px;">&nbsp; MTHFR Normal Genotype
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="age" value="age2" style="height:20px; width:20px;">&nbsp;Age between 31 and 40 years
+                    </td>
+                    <td>
+                        <input type="radio" name="abort" value="abort_2" style="height:20px; width:20px;">&nbsp;2 Aborts
+                    </td>
+                    <td>
+                        <input type="checkbox" checked name="prida_list_data" value="fvl_hetero" style="height:20px; width:20px;">&nbsp;
+                        Heterozygous Factor V Leiden Mutation
+                    </td>
+                    <td>
+                        <input type="checkbox" name="prida_list_data" value="prothr_hetero" style="height:20px; width:20px;">&nbsp;
+                        Factor II (Prothrombin) Heterozygous Mutation
+                    </td>
+                    <td>
+                        <input type="checkbox" name="prida_list_data" value="pai_hetero" style="height:20px; width:20px;">&nbsp;
+                        PAI I Heterozygous Mutation
+                    </td>
+                    <td>
+                        <input type="checkbox" name="prida_list_data" value="mthfr_hetero" style="height:20px; width:20px;">&nbsp;
+                        MTHFR Heterozygous Mutation
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="age" value="age3" style="height:20px; width:20px;">&nbsp;Age between 41 and 50 years
+                    </td>
+                    <td>
+                        <input type="radio" name="abort" value="abort_3" style="height:20px; width:20px;">&nbsp;More than 2 Aborts
+                    </td>
+                    <td>
+                        <input type="checkbox" name="prida_list_data" value="fvl_homo" style="height:20px; width:20px;">&nbsp;
+                        Homozygous Factor V Leiden Mutation
+                    </td>
+                    <td>
+                        <input type="checkbox" name="prida_list_data" value="prothr_homo" style="height:20px; width:20px;">&nbsp;
+                        Factor II (Prothrombin) Homozygous Mutation
+                    </td>
+                    <td>
+                        <input type="checkbox" name="prida_list_data" value="pai_homo" style="height:20px; width:20px;">&nbsp;
+                        PAI I Homozygous Mutation
+                    </td>
+                    <td>
+                        <input type="checkbox" name="prida_list_data" value="mthfr_homo" style="height:20px; width:20px;">&nbsp;
+                        MTHFR Homozygous Mutation
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="center">
+                            <input type="text" name="start_line" value="1"> Start Line
+                        </div>
+                        <br>
+                        <div align="center">
+                            <input type="text" name="end_line" value="10"> End Line
+                        </div>
+                    </td>
+                    <td>
+                        <button name="submit" class="btn btn-primary btn-lg">Calculate Frequency Mutations</button>
+                    </td>
+                    <td>
+                        <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">
+                            Calculate Aborts Mutations
+                        </button>
+                    </td>
+                    <td>
+                        <form method="post" action="{% url 'proba1' %}">
+                            {% csrf_token %}
+                            <button name="btn_excel_extract" class="btn btn-primary btn-lg">
+                                Export Data to Excel
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <table>
+            <tr>
+                <td>
+                    <form method="post" action="{% url 'conclusions' %}">
+                        {% csrf_token %}
+                        <button name="btn_conclusions" class="btn btn-primary btn-lg">
+                            Conclusions
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="{% url 'calc_patients_more_mut_p' %}">
+                        {% csrf_token %}
+                        <button name="btn_patients_more_mutations" class="btn btn-primary btn-lg">
+                            Results: Mutations
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="{% url 'preeclampsia1' %}">
+                        {% csrf_token %}
+                        <button name="btn_patients_more_mutations" class="btn btn-primary btn-lg">
+                            Results: Correlations
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+            <table>
+                <tr>
+                    <th>
+                        Извадка пациенти
+                        <br>
+                        [бр.]
+                    </th>
+                    <th>
+                        Възрастова граница
+                    </th>
+                    <th>
+                        Фактор
+                    </th>
+                    <th>
+                        Пациенти с 1 аборт
+                        <br>
+                        [бр. / %]
+                    </th>
+                    <th>
+                        Пациенти с 2 аборта
+                        <br>
+                        [бр. / %]
+                    </th>
+                    <th>
+                        Пациенти с > от 2 аборта
+                        <br>
+                        [бр. / %]
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        {{ clients_list }}
+                    </td>
+                    <td>
+                        {{ age_interval_aborts }}
+                    </td>
+                    <td>
+                        {{ factor_type }}
+                    </td>
+                    <td>
+                        {{ count_mutations_abort1 }} / {{ percent_mutations_abort1 }}
+                    </td>
+                    <td>
+                        {{ count_mutations_abort2 }} / {{ percent_mutations_abort2 }}
+                    </td>
+                    <td>
+                        {{ count_mutations_abort3 }} / {{ percent_mutations_abort3 }}
+                    </td>
+                </tr>
+            </table>
+                <table>
+                    <tr>
+                        <th>
+                            <div align="center">
+                                Извадка (Брой редове)
+                                <br>
+                                Брой Събития
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Възрастова граница
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div align="center">
+                                Брой Аборти
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Брой Пациенти
+                            </div>
+                        </th>
+
+
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ clients_list }}
+                        </td>
+                        <td> {{ age_interval }} </td>
+                        <td> {{ abort_variant }} </td>
+                        <td> {{ number_abort_patients }} </td>
+
+
+<!--                        {% if s_factor == 'age1' %}-->
+<!--                        <td>-->
+<!--                            {{ s_factor }}-->
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            {{ count_age1 }}-->
+<!--                        </td>-->
+<!--                        {% endif %}-->
+<!--                        <td>-->
+<!--                            {{ fvl_1_ng_percent }}{{ abort_1 }}-->
+<!--                        </td>-->
+
+                        </tr>
+                    <tr>
+
+
+
+                        {% if s_factor == 'abort_1' %}
+                        <td>
+                            {{ s_factor }}
+                        </td>
+
+                        {% elif s_factor == 'fvl_hetero' %}
+                        <td>
+                            {{ count_all_fvl_hetero_data }}
+                        </td>
+                        <td>
+                            {{ s_factor }}
+                        </td>
+                        <td>
+                            {{ count_fvl_hetero }}
+                        </td>
+                        <td>
+                            {{ fvl_1_hetero_percent }}
+                        </td>
+                        <td></td>
+
+                        {% elif s_factor == 'fvl_homo' %}
+                        <td>
+                            {{ count_all_fvl_homo_data }}
+                        </td>
+                        <td>
+                            {{ s_factor }}
+                        </td>
+                        <td>
+                            {{ count_fvl_homo }}
+                        </td>
+                        <td>
+                            {{ fvl_1_homo_percent }}
+                        </td>
+                        <td></td>
+
+                        {% elif s_factor == 'prothr_ng' %}
+                        <td>
+                            {{ count_all_prothr_ng_data }}
+                        </td>
+                        <td>
+                            {{ s_factor }}
+                        </td>
+                        <td>
+                            {{ count_prothr_ng }}
+                        </td>
+                        <td>
+                            {{ prothr_1_ng_percent }}
+                        </td>
+                        <td></td>
+
+                        {% elif s_factor == 'prothr_hetero' %}
+                        <td>
+                            {{ count_all_prothr_hetero_data }}
+                        </td>
+                        <td>
+                            {{ s_factor }}
+                        </td>
+                        <td>
+                            {{ count_prothr_hetero }}
+                        </td>
+                        <td>
+                            {{ prothr_1_hetero_percent }}
+                        </td>
+                        <td></td>
+
+                        {% elif s_factor == 'prothr_homo' %}
+                        <td>
+                            {{ count_all_prothr_homo_data }}
+                        </td>
+                        <td>
+                            {{ s_factor }}
+                        </td>
+                        <td>
+                            {{ count_prothr_homo }}
+                        </td>
+                        <td>
+                            {{ prothr_1_homo_percent }}
+                        </td>
+                        <td></td>
+
+                        {% elif s_factor == 'pai_ng' %}
+                        <td>
+                            {{ count_all_pai_ng_data }}
+                        </td>
+                        <td>
+                            {{ s_factor }}
+                        </td>
+                        <td>
+                            {{ count_pai_ng }}
+                        </td>
+                        <td>
+                            {{ pai_1_ng_percent }}
+                        </td>
+                        <td></td>
+
+                        {% elif s_factor == 'pai_hetero' %}
+                        <td>
+                            {{ count_all_pai_hetero_data }}
+                        </td>
+                        <td>
+                            {{ s_factor }}
+                        </td>
+                        <td>
+                            {{ count_pai_hetero }}
+                        </td>
+                        <td>
+                            {{ pai_1_hetero_percent }}
+                        </td>
+                        <td></td>
+
+                        {% elif s_factor == 'pai_homo' %}
+                        <td>
+                            {{ count_all_pai_homo_data }}
+                        </td>
+                        <td>
+                            {{ s_factor }}
+                        </td>
+                        <td>
+                            {{ count_pai_homo }}
+                        </td>
+                        <td>
+                            {{ pai_1_homo_percent }}
+                        </td>
+                        <td></td>
+
+                        {% elif s_factor == 'mthfr_ng' %}
+                        <td>
+                            {{ count_all_mthfr_ng_data }}
+                        </td>
+                        <td>
+                            {{ s_factor }}
+                        </td>
+                        <td>
+                            {{ count_mthfr_ng }}
+                        </td>
+                        <td>
+                            {{ mthfr_1_ng_percent }}
+                        </td>
+                        <td></td>
+
+                        {% elif s_factor == 'mthfr_hetero' %}
+                        <td>
+                            {{ count_all_mthfr_hetero_data }}
+                        </td>
+                        <td>
+                            {{ s_factor }}
+                        </td>
+                        <td>
+                            {{ count_mthfr_hetero }}
+                        </td>
+                        <td>
+                            {{ mthfr_1_hetero_percent }}
+                        </td>
+                        <td></td>
+
+                        {% elif s_factor == 'mthfr_homo' %}
+                        <td>
+                            {{ count_all_mthfr_homo_data }}
+                        </td>
+                        <td>
+                            {{ s_factor }}
+                        </td>
+                        <td>
+                            {{ count_mthfr_homo }}
+                        </td>
+                        <td>
+                            {{ mthfr_1_homo_percent }}
+                        </td>
+                        {% elif s_factor == 'abort_1' %}
+                        <td>
+                            {{ s_factor }}
+                        </td>
+                        {% endif %}
+
+
+
+                    </tr>
+                </table>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>
+                        <div align="center">
+                            Frequency Mutations
+                        </div>
+                    </th>
+                    <th>
+                        <div align="center">
+                            Mutations in %
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <div align="center">
+                            FVL NG
+                        </div>
+                    </th>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'fvl_ng' %}
+                        {{ mutations_fvl_ng }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'fvl_ng' %}
+                        {{ mutations_age1_abort1_fvl_ng_percent }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+
+                    <th scope="col">
+                        <div align="center">
+                            Heterozigous FVL
+                        </div>
+                    </th>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'fvl_hetero' %}
+                        {{ mutations_fvl_hetero }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'fvl_hetero' %}
+                        {{ mutations_age1_abort1_fvl_hetero_percent }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+
+                    <th scope="col">
+                        <div align="center">
+                            Homozigous FVL
+                        </div>
+                    </th>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'fvl_homo' %}
+                        {{ mutations_fvl_homo }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'fvl_homo' %}
+                        {{ mutations_age1_abort1_fvl_homo_percent }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+
+                    <th scope="col">
+                        <div align="center">
+                            Factor II NG
+                        </div>
+                    </th>
+                    <td>
+                        {%for s_factor in prida_list_data %}
+                        {% if s_factor == 'prothr_ng' %}
+                        {{ mutations_prothr_ng }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'prothr_ng' %}
+                        {{ mutations_age1_abort1_prothr_ng_percent }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">
+                        <div align="center">
+                            Heterozious Factor II
+                        </div>
+                    </th>
+                    <td>
+                        {%for s_factor in prida_list_data %}
+                        {% if s_factor == 'prothr_hetero' %}
+                        {{ mutations_prothr_hetero }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'prothr_hetero' %}
+                        {{ mutations_age1_abort1_prothr_hetero_percent }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">
+                        <div align="center">
+                            Homozigous Factor II
+                        </div>
+                    </th>
+                    <td>
+                        {%for s_factor in prida_list_data %}
+                        {% if s_factor == 'prothr_homo' %}
+                        {{ mutations_prothr_homo }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'prothr_homo' %}
+                        {{ mutations_age1_abort1_prothr_homo_percent }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">
+                        <div align="center">
+                            PAI I NG
+                        </div>
+                    </th>
+                    <td>
+                        {%for s_factor in prida_list_data %}
+                        {% if s_factor == 'pai_ng' %}
+                        {{ mutations_pai_ng }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'pai_ng' %}
+                        {{ mutations_age1_abort1_pai_ng_percent }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">
+                        <div align="center">
+                            Heterozigous PAI I
+                        </div>
+                    </th>
+                    <td>
+                        {%for s_factor in prida_list_data %}
+                        {% if s_factor == 'pai_hetero' %}
+                        {{ mutations_pai_hetero }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'pai_hetero' %}
+                        {{ mutations_age1_abort1_pai_hetero_percent }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">
+                        <div align="center">
+                            Homozigous PAI I
+                        </div>
+                    </th>
+                    <td>
+                        {%for s_factor in prida_list_data %}
+                        {% if s_factor == 'pai_homo' %}
+                        {{ mutations_pai_homo }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'pai_homo' %}
+                        {{ mutations_age1_abort1_pai_homo_percent }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">
+                        <div align="center">
+                            MTHFR NG
+                        </div>
+                    </th>
+                    <td>
+                        {%for s_factor in prida_list_data %}
+                        {% if s_factor == 'mthfr_ng' %}
+                        {{ mutations_mthfr_ng }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'mthfr_ng' %}
+                        {{ mutations_age1_abort1_mthfr_ng_percent }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">
+                        <div align="center">
+                            Heterozigous MTHFR
+                        </div>
+                    </th>
+                    <td>
+                        {%for s_factor in prida_list_data %}
+                        {% if s_factor == 'mthfr_hetero' %}
+                        {{ mutations_mthfr_hetero }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'mthfr_hetero' %}
+                        {{ mutations_age1_abort1_mthfr_hetero_percent }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">
+                        <div align="center">
+                            Homozigous MTHFR
+                        </div>
+                    </th>
+                    <td>
+                        {%for s_factor in prida_list_data %}
+                        {% if s_factor == 'mthfr_homo' %}
+                        {{ mutations_mthfr_homo }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for s_factor in prida_list_data %}
+                        {% if s_factor == 'mthfr_homo' %}
+                        {{ mutations_age1_abort1_mthfr_homo_percent }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+
+
+
+            </table>
+<!--            </div>-->
+            <tr>
+            </tr>
+        </form>
+    </div>
+
+
+
+
+
+    <div class="row mt-5">
+        <form method="post" action="{% url 'proba1' %}">
+            {% csrf_token %}
+            <div style="height: 500px; overflow-x:auto;width: 1200px; overflow-y:auto;">
+                <table>
+                    <tr>
+                        <th>
+                            <div align="center">
+                                ID
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Code
+                            </div>
+                        </th>
+
+                        <th>
+                            <div align="center">
+                                Age
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Factor V Leiden
+                                <br>
+                                Normal Genotype
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Heterozygous
+                                <br>
+                                Factor V Leiden Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Homozygous
+                                <br>
+                                Factor V Leiden Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Factor II (Prothrombin)
+                                <br>
+                                Normal Genotype
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Factor II (Prothrombin)
+                                <br>
+                                Heterozygous Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Factor II (Prothrombin)
+                                <br>
+                                Homozygous Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                PAI I
+                                <br>
+                                Normal Genotype
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                PAI I
+                                <br>
+                                Heterozygous Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                PAI I
+                                <br>
+                                Homozygous Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                MTHFR
+                                <br>
+                                Normal Genotype
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                MTHFR
+                                <br>
+                                Heterozygous Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                MTHFR
+                                <br>
+                                Homozygous Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                ABORT
+                            </div>
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                    {% if not prida_mutations_form.instance.id %}
+                    <tr>
+                        {% include 'save.html' %}
+                    </tr>
+                    {% endif %}
+                    {% for pm in prida_mutations %}
+                    <tr>
+                        {% if prida_mutations_form.instance.id == pm.id %}
+                        {% include 'save.html' %}
+                        {% else %}
+                        <td>{{ pm.id }}</td>
+                        <td>{{ pm.code }}</td>
+                        <td>{{ pm.age }}</td>
+
+                        <td>{{ pm.fvl_ng }}</td>
+                        <td>{{ pm.fvl_hetero }}</td>
+                        <td>{{ pm.fvl_homo }}</td>
+
+                        <td>{{ pm.prothr_ng }}</td>
+                        <td>{{ pm.prothr_hetero }}</td>
+                        <td>{{ pm.prothr_homo }}</td>
+
+                        <td>{{ pm.pai_ng }}</td>
+                        <td>{{ pm.pai_hetero }}</td>
+                        <td>{{ pm.pai_homo }}</td>
+
+                        <td>{{ pm.mthfr_ng }}</td>
+                        <td>{{ pm.mthfr_hetero }}</td>
+                        <td>{{ pm.mthfr_homo }}</td>
+
+                        <td>{{ pm.abort }}</td>
+
+                        <td>
+                            <button formnovalidate name="edit" value="{{ pm.id }}" class="btn btn-primary btn-lg">Edit</button>
+                            <button formnovalidate name="delete" value="{{ pm.id }}" class="btn btn-primary btn-lg">Delete</button>
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </form>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <h1>Legend</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                0.0 - No Mutation
+            </td>
+        </tr>
+        <tr>
+            <td>
+                1.0 - Mutation
+            </td>
+        </tr>
+    </table>
+</div>
+<!--            </div>-->
+</body>
+
+{% endblock %}

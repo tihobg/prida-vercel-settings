@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Our Blog{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Новини</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Новини</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Blog Section ######## -->
+<section class="our-blog">
+    <div class="container">
+        <div class="row session-title">
+            <h2>Новини</h2>
+        </div>
+        <div class="blog-row row">
+
+
+                         <!-- Blog Post 0 -->
+            <div class="col-md-4 col-sm-6">
+                <div class="single-blog germany-card">
+                    <figure>
+                        <img src="{% static 'images/blog/bmql.jpg' %}" alt="Blog Image">
+                    </figure>
+                    <div class="blog-detail">
+                        <h4>Пета младежка научна сесия „Биомедицина и качество на живот“  2025</h4>
+                        <p style="text-align: justify; text-indent: 0;">Гл. ас. Ариана Лангари участва в Пета младежка научна сесия „Биомедицина и качество на живот“, 4–5 декември 2025, в София, където изнесе доклад. </p>
+                        <div class="link">
+                            <a href="{% url 'bmql' %}"
+                               target="_blank" 
+                               class="btn btn-info">
+                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- Blog Post 1 -->
+            <div class="col-md-4 col-sm-6">
+                <div class="single-blog germany-card">
+                    <figure>
+                        <img src="{% static 'images/blog/cellphys.jpg' %}" alt="Blog Image">
+                    </figure>
+                    <div class="blog-detail">
+                        <h4>Cell Physics 2025</h4>
+                        <p>Гл. ас. Ариана Лангари участва в международната конференция Cell Physics 2025, проведена  7-9 Октомври 2025 в Саарбрюкен, Германия, където представи постерна презентация. </p>
+                        <div class="link">
+                            <a href="{% url 'cellphysics' %}"
+                               target="_blank" 
+                               class="btn btn-info">
+                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               <!-- Blog Post 2 -->
+            <div class="col-md-4 col-sm-6">
+                <div class="single-blog germany-card">
+                    <figure>
+                        <img src="{% static 'images/blog/techpark_1.jpg' %}" alt="Blog Image">
+                    </figure>
+                    <div class="blog-detail">
+                        <h4>София Тех Парк 2025</h4>
+                        <p style="text-align: justify; text-indent: 0;">Гл. ас. Аника Александрова и доц. Т. Тянков  участваха в Scientific and Innovation Forum "International Forum on Advanced ICT Research and Innovation", проведена в периода 29.09 - 01.10.2025 в София Тех Парк.
+</p>
+                        <div class="link">
+                            <a href="{% url 'techpark' %}"
+                               target="_blank" 
+                               class="btn btn-info">
+                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+         
+
+              <!-- Blog Post 3 -->
+            <div class="col-md-4 col-sm-6">
+                <div class="single-blog">
+                    <figure>
+                        <img src="{% static 'images/blog/bioflux.jpg' %}" alt="Blog Image">
+                    </figure>
+                    <div class="blog-detail">
+                        <h4>Микрофлуидна система  с приложение в биомедицинaта  - BioFlux 2025</h4>
+                        <p style="text-align: justify; text-indent: 0;">През месец август 2025 г. в Института по биофизика и биомедицинско инженерство към Българска академия на науките беше доставена микрофлуидна система с приложения в биомедицината, състояща се от проточна помпа BioFlux 1000HT и инвертен микроскоп Zeiss Axiovert 5.</p>
+                        <div class="link">
+                            <a href="{% url 'msystema' %}"
+                               target="_blank" 
+                               class="btn btn-info">
+                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            
+            <!-- Blog Post 4 -->
+            <div class="col-md-4 col-sm-6">
+                <div class="single-blog">
+                    <figure>
+                        <img src="{% static 'images/blog/biolic.jpg' %}" alt="Blog Image">
+                    </figure>
+                    <div class="blog-detail">
+                        <h4>BIOLIC 2024</h4>
+                        <p style="text-align: justify; text-indent: 0;">Гл.ас. Аника Александрова и доц. Тихомир Тянков взеха участие с постерни презентации във II International Biological and Life Sciences Congress, 30 October - 1 November, 2024, Antalya, Turkey</p>
+                        <div class="link">
+                            <a href="{% url 'biolic' %}" 
+                               target="_blank" 
+                               class="btn btn-info">
+                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+              <!-- Blog Post 5 -->
+            <div class="col-md-4 col-sm-6">
+                <div class="single-blog">
+                    <figure>
+                        <img src="{% static 'images/blog/blog_011.jpg' %}" alt="Blog Image">
+                    </figure>
+                    <div class="blog-detail">
+                        <h4>Начало на проекта 2024</h4>
+                        <p style="text-align: justify; text-indent: 0;">На 29.05.2024 г. ИБФБМИ стартира изпълнението на Проект BG-RRP-2.011-0025 "Създаване на база данни за патологична бременност и извличане на нови знания с цел идентифициране на диагностични маркери".</p>
+                        <div class="link">
+                            <a href="https://biomed.bas.bg/bg/2024/09/ibphbme-implements-project-bg-rpr-2-011-0025/" 
+                               target="_blank" 
+                               class="btn btn-info">
+                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+               <!-- Blog Post 6-->
+            <div class="col-md-4 col-sm-6">
+              <!--    <div class="single-blog">
+                    <figure>
+                        <img src="{% static 'images/blog/blog_011.jpg' %}" alt="Blog Image">
+                    </figure>
+                    <div class="blog-detail">
+                        <h4>Начало на проекта</h4>
+                        <p>На 29.05.2024 г. ИБФБМИ стартира изпълнението на Проект BG-RRP-2.011-0025 "Създаване на база данни за патологична бременност и извличане на нови знания с цел идентифициране на диагностични маркери".</p>
+                        <div class="link">
+                            <a href="https://biomed.bas.bg/bg/2024/09/ibphbme-implements-project-bg-rpr-2-011-0025/" 
+                               target="_blank" 
+                               class="btn btn-info">
+                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+
+
+          
+        </div>
+    </div>
+</section>
+<!-- ######## Blog Section End ######## -->
+{% endblock %}

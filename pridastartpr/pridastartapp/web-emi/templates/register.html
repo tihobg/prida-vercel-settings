@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Регистрация - PRIDA{% endblock %}
+
+{% block content %}
+<!-- Page Navigation -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Регистрация</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Регистрация</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ################# Форма за регистрация #######################--->
+<section class="with-medical">
+    <div class="container">
+        <div class="row form-container">
+            <div class="col-lg-6 col-md-12 form-content">
+                <form action="{% url 'register' %}" method="post">
+                    {% csrf_token %}
+
+                    <!-- Display non-field errors (e.g., password mismatch) -->
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <ul>
+                                {% for error in form.non_field_errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    
+                    <!-- Display field-specific errors -->
+                    <div class="form-group">
+                        <label for="first_name">Име</label> 
+                        <input type="text" id="first_name" name="first_name" value="{{ form.first_name.value|default_if_none:'' }}" required>
+                        {% if form.first_name.errors %}
+                            <div class="text-danger">
+                                {% for error in form.first_name.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Фамилия</label>
+                        <input type="text" id="last_name" name="last_name" value="{{ form.last_name.value|default_if_none:'' }}" required>
+                        {% if form.last_name.errors %}
+                            <div class="text-danger">
+                                {% for error in form.last_name.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Потребителско име</label>
+                        <input type="text" id="username" name="username" value="{{ form.username.value|default_if_none:'' }}" required>
+                        {% if form.username.errors %}
+                            <div class="text-danger">
+                                {% for error in form.username.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Имейл</label>
+                        <input type="email" id="email" name="email" value="{{ form.email.value|default_if_none:'' }}" required>
+                        {% if form.email.errors %}
+                            <div class="text-danger">
+                                {% for error in form.email.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Парола</label>
+                        <input type="password" id="password" name="password" required>
+                        {% if form.password.errors %}
+                            <div class="text-danger">
+                                {% for error in form.password.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="repeat_password">Повтори парола</label>
+                        <input type="password" id="repeat_password" name="repeat_password" required>
+                        {% if form.repeat_password.errors %}
+                            <div class="text-danger">
+                                {% for error in form.repeat_password.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info-register">Регистрация</button>
+                    </div>
+                    <br>
+
+                    <p>Вече имате акаунт? <a href="{% url 'login' %}" class="text-primary">Влезте тук</a></p>
+                </form>
+            </div>
+            <div class="col-lg-6 col-md-12 image-content">
+                <img src="{% static 'images/registration.jpg' %}" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

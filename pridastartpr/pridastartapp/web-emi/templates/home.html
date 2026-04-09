@@ -1,0 +1,216 @@
+<!-- web/templates/home.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ Home Page
+{% endblock %}
+
+{% block content %}
+
+
+    <!-- ################# Slider Starts Here #######################--->
+ <div class="slider-detail">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{% static 'images/slider/slider_3.jpg' %}" alt="First slide">
+                    <div class="carousel-caption fvgb d-none d-md-block">
+                        <h2 style="color: white;" >Pregnancy Related Integrated Database Analytics</h1>
+                        <h5 class="animated bounceInDown" style="color: white; ">PRIDA</h5>
+                        
+                        <p class="animated bounceInLeft" style="color: white; ">BG-RRP-2.011-0025  <br>„NextGenerationEU” </p>
+                    </div>
+                </div>
+               <div class="carousel-item active">
+                    <img class="d-block w-100" src="{% static 'images/slider/slider_3.jpg' %}" alt="Third slide">
+                    <div class="carousel-caption vdg-cur d-none d-md-block">
+                        <h2 style="color: white;">СЪЗДАВАНЕ НА БАЗА ДАННИ ЗА ПАТОЛОГИЧНА БРЕМЕННОСТ</h2>
+                        
+                        <h2 style="color: white;"> И ИЗВЛИЧАНЕ НА НОВИ ЗНАНИЯ С ЦЕЛ ИДЕНТИФИЦИРАНЕ </h2>
+                         
+                        <h2 style="color: white;">НА ДИАГНОСТИЧНИ МАРКЕРИ</h2>
+                        <br>
+                            <h5 class="animated bounceInDown" style="color: white;"></h5><br>
+                         <p class="animated bounceInLeft" style="color: white; ">BG-RRP-2.011-0025 <br> „СледващоПоколениеЕС”  </p>
+                    </div>
+                </div> 
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div> 
+
+
+
+
+    <!-- ################# With Medical Starts Here #######################--->
+    <section class="with-medical">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 txtr">
+                    <h4> Какво е <span>PRIDA</span> ?</h4>
+                    <br>
+                    <p style="text-align: justify; text-indent: 0;"> Целта на настоящото проектно предложение е създаване на интегрирана база данни  за паталогична бременност (Pregnancy Related Integrated Database Analytics - PRIDA).  Тя обединява данни от клинични изследвания (в т.ч. генетични, биохимични, имунологични, хематологични, хемореологични и др.), регистрирани в различни медицински центрове в страната, и експериментални биофизични данни (морфологични, механични и реологични характеристики на еритроцити), получени в Институт по биофизика и биомедицинско инженерство към Българската академия на науките, за здрави бременни контроли и пациентки със спонтанен аборт и прееклампсия.
+                    </p>
+                       
+                 </div>
+                <div class="col-lg-6 col-md-12">
+                    <img src="{% static 'images/general.jpg' %}" alt="Description of image">
+                </div>
+            </div>
+
+
+  <div class="row" style="margin-top: 80px;">
+
+     <div class="col-lg-6 col-md-12">
+                    <img src="{% static 'images/woman.jpeg' %}" alt="Description of image">
+                </div>
+                <div class="col-lg-6 col-md-12 txtr">
+
+                <br>
+               <p style="text-align: justify; text-indent: 0;">  Базата данни ще бъде достъпна чрез уеб-базирано приложение, даващо възможности за различни регламентирани права на достъп. За анализ на взаимовръзките между отделните фактори, включени в базата данни, ще бъдат вградени възможности за приложение на класически статистически методи за анализ, както и на разработени в ИБФБМИ-БАН съвременни математически подходи (интеркретериален анализ). </p>
+              <br>
+               <p style="text-align: justify; text-indent: 0;">  Основна цел на проекта е идентифициране на нови диагностични маркери и прогностични фактори за оценка на риск от неблагоприятно протичаща бременност в различните й етапи.
+                                   
+                    </p>
+                       
+               
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- ################# Our Project Starts Here #######################--->
+    <section class="key-features department">
+        <div class="container">
+            <div class="row session-title">
+                <h2>Ключови направления в проекта</h2>
+                <p>Разгледайте някои от основните ни функции и подходи в проекта</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-key">
+                        <div class="image-container">
+                            <img src="{% static 'images/project_activities.png' %}" alt="Дейности по проекта">
+                        </div>
+                        <h5>Дейности по проекта</h5>
+                        <p>Селекция на контроли и пациенти и извличане на информация за релевантни...</p>
+                        <button class="btn btn-info">
+                            <a href="{% url 'services' %}#project-activities">Научете повече</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-key">
+                        <div class="image-container">
+                            <img src="{% static 'images/experimental_activities.png' %}" alt="Експериментални методи">
+                        </div>
+                        <h5>Експериментални методи</h5>
+                        <p>Изолиране на еритроцити и кръвна плазма...</p>
+                        <button class="btn btn-info">
+                            <a href="{% url 'services' %}#experimental-methods">Научете повече</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-key">
+                        <div class="image-container">
+                            <img src="{% static 'images/math_approaches.png' %}" alt="Математически подходи">
+                        </div>
+                        <h5>Математически подходи за анализ на бази данни</h5>
+                        <p>Многомерен статистически анализ...</p>
+                        <button class="btn btn-info">
+                            <a href="{% url 'services' %}#mathematical-approaches">Научете повече</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ################# Our Blog Starts Here #######################--->
+    <section class="our-blog">
+        <div class="container">
+            <div class="row session-title">
+                <h2> Новини</h2>
+             
+            </div>
+            <div class="blog-row row">
+                <div class="col-lg-12">
+                    <div class="single-blog">
+                        <div class="row">
+                            <!-- Image on the left -->
+                            <div class="col-md-6">
+                                <figure>
+                                    <img src="{% static 'images/blog/blog_011.jpg' %}" alt="">
+                                </figure>
+                            </div>
+                            
+                            <!-- Content on the right -->
+                            <div class="col-md-6">
+                                <div class="blog-detail">
+                                    <h4>Начало</h4>
+                                    <p>На 29.05.2024 г. Институт по биофизика и биомедицинско инженерство (ИБФБМИ) стартира изпълнението на Проект BG-RRP-2.011-0025 “Създаване на база данни за патологична бременност и извличане на нови знания с цел идентифициране на диагностични маркери“ .</p> <br>
+                                    
+                                    <button class="btn btn-info">
+                                        <a href="{% url 'news' %}">Научете повече</a>
+                                    </button>
+                                </div>
+                            </div>
+                      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<section class="dynamic-data department">
+    <div class="container">
+        <div class="row session-title">
+            <h2>Интегрирана база данни за патологична бременност</h2>
+            
+        </div>
+        <div class="row">
+            <!-- Left Column: Button -->
+           <div class="col-lg-6 prida-info-section">
+    <p class="info-intro">Интегрираната база данни съдържа информация за:</p>
+    
+    <ul class="prida-list">
+        <li>здрави бременни контроли;</li>
+        <li>пациенти с прееклампсия;</li>
+        <li>пациенти със спонтанни аборти.</li>
+    </ul>
+    
+    <button class="btn btn-info">
+        <a href="{% url 'database' %}" style="color: white; text-decoration: none;">Научете повече</a>
+    </button>
+</div>    
+            
+            <!-- Right Column: Image -->
+            <div class="col-lg-6">
+                <img src="{% static 'images/prida.png' %}" alt="PRIDA Overview" class="img-fluid" style="max-width: 350px; height: 350px; display: block; margin: -50px auto 0;">
+            </div>
+        </div>
+    </div>
+    <br>
+</section>
+    
+
+    <!-- ################# Footer Starts Here #######################--->
+    {% endblock %}

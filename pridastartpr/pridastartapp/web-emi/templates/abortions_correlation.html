@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Abortion Correlation{% endblock %}
+
+{% block content %}
+
+<main>
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Корелации Аборти</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i>Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Корелации  за спонтанни аборти</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- option -->
+
+<section class="with-medical12 py-4">
+    <div class="container">
+        <form id="correlation-form" method="post" action="{% url 'correlation_result' %}">
+            {% csrf_token %}
+            <div class="row">
+                <!-- Field: No -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="abortionNoCheckbox">No</label>
+                        <input type="checkbox" id="abortionNoCheckbox" name="abortionNoCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: Code -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="codeCheckbox">Code</label>
+                        <input type="checkbox" id="codeCheckbox" name="codeCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: Year -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="yearCheckbox">Year</label>
+                        <input type="checkbox" id="yearCheckbox" name="yearCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: Number -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="numberCheckbox">Number</label>
+                        <input type="checkbox" id="numberCheckbox" name="numberCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: Age -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="ageCheckbox">Age</label>
+                        <input type="checkbox" id="ageCheckbox" name="ageCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: Gender -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="genderCheckbox">Gender</label>
+                        <input type="checkbox" id="genderCheckbox" name="genderCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: Factor V Normal -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="factorVNormalCheckbox">Factor V Normal</label>
+                        <input type="checkbox" id="factorVNormalCheckbox" name="factorVNormalCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: Factor V Heterozygous -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="factorVHeterozygousCheckbox">Factor V Heterozygous</label>
+                        <input type="checkbox" id="factorVHeterozygousCheckbox" name="factorVHeterozygousCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: Factor V Homozygous -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="factorVHomozygousCheckbox">Factor V Homozygous</label>
+                        <input type="checkbox" id="factorVHomozygousCheckbox" name="factorVHomozygousCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: Factor II Normal -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="factorIINormalCheckbox">Factor II Normal</label>
+                        <input type="checkbox" id="factorIINormalCheckbox" name="factorIINormalCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: Factor II Heterozygous -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="factorIIHeterozygousCheckbox">Factor II Heterozygous</label>
+                        <input type="checkbox" id="factorIIHeterozygousCheckbox" name="factorIIHeterozygousCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: Factor II Homozygous -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="factorIIHomozygousCheckbox">Factor II Homozygous</label>
+                        <input type="checkbox" id="factorIIHomozygousCheckbox" name="factorIIHomozygousCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: PAI1 Normal -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="pai1NormalCheckbox">PAI1 Normal</label>
+                        <input type="checkbox" id="pai1NormalCheckbox" name="pai1NormalCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: PAI1 Heterozygous -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="pai1HeterozygousCheckbox">PAI1 Heterozygous</label>
+                        <input type="checkbox" id="pai1HeterozygousCheckbox" name="pai1HeterozygousCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: PAI1 Homozygous -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="pai1HomozygousCheckbox">PAI1 Homozygous</label>
+                        <input type="checkbox" id="pai1HomozygousCheckbox" name="pai1HomozygousCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: MTHFR Normal -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="mthfrNormalCheckbox">MTHFR Normal</label>
+                        <input type="checkbox" id="mthfrNormalCheckbox" name="mthfrNormalCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: MTHFR Heterozygous -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="mthfrHeterozygousCheckbox">MTHFR Heterozygous</label>
+                        <input type="checkbox" id="mthfrHeterozygousCheckbox" name="mthfrHeterozygousCheckbox">
+                    </div>
+                </div>
+
+                <!-- Field: MTHFR Homozygous -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <label for="mthfrHomozygousCheckbox">MTHFR Homozygous</label>
+                        <input type="checkbox" id="mthfrHomozygousCheckbox" name="mthfrHomozygousCheckbox">
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-12 text-center mt-4">
+                    <button type="submit" class="btn btn-secondary">Show Correlation</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+
+
+</main>
+
+<!-- ######## Medical Form Section End ######## -->
+{% endblock %}

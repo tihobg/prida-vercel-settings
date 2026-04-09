@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Pregnant Controls{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Бременни Контроли</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> База данни за бременни контроли</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Controls Information Table ######## -->
+<div class="container table-container my-4">
+    <h2>Контроли информационна таблица</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Промяна</th>
+                    <th>ID</th>
+                    <th>Patient</th>
+                    <th>Maternal<br>Age</th>
+                    <th>Systolic<br>Blood Pressure</th>
+                    <th>Diastolic<br>Blood Pressure</th>
+                    <th>Gestational<br>Week</th>
+                    <th>Newborn<br>Weight [g]</th>
+                    <th>EAI1</th>
+                    <th>NEA1</th>
+                    <th>EAI2</th>
+                    <th>NEA2</th>
+                    <th>Erythrocytes<br>[T/L]</th>
+                    <th>HGB<br>[g/l]</th>
+                    <th>HCT<br>[l/l]</th>
+                    <th>MCV<br>[mmol/l]</th>
+                    <th>MCH<br>[Pg]</th>
+                    <th>MCHC<br>[g/l]</th>
+                    <th>RDW<br>[%]</th>
+                    <th>Prothrombin<br>Time [Sec]</th>
+                    <th>Prothrombin<br>Time [%]</th>
+                    <th>Prothrombin<br>Time [INR]</th>
+                    <th>PLT<br>[g/L]</th>
+                    <th>MPV<br>[Fl]</th>
+                    <th>PCT<br>[mL/L]</th>
+                    <th>PDW<br>[%]</th>
+                    <th>Creatinine<br>[micromoles/L]</th>
+                    <th>Total Protein<br>[g/l]</th>
+                    <th>Albumin<br>[g/l]</th>
+                    <th>Fibrinogen<br>[g/l]</th>
+                    <th>CRP<br>[mg/l]</th>
+                    <th>Proteinuria<br>[mg/24h]</th>
+                    <th>ASAT<br>[U/L]</th>
+                    <th>ALAT<br>[U/L]</th>
+                    <th>Factor V<br>Leiden</th>
+                    <th>Factor II<br>Mutation G/A 20210</th>
+                    <th>PAI<br>4G/5G</th>
+                    <th>MTHFR<br>Mutation C677T</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for control in page_obj %}
+                <tr>
+                    <td><a href="{% url 'edit_controls' control.id %}" class="btn btn-info">Промяна</a></td>
+                    <td>{{ control.id }}</td>
+                    <td>{{ control.name }}</td>
+                    <td>{{ control.maternal_age }}</td>
+                    <td>{{ control.systolic_blood_pressure }}</td>
+                    <td>{{ control.diastolic_blood_pressure }}</td>
+                    <td>{{ control.gestational_week }}</td>
+                    <td>{{ control.newborn_weight }}</td>
+                    <td>{{ control.eai1 }}</td>
+                    <td>{{ control.nea1 }}</td>
+                    <td>{{ control.eai2 }}</td>
+                    <td>{{ control.nea2 }}</td>
+                    <td>{{ control.erythrocytes }}</td>
+                    <td>{{ control.hemoglobin }}</td>
+                    <td>{{ control.hematocrit }}</td>
+                    <td>{{ control.mcv }}</td>
+                    <td>{{ control.mch }}</td>
+                    <td>{{ control.mchc }}</td>
+                    <td>{{ control.rdw }}</td>
+                    <td>{{ control.prothrombin_time_sec }}</td>
+                    <td>{{ control.prothrombin_time_percent }}</td>
+                    <td>{{ control.prothrombin_time_inr }}</td>
+                    <td>{{ control.platelets }}</td>
+                    <td>{{ control.mpv }}</td>
+                    <td>{{ control.pct }}</td>
+                    <td>{{ control.pdw }}</td>
+                    <td>{{ control.creatinine }}</td>
+                    <td>{{ control.total_protein }}</td>
+                    <td>{{ control.albumin }}</td>
+                    <td>{{ control.fibrinogen }}</td>
+                    <td>{{ control.crp }}</td>
+                    <td>{{ control.proteinuria }}</td>
+                    <td>{{ control.asat }}</td>
+                    <td>{{ control.alat }}</td>
+                    <td>{{ control.factor_v_leiden }}</td>
+                    <td>{{ control.factor_ii_mutation }}</td>
+                    <td>{{ control.pai }}</td>
+                    <td>{{ control.mthfr }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="37" class="text-center">No controls found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1" aria-label="First">&laquo;&laquo;</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">&laquo;</a>
+            </li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+            <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">&raquo;</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">&raquo;&raquo;</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+<!-- ######## Button Section ######## -->
+<div class="container button-container my-4">
+    <div class="register_add text-center">
+        <button class="btn btn-info-register">
+            <a href="{% url 'addcontrols' %}">Добави/промени нова контрола</a>
+        </button>
+        <button class="btn btn-info">
+            <a href="{% url 'correlation' %}">Корелация</a>
+        </button>
+    </div>
+</div>
+{% endblock %}

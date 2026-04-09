@@ -1,0 +1,45 @@
+{% extends "base-emi.html" %}
+{% load static %}
+
+{% block title %}Под конструкция{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>База данни</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> База данни</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Under Construction Section ######## -->
+<section class="key-features1 ky2 department">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <div class="single-key" style="padding: 60px 40px; margin-top: 50px; margin-bottom: 100px;">
+                    <i class="fas fa-tools" style="font-size: 80px; color: #00a8df; margin-bottom: 30px;"></i>
+                    <h2 style="color: #03509e; margin-bottom: 20px;">Страницата е в процес на разработка</h2>
+                    <p style="font-size: 18px; color: #6a6a6a; line-height: 1.8;">
+                        Работим усилено по създаването на тази база данни. 
+                        <br>
+                        Моля, проверете отново скоро.
+                    </p>
+                    <div style="margin-top: 40px;">
+                        <a href="{% url 'home' %}" class="btn btn-info-register">
+                            <i class="fas fa-arrow-left"></i> Назад към началната страница
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ######## Under Construction Section End ######## -->
+{% endblock %}

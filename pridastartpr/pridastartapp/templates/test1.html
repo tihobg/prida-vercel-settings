@@ -1,0 +1,22 @@
+<!--<!DOCTYPE html>-->
+{% load static %}
+{% block content %}
+
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+<!--<html lang="en">-->
+        <head>
+            <meta charset="UTF-8">
+            <title>Test1</title>
+        </head>
+        <p> Login Form </p>
+        <div class="form-group">
+            <button class = "btn btn-outline-info" type="submit">Login
+
+            </button>
+        </div>
+<!--</html>-->
+    </form>
+</div>
+{% endblock content %}

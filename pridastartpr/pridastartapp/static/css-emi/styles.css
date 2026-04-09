@@ -1,0 +1,1809 @@
+/* static/css/styles.css */
+
+/* ===================================== Import Less ================================== */
+@font-face {
+  font-family: "mouse-300";
+  src: url("../fonts/PT_Sans-Web-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "mouse-500";
+  src: url("../fonts/PT_Sans-Web-Bold.ttf") format("truetype");
+}
+/* ===================================== Basic CSS ================================== */
+* {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+  color: #444;
+}
+
+a:hover {
+  color: #444;
+}
+
+ul {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+a:hover,
+a:focus,
+input,
+textarea {
+  text-decoration: none;
+  outline: none;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+p {
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.no-margin {
+  margin: 0px;
+}
+
+.hid {
+  display: none;
+}
+
+.top-mar {
+  margin-top: 15px;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+::placeholder {
+  color: #747f8a !important;
+  font-size: 13px;
+  opacity: 0.5 !important;
+}
+
+.container-fluid {
+  padding: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "mouse-500", Arial, Helvetica, sans-serif;
+}
+
+strong {
+  font-family: "mouse-500", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #f7f7ff !important;
+  font-family: "mouse-300", Arial, Helvetica, sans-serif;
+  color: #6a6a6a;
+}
+
+/* ===================================== Header CSS ================================== */
+header {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+  background-color: #fff;
+}
+header .header-top {
+  background-color: #212121;
+}
+header .header-top .left-item ul li {
+  float: left;
+  color: #bcbcbc;
+  padding: 10px;
+}
+header .header-top .left-item ul li i {
+  color: #4e9be9;
+}
+header .header-top .right-item ul {
+  float: right;
+}
+header .header-top .right-item ul li {
+  float: left;
+  color: #bcbcbc;
+  padding: 10px;
+}
+header .header-nav .nav-item ul li {
+  float: left;
+  font-family: "mouse-500", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  padding: 28px;
+}
+/*   @media screen and (max-width: 916px) {
+        header .header-nav .nav-item ul li {
+          padding: 30px 18px; } } */
+/*      @media screen and (max-width: 767px) {
+        header .header-nav .nav-item ul li {
+          float: none;
+          padding: 14px;
+          border-top: 1px solid #CCC; } } */
+header .header-nav .nav-img img {
+  width: 200px;
+  padding: 0px;
+  margin-top: 13px;
+}
+/* /*       @media screen and (max-width: 767px) {
+        header .header-nav .nav-img img {
+          margin-top: 0px;
+          padding: 10px; } } */
+
+header .header-nav .appoint {
+  padding-top: 21px;
+}
+header .scroll-to-fixed-fixed {
+  background-color: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.small-menu {
+  float: right;
+  color: #03509e;
+  font-size: 32px;
+  margin-top: 17px;
+  margin-right: 12px;
+}
+
+.session-title {
+  padding: 30px;
+  margin: 0px;
+}
+.session-title h2 {
+  width: 100%;
+  text-align: center;
+}
+.session-title p {
+  max-width: 850px;
+  text-align: center;
+  float: none;
+  margin: auto;
+}
+.session-title span {
+  float: right;
+  font-style: italic;
+}
+
+.inner-title {
+  padding: 20px;
+  padding-left: 0px;
+  margin-bottom: 30px;
+}
+.inner-title h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-family: "slab", Arial, Helvetica, sans-serif;
+}
+.inner-title p {
+  width: 100%;
+  text-align: center;
+}
+
+/* .btn-success {
+        background-color: #1aaa55;
+        border-color: #1aaa55;
+      
+       } */
+/*         .btn-success:hover {
+          background-color: #1aaa55 !important;
+          border-color: #1aaa55 !important; }
+        .btn-success:active {
+          background-color: #1aaa55 !important;
+          border-color: #1aaa55 !important; }
+        .btn-success:focus {
+          background-color: #1aaa55 !important;
+          border-color: #1aaa55 !important;
+          box-shadow: none !important; } */
+*/ .btn-info-register,
+.btn-info-login,
+.btn-info-logout {
+  background-color: #00a8df !important;
+  border-color: #00a8df !important;
+  color: white !important;
+}
+
+.btn-info-register:hover,
+.btn-info-login:hover,
+.btn-info-logout:hover,
+.btn-info-edit:hover .btn-info-register:active,
+.btn-info-login:active,
+.btn-info-logout:active,
+.btn-info-register:focus,
+.btn-info-login:focus,
+.btn-info-logout:focus {
+  background-color: #00a8df !important;
+  border-color: #00a8df !important;
+  color: white !important;
+}
+
+.btn-info-register:focus,
+.btn-info-login:focus,
+.btn-info-logout:focus {
+  box-shadow: none !important;
+  color: white !important;
+}
+
+.btn-info-login,
+.btn-info-logout {
+  padding-right: 18px;
+  margin-left: 5px;
+}
+
+.btn a {
+  color: white !important;
+  text-decoration: none;
+}
+
+.btn a:hover,
+.btn a:active,
+.btn a:focus {
+  color: white !important;
+}
+
+.btn {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 2px !important;
+  background-color: #00a8df !important;
+  border-color: #00a8df !important;
+  color: white !important;
+}
+
+/* * ===================================== Slider CSS ================================== */
+     .slider-detail {
+        padding-top: 128px; } 
+@media screen and (max-width: 767px) {
+  .slider-detail {
+    padding-top: 115px;
+  }
+}
+@media screen and (max-width: 409px) {
+  .slider-detail {
+    padding-top: 158px;
+  }
+}
+.slider-detail .carousel-caption {
+  text-align: left;
+  bottom: 110px;
+  }
+
+  .slider-detail .carousel-caption h1 {
+  
+    font-size: 40px;
+     margin-left: -10px;
+    margin-bottom: 30px;
+  
+  }
+.slider-detail .carousel-caption h5 {
+  font-size: 100px;
+   margin-left: -10px;
+
+}
+.slider-detail .carousel-caption p {
+   margin-left: -10px;
+  font-weight: 600;
+  margin-top: 15px;
+  font-size: 35px;
+}
+.slider-detail .vbh {
+  margin-left: -40px;
+}
+.slider-detail .vbh .btn {
+  padding: 20px;
+  margin-top: 40px;
+  font-weight: 800;
+  font-size: 18px;
+}
+.slider-detail .vdg-cur {
+  color:   #03509e;  
+}
+.slider-detail .fvgb {
+  color: #00a8df;
+}
+
+
+.slider-detail .carousel-caption h2 {
+    font-size: 1.8rem;
+    margin-left: -10px;
+    margin-top: 0;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    font-weight: 600;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+      /* ===================================== Key Features CSS ================================== */
+.key-features .kvxol {
+  padding: 0px; }
+.key-features .single-key {
+  background-color: #FFF;
+  margin-bottom: 30px;
+  text-align: center;
+  padding: 30px; }
+  .key-features .single-key i {
+    background-color: #FFF;
+    padding: 20px;
+    font-size: 42px;
+    color: #0085bc;
+    margin-bottom: 30px;
+    border-radius: 50px; }
+  .key-features .single-key p {
+    font-family: "mouse-300", Arial, Helvetica, sans-serif;
+    font-size: 15px; }
+.key-features .ky-1 {
+  background-color: #03509e;
+  color: #FFF;
+  margin-bottom: 0px; }
+.key-features .ky-2 {
+  background-color: #0085bc;
+  color: #FFF;
+  margin-bottom: 0px; }
+
+.department {
+  padding: 50px; }
+  @media screen and (max-width: 940px) {
+    .department {
+      padding: 30px 10px; } }
+  .department .single-key {
+    box-shadow: 0 2px 3px 0 rgba(218, 218, 253, 0.35), 0 0px 3px 0 rgba(206, 206, 238, 0.35); }
+
+/* ===================================== With Medical CSS ================================== */
+.with-medical {
+  padding: 50px;
+  background-color: #FFF; }
+  @media screen and (max-width: 940px) {
+    .with-medical {
+      padding: 30px 10px; } }
+  .with-medical .txtr {
+    padding: 10px; }
+    .with-medical .txtr h4 {
+      font-size: 32px; }
+      .with-medical .txtr h4 span {
+        color: #03509e; }
+    .with-medical .txtr p {
+      text-indent: 20px;
+      font-size: 1.1rem; }
+
+/* ===================================== Our Team CSS ================================== */
+.our-team {
+  padding: 50px; }
+  @media screen and (max-width: 940px) {
+    .our-team {
+      padding: 30px 10px; } }
+  .our-team .user-card {
+    background-color: #FFF;
+    padding: 10px;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    margin-bottom: 20px; }
+    .our-team .user-card img {
+      width: 100%; }
+    .our-team .user-card .detfs {
+      text-align: center; }
+      .our-team .user-card .detfs ul {
+        margin-left: 10%;
+        width: 100%; }
+        .our-team .user-card .detfs ul li {
+          float: left;
+          padding: 10px;
+          font-size: 13px; }
+      .our-team .user-card .detfs p {
+        margin-top: 17px; }
+
+/* ===================================== Our Blog CSS ================================== */
+.our-blog {
+  background-color: #FDFDFD;
+  padding: 40px;
+}
+
+@media screen and (max-width: 967px) {
+  .our-blog {
+    padding: 30px 0px;
+  }
+}
+
+.our-blog .blog-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.our-blog .blog-row > div {
+  display: flex;
+  padding: 0 15px;
+  margin-bottom: 30px;
+}
+
+.our-blog .single-blog {
+  background-color: #FFF;
+  box-shadow: 0 2px 6px 0 rgba(218, 218, 253, 0.65), 0 2px 6px 0 rgba(206, 206, 238, 0.54);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.our-blog .single-blog:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px 0 rgba(218, 218, 253, 0.85), 0 4px 12px 0 rgba(206, 206, 238, 0.74);
+}
+
+.our-blog .single-blog figure {
+  margin-bottom: 0;
+  max-height: 300px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.our-blog .single-blog figure img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.our-blog .single-blog .blog-detail {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.our-blog .single-blog h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  margin-top: 0;
+  color: #03509e;
+  font-weight: 600;
+}
+
+.our-blog .single-blog p {
+  text-align: justify;
+  text-indent: 20px;
+  flex-grow: 1;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.our-blog .single-blog .link {
+  margin-top: auto;
+  text-align: left;
+}
+
+.our-blog .single-blog .link a {
+  font-size: 12px;
+  color: #FFFFFF;
+  display: inline-block;
+}
+
+.our-blog .single-blog .link i {
+  padding-top: 6px;
+  margin-left: 5px;
+  color: #FFFFFF;
+}
+
+/* only for  Cell Physics picture */
+.our-blog .germany-card figure {
+  height: 300px;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.our-blog .germany-card figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .our-blog .blog-row > div {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+      /* ===================================== Gallery Style  ================================== */
+      
+.gallery-filter {
+  width: 100%;
+  text-align: center; }
+  .gallery-filter .btn {
+    background-color: #FFF; }
+
+.gallery {
+  padding: 30px;
+  background-color: #FFF; }
+
+.gallery-title {
+  font-size: 36px;
+  color: #29509f;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 70px; }
+
+.gallery-title:after {
+  content: "";
+  position: absolute;
+  width: 7.5%;
+  left: 46.5%;
+  height: 45px;
+  border-bottom: 1px solid #29509f; }
+
+.filter-button {
+  font-size: 18px;
+  border: 1px solid #29509f;
+  border-radius: 5px;
+  text-align: center;
+  color: #29509f;
+  margin-bottom: 30px; }
+
+.filter-button:hover {
+  font-size: 18px;
+  border: 1px solid #29509f;
+  border-radius: 5px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #29509f; }
+
+.btn-default:active .filter-button:active {
+  background-color: #29509f;
+  color: white; }
+
+.port-image {
+  width: 100%; }
+
+.gallery_product {
+  margin-bottom: 30px; }
+
+.ky2 {
+  background-color: #FAFAFA; }
+
+/*# sourceMappingURL=style.css.map */
+
+/* Register Syle */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "slab", Arial, Helvetica, sans-serif;
+
+}
+
+.form-container .form-content,
+.form-container .image-content {
+  flex: 1;
+  padding: 5px;
+}
+
+.form-content {
+  max-width: 600px;
+  padding-right: 40px; 
+}
+
+.form-content form .form-group input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-content form .form-group input[type="submit"] {
+  background-color: #00a8df;
+  border: none;
+  cursor: pointer;
+}
+
+.form-content form .form-group input[type="submit"]:hover {
+  background-color: #007b9e;
+}
+
+.image-content {
+  margin-left: 80px; 
+  width: 100%;
+  margin-bottom: 55px;
+}
+ 
+
+    /* ===================================== Footer CSS ================================== */
+
+
+  .footer {
+  padding: 50px;
+  padding-bottom: 0px;
+  background-color: #444 !important;
+  color: #fff;
+}
+/*   @media screen and (max-width: 940px) {
+      .footer {
+        padding: 30px 10px; } } */
+.footer.row {
+  background-color: #444 !important;
+}
+.footer h2 {
+  font-size: 26px;
+  margin-top: 10px;
+}
+.footer p {
+  text-align: justify;
+  text-indent: 20px;
+}
+.footer .link-list li {
+  padding: 10px;
+  border-bottom: 1px solid #6c6c6c;
+}
+.footer .link-list li a {
+  color: #fff;
+}
+.footer .link-list li i {
+  float: right;
+}
+.footer .map-img {
+  font-weight: 600;
+  font-size: 17px;
+  padding-left: 20px;
+}
+.footer address a {
+  color: #fff;
+}
+
+.copy {
+  padding: 20px;
+  background-color: #2e2e2e;
+  color: #fff;
+}
+.copy a {
+  color: #fff;
+}
+.copy span {
+  float: right;
+}
+.copy span i {
+  margin-right: 20px;
+}
+
+.page-nav {
+  padding: 40px;
+  text-align: center;
+  padding-top: 170px;
+}
+/*     @media screen and (max-width: 409px) {
+      .page-nav {
+        padding-top: 210px; } } */
+.page-nav h2 {
+  font-size: 36px;
+  width: 100%;
+  color: #444;
+  text-align: left;
+}
+/*       @media screen and (max-width: 600px) {
+        .page-nav h2 {
+          font-size: 26px; } } */
+.page-nav ul li {
+  float: left;
+  margin-right: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+.page-nav ul li i {
+  width: 30px;
+  text-align: center;
+  color: #444;
+}
+.page-nav ul li a {
+  color: #444;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* ===================================== Register CSS ==================================*/
+.row.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "slab", Arial, Helvetica, sans-serif;
+  margin-bottom: 100px;
+}
+
+.form-container .form-content,
+.form-container .image-content {
+  flex: 1;
+  padding: 5px;
+}
+
+.form-content {
+  max-width: 600px;
+  padding-right: 40px;
+}
+
+.form-content form .form-group input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-content form .form-group input[type="submit"] {
+  background-color: #00a8df;
+  border: none;
+  cursor: pointer;
+}
+
+.form-content form .form-group input[type="submit"]:hover {
+  background-color: #007b9e;
+}
+
+.image-content .img {
+  margin-left: 50px; 
+  width: 600px;
+  height: auto; 
+  margin-bottom: 60px;
+  border-radius: 5px;
+}
+
+.login-link {
+  color: rgb(39, 39, 154);
+  text-decoration: underline;
+  
+}
+
+/* ===================================== Login CSS ==================================*/
+.key-features1 {
+  width: auto;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
+.login-image img {
+  /* Adjust the size as needed */
+  height: auto;
+  border-radius: 5px;
+  margin-right: 50px;
+}
+
+/* ===================================== Database CSS ================================== */
+
+.db.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 300%; /* Adjust the width as needed */
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  margin-bottom: 160px;
+}
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  /*  margin-right: 60px; */
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.btn-group button {
+  margin-bottom: 30px;
+  padding: 20px 15px;
+}
+
+.database-image-container {
+  display: flex;
+  align-items: center;
+}
+.database-image-container img {
+  max-width: 850px; 
+  height: auto;
+  border-radius: 5px;
+}
+
+/*===================================== Preeclampsia CSS ==================================*/
+.container.table-container {
+  margin-left: 80px;
+  margin-bottom: 5px;
+}
+
+table {
+  width: 100%;
+  min-width: 1200px;
+  border-collapse: collapse;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 2; 
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto; 
+  margin-bottom: 40px;
+  max-height: 600px;
+}
+
+.table-container {
+  padding: 0 40px;
+  margin: 20px 0;
+}
+
+
+.department-patient {
+  margin-top: 80px;
+}
+
+.container.button-container {
+  margin-top: 140px; 
+  margin-bottom: 80px; 
+  display: flex;
+  justify-content: center; 
+}
+
+
+.register_add {
+  display: inline-flex; 
+  gap: 20px; 
+}
+
+.register_add .btn {
+  padding: 10px 20px;
+  font-size: 16px; 
+
+}
+/* ============================Add/Edit Patient CSS========================== */
+.button-group2 {
+  margin-top: 20px; 
+  display: flex;
+  justify-content: flex-start; 
+}
+
+.form-group.button-group2 button {
+  margin-right: 10px; 
+}
+
+
+
+/*================ COrrelation CSS=========== */
+
+.card-custom {
+  background-color:#03509e  !important; 
+  color: white !important; 
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.label{
+  background-color: white;
+}
+
+    /* Force the checkbox to be larger */
+    input[type="checkbox"] {
+      transform: scale(1.5);
+      margin-right: 10px;
+  }
+
+
+/* for the footer/about us */
+  .justified-text {
+    text-align: justify;
+}
+
+
+/* for home section/services */
+.image-container {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Card styling */
+.single-key {
+  text-align: center;
+  padding: 25px 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.single-key:hover {
+  transform: translateY(-5px);
+}
+
+.single-key h5 {
+  margin: 0 0 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.single-key p {
+  flex-grow: 1;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  padding: 8px 16px;
+}
+
+.btn-info a {
+  color: white;
+  text-decoration: none;
+}
+
+
+
+
+/* Base styling of ACtivities page */
+.project-activities {
+  padding: 50px 0;
+  background-color: #f7f9fc;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+/* Column styling */
+.col-md-4 {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding: 20px 25px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .col-md-4 {
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-bottom: 30px;
+  }
+}
+
+/* Section titles */
+.section-title {
+  font-size: 26px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-weight: 600;
+  line-height: 1.3;
+  padding-bottom: 5px;
+  position: relative;
+  height: auto;
+  min-height: 60px;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Title underline */
+.title-underline {
+  height: 3px;
+  width: 70px;
+  background-color: #3498db;
+  margin-bottom: 30px;
+  border-radius: 1.5px;
+}
+
+/* Activity list styling */
+
+.activity-list {
+  list-style: none !important;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.activity-list > li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 22px;
+  line-height: 1.7;
+  color: #34495e;
+  font-size: 16px;
+}
+
+.activity-list > li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: #3498db;
+  font-size: 18px;
+  line-height: 1;
+  display: block !important;
+}
+
+/* Style for sub-lists */
+.sub-list {
+  list-style: none !important;
+  padding-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.sub-list > li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: #34495e;
+}
+
+.sub-list > li:before {
+  content: "◦";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: #3498db;
+  font-size: 16px;
+  display: block !important;
+}
+
+
+
+/* This CSS will highlight any section that is targeted with an ID */
+#project-activities:target,
+#experimental-methods:target,
+#mathematical-approaches:target {
+    animation: highlight-section 2s ease;
+}
+
+@keyframes highlight-section {
+    0% {
+        background-color: rgba(52, 152, 219, 0.2);
+        transform: scale(1.02);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+    100% {
+        background-color: transparent;
+        transform: scale(1);
+        box-shadow: none;
+    }
+}
+
+
+
+/* Mathematical approaches column image styling */
+#mathematical-approaches .math-image,
+#mathematical-approaches .database-icon {
+  margin-top: 25px;
+  text-align: center;
+}
+
+#mathematical-approaches .math-image img,
+#mathematical-approaches .database-icon img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+}
+
+/* Overriding of existing styles that might be making images appear outside the column */
+.row .math-image,
+.row .database-icon {
+  width: auto;
+  display: block;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+
+}
+
+/* ===================================== Posters Presentation CSS ================================== */
+.posters-section {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+
+.posters-section .container {
+    max-width: 1400px;
+}
+
+.poster-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 60px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.poster-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.poster-item:last-child {
+    margin-bottom: 0;
+}
+
+
+.poster-item.poster-reverse {
+    flex-direction: row-reverse;
+}
+
+.poster-image {
+    flex: 0 0 600px; 
+    max-width: 600px;
+    min-width: 600px;
+}
+
+.poster-image a {
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
+
+.poster-image img {
+    width: 100%;
+    height: auto;
+    max-height: 700px; 
+    object-fit: contain;  
+    display: block;
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+}
+
+.poster-image a:hover img {
+    transform: scale(1.05);
+}
+
+.poster-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+}
+
+.poster-text h4 {
+    font-size: 24px;  
+    font-weight: 700;
+    color: #03509e;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    margin-top: 0;
+}
+
+.poster-text p {
+    font-size: 16px;  
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.poster-text p:last-child {
+    margin-bottom: 0;
+}
+
+.poster-text p span {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #03509e;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .poster-image {
+        flex: 0 0 500px;
+        max-width: 500px;
+        min-width: 500px;
+    }
+    
+    .poster-image img {
+        max-height: 600px;
+    }
+}
+
+@media (max-width: 992px) {
+    .poster-image {
+        flex: 0 0 400px;
+        max-width: 400px;
+        min-width: 400px;
+    }
+    
+    .poster-image img {
+        max-height: 500px;
+    }
+    
+    .poster-item {
+        padding: 30px;
+        gap: 30px;
+    }
+    
+    .poster-text h4 {
+        font-size: 20px;
+    }
+    
+    .poster-text p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .posters-section {
+        padding: 30px 0;
+        margin-bottom: 60px;
+    }
+    
+    .poster-item,
+    .poster-item.poster-reverse {
+        flex-direction: column;
+        padding: 25px;
+        gap: 20px;
+    }
+    
+    .poster-image {
+        flex: 0 0 100%;
+        max-width: 100%;
+        min-width: auto;
+    }
+    
+    .poster-image img {
+        max-height: none;
+    }
+    
+    .poster-text h4 {
+        font-size: 18px;
+    }
+    
+    .poster-text p {
+        font-size: 14px;
+    }
+}
+/* ===================================== Techpark Page CSS ================================== */
+.techpark-section {
+    background-color: #fff;
+}
+
+
+.techpark-section .row > h2 {
+    color: #03509e;
+    text-align: left;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    padding-left: 45px; 
+}
+
+.techpark-text {
+    background-color: #f8f9fa; 
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.techpark-text h2 {
+    font-size: 2rem;
+    color: #03509e;
+    margin-bottom: 30px;
+}
+
+.techpark-text p {
+    text-align: justify;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.techpark-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 40px;
+}
+
+.techpark-gallery .gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.techpark-gallery .gallery-item img {
+    width: 100%;
+    height: 280px; 
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.techpark-gallery .gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .techpark-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 20px; 
+    }
+    
+    .techpark-gallery .gallery-item img {
+        height: 120px;
+    }
+}
+
+
+
+/* ===================================== BioFlux System Page CSS ================================== */
+.bioflux-container {
+    background-color: #f8f9fa;
+    padding: 30px 0;
+}
+
+.bioflux-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 40px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.bioflux-image-wrapper {
+    flex: 0 0 550px;
+    min-width: 550px;
+    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 140px;  
+}
+
+.bioflux-single-image {
+    display: block;
+}
+
+.bioflux-single-image a {
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.bioflux-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+}
+
+.bioflux-single-image a:hover .bioflux-img {
+    transform: scale(1.05);
+}
+
+.bioflux-content {
+    flex: 1;
+}
+
+.bioflux-content h4 {
+    font-size: 1.5rem;
+    color: #03509e;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.bioflux-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 12px;
+    color: #333;
+    text-align: justify;
+}
+
+.bioflux-content p:first-of-type {
+    margin-top: 0;
+}
+
+.bioflux-content em {
+    font-style: italic;
+    color: #03509e;
+    font-weight: 500;
+}
+
+.bioflux-list {
+    margin-left: 0;
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+
+/* BULLET с ::before */
+.bioflux-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #03509e;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .bioflux-row {
+        flex-direction: column;
+    }
+    
+    .bioflux-image-wrapper {
+        flex: 0 0 100%;
+        min-width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        margin-top: 0;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bioflux-row {
+        padding: 20px;
+    }
+    
+    .bioflux-image-wrapper {
+        gap: 20px;
+    }
+    
+    .bioflux-content h4 {
+        font-size: 1.3rem;
+    }
+    
+    .bioflux-content p,
+    .bioflux-list li {
+        font-size: 1rem;
+    }
+}
+
+
+/* ===================================== BIOLIC Page CSS ================================== */
+.biolic-section {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+    margin-top: 40px;
+    margin-bottom: 90px;
+}
+
+.biolic-section .container {
+    max-width: 1400px;
+}
+
+
+.biolic-intro {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 60px;
+}
+
+.biolic-intro h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #03509e;
+    margin-bottom: 25px;
+    margin-top: 0;
+    line-height: 1.4;
+}
+
+.biolic-intro p {
+    font-size: 17px;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 0;
+    text-align: justify;
+}
+
+
+.biolic-poster {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 60px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.biolic-poster:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.biolic-poster:last-child {
+    margin-bottom: 0;
+}
+
+
+.biolic-poster.biolic-poster-reverse {
+    flex-direction: row-reverse;
+}
+
+
+.biolic-poster-image {
+    flex: 0 0 600px;
+    max-width: 600px;
+    min-width: 600px;
+}
+
+.biolic-poster-image a {
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
+
+.biolic-poster-image img {
+    width: 100%;
+    height: auto;
+    max-height: 700px;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+}
+
+.biolic-poster-image a:hover img {
+    transform: scale(1.05);
+}
+
+
+.biolic-poster-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.biolic-poster-text h4 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #03509e;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    margin-top: 0;
+}
+
+.biolic-poster-text p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 0;
+    text-align: justify;
+}
+
+.biolic-poster-text p span {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #03509e;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .biolic-poster-image {
+        flex: 0 0 500px;
+        max-width: 500px;
+        min-width: 500px;
+    }
+    
+    .biolic-poster-image img {
+        max-height: 600px;
+    }
+}
+
+@media (max-width: 992px) {
+    .biolic-poster-image {
+        flex: 0 0 400px;
+        max-width: 400px;
+        min-width: 400px;
+    }
+    
+    .biolic-poster-image img {
+        max-height: 500px;
+    }
+    
+    .biolic-poster {
+        padding: 30px;
+        gap: 30px;
+    }
+    
+    .biolic-intro {
+        padding: 30px;
+    }
+    
+    .biolic-intro h3 {
+        font-size: 24px;
+    }
+    
+    .biolic-poster-text h4 {
+        font-size: 20px;
+    }
+    
+    .biolic-poster-text p,
+    .biolic-intro p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .biolic-section {
+        padding: 30px 0;
+        margin-bottom: 60px;
+    }
+    
+    .biolic-poster,
+    .biolic-poster.biolic-poster-reverse {
+        flex-direction: column;
+        padding: 25px;
+        gap: 20px;
+    }
+    
+    .biolic-poster-image {
+        flex: 0 0 100%;
+        max-width: 100%;
+        min-width: auto;
+    }
+    
+    .biolic-poster-image img {
+        max-height: none;
+    }
+    
+    .biolic-intro {
+        padding: 25px;
+        margin-bottom: 40px;
+    }
+    
+    .biolic-intro h3 {
+        font-size: 20px;
+    }
+    
+    .biolic-poster-text h4 {
+        font-size: 18px;
+    }
+    
+    .biolic-poster-text p,
+    .biolic-intro p {
+        font-size: 14px;
+    }
+}
+
+
+
+/* ===================================== PRIDA Info Section ================================== */
+
+.prida-info-section {
+    padding: 20px ;
+
+}
+
+.prida-info-section .info-intro {
+    margin-bottom: 15px ;
+    font-size: 1rem ;
+    text-align: left ;
+}
+
+.prida-info-section .prida-list {
+    list-style-type: none ;
+    padding-left: 35px ;
+    margin-left: 0 ;
+    margin-bottom: 35px ;
+}
+
+.prida-info-section .prida-list li {
+    padding: 5px 0 ;
+    padding-left: 25px ;
+    position: relative;
+    margin-left: 0 ;
+    text-align: left ;
+    list-style: none;
+}
+
+.prida-info-section .prida-list li::before {
+    content: "—" ;
+    position: absolute ;
+    left: 0 ;
+    color: #03509e ;
+    font-weight: bold ;
+    font-size: 1.1rem ;
+}

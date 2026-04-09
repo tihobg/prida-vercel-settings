@@ -1,0 +1,392 @@
+{% extends 'base-emi.html' %}
+<!--{% load static %}-->
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PRIDA (Pregnancy Related Integrated Database Analytics)</title>
+    <!-- Bootstrap CSS CDN -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Animate CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+</head>
+<body>
+
+    <!-- ################# Header Starts Here #######################--->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 left-item">
+                        <ul>
+                            <li><i class="fas fa-envelope-square"></i> office@biomed.bas.bg</li>
+                            <li><i class="fas fa-phone-square"></i> +3592 979 36 07</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="nav-head" class="header-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
+                        <img src="{% static 'images/logo.jpg' %}" alt="">
+                        <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
+                    </div>
+                    <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about_us_emi' %}">About Us</a></li>
+                            <li><a href="{% url 'services_emi' %}">Services</a></li>
+                            <li><a href="{% url 'news_emi' %}">News</a></li>
+                            <li><a href="{% url 'contact_us_emi' %}">Contact Us</a></li>
+                        </ul>
+                    </div>
+<!--                    <div class="col-sm-2 d-none d-lg-block appoint">-->
+<!--                        <button class="btn btn-info-logout"><a href="{% url 'home' %}">Logout</a></button>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ################# Content Starts Here #######################--->
+    <main>
+        <!-- Page Title Starts Here -->
+        <div class="page-nav no-margin row">
+            <div class="container">
+                <div class="row">
+                    <h2>Login</h2>
+                    <ul>
+                        <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
+                        <li><i class="fas fa-angle-double-right"></i> Login</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Section -->
+        <section class="key-features1 ky2 department">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="login-container">
+                            <form class="login-form" method="post" action="{% url 'login_view' %}">
+                                {% csrf_token %}
+                                <h2>Login</h2>
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" id="username" name="username" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="password" name="password" class="form-control" required>
+                                                                
+                                </div>
+                                <div class="form-group">
+                                    <!-- THis should be done after registration!!!! -->
+                                    <button type="submit" class="btn btn-info-login"><a href="{% url 'database_emi' %}">Login</a></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="login-image col-md-6">
+                        <img src="{% static 'images/why.jpg' %}" alt="Login Image" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="page-nav no-margin row">
+            <div class="container">
+                <input type="file" id="myfile" name="myfile">
+                <h1>
+                    <label for="myfile">Select a file:</label>
+<!--                    <input type="file" id="file" name="file">-->
+                    <br>
+                    {{ key9 }}
+                    {{ key10 }}
+                    <br>
+                    <textarea id="enter" name="enter_multi_lne_text" rows="5" cols="30"></textarea>
+                    <br>
+                    <button type="button" onClick="myFunction()">Try it</button>
+                    <p id="demo">Demo!</p>
+
+                </h1>
+                <script>
+                    function myFunction(){
+                        var x = document.getElementById("enter").value;
+                        document.getElementById("demo").innerHTML = x;
+                        document.getElementById("demo1").innerHTML = x;
+
+                        var name = x; // whole string
+                        window.myVariable = document.getElementById("name").innerHTML = name;
+
+                        //var myVariable = "Hello, world!";
+
+                        var name1 = name.substring(0, name.indexOf(' '));
+                        window.myVariable1 = document.getElementById("name1").innerHTML = name1;
+                        document.getElementById("myInput").value = name1;
+
+                        //document.getElementById("myInput1").value = length_string;
+
+                        var length_string = name1.length;
+                        var substring1 = name.substring(length_string + 1, name.length);
+                        //document.getElementById("substring1").value = substring1;
+                        //var length_string2 = substring1.length;
+                        var name2 = substring1.substring(0, substring1.indexOf(' '));
+
+                        document.getElementById("substring1").value = name2;
+
+                        var length_string2 = name2.length;
+                        var substring2 = substring1;
+                        //var name3 = substring2.substring(0, substring2.indexOf(' '));
+                        //document.getElementById("substring2").value = name.substring(length_string2 + length_string + 1 + 1, name.indexOf(' '));
+                        var nameParts = name.split(" ");
+                        document.getElementById("substring2").value = nameParts[2];
+                        document.getElementById("substring3").value = nameParts[3];
+                        document.getElementById("substring4").value = nameParts[4];
+                        document.getElementById("substring5").value = nameParts[5];
+                        document.getElementById("substring6").value = nameParts[6];
+                        document.getElementById("substring7").value = nameParts[7];
+                        document.getElementById("substring8").value = nameParts[8];
+
+                        document.getElementById("demo2").innerHTML = nameParts;
+                        document.getElementById('m').value = 'Some Value';
+
+
+                    }
+                </script>
+                <p id="demo1">Demo1!</p>
+
+
+                <input type="text" id="demo2" name="demo2">
+                <div id="output">The value is: <span id="name"></span></div>
+                <div id="output1">The value1 is: <span id="name1"></span></div>
+                <div>
+
+                    <form method="post" action="{% url 'proba1' %}">
+
+                    <table>
+                        {% csrf_token %}
+
+                        <tr>
+                            <td>
+                                <input type="text" id="myInput" name="username" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring1" name="username" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring2" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring3" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring4" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring5" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring6" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring7" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring8" class="form-control">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" id="substring21" name="username" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring22" name="username" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring23" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring24" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring25" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring26" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring27" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring28" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" id="substring29" class="form-control">
+                            </td>
+                        </tr>
+                    </table>
+                        <form>
+                            <p>Kakvo stava</p>
+                            {{ forma }}
+                        </form>
+                        <table>
+
+
+
+                        {% csrf_token %}
+
+                        <tr>
+                            <th scope="col">PatientID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Years</th>
+                            <th scope="col">Probe Date</th>
+                            <th scope="col">Birth Date</th>
+                            <th scope="col">Arterial Pressure</th>
+                            <th scope="col">GW</th>
+                            <th scope="col">Baby Weight</th>
+                            <th scope="col">Erythrocytes</th>
+                            <th scope="col">Hemoglobin</th>
+                            <th scope="col">Action</th>
+
+                        </tr>
+
+                        {% for post in posts %}
+                        <tr>
+<!--                                    <td>{{ post.patient_id }}</td>-->
+                                    <td>{{ post.name }}</td>
+                                    <td>{{ post.years }}</td>
+<!--                                    <td>{{ patient.years }}</td>-->
+<!--                                    <td>{{ patient.probe_date }}</td>-->
+<!--                                    <td>{{ patient.birth_date }}</td>-->
+<!--                                    <td>{{ patient.arterial_pressure }}</td>-->
+<!--                                    <td>{{ patient.gw }}</td>-->
+<!--                                    <td>{{ patient.baby_weight }}</td>-->
+<!--                                    <td>{{ patient.erythrocytes }}</td>-->
+<!--                                    <td>{{ patient.hemoglobin }}</td>-->
+<!--                                    <td>-->
+<!--                                        <button formnovalidate name="edit" value="{{ patient.patient_id }}" class="btn btn-primary btn-lg">Edit</button>-->
+<!--                                        <button formnovalidate name="delete" value="{{ patient.patient_id }}" class="btn btn-primary btn-lg">Delete</button>-->
+<!--                                    </td>-->
+                            </tr>
+                        {% endfor %}
+
+
+
+
+
+
+
+
+
+
+                    </table>
+                    </form>
+                    <form id="myForm" method="post" action="{% url 'login1' %}">
+                        {% csrf_token %}
+                        <input type="text" name="m" id="m">
+                        <input type="submit" name="submit" value="Submit">
+
+
+
+<!--                        {{ key11 }}-->
+                        <script>
+                            document.getElementById('m').value = 'Some Value';
+                        </script>
+                    </form>
+
+
+
+
+                </div>
+
+                <input type="text" id="myInput1" class="form-control">
+
+
+
+
+            </div>
+        </div>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            {% for score in posts %}
+            <tr>
+                <td>{{ score.name }}</td>
+                <td>{{ score.years }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+<!--<form>-->
+<!--                            <p>Kakvo stava</p>-->
+<!--                            {{ forma }}-->
+<!--                        </form>-->
+
+    </main>
+
+
+
+
+
+    <!-- ################# Footer Starts Here #######################--->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <h2>About Us</h2>
+                    <p>The Institute of Biophysics and Biomedical Engineering (IBPhBME) is a leading research institute in Bulgaria in the field of biophysics, biochemistry, biomedicine, chemoinformatics, and bioinformatics, biomedical engineering.</p>
+                    <p>IBPhBME conducts scientific and scientific-applied research in the field of biomedicine and quality of life for the benefit of society and science.</p>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <h2>Useful Links</h2>
+                    <ul class="list-unstyled link-list">
+                        <li><a ui-sref="about" href="{% url 'about_us_emi' %}">About us</a><i class="fa fa-angle-right"></i> </li>
+                        <li><a ui-sref="portfolio" href="{% url 'services_emi' %}">Services</a><i class="fa fa-angle-right"></i></li>
+                        <li><a ui-sref="contact" href="{% url 'contact_us_emi' %}">Contact us</a><i class="fa fa-angle-right"></i></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-12 map-img">
+                    <h2>Contact Us</h2>
+                    <address class="md-margin-bottom-40">
+                        Institute of Biophysics and Biomedical Engineering
+                        Bulgarian Academy of Sciences
+                        Acad. Georgi Bonchev Str., Block 21, Sofia 1113, Bulgaria
+                        Phone: +3592 979 36 07 <br>
+                        Email: <a href="mailto:office@biomed.bas.bg">office@biomed.bas.bg</a><br>
+                        Web: <a href="https://biomed.bas.bg/en/" target="_blank">https://biomed.bas.bg/en/</a>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+{% endblock %}

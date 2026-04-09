@@ -1,0 +1,57 @@
+<!--<!DOCTYPE html>-->
+{% extends 'base-emi.html' %}
+{% block content %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Вход</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Вход</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!--<html lang="en">-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Title</title>-->
+<!--<header class="bg-dark py-5">-->
+<!--    <div class="container px-4 px-lg-5 my-5">-->
+<!--        <div class="text-center text-white">-->
+<!--            <h1 class="display-4 fw-bolder">Login</h1>-->
+<!--            <p class="lead fw-normal text-white-50 mb-0">Log In To Your Account...</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+<section class="key-features1 ky2 department">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <form method="POST" action="{% url 'login1' %}">
+                    {% csrf_token %}
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="username" placeholder="Enter Your Username">
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" name="password" placeholder="Enter Your Password">
+                        </div>
+                        <br/><br/>
+                        <button type="submit" class="btn btn-secondary">Вход</button>
+                    </form>
+                </form>
+            </div>
+            <div class="login-image col-md-6">
+                <img src="{% static 'images/login.jpg' %}" alt="Login Image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

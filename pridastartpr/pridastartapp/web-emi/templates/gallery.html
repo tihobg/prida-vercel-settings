@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Участници - PRIDA
+{% endblock %}
+
+{% block content %}
+<!-- Page Title Section -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Участници в проекта</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Участници</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Team Section -->
+<div class="team-gallery py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Колектив по проекта</h2>
+        <div class="row">
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Проф. д-р Таня Пенчева</h5>
+                        <p class="card-text">Ръководител</p>
+                        <a href="https://biomed.bas.bg/bg/tania-pencheva/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Акад. дтн дмн Красимир Атанасов</h5>
+                        <br>
+                        <a href="https://biomed.bas.bg/bg/krassimir-atanassov/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Проф. д-р Светла Тодинова</h5>
+                        <br> <a href="https://biomed.bas.bg/bg/svetla-todinova/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Проф. д-р Сашка Крумова</h5>
+                        <br><a href="https://biomed.bas.bg/bg/sashka-krumova/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Проф. дбн Стефка Танева</h5>
+                        <br><a href="https://biomed.bas.bg/bg/stefka-taneva/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Проф. д-р Иванка Цаковска</h5>
+                        <br> <a href="https://biomed.bas.bg/bg/ivanka-tsakovska/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Проф. д-р Алексей Савов</h5>
+                        <br><a href="https://genetika.maichindom.com/%D0%B7%D0%B0-%D0%BD%D0%B0%D1%81/%D0%B5%D0%BA%D0%B8%D0%BF/%D0%B1%D0%B8%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%8F-%D0%BD%D0%B0-%D0%B4%D0%BE%D1%86-%D0%B0%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B9-%D1%81%D0%B0%D0%B2%D0%BE%D0%B2-%D0%B4%D0%B1/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Доц. д-р Вася Атанасова</h5>
+                        <br><a href="https://biomed.bas.bg/bg/vassia-atanassova/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Доц. д-р Емилия Абаджиева</h5>
+                        <br><a href="https://www.imbm.bas.bg/index.php?page=135" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Доц. д-р Тихомир Тянков</h5>
+                        <br><a href="https://www.imbm.bas.bg/index.php?page=185" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Гл. ас. д-р Елина Белева</h5>
+                        <br> <a href="https://biomed.bas.bg/bg/elina-beleva/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Гл. ас. д-р Августина Данаилова</h5>
+                        <br><a href="https://biomed.bas.bg/bg/avgustina-danailova/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Гл. ас. д-р Аника Александрова</h5>
+                        <br><a href="https://www.imbm.bas.bg/index.php/bg_BG/mechanics-of-multibody-systems" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Гл. ас. д-р Весела Катрова</h5>
+                        <br><a href="https://biomed.bas.bg/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Гл. ас. д-р Ариана Лангари</h5>
+                        <br><a href="https://biomed.bas.bg/bg/ariana-langari/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Ина Гьошева</h5>
+                        <p class="card-text">Д.м., Докторант</p>
+                        <a href="https://biomed.bas.bg/bg/ina-gyosheva/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Петко Алов</h5>
+                        <br> <a href="https://biomed.bas.bg/bg/petko-alov/" target="_blank" class="btn btn-primary">Информация</a>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Team Member -->
+             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                           
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- <div class="gallery">    
+    <div class="container">
+        <div class="row">
+            <div class="gallery-filter d-none d-sm-block">
+                <button class="btn btn-default filter-button" data-filter="all">All</button>
+                <button class="btn btn-default filter-button" data-filter="hdpe">Department1</button>
+                <button class="btn btn-default filter-button" data-filter="sprinkle">Department2</button>
+                <button class="btn btn-default filter-button" data-filter="spray">Department3</button>
+                <button class="btn btn-default filter-button" data-filter="irrigation">Department4</button>
+            </div>
+            <br/>
+
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
+                <img src="{% static 'images/gallery/gallery_01.jpg' %}" class="img-responsive">
+            </div>
+
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
+                <img src="{% static 'images/gallery/gallery_02.jpg' %}" class="img-responsive">
+            </div>
+
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
+                <img src="{% static 'images/gallery/gallery_03.jpg' %}" class="img-responsive">
+            </div>
+
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation">
+                <img src="{% static 'images/gallery/gallery_04.jpg' %}" class="img-responsive">
+            </div>
+
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter spray">
+                <img src="{% static 'images/gallery/gallery_05.jpg' %}" class="img-responsive">
+            </div>
+
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter spray">
+                <img src="{% static 'images/gallery/gallery_06.jpg' %}" class="img-responsive">
+            </div>
+
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation">
+                <img src="{% static 'images/gallery/gallery_06.jpg' %}" class="img-responsive">
+            </div>
+
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation">
+                <img src="{% static 'images/gallery/gallery_08.jpg' %}" class="img-responsive">
+            </div>
+
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
+                <img src="{% static 'images/gallery/gallery_09.jpg' %}" class="img-responsive">
+            </div>
+
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter spray">
+                <img src="{% static 'images/gallery/gallery_10.jpg' %}" class="img-responsive">
+            </div>
+
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
+                <img src="{% static 'images/gallery/gallery_11.jpg' %}" class="img-responsive">
+            </div>
+
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
+                <img src="{% static 'images/gallery/gallery_12.jpg' %}" class="img-responsive">
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- ######## Gallery End ####### -->
+
+
+ <!-- ################# Footer Starts Here #######################--->
+ 

@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Add/Edit Abortion{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Добави/Промени информация за спонтанен аборт</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Добави/промени информация за спонтанен аборт</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Abortion Form Section ######## -->
+<section class="with-medical">
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- Row 1: No, Code, Year, Number -->
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="no">No</label><br>
+                    {{ form.no }}
+                </div>
+                <div class="col-md-3">
+                    <label for="code">Code</label><br>
+                    {{ form.code }}
+                </div>
+                <div class="col-md-3">
+                    <label for="year">Year</label><br>
+                    {{ form.year }}
+                </div>
+                <div class="col-md-3">
+                    <label for="number">Number</label><br>
+                    {{ form.number }}
+                </div>
+            </div>
+
+            <!-- Row 2: Age, Gender -->
+            <div class="row mt-3">
+                <div class="col-md-3">
+                    <label for="age">Age</label><br>
+                    {{ form.age }}
+                </div>
+                <div class="col-md-3">
+                    <label for="gender">Gender</label><br>
+                    {{ form.gender }}
+                </div>
+            </div>
+
+            <!-- Row 3: Factor V -->
+            <div class="row mt-3">
+                <div class="col-md-3">
+                    <label for="factor_v_normal">Factor V Normal</label><br>
+                    {{ form.factor_v_normal }}
+                </div>
+                <div class="col-md-3">
+                    <label for="factor_v_heterozygous">Factor V Heterozygous</label><br>
+                    {{ form.factor_v_heterozygous }}
+                </div>
+                <div class="col-md-3">
+                    <label for="factor_v_homozygous">Factor V Homozygous</label><br>
+                    {{ form.factor_v_homozygous }}
+                </div>
+            </div>
+
+            <!-- Row 4: Factor II -->
+            <div class="row mt-3">
+                <div class="col-md-3">
+                    <label for="factor_ii_normal">Factor II Normal</label><br>
+                    {{ form.factor_ii_normal }}
+                </div>
+                <div class="col-md-3">
+                    <label for="factor_ii_heterozygous">Factor II Heterozygous</label><br>
+                    {{ form.factor_ii_heterozygous }}
+                </div>
+                <div class="col-md-3">
+                    <label for="factor_ii_homozygous">Factor II Homozygous</label><br>
+                    {{ form.factor_ii_homozygous }}
+                </div>
+            </div>
+
+            <!-- Row 5: PAI-1 -->
+            <div class="row mt-3">
+                <div class="col-md-3">
+                    <label for="pai1_normal">PAI-1 Normal</label><br>
+                    {{ form.pai1_normal }}
+                </div>
+                <div class="col-md-3">
+                    <label for="pai1_heterozygous">PAI-1 Heterozygous</label><br>
+                    {{ form.pai1_heterozygous }}
+                </div>
+                <div class="col-md-3">
+                    <label for="pai1_homozygous">PAI-1 Homozygous</label><br>
+                    {{ form.pai1_homozygous }}
+                </div>
+            </div>
+
+            <!-- Row 6: MTHFR -->
+            <div class="row mt-3">
+                <div class="col-md-3">
+                    <label for="mthfr_normal">MTHFR Normal</label><br>
+                    {{ form.mthfr_normal }}
+                </div>
+                <div class="col-md-3">
+                    <label for="mthfr_heterozygous">MTHFR Heterozygous</label><br>
+                    {{ form.mthfr_heterozygous }}
+                </div>
+                <div class="col-md-3">
+                    <label for="mthfr_homozygous">MTHFR Homozygous</label><br>
+                    {{ form.mthfr_homozygous }}
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="row mt-4">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-info-submit">
+                        {% if abortion %}
+                            Промени Аборт
+                        {% else %}
+                            Добави Аборт
+                        {% endif %}
+                    </button>
+                </div>
+            </div>
+
+            <br>
+            <a href="{% url 'spontaneous_abortions' %}" class="text-primary">Към Аборти Информационна Таблица</a>
+        </form>
+    </div>
+</section>
+<!-- ######## Abortion Form Section End ######## -->
+{% endblock %}

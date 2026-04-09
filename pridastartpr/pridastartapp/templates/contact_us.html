@@ -1,0 +1,178 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> PRIDA (Pregnancy Related Integrated Database Analytics)</title>
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Font Awesome CSS CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<!-- Animate CSS CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+    <!-- ################# Header Starts Here #######################--->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 left-item">
+                        <ul>
+                            <li><i class="fas fa-envelope-square"></i> office@biomed.bas.bg</li>
+                            <li><i class="fas fa-phone-square"></i> +3592 979 36 07</li>
+                        </ul>
+                    </div>
+                    <!--
+                    <div class="col-lg-5 d-none d-lg-block right-item">
+                        <ul>
+                            <li><a><i class="fab fa-github"></i></a></li>
+                            <li><a><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a><i class="fab fa-pinterest-p"></i></a></li>
+                            <li><a><i class="fab fa-twitter"></i></a></li>
+                            <li><a><i class="fab fa-facebook-f"></i></a></li>
+                        </ul>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+        <div id="nav-head" class="header-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
+                        <img src="{% static 'images/logo.jpg' %}" alt="">
+                        <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
+                    </div>
+                    <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about_us' %}">About Us</a></li>
+                            <li><a href="{% url 'services' %}">Services</a></li>
+                            <li><a href="{% url 'news' %}">News</a></li>
+                            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                            <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2 d-none d-lg-block appoint">
+                        <button class="btn btn-info-register"><a href="{% url 'register' %}">Register</a></button>
+                        <button class="btn btn-info-login"><a href="{% url 'login' %}">Login</a></button>
+                       <!--  <button class="btn btn-info"><a href="{% url 'logout' %}">Logout</a></button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!--  ************************* Page Title Starts Here ************************** -->
+    <div class="page-nav no-margin row">
+        <div class="container">
+            <div class="row">
+                <h2>Contact Us</h2>
+                <ul>
+                    <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
+                    <li><i class="fas fa-angle-double-right"></i> Contact Us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- ######## Page Title End ####### -->
+
+    <!-- ################# Our Blog Starts Here #######################--->
+    <div style="margin-top:0px;" class="row no-margin">
+        <iframe style="width:100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2933.486543946461!2d23.362515176591998!3d42.67223501532131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa85d075afd82f%3A0x38befc9750666a82!2z0JjQvdGB0YLQuNGC0YPRgiDQv9C-INCx0LjQvtGE0LjQt9C40LrQsCDQuCDQsdC40L7QvNC10LTQuNGG0LjQvdGB0LrQviDQuNC90LbQtdC90LXRgNGB0YLQstC-IOKAkyDQkdCQ0J0!5e0!3m2!1sbg!2sbg!4v1720616652915!5m2!1sbg!2sbg" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+
+    <div class="row contact-rooo no-margin">
+        <div class="container">
+            <div class="row">
+                <div style="padding:20px" class="col-sm-6">
+                    <h2 style="font-size:18px">Contact Form</h2>
+                    <form>
+                        <div class="row">
+                            <div style="padding-top:10px;" class="col-sm-3"><label>Enter Name :</label></div>
+                            <div class="col-sm-8"><input type="text" placeholder="Enter Name" name="name" class="form-control input-sm"></div>
+                        </div>
+                        <div style="margin-top:10px;" class="row">
+                            <div style="padding-top:10px;" class="col-sm-3"><label>Email Address :</label></div>
+                            <div class="col-sm-8"><input type="text" name="email" placeholder="Enter Email Address" class="form-control input-sm"></div>
+                        </div>
+                        <div style="margin-top:10px;" class="row">
+                            <div style="padding-top:10px;" class="col-sm-3"><label>Mobile Number:</label></div>
+                            <div class="col-sm-8"><input type="text" name="mobile" placeholder="Enter Mobile Number" class="form-control input-sm"></div>
+                        </div>
+                        <div style="margin-top:10px;" class="row">
+                            <div style="padding-top:10px;" class="col-sm-3"><label>Enter Message:</label></div>
+                            <div class="col-sm-8">
+                                <textarea rows="5" placeholder="Enter Your Message" class="form-control input-sm"></textarea>
+                            </div>
+                        </div>
+                        <div style="margin-top:10px;" class="row">
+                            <div style="padding-top:10px;" class="col-sm-3"><label></label></div>
+                            <div class="col-sm-8">
+                                <button class="btn btn-danger btn-sm">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-6">
+                    <div style="margin:50px" class="serv">
+                        <h2 style="margin-top:10px;">Address</h2>
+                        Institute of Biophysics and Biomedical Engineering <br>
+                        Bulgarian Academy of Sciences <br>
+                        Acad.Georgi Bonchev Str., Block 21, Sofia 1113, Bulgaria<br>
+                        Phone: +3592 979 36 07<br>
+                        Email: office@biomed.bas.bg<br>
+                        Website: <a href="https://biomed.bas.bg/en/" target="_blank">https://biomed.bas.bg/en/</a><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ################# Footer Starts Here #######################--->
+   <!-- ################# Footer Starts Here #######################--->
+   <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <h2>About Us</h2>
+                <p>The Institute of Biophysics and Biomedical Engineering (IBPhBME) is a leading research institute in Bulgaria in the field of biophysics, biochemistry, biomedicine, chemoinformatics, and bioinformatics, biomedical engineering.</p>
+                <p>IBPhBME conducts scientific and scientific-applied research in the field of biomedicine and quality of life for the benefit of society and science.</p>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <h2>Useful Links</h2>
+                <ul class="list-unstyled link-list">
+                    <li><a ui-sref="about" href="{% url 'about_us' %}">About us</a><i class="fa fa-angle-right"></i> </li>
+                    <li><a ui-sref="portfolio" href="{% url 'services' %}">Services</a><i class="fa fa-angle-right"></i></li>
+                    <li><a ui-sref="gallery" href="{% url 'gallery' %}">Gallery</a><i class="fa fa-angle-right"></i></li>
+                    <li><a ui-sref="contact" href="{% url 'contact_us' %}">Contact us</a><i class="fa fa-angle-right"></i></li>
+                </ul>
+            </div>
+            <div class="col-md-4 col-sm-12 map-img">
+                <h2>Contact Us</h2>
+                <address class="md-margin-bottom-40">
+                    Institute of Biophysics and Biomedical Engineering
+                    Bulgarian Academy of Sciences
+                    Acad. Georgi Bonchev Str., Block 21, Sofia 1113, Bulgaria
+                    Phone: +3592 979 36 07 <br>
+                    Email: <a href="mailto:office@biomed.bas.bg">office@biomed.bas.bg</a><br>
+                    Web: <a href="https://biomed.bas.bg/en/" target="_blank">https://biomed.bas.bg/en/</a>
+                </address>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap CSS CDN -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

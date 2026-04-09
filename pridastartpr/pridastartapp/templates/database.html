@@ -1,0 +1,132 @@
+<!-- web/templates/database.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIDA Web Page</title>
+    
+  <!-- Bootstrap CSS CDN -->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ <!-- Font Awesome CSS CDN -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ <!-- Animate CSS CDN -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+ <!-- Custom CSS -->
+ <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- ################# Header Starts Here#######################--->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 left-item">
+                        <ul>
+                            <li><i class="fas fa-envelope-square"></i> office@biomed.bas.bg</li>
+                            <li><i class="fas fa-phone-square"></i>  +3592 979 36 07</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="nav-head" class="header-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
+                        <img src="{% static 'images/logo.jpg' %}" alt="">
+                        <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
+                    </div>
+                    <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about_us' %}">About Us</a></li>
+                            <li><a href="{% url 'services' %}">Services</a></li>
+                            <li><a href="{% url 'news' %}">News</a></li>  
+                            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                            <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2 d-none d-lg-block appoint">
+                        <button class="btn btn-info"><a href="{% url 'logout' %}">Logout</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ################# Page Title Starts Here ####################### -->
+    <div class="page-nav no-margin row">
+        <div class="container">
+            <div class="row">
+                <h2>Database</h2>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><i class="fas fa-angle-double-right"></i> Database</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Database starts Here -->
+    <div class="db container">
+        <div class="btn-group">
+            <button class="btn btn-info">
+                <a href="{% url 'preeclampsia' %}">Preeclampsia Database</a>
+            </button>
+            <button class="btn btn-info">
+                <a href="{% url 'pregnant_controls' %}">Pregnant Controls Database</a>
+            </button>
+            <button class="btn btn-info">
+                <a href="{% url 'spontaneous_abortions' %}">Spontaneous Abortions Database</a>
+            </button>
+        </div>
+        <div class="image-container">
+            <img src="{% static 'images/why.jpg' %}" alt="Description of image">
+        </div>
+    </div>
+
+    <!-- ################# Footer Starts Here #######################--->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <h2>About Us</h2>
+                    <p>The Institute of Biophysics and Biomedical Engineering (IBPhBME) is a leading research institute in Bulgaria in the field of biophysics, biochemistry, biomedicine, chemoinformatics, and bioinformatics, biomedical engineering.</p>
+                    <p>IBPhBME conducts scientific and scientific-applied research in the field of biomedicine and quality of life for the benefit of society and science.</p>
+                </div>
+            
+                <div class="col-md-4 col-sm-12">
+                    <h2>Useful Links</h2>
+                    <ul class="list-unstyled link-list">
+                        <li> <a ui-sref="about" href="{% url 'about_us' %}">About us</a><i class="fa fa-angle-right"></i> </li>
+                        <li><a ui-sref="portfolio" href="{% url 'services' %}">Services</a><i class="fa fa-angle-right"></i></li>
+                        <li><a ui-sref="gallery" href="{% url 'gallery' %}">Gallery</a><i class="fa fa-angle-right"></i></li>
+                        <li><a ui-sref="contact" href="{% url 'contact_us' %}">Contact us</a><i class="fa fa-angle-right"></i></li>
+                    </ul>
+                </div>
+            
+                <div class="col-md-4 col-sm-12 map-img">
+                    <h2>Contact Us</h2>
+                    <address class="md-margin-bottom-40">
+                        Institute of Biophysics and Biomedical Engineering
+                        Bulgarian Academy of Sciences
+                        Acad. Georgi Bonchev Str., Block 21, Sofia 1113, Bulgaria
+                        Phone: +3592 979 36 07 <br>
+                        Email: <a href="mailto:office@biomed.bas.bg">office@biomed.bas.bg</a><br>
+                        Web: <a href="https://biomed.bas.bg/en/" target="_blank">https://biomed.bas.bg/en/</a>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies (Popper.js and jQuery) -->
+   <!-- Bootstrap CSS CDN -->
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

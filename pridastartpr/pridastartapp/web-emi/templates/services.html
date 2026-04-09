@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Нашите Дейности{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Дейности</h2>
+            <ul>
+                <li><a href="{% url 'home' %}">Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i>Работа</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Services Section ######## -->
+<section class="project-activities">
+    <div class="container">
+        <div class="row mt-5">
+            <!-- Column 1: Project Activities -->
+            <div id="project-activities" class="col-md-4">
+                <h2 class="section-title">
+                  Работни задачи</h2>
+                <div class="title-underline"></div>
+                
+                <ul class="activity-list">
+                    <li>Селекция на контроли и пациенти и извличане на информация за релевантни клинични характеристики</li>
+                    <li>Изследване на биофизичните параметри на кръвта при изследваните патологии</li>
+                    <li>Изграждане на интегрирана база данни за пациенти с изследваните патологии</li>
+                    <li>Анализ на възможни корелации между изследваните параметри чрез приложение на различни математически подходи</li>
+                    <li>Създаване на уеб-базирано приложение за достъп до базата данни и анализ на взаимовръзки между отделните фактори, включени в нея, с цел оценка на рискови фактори за изследваните патологии</li>
+                    <li>Придобиване на уникална научна апаратура</li>
+                    <li>Дейности по информиране на научната общност и обществото за достиженията на проекта</li>
+                </ul>
+            </div>
+            
+            <!-- Column 2: Experimental Methods -->
+            <div id="experimental-methods" class="col-md-4">
+                <h2 class="section-title">
+              
+                    Експериментални методи</h2>
+                <div class="title-underline"></div>
+                
+                <ul class="activity-list">
+                    <li>Изолиране на еритроцити и кръвна плазма от периферна кръв</li>
+                    <li>Изследване на реологичните характеристики на еритроцити (степен на агрегация и деформируемост)</li>
+                    <li>Изследване на морфометричните характеристики на еритроцити (форма, размери, обем, грапавост)</li>
+                    <li>Изследване на механичните характеристики на еритроцити (модул на еластичност)</li>
+                    <li>Оценка на степента на оксидативен стрес в кръвна плазма</li>
+                </ul>
+
+                    <div class="math-image">
+        <img src="{% static 'images/afmer.jpg' %}" alt="Mathematical formula" class="img-fluid">
+    </div>
+            </div>
+            
+            <!-- Column 3: Mathematical Approaches -->
+
+<div id="mathematical-approaches" class="col-md-4">
+    <h2 class="section-title">
+        Математически подходи за анализ на базата данни
+    </h2>
+    <div class="title-underline"></div>
+    
+    <ul class="activity-list">
+        <li>многомерен статистически анализ:
+            <ul class="sub-list">
+                <li>класически корелационен анализ</li>
+                <li>анализ на главните компоненти</li>
+            </ul>
+        </li>
+        <li>интеркритериален анализ:
+            <ul class="sub-list">
+                <li>класически интеркритериален анализ</li>
+                <li>модификации на интеркритериалния анализ</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <!-- Images now included within the mathematical approaches div -->
+    <div class="math-image">
+        <img src="{% static 'images/icra2_1.jpg' %}" alt="Mathematical formula" class="img-fluid">
+    </div>
+    <br>
+    <div class="database-icon">
+        <img src="{% static 'images/icra2_2.jpg' %}" alt="Database icon" class="img-fluid">
+    </div>
+</div>
+        </div>
+    </div>
+</section>
+
+<!-- ######## Services Section End ######## -->
+{% endblock %}

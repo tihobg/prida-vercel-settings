@@ -1,0 +1,47 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--</body>-->
+<!--</html>-->
+
+{% extends 'base-emi.html' %}
+{% block title %}
+    User Login
+{% endblock %}
+{% block content %}
+
+<!--    <p class="text-center fs-1">Register a New User!</p>-->
+<!--    <h1 class="display-1">My Heading</h1>-->
+<form class="form-with-validation fs-3 text-center" action="/users/login/" method="post">
+    {% csrf_token %}
+    {{ form }}
+<!--        <p>Ohh!{{ key11 }}</p>-->
+    <div class="form-row align-items-center">
+<!--            <div class="col-sm-1 my-1">-->
+<!--                <label class="position-absolute top-0 start-50">Username: </label>-->
+<!--&lt;!&ndash;                <input type="text" class="form-control" id="inlineFormInputName" placeholder="Jane Doe">&ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="col-sm-1 my-2">-->
+<!--&lt;!&ndash;                <label class="col-sm-1 my-1">Name</label>&ndash;&gt;-->
+<!--                <input class="position-absolute top-0 start-50" type="text">-->
+
+<!--            </div>-->
+<!--            <div class="col-sm-1 my-1">-->
+<!--                <label class="position-absolute top-0 start-100" for="inlineFormInputGroupUsername">         Password: </label>-->
+<!--&lt;!&ndash;                <div class="input-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="input-group-prepend">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="input-group-text">@</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">&ndash;&gt;-->
+
+<!--                </div>-->
+    </div>
+    <button class="btn btn-primary btn-lg">Login 1</button>
+<!--    </div>-->
+</form>
+{% endblock %}

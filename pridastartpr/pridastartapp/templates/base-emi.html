@@ -1,0 +1,135 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}PRIDA - Pregnancy Related Integrated Database Analytics{% endblock %}</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Font Awesome CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Animate CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css-emi/styles.css' %}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <!-- ################# Header Starts Here #######################--->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 left-item">
+                        <ul>
+                            <li><i class="fas fa-envelope-square"></i> prida@biomed.bas.bg</li>
+                            <li><i class="fas fa-phone-square"></i> +3592 979 36 07</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="nav-head" class="header-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
+                        <img src="{% static 'images/logo.jpg' %}" alt="Logo">
+                        <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
+                    </div>
+                    <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Начало</a></li>
+                            <li><a href="{% url 'about_us_emi' %}">За нас</a></li>
+                            <li><a href="{% url 'services_emi' %}">Дейности</a></li>
+<!--                            <li><a href="{% url 'database_emi' %}">База данни</a></li>-->
+                            <li><a href="{% url 'news_emi' %}">Новини</a></li>
+                            <li><a href="{% url 'contact_us_emi' %}">Контакти</a></li>
+                            {% if user.is_authenticated %}
+                            <li><a href="{% url 'logout1' %}">Logout</a></li>
+                            {% else %}
+                            <li><a href="{% url 'login1' %}">Login</a></li>
+                            {% endif %}
+
+
+                        </ul>
+                    </div>
+                    <div class="col-sm-2 d-none d-lg-block appoint">
+                       {% if user.is_authenticated %}
+                       <div class="user-info">
+                           <span class="navbar-text">{{ user.username }}</span>
+                           <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Изход</a>
+
+                       </div>
+                       {% else %}
+                       <div class="auth-buttons">
+                           <a href="{% url 'login1' %}" class="btn btn-primary btn-sm">Вход</a>
+                           <a href="{% url 'register' %}" class="btn btn-success btn-sm">Регистрация</a>
+                       </div>
+                       {% endif %}
+                   </div>
+<!--                    <div class="col-sm-2 d-none d-lg-block appoint">-->
+<!--                        <button class="btn btn-info-register"><a href="{% url 'register' %}">Register</a></button>-->
+<!--                        <button class="btn btn-info-login"><a href="{% url 'login' %}">Login</a></button>-->
+<!--                    </div>-->
+<!--                    <div class="col-sm-2 d-none d-lg-block appoint">-->
+<!--                     {% if user.is_authenticated %}-->
+<!--                        <div class="user-info">-->
+<!--                            <span class="navbar-text">{{ user.username }}</span>-->
+<!--                        </div>-->
+<!--                        {% else %}-->
+<!--                        <div class="auth-buttons">-->
+<!--                            <a href="{% url 'login' %}" class="btn btn-primary btn-sm">Вход 1</a>-->
+<!--&lt;!&ndash;                            <a href="{% url 'register' %}" class="btn btn-success btn-sm">Регистрация</a>&ndash;&gt;-->
+<!--                        </div>-->
+<!--                        {% endif %}-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Page-Specific Content -->
+    {% block content %}{% endblock %}
+
+    <!-- ################# Footer Starts Here #######################--->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <h2>Финансиране</h2>
+                    <div class="justified-text">
+                        Проектът „Създаване на база данни за патологична бременност и извличане на нови знания с цел идентифициране на диагностични маркери“ (№ ПВУ-13 от 29.05.2024 г. / BG-RRP-2.011-0025) е финансиран от Механизма за възстановяване и устойчивост за изпълнение на инвестиция по C2I2 „Повишаване на иновационния капацитет на Българската академия на науките (БАН) в сферата на зелените и цифровите технологии“ от Плана за възстановяване и устойчивост. 
+
+                    </div>
+                </div>
+              
+                <div class="col-md-4 col-sm-12 map-img">
+                    <h2>Контакти</h2>
+                    <address>
+                        Институт по биофизика и биомедицинско инженерство<br>
+                        Българска Академия на Науките
+                        София 1113, ул. Акад. Георги Бончев, блок 21<br>
+                        Телефон: +3592 979 36 07<br>
+                        Email: <a href="mailto:office@biomed.bas.bg">prida@biomed.bas.bg</a>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

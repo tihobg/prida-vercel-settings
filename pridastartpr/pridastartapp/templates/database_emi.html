@@ -1,0 +1,42 @@
+{% extends "base-emi.html" %}
+{% load static %}
+
+{% block title %}Database{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>База данни</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> База данни</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Database Section ######## -->
+<div class="db container">
+    <div class="btn-group my-4">
+         <button class="btn btn-info">
+            <a href="{% url 'proba1' %}">Бременни контроли </a>
+        </button>
+        
+        <button class="btn btn-info">
+            <a href="{% url 'temporary_emi' %}">Прееклампсия </a>
+        </button>
+       
+        <button class="btn btn-info">
+            <a href="{% url 'temporary_emi' %}">Спонтанни аборти </a>
+        </button>
+    </div>
+   
+    <div class="database-image-container text-center">
+        <img src="{% static 'images/database.jpg' %}" alt="Database Description" class="img-fluid">
+    </div>
+</div>
+<!-- ######## Database Section End ######## -->
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Научна презентация BIOLIC{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Участие в BIOLIC 2024, Antalya, Turkey</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Презентация</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## BIOLIC Section ######## -->
+<section class="biolic-section">
+    <div class="container">
+        <!-- Заглавие и въведение -->
+        <div class="biolic-intro">
+            <h3>Представяне на проект PRIDA на BIOLIC, 30.10.2024-01.11.2024, Анталия, Турция</h3>
+            <p>
+                Членовете на научния колектив на проект "Създаване на база данни за патологична бременност и извличане на нови знания с цел идентифициране на диагностични маркери" (<i><b>P</b>regnancy <b>R</b>elated <b>I</b>ntegrated <b>D</b>atabase <b>A</b>nalytics, <b>PRIDA</b></i>) гл. ас. д-р Аника Александров-Ватанабе, доц. д-р Тихомир Тянков и доц. д-р Емилия Абаджиева взеха участие в международната научна конференция International Biological and Life Sciences Congress (BIOLIC), провела се в периода 30 октомври - 1 ноември 2024 в Анталия, Турция с устни и постерни презентации в съавторство и с други членове на колектива. Колегите представиха резултати по проекта, свързани с разработването на нов подход за анализ на образи от реологични измервания със система BioFlux, получаване на нови данни за реологичните индекси при жени с прееклампсия, и разработването на база данни, инкорпорираща клинични и реологични параметри при жени с прееклампсия.
+            </p>
+        </div>
+
+        <!-- Poster 1: Снимка ВЛЯВО, Текст ВДЯСНО -->
+        <div class="biolic-poster">
+            <div class="biolic-poster-image">
+                <a href="{% static 'images/blog/poster3.jpg' %}" target="_blank">
+                    <img src="{% static 'images/blog/poster3.jpg' %}" alt="BIOLIC Poster 1">
+                </a>
+            </div>
+            <div class="biolic-poster-text">
+                <h4>Development of Data Base for Clinical and Rheological Indices for Women with Preeclampsia - Pilot Study</h4>
+                <p>Emilia Abadjieva, Anika Alexandrova-Watanabe, Svetla Todinova, Ina Giosheva, Ariana Langari, Miroslava Ivanova, <span>Tihomir Tiankov</span>, Sashka Krumova, Tania Pencheva</p>
+            </div>
+        </div>
+
+        <!-- Poster 2: Текст ВЛЯВО, Снимка ВДЯСНО (обърнато) -->
+        <div class="biolic-poster biolic-poster-reverse">
+            <div class="biolic-poster-text">
+                <h4>Estimation of Red Blood Cell Aggregation in Preeclampsia Using Microfluidic Flow Analysis</h4>
+                <p><span>Anika Alexandrova-Watanabe</span>, Emilia Abadjieva, Svetla Todinova, Ina Giosheva, Ariana Langari, Tihomir Tiankov, Sashka Krumova, Tania Pencheva</p>
+            </div>
+            <div class="biolic-poster-image">
+                <a href="{% static 'images/blog/poster1.jpg' %}" target="_blank">
+                    <img src="{% static 'images/blog/poster1.jpg' %}" alt="BIOLIC Poster 2">
+                </a>
+            </div>
+        </div>
+
+        <!-- Poster 3: Снимка ВЛЯВО, Текст ВДЯСНО -->
+        <div class="biolic-poster">
+            <div class="biolic-poster-image">
+                <a href="{% static 'images/blog/poster2.jpg' %}" target="_blank">
+                    <img src="{% static 'images/blog/poster2.jpg' %}" alt="BIOLIC Poster 3">
+                </a>
+            </div>
+            <div class="biolic-poster-text">
+                <h4>Development of Image Flow Analysis in the Evaluation of RBC Aggregation in Women with Preeclampsia</h4>
+                <p>Emilia Abadjieva, Anika Alexandrova, <span>Tihomir Tiankov</span>, Ina Giosheva, Sashka Krumova, Svetla Todinova, Tania Pencheva</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ######## BIOLIC Section End ######## -->
+{% endblock %}

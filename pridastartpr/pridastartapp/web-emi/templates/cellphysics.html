@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Научна презентация{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Участие в Cell Physics 2025, Saarbrücken, Germany </h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Презентация</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Posters Section ######## -->
+<section class="posters-section">
+    <div class="container">
+        <!-- Poster 1: Текст ВЛЯВО, Снимка ВДЯСНО -->
+        <div class="poster-item poster-reverse">
+              <div class="poster-image">
+                <a href="{% static 'images/blog/pamflet.jpg' %}" target="_blank">
+                    <img src="{% static 'images/blog/pamflet.jpg' %}" alt="Cell Physics Poster">
+                </a>
+            </div>
+            <div class="poster-text">
+                <h4>Представяне на проект PRIDA на CELL PHYSICS, 7-9.10.2025, Саарбрюкен, Германия</h4>
+                <p>На научния форум CELL PHYSICS 2025 International Meeting, провел се в периода 7-9 октомври 2025 г. в Саарбрюкен, Германия, гл. ас. д-р Ариана Лангари, член на научния колектив по проект "Създаване на база данни за патологична бременност и извличане на нови знания с цел идентифициране на диагностични маркери" (<i><b>P</b>regnancy <b>R</b>elated <b>I</b>ntegrated <b>D</b>atabase <b>A</b>nalytics, <b>PRIDA</b></i>), представи постернa презентация на тема „Nanomechanical and rheological characteristics of red blood cells in preeclampsia" с авторски колектив Ариана Лангари, Величка Стрижкова, Мирослава Иванова, Весела Лозанова, Аника Александрова – Уатанабе, Емилия Абаджиева, Тихомир Тянков, Ина Гьошева, Сашка Крумова, Таня Пенчева, Светла Тодинова.</p>
+                <p>Участието на екипа в международния форум привлече интерес от страна на научната общност и подчерта важността на изследванията, насочени към търсене на индикатори за оценка на риска при пациенти с прееклампсия, с цел подобряване на диагностиката на усложненията по време на бременност.</p>
+            </div>
+          
+        </div>
+
+        <!-- Poster 2: Снимка ВЛЯВО, Текст ВДЯСНО -->
+        <div class="poster-item">
+            <div class="poster-image">
+                <a href="{% static 'images/blog/arianap.jpg' %}" target="_blank">
+                    <img src="{% static 'images/blog/arianap.jpg' %}" alt="Ariana Poster">
+                </a>
+            </div>
+            <div class="poster-text">
+                <h4>Nanomechanical and rheological characteristics of red blood cells in preeclampsia</h4>
+                <p><span>Ariana Langari</span>, Velichka Strijkova, Miroslava Ivanova, Vesela Lozanova, Anika Alexandrova-Watanabe, Emilia Abadjieva, Tihomir Tiankov, Ina Giosheva, Sashka Krumova, Tania Pencheva, Svetla Todinova</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ######## Posters Section End ######## -->
+{% endblock %}

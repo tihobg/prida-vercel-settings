@@ -1,0 +1,9 @@
+li a {
+    color: green;
+}
+body {
+  background-color: lightblue;
+}
+input[type="checkbox"] {
+                        outline: 3px solid black;
+                        }

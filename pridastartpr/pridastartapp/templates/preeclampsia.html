@@ -1,0 +1,789 @@
+<!-- web/templates/database.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>PRIDA Web Page</title>
+    
+  <!-- Bootstrap CSS CDN -->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ <!-- Font Awesome CSS CDN -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ <!-- Animate CSS CDN -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+ <!-- Custom CSS -->
+ <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+
+</head>
+<body>
+{% csrf_token %}
+
+    <!-- ################# Header Starts Here#######################--->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 left-item">
+                        <ul>
+                            <li><i class="fas fa-envelope-square"></i> office@biomed.bas.bg</li>
+                            <li><i class="fas fa-phone-square"></i>  +3592 979 36 07</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="nav-head" class="header-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
+                        <img src="{% static 'images/logo.jpg' %}" alt="">
+                        <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Preeclampsia Database starts Here -->
+    <!--  ************************* Page Title Starts Here ************************** -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Preeclampsia</h2>
+
+        </div>
+    </div>
+</div>
+
+<!-- ######## Page Title End ####### -->
+
+<!-- Patient Information Table -->
+<!--<div class="container table-container">-->
+<div class="container">
+<!--    <h2>Patient Information Table</h2>-->
+<!--    <div class="table-responsive">-->
+        <div class="row mt-4">
+            <div class="col">
+                <div style="overflow-x:auto;">
+                    <form method="post" action="{% url 'preeclampsia1' %}">
+
+                    <table>
+                            {% csrf_token %}
+
+<!--                            <thead class="thead-dark">-->
+                            <tr>
+                                <th scope="col">PatientID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Years</th>
+                                <th scope="col">Probe Date</th>
+                                <th scope="col">Birth Date</th>
+                                <th scope="col">Arterial Pressure</th>
+                                <th scope="col">GW</th>
+                                <th scope="col">Baby Weight</th>
+                                <th scope="col">Erythrocytes</th>
+                                <th scope="col">Hemoglobin</th>
+                                <th scope="col">Action</th>
+
+                            </tr>
+                                {% if not key8.instance.patient_id %}
+
+                                {% endif %}
+                                {% for patient in patients %}
+                            <tr>
+                                {% if key8.instance.patient_id == patient.patient_id %}
+                                    <td>{{ patient.patient_id }}</td>
+
+                                    {% include 'save.html' %}
+
+                                {% else %}
+
+                                    <td>{{ patient.patient_id }}</td>
+                                    <td>{{ patient.name }} -- {{patient.patient_id}} -- {{ key8.instance.patient_id }}</td>
+                                    <td>{{ patient.years }}</td>
+                                    <td>{{ patient.probe_date }}</td>
+                                    <td>{{ patient.birth_date }}</td>
+                                    <td>{{ patient.arterial_pressure }}</td>
+                                    <td>{{ patient.gw }}</td>
+                                    <td>{{ patient.baby_weight }}</td>
+                                    <td>{{ patient.erythrocytes }}</td>
+                                    <td>{{ patient.hemoglobin }}</td>
+                                    <td>
+                                        <button formnovalidate name="edit" value="{{ patient.patient_id }}" class="btn btn-primary btn-lg">Edit</button>
+                                        <button formnovalidate name="delete" value="{{ patient.patient_id }}" class="btn btn-primary btn-lg">Delete</button>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                <!-- Add rows with patient data here -->
+<!--                <tr>-->
+<!--                    <td><input type="checkbox"></td>-->
+<!--                    <td>John Doe</td>-->
+<!--                    <td>45</td>-->
+<!--                    <td>2023-07-01</td>-->
+<!--                    <td>1978-05-15</td>-->
+<!--                    <td>120</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>36</td>-->
+<!--                    <td>3.5 </td>-->
+<!--                    <td>0.7</td>-->
+<!--                    <td>2.5</td>-->
+<!--                    <td>0.6</td>-->
+<!--                    <td>2.7</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>13.5</td>-->
+<!--                    <td>40%</td>-->
+<!--                    <td>90</td>-->
+<!--                    <td>30</td>-->
+<!--                    <td>340</td>-->
+<!--                    <td>12%</td>-->
+<!--                    <td>11</td>-->
+<!--                    <td>100%</td>-->
+<!--                    <td>1.0</td>-->
+<!--                    <td>150</td>-->
+<!--                    <td>8.0</td>-->
+<!--                    <td>0.5</td>-->
+<!--                    <td>15%</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>70</td>-->
+<!--                    <td>50</td>-->
+<!--                    <td>3.5</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>Negative</td>-->
+<!--                    <td>1.64</td>-->
+<!--                    <td>35</td>-->
+<!--                    <td>40</td>-->
+<!--                    <td>M/N на R506Q</td>-->
+<!--                  -->
+<!--                  -->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td><input type="checkbox"></td>-->
+<!--                    <td>John Doe</td>-->
+<!--                    <td>45</td>-->
+<!--                    <td>2023-07-01</td>-->
+<!--                    <td>1978-05-15</td>-->
+<!--                    <td>120</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>36</td>-->
+<!--                    <td>3.5 </td>-->
+<!--                    <td>0.7</td>-->
+<!--                    <td>2.5</td>-->
+<!--                    <td>0.6</td>-->
+<!--                    <td>2.7</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>13.5</td>-->
+<!--                    <td>40%</td>-->
+<!--                    <td>90</td>-->
+<!--                    <td>30</td>-->
+<!--                    <td>340</td>-->
+<!--                    <td>12%</td>-->
+<!--                    <td>11</td>-->
+<!--                    <td>100%</td>-->
+<!--                    <td>1.0</td>-->
+<!--                    <td>150</td>-->
+<!--                    <td>8.0</td>-->
+<!--                    <td>0.5</td>-->
+<!--                    <td>15%</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>70</td>-->
+<!--                    <td>50</td>-->
+<!--                    <td>3.5</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>Negative</td>-->
+<!--                    <td>1.64</td>-->
+<!--                    <td>35</td>-->
+<!--                    <td>40</td>-->
+<!--                    <td>M/N на R506Q</td>-->
+<!--                  -->
+<!--                  -->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td><input type="checkbox"></td>-->
+<!--                    <td>John Doe</td>-->
+<!--                    <td>45</td>-->
+<!--                    <td>2023-07-01</td>-->
+<!--                    <td>1978-05-15</td>-->
+<!--                    <td>120</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>36</td>-->
+<!--                    <td>3.5 </td>-->
+<!--                    <td>0.7</td>-->
+<!--                    <td>2.5</td>-->
+<!--                    <td>0.6</td>-->
+<!--                    <td>2.7</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>13.5</td>-->
+<!--                    <td>40%</td>-->
+<!--                    <td>90</td>-->
+<!--                    <td>30</td>-->
+<!--                    <td>340</td>-->
+<!--                    <td>12%</td>-->
+<!--                    <td>11</td>-->
+<!--                    <td>100%</td>-->
+<!--                    <td>1.0</td>-->
+<!--                    <td>150</td>-->
+<!--                    <td>8.0</td>-->
+<!--                    <td>0.5</td>-->
+<!--                    <td>15%</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>70</td>-->
+<!--                    <td>50</td>-->
+<!--                    <td>3.5</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>Negative</td>-->
+<!--                    <td>1.64</td>-->
+<!--                    <td>35</td>-->
+<!--                    <td>40</td>-->
+<!--                    <td>M/N на R506Q</td>-->
+<!--                  -->
+<!--                  -->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td><input type="checkbox"></td>-->
+<!--                    <td>John Doe</td>-->
+<!--                    <td>45</td>-->
+<!--                    <td>2023-07-01</td>-->
+<!--                    <td>1978-05-15</td>-->
+<!--                    <td>120</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>36</td>-->
+<!--                    <td>3.5 </td>-->
+<!--                    <td>0.7</td>-->
+<!--                    <td>2.5</td>-->
+<!--                    <td>0.6</td>-->
+<!--                    <td>2.7</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>13.5</td>-->
+<!--                    <td>40%</td>-->
+<!--                    <td>90</td>-->
+<!--                    <td>30</td>-->
+<!--                    <td>340</td>-->
+<!--                    <td>12%</td>-->
+<!--                    <td>11</td>-->
+<!--                    <td>100%</td>-->
+<!--                    <td>1.0</td>-->
+<!--                    <td>150</td>-->
+<!--                    <td>8.0</td>-->
+<!--                    <td>0.5</td>-->
+<!--                    <td>15%</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>70</td>-->
+<!--                    <td>50</td>-->
+<!--                    <td>3.5</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>Negative</td>-->
+<!--                    <td>1.64</td>-->
+<!--                    <td>35</td>-->
+<!--                    <td>40</td>-->
+<!--                    <td>M/N на R506Q</td>-->
+<!--                  -->
+<!--                  -->
+<!--                </tr>-->
+<!-- -->
+<!--                <tr>-->
+<!--                    <td><input type="checkbox"></td>-->
+<!--                    <td>John Doe</td>-->
+<!--                    <td>45</td>-->
+<!--                    <td>2023-07-01</td>-->
+<!--                    <td>1978-05-15</td>-->
+<!--                    <td>120</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>36</td>-->
+<!--                    <td>3.5 </td>-->
+<!--                    <td>0.7</td>-->
+<!--                    <td>2.5</td>-->
+<!--                    <td>0.6</td>-->
+<!--                    <td>2.7</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>13.5</td>-->
+<!--                    <td>40%</td>-->
+<!--                    <td>90</td>-->
+<!--                    <td>30</td>-->
+<!--                    <td>340</td>-->
+<!--                    <td>12%</td>-->
+<!--                    <td>11</td>-->
+<!--                    <td>100%</td>-->
+<!--                    <td>1.0</td>-->
+<!--                    <td>150</td>-->
+<!--                    <td>8.0</td>-->
+<!--                    <td>0.5</td>-->
+<!--                    <td>15%</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>70</td>-->
+<!--                    <td>50</td>-->
+<!--                    <td>3.5</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>Negative</td>-->
+<!--                    <td>1.64</td>-->
+<!--                    <td>35</td>-->
+<!--                    <td>40</td>-->
+<!--                    <td>M/N на R506Q</td>-->
+<!--                  -->
+<!--                  -->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td><input type="checkbox"></td>-->
+<!--                    <td>John Doe</td>-->
+<!--                    <td>45</td>-->
+<!--                    <td>2023-07-01</td>-->
+<!--                    <td>1978-05-15</td>-->
+<!--                    <td>120</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>36</td>-->
+<!--                    <td>3.5 </td>-->
+<!--                    <td>0.7</td>-->
+<!--                    <td>2.5</td>-->
+<!--                    <td>0.6</td>-->
+<!--                    <td>2.7</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>13.5</td>-->
+<!--                    <td>40%</td>-->
+<!--                    <td>90</td>-->
+<!--                    <td>30</td>-->
+<!--                    <td>340</td>-->
+<!--                    <td>12%</td>-->
+<!--                    <td>11</td>-->
+<!--                    <td>100%</td>-->
+<!--                    <td>1.0</td>-->
+<!--                    <td>150</td>-->
+<!--                    <td>8.0</td>-->
+<!--                    <td>0.5</td>-->
+<!--                    <td>15%</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>70</td>-->
+<!--                    <td>50</td>-->
+<!--                    <td>3.5</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>Negative</td>-->
+<!--                    <td>1.64</td>-->
+<!--                    <td>35</td>-->
+<!--                    <td>40</td>-->
+<!--                    <td>M/N на R506Q</td>-->
+<!--                  -->
+<!--                   -->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td><input type="checkbox"></td>-->
+<!--                    <td>John Doe</td>-->
+<!--                    <td>45</td>-->
+<!--                    <td>2023-07-01</td>-->
+<!--                    <td>1978-05-15</td>-->
+<!--                    <td>120</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>36</td>-->
+<!--                    <td>3.5 </td>-->
+<!--                    <td>0.7</td>-->
+<!--                    <td>2.5</td>-->
+<!--                    <td>0.6</td>-->
+<!--                    <td>2.7</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>13.5</td>-->
+<!--                    <td>40%</td>-->
+<!--                    <td>90</td>-->
+<!--                    <td>30</td>-->
+<!--                    <td>340</td>-->
+<!--                    <td>12%</td>-->
+<!--                    <td>11</td>-->
+<!--                    <td>100%</td>-->
+<!--                    <td>1.0</td>-->
+<!--                    <td>150</td>-->
+<!--                    <td>8.0</td>-->
+<!--                    <td>0.5</td>-->
+<!--                    <td>15%</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>70</td>-->
+<!--                    <td>50</td>-->
+<!--                    <td>3.5</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>Negative</td>-->
+<!--                    <td>1.64</td>-->
+<!--                    <td>35</td>-->
+<!--                    <td>40</td>-->
+<!--                    <td>M/N на R506Q</td>-->
+<!--                  -->
+<!--                   -->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td><input type="checkbox"></td>-->
+<!--                    <td>John Doe</td>-->
+<!--                    <td>45</td>-->
+<!--                    <td>2023-07-01</td>-->
+<!--                    <td>1978-05-15</td>-->
+<!--                    <td>120</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>36</td>-->
+<!--                    <td>3.5 </td>-->
+<!--                    <td>0.7</td>-->
+<!--                    <td>2.5</td>-->
+<!--                    <td>0.6</td>-->
+<!--                    <td>2.7</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>13.5</td>-->
+<!--                    <td>40%</td>-->
+<!--                    <td>90</td>-->
+<!--                    <td>30</td>-->
+<!--                    <td>340</td>-->
+<!--                    <td>12%</td>-->
+<!--                    <td>11</td>-->
+<!--                    <td>100%</td>-->
+<!--                    <td>1.0</td>-->
+<!--                    <td>150</td>-->
+<!--                    <td>8.0</td>-->
+<!--                    <td>0.5</td>-->
+<!--                    <td>15%</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>70</td>-->
+<!--                    <td>50</td>-->
+<!--                    <td>3.5</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>Negative</td>-->
+<!--                    <td>1.64</td>-->
+<!--                    <td>35</td>-->
+<!--                    <td>40</td>-->
+<!--                    <td>M/N на R506Q</td>-->
+<!--                   -->
+<!--                   -->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td><input type="checkbox"></td>-->
+<!--                    <td>John Doe</td>-->
+<!--                    <td>45</td>-->
+<!--                    <td>2023-07-01</td>-->
+<!--                    <td>1978-05-15</td>-->
+<!--                    <td>120</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>36</td>-->
+<!--                    <td>3.5 </td>-->
+<!--                    <td>0.7</td>-->
+<!--                    <td>2.5</td>-->
+<!--                    <td>0.6</td>-->
+<!--                    <td>2.7</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>13.5</td>-->
+<!--                    <td>40%</td>-->
+<!--                    <td>90</td>-->
+<!--                    <td>30</td>-->
+<!--                    <td>340</td>-->
+<!--                    <td>12%</td>-->
+<!--                    <td>11</td>-->
+<!--                    <td>100%</td>-->
+<!--                    <td>1.0</td>-->
+<!--                    <td>150</td>-->
+<!--                    <td>8.0</td>-->
+<!--                    <td>0.5</td>-->
+<!--                    <td>15%</td>-->
+<!--                    <td>80</td>-->
+<!--                    <td>70</td>-->
+<!--                    <td>50</td>-->
+<!--                    <td>3.5</td>-->
+<!--                    <td>5.0</td>-->
+<!--                    <td>Negative</td>-->
+<!--                    <td>1.64</td>-->
+<!--                    <td>35</td>-->
+<!--                    <td>40</td>-->
+<!--                    <td>M/N на R506Q</td>-->
+<!--                 -->
+<!--                   -->
+<!--                </tr>-->
+                    </table>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container">
+
+        <div class="row mt-5">
+            <form method="post" action="">
+                {% csrf_token %}
+                <input type="checkbox" name="ss" value="name">Name
+                <input type="checkbox" name="ss" value="years">Years
+                <input type="checkbox" name="ss" value="apress">Arterial Pressure
+                <input type="checkbox" name="ss" value="gw">GW
+                <input type="checkbox" name="ss" value="baby_weight">Baby Weight
+                <input type="checkbox" name="ss" value="erythrocytes">Erythrocytes
+                <input type="checkbox" name="ss" value="hemoglobin">Hemoglobin
+                <button class="btn btn-primary btn-lg">Submit</button>
+            </form>
+        </div>
+    </div>
+<div class="container">
+        <table class="table">
+            <tr>
+                {% for keys in key %}
+                <th scope="col">{{ keys }}</th>
+                {% endfor %}
+            </tr>
+            {% for patient in patients %}
+            <tr>
+                {% for keys in key %}
+                {% if keys == 'name' %}
+                <td>{{ patient.name }}</td>
+                {% elif keys == 'years' %}
+                <td>{{ patient.years }}</td>
+                {% elif keys == 'apress' %}
+                <td>{{ patient.arterial_pressure }}</td>
+                {% endif %}
+                {% endfor %}
+
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+<div class="container">
+            <img src="data:image/png;base64,{{ key6 }}" height="400" width="750">
+<!--    </div>-->
+<!--        <form>-->
+<!--            {{ key7 }}-->
+<!--        </form>-->
+            <div class="container">
+
+            <table>
+            <tr>
+                <th>Name</th>
+                <th>Years</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                {% for field in key7 %}
+                <td>{{ field }}</td>
+                {% endfor %}
+                <td><button name="Pave">Save</button></td>
+            </tr>
+            </table>
+            </div>
+
+
+    </div>
+
+    <!-- Button container placed below the table and above the footer -->
+
+  
+  </div>
+
+<!-- Button container placed below the table and above the footer -->
+<!-- <div class="container button-container">
+
+</div> -->
+
+
+
+
+<!-- New Form Section for Adding/Updating Parameters -->
+<!-- <div class="container form-container">
+    <h2>Add/Change Patient Information</h2>
+    <form method="post" action="{% url 'preeclampsia1' %}">
+        {% csrf_token %}
+        <div class="flex-container">
+          
+            <div class="flex-item">
+                <label for="patientName">Patient Name</label>
+                <input type="text" id="patientName" name="patientName" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="sampleDate">Sample Collection Date</label>
+                <input type="date" id="sampleDate" name="sampleDate" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="deliveryDate">Baby Delivery Day</label>
+                <input type="date" id="deliveryDate" name="deliveryDate" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="bpSystolic">Blood Pressure Systolic</label>
+                <input type="text" id="bpSystolic" name="bpSystolic" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="bpDiastolic">Blood Pressure Diastolic</label>
+                <input type="text" id="bpDiastolic" name="bpDiastolic" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="gw">GW</label>
+                <input type="text" id="gw" name="gw" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="newbornWeight">Newborn Weight</label>
+                <input type="text" id="newbornWeight" name="newbornWeight" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="eai1">EAI1</label>
+                <input type="text" id="eai1" name="eai1" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="nea1">NEA1</label>
+                <input type="text" id="nea1" name="nea1" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="eai2">EAI2</label>
+                <input type="text" id="eai2" name="eai2" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="nea2">NEA2</label>
+                <input type="text" id="nea2" name="nea2" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="erythrocytes">Erythrocytes</label>
+                <input type="text" id="erythrocytes" name="erythrocytes" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="hemoglobin">Hemoglobin</label>
+                <input type="text" id="hemoglobin" name="hemoglobin" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="hematocrit">Hematocrit</label>
+                <input type="text" id="hematocrit" name="hematocrit" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="mcv">MCV mmol/l</label>
+                <input type="text" id="mcv" name="mcv" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="mch">MCH Pg</label>
+                <input type="text" id="mch" name="mch" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="mchc">MCHC g/l</label>
+                <input type="text" id="mchc" name="mchc" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="rdw">RDW %</label>
+                <input type="text" id="rdw" name="rdw" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="prothrombinTimeSec">Prothrombin Time Sec</label>
+                <input type="text" id="prothrombinTimeSec" name="prothrombinTimeSec" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="prothrombinTimePercent">Prothrombin Time %</label>
+                <input type="text" id="prothrombinTimePercent" name="prothrombinTimePercent" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="prothrombinTimeINR">Prothrombin Time INR</label>
+                <input type="text" id="prothrombinTimeINR" name="prothrombinTimeINR" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="platelets">Platelets</label>
+                <input type="text" id="platelets" name="platelets" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="mpv">MPV Fl</label>
+                <input type="text" id="mpv" name="mpv" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="pct">PCT mL/L</label>
+                <input type="text" id="pct" name="pct" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="pdw">PDW %</label>
+                <input type="text" id="pdw" name="pdw" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="creatinine">Creatinine - Serum</label>
+                <input type="text" id="creatinine" name="creatinine" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="totalProtein">Total Protein - Serum</label>
+                <input type="text" id="totalProtein" name="totalProtein" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="albumin">Albumin - Serum</label>
+                <input type="text" id="albumin" name="albumin" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="fibrinogen">Fibrinogen g/l</label>
+                <input type="text" id="fibrinogen" name="fibrinogen" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="crp">CRP (C-Reactive Protein)</label>
+                <input type="text" id="crp" name="crp" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="proteinUrine">Protein - Urine - Test Strip</label>
+                <input type="text" id="proteinUrine" name="proteinUrine" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="proteinDiuresis">Protein in Diuresis</label>
+                <input type="text" id="proteinDiuresis" name="proteinDiuresis" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="asat">ASAT (U/L)</label>
+                <input type="text" id="asat" name="asat" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="alat">ALAT (U/L)</label>
+                <input type="text" id="alat" name="alat" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="factorVLeiden">Factor V Leiden</label>
+                <input type="text" id="factorVLeiden" name="factorVLeiden" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="factorII">Factor II - Mutation G/A 20210</label>
+                <input type="text" id="factorII" name="factorII" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="pai">PAI 4G/5G</label>
+                <input type="text" id="pai" name="pai" class="form-control">
+            </div>
+            <div class="flex-item">
+                <label for="mthfr">MTHFR - Mutation C677T</label>
+                <input type="text" id="mthfr" name="mthfr" class="form-control">
+            </div>
+        </div>
+        <div class="form-group button-group">
+            <button type="submit" class="btn btn-info-edit">Edit</button>
+            <button type="submit" class="btn btn-info-submit">Submit</button>
+            <button type="submit" class="btn btn-info-add">Add Patient</button>
+        </div>
+    </form>
+</div>
+ -->
+    <!-- ################# Footer Starts Here #######################--->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <h2>About Us</h2>
+                    <p>The Institute of Biophysics and Biomedical Engineering (IBPhBME) is a leading research institute in Bulgaria in the field of biophysics, biochemistry, biomedicine, chemoinformatics, and bioinformatics, biomedical engineering.</p>
+                    <p>IBPhBME conducts scientific and scientific-applied research in the field of biomedicine and quality of life for the benefit of society and science.</p>
+                </div>
+            
+                <div class="col-md-4 col-sm-12">
+                    <h2>Useful Links</h2>
+
+                </div>
+            
+                <div class="col-md-4 col-sm-12 map-img">
+                    <h2>Contact Us</h2>
+                    <address class="md-margin-bottom-40">
+                        Institute of Biophysics and Biomedical Engineering
+                        Bulgarian Academy of Sciences
+                        Acad. Georgi Bonchev Str., Block 21, Sofia 1113, Bulgaria
+                        Phone: +3592 979 36 07 <br>
+                        Email: <a href="mailto:office@biomed.bas.bg">office@biomed.bas.bg</a><br>
+                        Web: <a href="https://biomed.bas.bg/en/" target="_blank">https://biomed.bas.bg/en/</a>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies (Popper.js and jQuery) -->
+   <!-- Bootstrap CSS CDN -->
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

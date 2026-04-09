@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+{% extends 'base-emi.html' %}
+{% block content %}
+<!--<html lang="en">-->
+<head>
+    <meta charset="UTF-8">
+    <title>Conclusions</title>
+</head>
+<br/><br/><br/><br/><br/>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <form method="post" action="{% url 'proba1' %}">
+            {% csrf_token %}
+            <button class="btn btn-primary btn-lg">BACK</button>
+        </form>
+        <form method="post" action="{% url 'proba1' %}">
+            <table>
+                {% csrf_token %}
+                <caption>
+                    <b>Table: 1 Results </b>
+                </caption>
+                <thead>
+                <tr>
+                    <td bgcolor="gray"><b>Results</b></td>
+<!--                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For all Patients</b></td>-->
+<!--                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 1 Abort</b></td>-->
+<!--                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 2 or more Aborts</b></td>-->
+
+
+                </tr>
+                <tr>
+                    <td >1. При пациенти между 20 и 30 години и 1 аборт, най-често се срещат мутации PAI Hetero (53),
+                        MTHFR Hetero (32), PAI Homo (28)
+                    </td>
+                </tr>
+                <tr>
+                    <td >2. При пациенти между 20 и 30 години и 2 аборта, най-често се срещат мутации PAI Hetero (35),
+                        PAI Homo (18), MTHFR Hetero (14)
+                    </td>
+                </tr>
+                <tr>
+                    <td >3. При пациенти между 20 и 30 години и >2 аборта, най-често се срещат мутации PAI Hetero (99),
+                        MTHFR Hetero (79), PAI Homo (68)
+                    </td>
+                </tr>
+                <tr>
+                    <td >4. При пациенти между 20 и 30 години и >2 аборта, стойностите на мутации PAI Hetero,
+                        MTHFR Hetero, PAI Homo са по-високи от същите мутации, но с 1 или 2 аборта.
+                    </td>
+                </tr>
+                <tr>
+                    <td >5. При пациенти между 31 и 40 години и 1 аборт, най-често се срещат мутации PAI Hetero (84),
+                        MTHFR Hetero (42), PAI Homo (39)
+                    </td>
+                </tr>
+                <tr>
+                    <td >6. При пациенти между 31 и 40 години и 2 аборта, най-често се срещат мутации PAI Hetero (54),
+                        PAI Homo (32), MTHFR Hetero (31)
+                    </td>
+                </tr>
+                <tr>
+                    <td >7. При пациенти между 31 и 40 години и >2 аборта, най-често се срещат мутации PAI Hetero (149),
+                        MTHFR Hetero (116), PAI Homo (76)
+                    </td>
+                </tr>
+                <tr>
+                    <td >8. При пациенти между 31 и 40 години и >2 аборта, стойностите на мутации PAI Hetero,
+                        MTHFR Hetero, PAI Homo са по-високи от същите мутации, но с 1 или 2 аборта.
+                    </td>
+                </tr>
+                <tr>
+                    <td >10. При пациенти между 31 и 40 години и >2 аборта, стойностите на мутации PAI Hetero,
+                        MTHFR Hetero, PAI Homo са по-високи от същите мутации, но при пациенти между 20 и 30 години.
+                    </td>
+                </tr>
+                <tr>
+                    <td >11. При пациенти между 41 и 50 години и 1 аборт, най-често се срещат мутации PAI Hetero (8),
+                        MTHFR Hetero (3), PAI Homo (3)
+                    </td>
+                </tr>
+                <tr>
+                    <td >12. При пациенти между 41 и 50 години и 2 аборта, най-често се срещат мутации PAI Hetero (14),
+                        MTHFR Hetero (6), PAI Homo (4)
+                    </td>
+                </tr>
+                <tr>
+                    <td >13. При пациенти между 41 и 50 години и >2 аборта, най-често се срещат мутации PAI Hetero (24),
+                        MTHFR Hetero (23), PAI Homo (8)
+                    </td>
+                </tr>
+                <tr>
+                    <td >14. При пациенти между 41 и 50 години и >2 аборта, стойностите на мутации PAI Hetero,
+                        MTHFR Hetero, PAI Homo са по-високи от същите мутации, но с 1 или 2 аборта.
+                    </td>
+                </tr>
+                <tr>
+                    <td >15. При пациенти между 41 и 50 години и >2 аборта, стойностите на мутации PAI Hetero,
+                        MTHFR Hetero, PAI Homo са по-ниски от същите мутации, но при пациенти между 20 и 30 години и
+                        значително по-ниски от пациенти между 31 и 40 години.
+                    </td>
+                </tr>
+
+
+                </thead>
+                <thead>
+
+            </table>
+            <table>
+                {% csrf_token %}
+                <caption>
+                    <b>Table: 2 Mutations</b>
+                </caption>
+                <thead>
+                <tr>
+                    <td bgcolor="gray"><b>Factor Type</b></td>
+                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For all Patients</b></td>
+                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 1 Abort</b></td>
+                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 2 or more Aborts</b></td>
+                </tr>
+                <tr>
+                    <td >Heterozygous Factor V Leiden Mutation <br>
+                        Factor II (Prothrombin) Heterozygous Mutation</td>
+                    <td >{{ cnt_fvl_hetero_prothr_hetero_mutations }}</td>
+                    <td >{{ cnt_fvl_hetero_prothr_hetero_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_hetero_prothr_hetero_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Heterozygous Factor V Leiden Mutation <br>
+                        Factor II (Prothrombin) Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_hetero_prothr_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_hetero_prothr_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_hetero_prothr_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Heterozygous Factor V Leiden Mutation <br>
+                        Factor PAI I Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_hetero_pai_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_hetero_pai_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_hetero_pai_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Heterozygous Factor V Leiden Mutation <br>
+                        Factor MTHFR Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_hetero_mthfr_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_hetero_mthfr_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_hetero_mthfr_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Homozygous Factor V Leiden Mutation <br>
+                        Factor II (Prothrombin) Heterozygous Mutation</td>
+                    <td >{{ cnt_fvl_homo_prothr_hetero_mutations }}</td>
+                    <td >{{ cnt_fvl_homo_prothr_hetero_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_homo_prothr_hetero_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Homozygous Factor V Leiden Mutation <br>
+                        Factor II (Prothrombin) Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_homo_prothr_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_homo_prothr_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_homo_prothr_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Homozygous Factor V Leiden Mutation <br>
+                        Factor PAI I Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_homo_pai_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_homo_pai_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_homo_pai_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Homozygous Factor V Leiden Mutation <br>
+                        Factor MTHFR Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_homo_mthfr_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_homo_mthfr_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_homo_mthfr_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Factor II (Prothrombin) Heterozygous Mutation <br>
+                        Factor PAI I Homozygous Mutation</td>
+                    <td >{{ cnt_prothr_hetero_pai_homo_mutations }}</td>
+                    <td >{{ cnt_prothr_hetero_pai_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_prothr_hetero_pai_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Factor II (Prothrombin) Heterozygous Mutation <br>
+                        Factor MTHFR Homozygous Mutation</td>
+                    <td >{{ cnt_prothr_hetero_mthfr_homo_mutations }}</td>
+                    <td >{{ cnt_prothr_hetero_mthfr_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_prothr_hetero_mthfr_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Factor PAI I Homozygous Mutation <br>
+                        Factor MTHFR Homozygous Mutation</td>
+                    <td >{{ cnt_pai_homo_mthfr_homo_mutations }}</td>
+                    <td >{{ cnt_pai_homo_mthfr_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_pai_homo_mthfr_homo_mut_aborts }}</td>
+                </tr>
+
+
+
+<!--                <tr>-->
+<!--                    <td >Homozygous Factor V Leiden Mutation</td>-->
+<!--                    <td >{{ 2_3_aborts_fvl_homo_mut }}</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td >Factor II (Prothrombin) Heterozygous Mutation</td>-->
+<!--                    <td >{{ 2_3_aborts_prothr_hetero_mut }}</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td >Factor II (Prothrombin) Homozygous Mutation</td>-->
+<!--                    <td >{{ 2_3_aborts_prothr_homo_mut }}</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td >Factor PAI I Homozygous Mutation</td>-->
+<!--                    <td >{{ 2_3_aborts_pai_homo_mut }}</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td >Factor MTHFR Homozygous Mutation</td>-->
+<!--                    <td >{{ 2_3_aborts_mthfr_homo_mut }}</td>-->
+<!--                </tr>-->
+
+                </thead>
+
+            </table>
+            <table>
+                {% csrf_token %}
+                <caption>
+                    <b>Table: 3 Mutations</b>
+                </caption>
+                <thead>
+                <tr>
+                    <td bgcolor="gray"><b>Factor Type</b></td>
+                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For all Patients</b></td>
+                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 1 Abort</b></td>
+                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 2 or more Aborts</b></td>
+                </tr>
+                <tr>
+                    <td >Heterozygous Factor V Leiden Mutation <br>
+                        Factor II (Prothrombin) Heterozygous Mutation <br>
+                        Factor PAI I Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_hetero_pr_hetero_pai_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_hetero_pr_hetero_pai_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_hetero_pr_hetero_pai_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Heterozygous Factor V Leiden Mutation <br>
+                        Factor II (Prothrombin) Heterozygous Mutation <br>
+                        Factor MTHFR Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_hetero_pr_hetero_mthfr_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Heterozygous Factor V Leiden Mutation <br>
+                        Factor II (Prothrombin) Homozygous Mutation <br>
+                        Factor PAI I Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_hetero_pr_homo_pai_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_hetero_pr_homo_pai_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_hetero_pr_homo_pai_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Heterozygous Factor V Leiden Mutation <br>
+                        Factor II (Prothrombin) Homozygous Mutation <br>
+                        Factor MTHFR Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_hetero_pr_homo_mthfr_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_hetero_pr_homo_mthfr_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_hetero_pr_homo_mthfr_homo_mut_aborts }}</td>
+                </tr>
+
+                <tr>
+                    <td >Homozygous Factor V Leiden Mutation <br>
+                        Factor II (Prothrombin) Heterozygous Mutation <br>
+                        Factor PAI I Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_homo_pr_hetero_pai_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_homo_pr_hetero_pai_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_homo_pr_hetero_pai_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Homozygous Factor V Leiden Mutation <br>
+                        Factor II (Prothrombin) Heterozygous Mutation <br>
+                        Factor MTHFR Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_homo_pr_hetero_mthfr_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_homo_pr_hetero_mthfr_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_homo_pr_hetero_mthfr_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Homozygous Factor V Leiden Mutation <br>
+                        Factor II (Prothrombin) Homozygous Mutation <br>
+                        Factor PAI I Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_homo_pr_homo_pai_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_homo_pr_homo_pai_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_homo_pr_homo_pai_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Homozygous Factor V Leiden Mutation <br>
+                        Factor II (Prothrombin) Homozygous Mutation <br>
+                        Factor MTHFR Homozygous Mutation</td>
+                    <td >{{ cnt_fvl_homo_pr_homo_mthfr_homo_mutations }}</td>
+                    <td >{{ cnt_fvl_homo_pr_homo_mthfr_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_fvl_homo_pr_homo_mthfr_homo_mut_aborts }}</td>
+                </tr>
+
+                <tr>
+                    <td >Factor II (Prothrombin) Heterozygous Mutation <br>
+                        Factor PAI I Homozygous Mutation <br>
+                        Factor MTHFR Homozygous Mutation</td>
+                    <td >{{ cnt_pr_hetero_pai_homo_mthfr_homo_mutations }}</td>
+                    <td >{{ cnt_pr_hetero_pai_homo_mthfr_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_pr_hetero_pai_homo_mthfr_homo_mut_aborts }}</td>
+                </tr>
+                <tr>
+                    <td >Factor II (Prothrombin) Homozygous Mutation <br>
+                        Factor PAI I Homozygous Mutation <br>
+                        Factor MTHFR Homozygous Mutation</td>
+                    <td >{{ cnt_pr_homo_pai_homo_mthfr_homo_mutations }}</td>
+                    <td >{{ cnt_pr_homo_pai_homo_mthfr_homo_mut_abort1 }}</td>
+                    <td >{{ cnt_pr_homo_pai_homo_mthfr_homo_mut_aborts }}</td>
+                </tr>
+
+                </thead>
+
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+
+{% endblock %}
+

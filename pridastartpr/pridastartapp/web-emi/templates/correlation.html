@@ -1,0 +1,300 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Correlation Analysis - PRIDA
+{% endblock %}
+
+{% block content %}
+
+
+    <!-- ################# Content Starts Here #######################--->
+    <main>
+        <!-- Page Title Starts Here -->
+        <div class="page-nav no-margin row">
+            <div class="container">
+                <div class="row">
+                    <h2>Корелации</h2>
+                    <ul>
+                        <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                        <li><i class="fas fa-angle-double-right"></i> Корелации</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD Section -->
+        <section class="with-medical12 py-4">
+            <div class="container">
+                <form id="correlation-form" method="post" action="{% url 'correlation_result' %}">
+                    {% csrf_token %}
+                    <div class="row">
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="patientName">Patient Name</label>
+                                <input type="checkbox" id="patientNameCheckbox" name="patientNameCheckbox" >
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="age">Maternal Age</label>
+                                <input type="checkbox" id="ageCheckbox" name="ageCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="bpSystolic">Systolic Blood Pressure</label>
+                                <input type="checkbox" id="bpSystolicCheckbox" name="bpSystolicCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="bpDiastolic">Diastolic Blood Pressure</label>
+                                <input type="checkbox" id="bpDiastolicCheckbox" name="bpDiastolicCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="gw">Gestational Week</label>
+                                <input type="checkbox" id="gwCheckbox" name="gwCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="newbornWeight">Newborn Weight (kg)</label>
+                                <input type="checkbox" id="newbornWeightCheckbox" name="newbornWeightCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="eai1">EAI1</label>
+                                <input type="checkbox" id="eai1Checkbox" name="eai1Checkbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="nea1">NEA1</label>
+                                <input type="checkbox" id="nea1Checkbox" name="nea1Checkbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="eai2">EAI2</label>
+                                <input type="checkbox" id="eai2Checkbox" name="eai2Checkbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="nea2">NEA2</label>
+                                <input type="checkbox" id="nea2Checkbox" name="nea2Checkbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="erythrocytes">Erythrocytes (T/L)</label>
+                                <input type="checkbox" id="erythrocytesCheckbox" name="erythrocytesCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="hemoglobin">Hemoglobin (g/l)</label>
+                                <input type="checkbox" id="hemoglobinCheckbox" name="hemoglobinCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="hematocrit">Hematocrit (l/l)</label>
+                                <input type="checkbox" id="hematocritCheckbox" name="hematocritCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="mcv">MCV (mmol/l)</label>
+                                <input type="checkbox" id="mcvCheckbox" name="mcvCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="mch">MCH (Pg)</label>
+                                <input type="checkbox" id="mchCheckbox" name="mchCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="mchc">MCHC (g/l)</label>
+                                <input type="checkbox" id="mchcCheckbox" name="mchcCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="rdw">RDW (%)</label>
+                                <input type="checkbox" id="rdwCheckbox" name="rdwCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="prothrombinTimeSec">Prothrombin Time (sec)</label>
+                                <input type="checkbox" id="prothrombinTimeSecCheckbox" name="prothrombinTimeSecCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="prothrombinTimePercent">Prothrombin Time (%)</label>
+                                <input type="checkbox" id="prothrombinTimePercentCheckbox"
+                                    name="prothrombinTimePercentCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="prothrombinTimeINR">Prothrombin Time (INR)</label>
+                                <input type="checkbox" id="prothrombinTimeINRCheckbox"
+                                    name="prothrombinTimeINRCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="platelets">Platelets (G/L)</label>
+                                <input type="checkbox" id="plateletsCheckbox" name="plateletsCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="mpv">MPV (Fl)</label>
+                                <input type="checkbox" id="mpvCheckbox" name="mpvCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="pct">PCT (mL/L)</label>
+                                <input type="checkbox" id="pctCheckbox" name="pctCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="pdw">PDW (%)</label>
+                                <input type="checkbox" id="pdwCheckbox" name="pdwCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="creatinine">Creatinine (micromoles/L)</label>
+                                <input type="checkbox" id="creatinineCheckbox" name="creatinineCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="totalProtein">Total Protein (g/l)</label>
+                                <input type="checkbox" id="totalProteinCheckbox" name="totalProteinCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="albumin">Albumin (g/l)</label>
+                                <input type="checkbox" id="albuminCheckbox" name="albuminCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="fibrinogen">Fibrinogen (g/l)</label>
+                                <input type="checkbox" id="fibrinogenCheckbox" name="fibrinogenCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="crp">CRP (C-Reactive Protein) (mg/l)</label>
+                                <input type="checkbox" id="crpCheckbox" name="crpCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="proteinUrine">Proteinuria (mg in 24-h urine)</label>
+                                <input type="checkbox" id="proteinUrineCheckbox" name="proteinUrineCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="asat">ASAT (U/L)</label>
+                                <input type="checkbox" id="asatCheckbox" name="asatCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="alat">ALAT (U/L)</label>
+                                <input type="checkbox" id="alatCheckbox" name="alatCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="factorVLeiden">Factor V Leiden</label>
+                                <input type="checkbox" id="factorVLeidenCheckbox" name="factorVLeidenCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="factorII">Factor II - Mutation G/A 20210</label>
+                                <input type="checkbox" id="factorIICheckbox" name="factorIICheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="pai">PAI 4G/5G</label>
+                                <input type="checkbox" id="paiCheckbox" name="paiCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-custom">
+                                <label for="mthfr">MTHFR - Mutation C677T</label>
+                                <input type="checkbox" id="mthfrCheckbox" name="mthfrCheckbox">
+                            </div>
+                        </div>
+
+                        <div class="col-12 text-center mt-4">
+                            <button type="submit" class="btn btn-secondary">Show Correlation</button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+            
+        </section>
+        <!-- Correlation Table Display -->
+
+
+    <!-- ################# Footer Starts Here #######################--->
+    {% endblock %}

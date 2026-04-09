@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Научна презентация{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Пета младежка научна сесия „Биомедицина и качество на живот“, 4–5 декември 2025 </h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Презентация</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Posters Section ######## -->
+<section class="posters-section">
+    <div class="container">
+        <!-- Poster 1: -->
+        <div class="poster-item poster-reverse">
+              <div class="poster-image">
+                <a href="{% static 'images/blog/ariana_b.jpg' %}" target="_blank">
+                    <img src="{% static 'images/blog/ariana_b.jpg' %}" alt="BMQL Poster">
+                </a>
+            </div>
+            <div class="poster-text">
+                <h4>Представяне на проект PRIDA на Пета младежка научна сесия „Биомедицина и качество на живот“, 4–5 декември 2025, София</h4>
+                <p>На Петата младежка научна сесия „Биомедицина и качество на живот“, провела се на 4-5 декември 2025 г. в Института по биофизика и биомедицинско инженерство – БАН, гл. ас. д-р Ариана Лангари представи доклад на тема “Albumin Thermal Stabilization and Plasma Proteins Aggregation as Diagnostic Markers for Preeclampsia: Impact of Disease Severity” с автори Ариана Лангари, Величка Стрижкова, Весела Лозанова, Ина Гьошева, Мирослава Иванова, Светла Тодинова, Сашка Крумова и Таня Пенчева. В доклада бяха демонстрирани отклонения в температурната стабилност и агрегацията на плазмени белтъци от пациенти с прееклампсия в сравнение със здрави бременни контроли, които бяха по-силно изразени в случаите на тежка прееклампсия. Като потенциални маркери на заболяването бяха идентифицирани: температурна стабилизация на албумина, модифициране на основните плазмени белтъци в резултат на оксидативен стрес и увеличаване на размера и броя на плазмените агрегати.</p>
+               
+            </div>
+          
+        </div>
+
+
+    </div>
+
+</section>
+<!-- ######## Posters Section End ######## -->
+{% endblock %}

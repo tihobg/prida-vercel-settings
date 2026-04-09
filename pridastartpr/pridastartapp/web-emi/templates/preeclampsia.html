@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Preeclampsia Database{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Preeclampsia</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Preeclampsia Database</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Patient Information Table ######## -->
+<div class="container table-container my-4">
+    <h2>Patient Information Table</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Edit</th>
+                    <th>id</th>
+                    <th>Patient</th>
+                    <th>Maternal Age</th>
+                    <th>Systolic Blood Pressure</th>
+                    <th>Diastolic Blood Pressure</th>
+                    <th>Gestational Week</th>
+                    <th>Newborn Weight</th>
+                    <th>EAI1</th>
+                    <th>NEA1</th>
+                    <th>EAI2</th>
+                    <th>NEA2</th>
+                    <th>Erythrocytes</th>
+                    <th>Hemoglobin</th>
+                    <th>Hematocrit</th>
+                    <th>MCV</th>
+                    <th>MCH</th>
+                    <th>MCHC</th>
+                    <th>RDW</th>
+                    <th>Prothrombin Time (Sec)</th>
+                    <th>Prothrombin Time (%)</th>
+                    <th>Prothrombin Time (INR)</th>
+                    <th>Platelets</th>
+                    <th>MPV</th>
+                    <th>PCT</th>
+                    <th>PDW</th>
+                    <th>Creatinine</th>
+                    <th>Total Protein</th>
+                    <th>Albumin</th>
+                    <th>Fibrinogen</th>
+                    <th>CRP</th>
+                    <th>Proteinuria</th>
+                    <th>ASAT</th>
+                    <th>ALAT</th>
+                    <th>Factor V Leiden</th>
+                    <th>Factor II Mutation</th>
+                    <th>PAI</th>
+                    <th>MTHFR</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patients %}
+                <tr>
+                    <td><a href="{% url 'add_edit_patient' %}?id={{ patient.id }}">Edit</a></td>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ patient.name }}</td>
+                    <td>{{ patient.maternal_age }}</td>
+                    <td>{{ patient.systolic_blood_pressure }}</td>
+                    <td>{{ patient.diastolic_blood_pressure }}</td>
+                    <td>{{ patient.gestational_week }}</td>
+                    <td>{{ patient.newborn_weight }}</td>
+                    <td>{{ patient.eai1 }}</td>
+                    <td>{{ patient.nea1 }}</td>
+                    <td>{{ patient.eai2 }}</td>
+                    <td>{{ patient.nea2 }}</td>
+                    <td>{{ patient.erythrocytes }}</td>
+                    <td>{{ patient.hemoglobin }}</td>
+                    <td>{{ patient.hematocrit }}</td>
+                    <td>{{ patient.mcv }}</td>
+                    <td>{{ patient.mch }}</td>
+                    <td>{{ patient.mchc }}</td>
+                    <td>{{ patient.rdw }}</td>
+                    <td>{{ patient.prothrombin_time_sec }}</td>
+                    <td>{{ patient.prothrombin_time_percent }}</td>
+                    <td>{{ patient.prothrombin_time_inr }}</td>
+                    <td>{{ patient.platelets }}</td>
+                    <td>{{ patient.mpv }}</td>
+                    <td>{{ patient.pct }}</td>
+                    <td>{{ patient.pdw }}</td>
+                    <td>{{ patient.creatinine }}</td>
+                    <td>{{ patient.total_protein }}</td>
+                    <td>{{ patient.albumin }}</td>
+                    <td>{{ patient.fibrinogen }}</td>
+                    <td>{{ patient.crp }}</td>
+                    <td>{{ patient.proteinuria }}</td>
+                    <td>{{ patient.asat }}</td>
+                    <td>{{ patient.alat }}</td>
+                    <td>{{ patient.factor_v_leiden }}</td>
+                    <td>{{ patient.factor_ii_mutation }}</td>
+                    <td>{{ patient.pai }}</td>
+                    <td>{{ patient.mthfr }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ######## Button Section ######## -->
+<div class="container button-container my-4">
+    <div class="register_add text-center">
+        <button class="btn btn-info-register">
+            <a href="{% url 'add_edit_patient' %}">Add New Patient</a>
+        </button>
+        <button class="btn btn-info-login">
+            <a href="{% url 'add_edit_patient' %}">Edit Patient</a>
+        </button>
+        <button class="btn btn-info">
+            <a href="{% url 'correlation' %}">Correlation Information</a>
+        </button>
+    </div>
+</div>
+<!-- ######## Button Section End ######## -->
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Add/Edit Patient{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Добави пациент/Промени информация</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Добави/промени информация</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Medical Form Section ######## -->
+<section class="with-medical">
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <!-- First Row -->
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="name">Patient Name</label><br>
+                    {{ form.name }}
+                </div>
+                <div class="col-md-3">
+                    <label for="maternal_age">Maternal Age</label><br>
+                    {{ form.maternal_age }}
+                </div>
+                <div class="col-md-3">
+                    <label for="systolic_blood_pressure">Systolic Blood Pressure</label><br>
+                    {{ form.systolic_blood_pressure }}
+                </div>
+                <div class="col-md-3">
+                    <label for="diastolic_blood_pressure">Diastolic Blood Pressure</label><br>
+                    {{ form.diastolic_blood_pressure }}
+                </div>
+            </div>
+
+            <!-- Second Row -->
+            <div class="row mt-3">
+                <div class="col-md-3">
+                    <label for="gestational_week">Gestational Week</label><br>
+                    {{ form.gestational_week }}
+                </div>
+                <div class="col-md-3">
+                    <label for="newborn_weight">Newborn Weight (g)</label><br>
+                    {{ form.newborn_weight }}
+                </div>
+                <div class="col-md-3">
+                    <label for="eai1">EAI1</label><br>
+                    {{ form.eai1 }}
+                </div>
+                <div class="col-md-3">
+                    <label for="nea1">NEA1</label><br>
+                    {{ form.nea1 }}
+                </div>
+            </div>
+
+            <!-- Third Row -->
+            <div class="row mt-3">
+                <div class="col-md-3">
+                    <label for="eai2">EAI2</label><br>
+                    {{ form.eai2 }}
+                </div>
+                <div class="col-md-3">
+                    <label for="nea2">NEA2</label><br>
+                    {{ form.nea2 }}
+                </div>
+                <div class="col-md-3">
+                    <label for="erythrocytes">Erythrocytes (T/L)</label><br>
+                    {{ form.erythrocytes }}
+                </div>
+                <div class="col-md-3">
+                    <label for="hemoglobin">Hemoglobin (g/l)</label><br>
+                    {{ form.hemoglobin }}
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="row mt-4">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-info-submit">
+                        {% if patient %}
+                            Update Patient
+                        {% else %}
+                            Add Patient
+                        {% endif %}
+                    </button>
+                </div>
+            </div>
+            <br>
+            <a href="{% url 'pregnant_controls' %}" class="text-primary">Back to Pregnant Controls List</a>
+        </form>
+    </div>
+</section>
+<!-- ######## Medical Form Section End ######## -->
+{% endblock %}

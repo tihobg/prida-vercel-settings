@@ -1,0 +1,308 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PRIDA (Pregnancy Related Integrated Database Analytics)</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Animate CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+
+</head>
+<body>
+
+    <!-- ################# Header Starts Here #######################--->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 left-item">
+                        <ul>
+                            <li><i class="fas fa-envelope-square"></i> office@biomed.bas.bg</li>
+                            <li><i class="fas fa-phone-square"></i> +3592 979 36 07</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="nav-head" class="header-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
+                        <img src="{% static 'images/logo.jpg' %}" alt="">
+                        <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
+                    </div>
+                    <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about_us' %}">About Us</a></li>
+                            <li><a href="{% url 'services' %}">Services</a></li>
+                            <li><a href="{% url 'news' %}">News</a></li>
+                            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                            <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2 d-none d-lg-block appoint">
+                        <button class="btn btn-info-logout"><a href="{% url 'home' %}">Logout</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ################# Content Starts Here #######################--->
+    <main>
+        <!-- Page Title Starts Here -->
+        <div class="page-nav no-margin row">
+            <div class="container">
+                <div class="row">
+                    <h2>Add/Edit Patient</h2>
+                    <ul>
+                        <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
+                        <li><i class="fas fa-angle-double-right"></i> Аdd/Edit Patient Information</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Form Section for Adding/Updating Parameters -->
+
+        <section class="with-medical">
+            <div class="container">
+                <form method="post" action="{% url 'preeclampsia' %}">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="patientName">Patient Name</label>
+                            <input type="text" id="patientName" name="patientName" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="age">Maternal Age</label>
+                            <input type="number" id="age" name="age" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="bpSystolic">Systolic Blood Pressure</label>
+                            <input type="text" id="bpSystolic" name="bpSystolic" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="bpDiastolic">Diastolic Blood Pressure</label>
+                            <input type="text" id="bpDiastolic" name="bpDiastolic" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="gw">Gestational Week</label>
+                            <input type="text" id="gw" name="gw" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="newbornWeight">Newborn Weight (kg)</label>
+                            <input type="text" id="newbornWeight" name="newbornWeight" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="eai1">EAI1</label>
+                            <input type="text" id="eai1" name="eai1" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="nea1">NEA1</label>
+                            <input type="text" id="nea1" name="nea1" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="eai2">EAI2</label>
+                            <input type="text" id="eai2" name="eai2" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="nea2">NEA2</label>
+                            <input type="text" id="nea2" name="nea2" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="erythrocytes">Erythrocytes (T/L)</label>
+                            <input type="text" id="erythrocytes" name="erythrocytes" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="hemoglobin">Hemoglobin (g/l)</label>
+                            <input type="text" id="hemoglobin" name="hemoglobin" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="hematocrit">Hematocrit (l/l)</label>
+                            <input type="text" id="hematocrit" name="hematocrit" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="mcv">MCV (mmol/l)</label>
+                            <input type="text" id="mcv" name="mcv" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="mch">MCH (Pg)</label>
+                            <input type="text" id="mch" name="mch" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="mchc">MCHC (g/l)</label>
+                            <input type="text" id="mchc" name="mchc" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="rdw">RDW (%)</label>
+                            <input type="text" id="rdw" name="rdw" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="prothrombinTimeSec">Prothrombin Time (sec)</label>
+                            <input type="text" id="prothrombinTimeSec" name="prothrombinTimeSec" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="prothrombinTimePercent">Prothrombin Time (%)</label>
+                            <input type="text" id="prothrombinTimePercent" name="prothrombinTimePercent" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="prothrombinTimeINR">Prothrombin Time (INR)</label>
+                            <input type="text" id="prothrombinTimeINR" name="prothrombinTimeINR" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="platelets">Platelets (G/L)</label>
+                            <input type="text" id="platelets" name="platelets" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="mpv">MPV (Fl)</label>
+                            <input type="text" id="mpv" name="mpv" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="pct">PCT (mL/L)</label>
+                            <input type="text" id="pct" name="pct" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="pdw">PDW (%)</label>
+                            <input type="text" id="pdw" name="pdw" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="creatinine">Creatinine (micromoles/L)</label>
+                            <input type="text" id="creatinine" name="creatinine" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="totalProtein">Total Protein (g/l)</label>
+                            <input type="text" id="totalProtein" name="totalProtein" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="albumin">Albumin (g/l)</label>
+                            <input type="text" id="albumin" name="albumin" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="fibrinogen">Fibrinogen (g/l)</label>
+                            <input type="text" id="fibrinogen" name="fibrinogen" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="crp">CRP (C-Reactive Protein) (mg/l)</label>
+                            <input type="text" id="crp" name="crp" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="proteinUrine">Proteinuria (mg in 24-h urine)</label>
+                            <input type="text" id="proteinUrine" name="proteinUrine" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="asat">ASAT (U/L)</label>
+                            <input type="text" id="asat" name="asat" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="alat">ALAT (U/L)</label>
+                            <input type="text" id="alat" name="alat" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="factorVLeiden">Factor V Leiden</label>
+                            <input type="text" id="factorVLeiden" name="factorVLeiden" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="factorII">Factor II - Mutation G/A 20210</label>
+                            <input type="text" id="factorII" name="factorII" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="pai">PAI 4G/5G</label>
+                            <input type="text" id="pai" name="pai" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="mthfr">MTHFR - Mutation C677T</label>
+                            <input type="text" id="mthfr" name="mthfr" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group button-group2">
+                        <button type="submit" class="btn btn-info-submit">Submit</button>
+                        <button type="submit" class="btn btn-info-add">Add Patient</button>
+                    </div> 
+                </form>
+            </div>
+        </section>
+    </main>
+
+   <!-- ################# Footer Starts Here #######################--->
+   <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <h2>About Us</h2>
+                <p>The Institute of Biophysics and Biomedical Engineering (IBPhBME) is a leading research institute in Bulgaria in the field of biophysics, biochemistry, biomedicine, chemoinformatics, and bioinformatics, biomedical engineering.</p>
+                <p>IBPhBME conducts scientific and scientific-applied research in the field of biomedicine and quality of life for the benefit of society and science.</p>
+            </div>
+        
+            <div class="col-md-4 col-sm-12">
+                <h2>Useful Links</h2>
+                <ul class="list-unstyled link-list">
+                    <li><a ui-sref="about" href="{% url 'about_us' %}">About us</a><i class="fa fa-angle-right"></i> </li>
+                    <li><a ui-sref="portfolio" href="{% url 'services' %}">Services</a><i class="fa fa-angle-right"></i></li>
+                    <li><a ui-sref="gallery" href="{% url 'gallery' %}">Gallery</a><i class="fa fa-angle-right"></i></li>
+                    <li><a ui-sref="contact" href="{% url 'contact_us' %}">Contact us</a><i class="fa fa-angle-right"></i></li>
+                   <!--  <li><a ui-sref="about" href="#/about">About us</a><i class="fa fa-angle-right"></i></li>
+                    <li><a ui-sref="portfolio" href="#/portfolio">Portfolio</a><i class="fa fa-angle-right"></i></li>
+                    <li><a ui-sref="gallery" href="#/gallery">Gallery</a><i class="fa fa-angle-right"></i></li>
+                    <li><a ui-sref="contact" href="#/contact">Contact us</a><i class="fa fa-angle-right"></i></li> -->
+                </ul>
+            </div>
+        
+            <div class="col-md-4 col-sm-12 map-img">
+                <h2>Contact Us</h2>
+                <address class="md-margin-bottom-40">
+                    Institute of Biophysics and Biomedical Engineering
+                    Bulgarian Academy of Sciences
+                    Acad. Georgi Bonchev Str., Block 21, Sofia 1113, Bulgaria
+                    Phone: +3592 979 36 07 <br>
+                    Email: <a href="mailto:office@biomed.bas.bg">office@biomed.bas.bg</a><br>
+                    Web: <a href="https://biomed.bas.bg/en/" target="_blank">https://biomed.bas.bg/en/</a>
+                </address>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS and dependencies (Popper.js and jQuery) -->
+<!-- Bootstrap CSS CDN -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

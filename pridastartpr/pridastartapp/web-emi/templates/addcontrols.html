@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Add/Edit Controls Information{% endblock %}
+
+{% block content %}
+
+    <!-- ################# Content Starts Here #######################--->
+    <main>
+        <!-- Page Title Starts Here -->
+        <div class="page-nav no-margin row">
+            <div class="container">
+                <div class="row">
+                    <h2>Добави/промени контрола</h2>
+                    <ul>
+                        <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                        <li><i class="fas fa-angle-double-right"></i> Добави/промени контрола</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical Form Section -->
+        <section class="with-medical">
+            <div class="container">
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- First row of inputs (4 per row) -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="name">Patient Name</label><br>
+                            {{ form.name }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="maternal_age">Maternal Age</label><br>
+                            {{ form.maternal_age }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="systolic_blood_pressure">Systolic Blood Pressure</label><br>
+                            {{ form.systolic_blood_pressure }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="diastolic_blood_pressure">Diastolic Blood Pressure</label><br>
+                            {{ form.diastolic_blood_pressure }}
+                        </div>
+                    </div>
+
+                    <!-- Second row of inputs (4 per row) -->
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="gestational_week">Gestational Week</label><br>
+                            {{ form.gestational_week }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="newborn_weight">Newborn Weight (g) </label><br>
+                            {{ form.newborn_weight }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="eai1">EAI1</label><br>
+                            {{ form.eai1 }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="nea1">NEA1</label><br>
+                            {{ form.nea1 }}
+                        </div>
+                    </div>
+
+                    <!-- Third row of inputs (4 per row) -->
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="eai2">EAI2</label><br>
+                            {{ form.eai2 }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="nea2">NEA2</label><br>
+                            {{ form.nea2 }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="erythrocytes">Erythrocytes (T/L)</label><br>
+                            {{ form.erythrocytes }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="hemoglobin">Hemoglobin  (g/l)</label><br>
+                            {{ form.hemoglobin }}
+                        </div>
+                    </div>
+
+                    <!-- Fourth row of inputs (4 per row) -->
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="hematocrit">Hematocrit (l/l)</label><br>
+                            {{ form.hematocrit }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="mcv">MCV (mmol/l)</label><br>
+                            {{ form.mcv }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="mch">MCH (Pg)</label><br>
+                            {{ form.mch }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="mchc">MCHC (g/l)</label><br>
+                            {{ form.mchc }}
+                        </div>
+                    </div>
+
+                    <!-- Fifth row of inputs (4 per row) -->
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="rdw">RDW</label><br>
+                            {{ form.rdw }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="prothrombin_time_sec">Prothrombin Time (sec)</label><br>
+                            {{ form.prothrombin_time_sec }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="prothrombin_time_percent">Prothrombin Time (%)</label><br>
+                            {{ form.prothrombin_time_percent }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="prothrombin_time_inr">Prothrombin Time (INR)</label><br>
+                            {{ form.prothrombin_time_inr }}
+                        </div>
+                    </div>
+
+                    <!-- Sixth row of inputs (4 per row) -->
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="platelets">Platelets (G/L)</label><br>
+                            {{ form.platelets }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="mpv">MPV (Fl)</label><br>
+                            {{ form.mpv }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="pct">PCT (mL/L)</label><br>
+                            {{ form.pct }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="pdw">PDW (%)</label><br>
+                            {{ form.pdw }}
+                        </div>
+                    </div>
+
+                    <!-- Seventh row of inputs (4 per row) -->
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="creatinine">Creatinine (micromoles/L)</label><br>
+                            {{ form.creatinine }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="total_protein">Total Protein (g/l)</label><br>
+                            {{ form.total_protein }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="albumin">Albumin (g/l)</label><br>
+                            {{ form.albumin }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="fibrinogen">Fibrinogen (g/l)</label><br>
+                            {{ form.fibrinogen }}
+                        </div>
+                    </div>
+
+                    <!-- Eighth row of inputs (4 per row) -->
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="crp">CRP (C-Reactive Protein) (mg/l)</label><br>
+                            {{ form.crp }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="proteinuria">Proteinuria (mg in 24-h urine)</label><br>
+                            {{ form.proteinuria }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="asat">ASAT (U/L)</label><br>
+                            {{ form.asat }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="alat">ALAT (U/L)</label><br>
+                            {{ form.alat }}
+                        </div>
+                    </div>
+
+                    <!-- Ninth row of inputs (4 per row) -->
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="factor_v_leiden">Factor V Leiden</label><br>
+                            {{ form.factor_v_leiden }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="factor_ii_mutation">Factor II - Mutation G/A 20210</label><br>
+                            {{ form.factor_ii_mutation }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="pai">PAI 4G/5G</label><br>
+                            {{ form.pai }}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="mthfr">MTHFR - Mutation C677T</label><br>
+                            {{ form.mthfr }}
+                        </div>
+                    </div>
+<br>
+                    <!-- Submit Button -->
+                    <div class="row mt-4">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-info-submit">
+                                {% if control %}
+                                    Промени контрола
+                                {% else %}
+                                    Добави контрола
+                                {% endif %}
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                    <a href="{% url 'controls' %}" class="text-primary">Към Бременни Контроли Информационна Таблица</a> <!-- Updated link to control list -->
+                </form>
+            </div>
+        </section>
+    </main>
+
+    {% endblock %}
+

@@ -1,0 +1,75 @@
+<!--<!DOCTYPE html>-->
+{% extends "base-emi.html" %}
+{% block content %}
+
+{% load static %}
+
+<!--{% block title %}Login{% endblock %}-->
+
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Вход</h2>
+<!--            <ul>-->
+<!--                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>-->
+<!--                <li><i class="fas fa-angle-double-right"></i> Вход</li>-->
+<!--            </ul>-->
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Login Section ######## -->
+<section class="key-features1 ky2 department">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="login-container">
+                    <!-- Displaying Messages -->
+<!--                    {% if messages %}-->
+<!--                        <div class="alert alert-danger">-->
+<!--                            {% for message in messages %}-->
+<!--                                {{ message }}-->
+<!--                            {% endfor %}-->
+<!--                        </div>-->
+<!--                    {% endif %}-->
+<!--                    <form class="form-with-validation" method="post" action="{% url 'database_emi' %}">-->
+
+                    <form class="login-form" method="post" action="{% url 'database_emi' %}">
+
+                        {% csrf_token %}
+                        <h2>Вход в системата</h2>
+                        <div class="form-group">
+                            <label for="username">Име на потребител</label>
+                            {{ form.username }}
+                            {% if form.username.errors %}
+                                <div class="text-danger">{{ form.username.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Парола</label>
+                            {{ form.password }}
+                            {% if form.password.errors %}
+                                <div class="text-danger">{{ form.password.errors }}</div>
+                            {% endif %}
+                        </div>
+<!--                        {{ form }}-->
+
+
+                        <div class="form-group">
+                            <button type="submit" class="form-submit">Вход</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="login-image col-md-6">
+                <img src="{% static 'images/login.jpg' %}" alt="Login Image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ######## Login Section End ######## -->
+
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Презентация{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Участие в Scientific and Innovation Forum "International Forum on Advanced ICT Research and Innovation"</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Презентация</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<section class="our-blog techpark-section">
+    <div class="container">
+        <div class="row">
+                <h2>Представяне на проект PRIDA на International Forum on Advanced ICT Research and Innovation, 29.09.2025 -01.10. 2025, София, България</h2>
+            
+            <!-- Лява колона - Текст -->
+            <div class="col-md-5">
+                <div class="techpark-text">
+                  
+                    <p>
+                        От 29 септември до 1 октомври 2025 г. в София Тех Парк се проведе Международен форум за развитие на изследванията и иновациите в областта на информационните и комуникационните технологии (International Forum on Advanced ICT Research and Innovation). Форумът се организира съвместно от Съвета за наука и иновации в областта на информационните и комуникационните технологии и Българската академия на науките по инвестиция C2.I2 „Увеличаване на иновационния капацитет на Българската академия на науките в областта на зелени и дигитални технологии“, част от Националния план за възстановяване и устойчивост.
+                    </p>
+                    <p>По покана на организаторите, в рамките на форума беше представен и проектът BG-RRP-2.011-0025 “Създаване на база данни за патологична бременност и извличане 
+на нови знания с цел идентифициране на диагностични маркери“ (<i><b>P</b>regnancy <b>R</b>elated <b>I</b>ntegrated <b>D</b>atabase <b>A</b>nalytics, <b>PRIDA</b></i>), финансиран от Европейски съюз чрез инструмента СледващоПоколениеЕС (NextGenerationEU) по Механизъм за възстановяване и устойчивост в изпълнение на инвестиция C2I2: “Повишаване на иновационния капацитет на Българската академия на науките (БАН) в сферата на зелените и цифровите технологии”.
+</p>
+                    <p>
+Членовете на научния екип на PRIDA гл. ас. д-р Аника Александрова и доц. д-р Тихомир Тянков представиха на форума доклад на тема „Development of a Pathologic Pregnancy Database for Retrieval of New Knowledge for Diagnostic Markers Identification“.  Презентирани бяха постиженията по проект PRIDA до момента. Бяха представени резултати, свързани със събиране, избор и систематизиране на ретроспективни и нови данни за клинични показатели и генетични мутации и включването им в интегрирана база данни, заедно с експериментално изследвани биофизични и реологични параметри на кръвни клетки при патологични бременности. Беше представено и разработването на дизайна на структурата на базата данни PRIDA и поетапното създаване на уеб-базирано приложение за достъп до базата данни, с демонстрирани възможности за анализ на връзките между отделните фактори, за оценка на риска за изследваните патологии и др.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Дясна колона - Картинки -->
+            <div class="col-md-7">
+                <div class="techpark-gallery">
+                    <a href="{% static 'images/blog/img1.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img1.jpg' %}" alt="София Тех Парк 1">
+                    </a>
+                    <a href="{% static 'images/blog/img2.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img2.jpg' %}" alt="София Тех Парк 2">
+                    </a>
+                    <a href="{% static 'images/blog/img3.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img3.jpg' %}" alt="София Тех Парк 3">
+                    </a>
+                    <a href="{% static 'images/blog/img4.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img4.jpg' %}" alt="София Тех Парк 4">
+                    </a>
+                    <a href="{% static 'images/blog/img5.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img5.jpg' %}" alt="София Тех Парк 5">
+                    </a>
+                    <a href="{% static 'images/blog/img6.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img6.jpg' %}" alt="София Тех Парк 6">
+                    </a>
+                    <a href="{% static 'images/blog/img7.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img7.jpg' %}" alt="София Тех Парк 7">
+                    </a>
+                    <a href="{% static 'images/blog/img8.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img8.jpg' %}" alt="София Тех Парк 8">
+                    </a>
+                    <a href="{% static 'images/blog/img9.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img9.jpg' %}" alt="София Тех Парк 9">
+                    </a>
+                    <a href="{% static 'images/blog/img10.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img10.jpg' %}" alt="София Тех Парк 10">
+                    </a>
+                    <a href="{% static 'images/blog/img11.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img11.jpg' %}" alt="София Тех Парк 11">
+                    </a>
+                    <a href="{% static 'images/blog/img12.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img12.jpg' %}" alt="София Тех Парк 12">
+                    </a>
+                    <a href="{% static 'images/blog/img13.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img13.jpg' %}" alt="София Тех Парк 13">
+                    </a>
+                    <a href="{% static 'images/blog/img14.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img14.jpg' %}" alt="София Тех Парк 14">
+                    </a>
+                    <a href="{% static 'images/blog/img15.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img15.jpg' %}" alt="София Тех Парк 15">
+                    </a>
+                    <a href="{% static 'images/blog/img16.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img16.jpg' %}" alt="София Тех Парк 16">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

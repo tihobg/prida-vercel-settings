@@ -1,0 +1,491 @@
+<!--<!DOCTYPE html>-->
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% csrf_token %}
+<!--            <div style="height: 500px; overflow-x:auto;">-->
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col">
+            <h1>PRIDA</h1>
+            <form method="post" action="{% url 'proba' %}">
+                {% csrf_DeleteTableAttackBread %}
+                <button class="btn btn-primary btn-lg">Table 1</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row mt-5">
+        <form method="post" action="{% url 'proba2' %}">
+            <table>
+            {% csrf_token %}
+                <tr>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="birth_year">Birth Year
+                    </td>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="age">Age
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="fvl_ng">FVL_ng
+                    </td>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="fvl_hetero">FVL_hetero
+                    </td>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="fvl_homo">FVL_homo
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="prothr_ng">PROTHR_ng
+                    </td>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="prothr_hetero">PROTHR_hetero
+                    </td>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="prothr_homo">PROTHR_homo
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="pai_ng">PAI_ng
+                    </td>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="pai_hetero">PAI_hetero
+                    </td>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="pai_homo">PAI_homo
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="mthfr_ng">MTHFR_ng
+                    </td>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="mthfr_hetero">MTHFR_hetero
+                    </td>
+                    <td>
+                        <input type="radio" name="prida_list_data" value="mthfr_homo">MTHFR_homo
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="center">
+                        <input type="text" name="start_line" value="1"> Start Line
+                        </div>
+                            <br>
+                        <div align="center">
+                        <input align="left" type="text" name="end_line" value="10"> End Line
+                        </div>
+                    </td>
+                    <td>
+                        <button name="submit" class="btn btn-primary btn-lg">Submit</button>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+
+<!--            <div class="container">-->
+                <table>
+                    <tr>
+                        {% for ch_box in prida_list %}
+                        <th scope="col">
+                            <div align="center">
+                                Параметър
+                            </div>
+                        </th>
+
+                        <th scope="col">
+                            <div align="center">
+                                Извадка (Брой редове)
+                                <br>
+                                Брой Събития
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div align="center">
+                                Брой Единици
+                                <br>
+                                Честота на мутации
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div align="center">
+                                Процентно съотношение (брой единици)
+                            </div>
+                        </th>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ prida_list_data }}
+                        </td>
+                        {% if prida_list_data == 'fvl_ng' %}
+                        <td>
+                            {{ count_all_fvl_ng_data }}
+                        </td>
+                        <td>
+                            {{ count_fvl_ng }}
+                        </td>
+                        <td>
+                            {{ fvl_1_ng_percent }}
+                        </td>
+
+                        {% elif prida_list_data == 'fvl_hetero' %}
+                        <td>
+                            {{ count_all_fvl_hetero_data }}
+                        </td>
+                        <td>
+                            {{ count_fvl_hetero }}
+                        </td>
+                        <td>
+                            {{ fvl_1_hetero_percent }}
+                        </td>
+
+                        {% elif prida_list_data == 'fvl_homo' %}
+                        <td>
+                            {{ count_all_fvl_homo_data }}
+                        </td>
+                        <td>
+                            {{ count_fvl_homo }}
+                        </td>
+                        <td>
+                            {{ fvl_1_homo_percent }}
+                        </td>
+
+                        {% elif prida_list_data == 'prothr_ng' %}
+                        <td>
+                            {{ count_all_prothr_ng_data }}
+                        </td>
+                        <td>
+                            {{ count_prothr_ng }}
+                        </td>
+                        <td>
+                            {{ prothr_1_ng_percent }}
+                        </td>
+
+                        {% elif prida_list_data == 'prothr_hetero' %}
+                        <td>
+                            {{ count_all_prothr_hetero_data }}
+                        </td>
+                        <td>
+                            {{ count_prothr_hetero }}
+                        </td>
+                        <td>
+                            {{ prothr_1_hetero_percent }}
+                        </td>
+
+                        {% elif prida_list_data == 'prothr_homo' %}
+                        <td>
+                            {{ count_all_prothr_homo_data }}
+                        </td>
+                        <td>
+                            {{ count_prothr_homo }}
+                        </td>
+                        <td>
+                            {{ prothr_1_homo_percent }}
+                        </td>
+
+                        {% elif prida_list_data == 'pai_ng' %}
+                        <td>
+                            {{ count_all_pai_ng_data }}
+                        </td>
+                        <td>
+                            {{ count_pai_ng }}
+                        </td>
+                        <td>
+                            {{ pai_1_ng_percent }}
+                        </td>
+
+                        {% elif prida_list_data == 'pai_hetero' %}
+                        <td>
+                            {{ count_all_pai_hetero_data }}
+                        </td>
+                        <td>
+                            {{ count_pai_hetero }}
+                        </td>
+                        <td>
+                            {{ pai_1_hetero_percent }}
+                        </td>
+
+                        {% elif prida_list_data == 'pai_homo' %}
+                        <td>
+                            {{ count_all_pai_homo_data }}
+                        </td>
+                        <td>
+                            {{ count_pai_homo }}
+                        </td>
+                        <td>
+                            {{ pai_1_homo_percent }}
+                        </td>
+
+                        {% elif prida_list_data == 'mthfr_ng' %}
+                        <td>
+                            {{ count_all_mthfr_ng_data }}
+                        </td>
+                        <td>
+                            {{ count_mthfr_ng }}
+                        </td>
+                        <td>
+                            {{ mthfr_1_ng_percent }}
+                        </td>
+
+                        {% elif prida_list_data == 'mthfr_hetero' %}
+                        <td>
+                            {{ count_all_mthfr_hetero_data }}
+                        </td>
+                        <td>
+                            {{ count_mthfr_hetero }}
+                        </td>
+                        <td>
+                            {{ mthfr_1_hetero_percent }}
+                        </td>
+
+                        {% elif prida_list_data == 'mthfr_homo' %}
+                        <td>
+                            {{ count_all_mthfr_homo_data }}
+                        </td>
+                        <td>
+                            {{ count_mthfr_homo }}
+                        </td>
+                        <td>
+                            {{ mthfr_1_homo_percent }}
+                        </td>
+                        {% endif %}
+
+
+
+                    </tr>
+                </table>
+<!--            </div>-->
+            <tr>
+            </tr>
+        </form>
+    </div>
+
+
+
+
+
+    <div class="row mt-5">
+        <form method="post" action="{% url 'proba2' %}">
+            {% csrf_token %}
+            <div style="height: 500px; overflow-x:auto;width: 1200px; overflow-y:auto;">
+                <table>
+                    <tr>
+                        <th>
+                            <div align="center">
+                                ID
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Code
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Birth Year
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Age
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Factor V Leiden
+                                <br>
+                                Normal Genotype
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Heterozygous
+                                <br>
+                                Factor V Leiden Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Homozygous
+                                <br>
+                                Factor V Leiden Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Factor II (Prothrombin)
+                                <br>
+                                Normal Genotype
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Factor II (Prothrombin)
+                                <br>
+                                Heterozygous Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                Factor II (Prothrombin)
+                                <br>
+                                Homozygous Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                PAI I
+                                <br>
+                                Normal Genotype
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                PAI I
+                                <br>
+                                Heterozygous Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                PAI I
+                                <br>
+                                Homozygous Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                MTHFR
+                                <br>
+                                Normal Genotype
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                MTHFR
+                                <br>
+                                Heterozygous Mutation
+                            </div>
+                        </th>
+                        <th>
+                            <div align="center">
+                                MTHFR
+                                <br>
+                                Homozygous Mutation
+                            </div>
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                    {% for pm in prida_mutations %}
+                    {% if not prida_mutations_form.instance.id %}
+                    <tr>
+                        <td>{{ pm.id }}</td>
+                        {% include 'save.html' %}
+                    </tr>
+
+
+                    <tr>
+                        {% elif prida_mutations_form.instance.id == pm.id %}
+                        <td>{{ pm.id }}</td>
+                        {% include 'save.html' %}
+
+                        {% else %}
+                        <td></td>
+                        <td>
+                        </td>
+                        <td>
+                        <td>{{ pm.id }}</td>
+                        <td>{{ pm.code }}</td>
+                        <td>{{ pm.birth_year }}</td>
+                        <td>{{ pm.age }}</td>
+
+                        <td>{{ pm.fvl_ng }}</td>
+                        <td>{{ pm.fvl_hetero }}</td>
+                        <td>{{ pm.fvl_homo }}</td>
+
+                        <td>{{ pm.prothr_ng }}</td>
+                        <td>{{ pm.prothr_hetero }}</td>
+                        <td>{{ pm.prothr_homo }}</td>
+
+                        <td>{{ pm.pai_ng }}</td>
+                        <td>{{ pm.pai_hetero }}</td>
+                        <td>{{ pm.pai_homo }}</td>
+
+                        <td>{{ pm.mthfr_ng }}</td>
+                        <td>{{ pm.mthfr_hetero }}</td>
+                        <td>{{ pm.mthfr_homo }}</td>
+
+                        <td>
+                            <button formnovalidate name="edit" value="{{ pm.id }}" class="btn btn-primary btn-lg">Edit</button>
+                            <button formnovalidate name="delete" value="{{ pm.id }}" class="btn btn-primary btn-lg">Delete</button>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+
+
+                </table>
+            </div>
+        </form>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <h1>Legend</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                0.0 - No Mutation
+            </td>
+        </tr>
+        <tr>
+            <td>
+                1.0 - Mutation
+            </td>
+        </tr>
+    </table>
+</div>
+<!--            </div>-->
+</body>
+<!--<h1>OMG!</h1>-->
+<!--    {% if messages %}-->
+<!--    {% for message in messages %}-->
+<!--    <div class="alert alert-{{ message.tags }}" role="alert">-->
+<!--        <p{% if message.tags %} class=""{% endif %}>{{ message }}</p>-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+<!--    {% endif %}-->
+<!--<table>-->
+<!--        {% csrf_token %}-->
+<!--&lt;!&ndash;        <form method="post" enctype="multipart/form-data">&ndash;&gt;-->
+<!--    <form method="post" action="{% url 'proba' %}">-->
+<!--                {% csrf_token %}-->
+<!--        <button type="submit">Upload</button>-->
+<!--        <tr>-->
+<!--            <th>Name</th>-->
+<!--            <th>Value</th>-->
+
+<!--        </tr>-->
+<!--            <h2>Please upload excel file</h2>-->
+
+<!--    </form>-->
+<!--</table>-->
+
+<!--</body>-->
+<!--</html>-->
+{% endblock %}
