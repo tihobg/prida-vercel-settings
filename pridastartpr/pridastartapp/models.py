@@ -79,7 +79,7 @@ class PridaMutations(models.Model):
     mthfr_hetero = models.CharField(max_length=3, null=True, blank=True)
     mthfr_homo = models.CharField(max_length=3, null=True, blank=True)
 
-    abort = models.CharField(max_length=1, null=True, blank=True)
+    abort = models.CharField(max_length=50, null=True, blank=True)
 
 class PridaMutations2(models.Model):
     # id = models.PositiveSmallIntegerField(default=0, primary_key=1)
@@ -102,7 +102,7 @@ class PridaMutations2(models.Model):
     mthfr_hetero = models.CharField(max_length=3, null=True, blank=True)
     mthfr_homo = models.CharField(max_length=3, null=True, blank=True)
 
-    abort = models.CharField(max_length=1, null=True, blank=True)
+    abort = models.CharField(max_length=50, null=True, blank=True)
 
 class PridaControli(models.Model):
     # id = models.PositiveSmallIntegerField(default=0, primary_key=1)
@@ -125,7 +125,7 @@ class PridaControli(models.Model):
     mthfr_hetero = models.CharField(max_length=3, null=True, blank=True)
     mthfr_homo = models.CharField(max_length=3, null=True, blank=True)
 
-    abort = models.CharField(max_length=1, null=True, blank=True)
+    abort = models.CharField(max_length=50, null=True, blank=True)
 
 class Person(models.Model):
     name = models.CharField(max_length=50)
