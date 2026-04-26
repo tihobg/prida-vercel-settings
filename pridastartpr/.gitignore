@@ -1,1 +1,3 @@
 ../pridastartapp/.env
+.vercel
+.env*.local
