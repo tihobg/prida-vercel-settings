@@ -20,7 +20,7 @@
             <h1>PRIDA</h1>
             <form method="post" action="{% url 'controli' %}">
                 {% csrf_token %}
-                <button class="btn btn-primary btn-lg">Table Controls</button>
+                <button class="btn btn-primary btn-lg">Таблица със Здрави Пациенти (Контроли)</button>
             </form>
         </div>
     </div>
@@ -84,7 +84,7 @@
             <table>
                 {% csrf_token %}
                 <tr>
-                    <th> <div align="center"> AGE-1 </div> </th>
+                    <th> <div align="center"> AGE </div> </th>
                     <th> <div align="center"> ABORTS </div></th>
                     <th> <div align="center"> Factor V Leiden </div> </th>
                     <th> <div align="center"> Factor II (Prothrombin) </div> </th>
@@ -163,24 +163,98 @@
                         MTHFR Homozygous Mutation
                     </td>
                 </tr>
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <div align="center">-->
+<!--                            <input type="text" name="start_line" value="1"> Start Line-->
+<!--                        </div>-->
+<!--                        <br>-->
+<!--                        <div align="center">-->
+<!--                            <input type="text" name="end_line" value="10"> End Line-->
+<!--                        </div>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <button name="submit" class="btn btn-primary btn-lg">Calculate Frequency Mutations</button>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">-->
+<!--                            Calculate Aborts Mutations-->
+<!--                        </button>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <form method="post" action="{% url 'proba1' %}">-->
+<!--                            {% csrf_token %}-->
+<!--                            <button name="btn_excel_extract" class="btn btn-primary btn-lg">-->
+<!--                                Export Data to Excel-->
+<!--                            </button>-->
+<!--                        </form>-->
+<!--                    </td>-->
+<!--                </tr>-->
+            </table>
+            <h1>Моля Въведете Брой Пациенти</h1>
+            <table>
                 <tr>
                     <td>
                         <div align="center">
-                            <input type="text" name="start_line" value="1"> Start Line
-                        </div>
-                        <br>
-                        <div align="center">
-                            <input type="text" name="end_line" value="10"> End Line
+                            <input type="text" name="start_line" value="1"> От Пациент
                         </div>
                     </td>
                     <td>
-                        <button name="submit" class="btn btn-primary btn-lg">Calculate Frequency Mutations</button>
+                        <div align="center">
+                            <input type="text" name="end_line" value="10"> До Пациент
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button name="submit" class="btn btn-primary btn-lg">Изчислете Пациенти с Мутации</button>
                     </td>
                     <td>
                         <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">
-                            Calculate Aborts Mutations
+                            Изчислете Пациенти с Мутации след Аборт
                         </button>
                     </td>
+                </tr>
+
+
+            </table>
+        </form>
+<!--        <table>-->
+<!--            <tr>-->
+
+
+<!--                <td>-->
+<!--                    <button name="submit" class="btn btn-primary btn-lg">Calculate Frequency Mutations</button>-->
+<!--                </td>-->
+
+<!--                    <td>-->
+<!--                        <button name="submit" class="btn btn-primary btn-lg">Calculate Frequency Mutations</button>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">-->
+<!--                            Calculate Aborts Mutations-->
+<!--                        </button>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <form method="post" action="{% url 'proba1' %}">-->
+<!--                            {% csrf_token %}-->
+<!--                            <button name="btn_excel_extract" class="btn btn-primary btn-lg">-->
+<!--                                Export Data to Excel-->
+<!--                            </button>-->
+<!--                        </form>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            <tr></tr>-->
+        </table>
+        <table>
+<!--            <td>-->
+<!--                        <button name="submit" class="btn btn-primary btn-lg">Calculate Frequency Mutations</button>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">-->
+<!--                            Calculate Aborts Mutations-->
+<!--                        </button>-->
+<!--                    </td>-->
                     <td>
                         <form method="post" action="{% url 'proba1' %}">
                             {% csrf_token %}
@@ -189,9 +263,7 @@
                             </button>
                         </form>
                     </td>
-                </tr>
-            </table>
-        </form>
+        </table>
         <table>
             <tr>
                 <td>
@@ -220,6 +292,7 @@
                 </td>
             </tr>
         </table>
+        <h1>Резултати за Разпределение на Пациенти след Аборти</h1>
 
             <table>
                 <tr>
@@ -504,7 +577,10 @@
 
                     </tr>
                 </table>
+        <h1>Резултати за Разпределение на Пациенти с Мутации</h1>
+
             <table>
+
                 <tr>
                     <th></th>
                     <th>
@@ -791,6 +867,7 @@
         <form method="post" action="{% url 'proba1' %}">
             {% csrf_token %}
             <div style="height: 500px; overflow-x:auto;width: 1200px; overflow-y:auto;">
+                <h1>Таблица с Пациенти</h1>
                 <table>
                     <tr>
                         <th>
@@ -946,7 +1023,7 @@
     <table>
         <tr>
             <td>
-                <h1>Legend</h1>
+                <h1>Легенда</h1>
             </td>
         </tr>
         <tr>
