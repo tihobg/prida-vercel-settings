@@ -85,6 +85,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'pridastartpr.wsgi.application'
+
 DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get('DATABASE_URL'),
@@ -98,7 +99,6 @@ DATABASES = {
 
 
 
-# DATABASES["default"] = dj_database_url.parse(config('DATABASE_URL'))
 
 # Password validation
 
