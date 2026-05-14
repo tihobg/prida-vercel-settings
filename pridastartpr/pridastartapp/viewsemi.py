@@ -3479,7 +3479,7 @@ def database_emi(request):
 
 
 def temporary_emi(request):
-    return render(request, 'temporary_emi.html')
+    return render(request, 'temporary_emi1.html')
 
 
 def correlation(request):
