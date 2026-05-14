@@ -2109,7 +2109,7 @@ def proba1(request):
     context3['prida_mutations_form'] = prida_mutations_form
     context3['st_line'] = start_line
 
-    return render(request, 'proba1.html', context3)
+    return render(request, 'proba1-eng.html', context3)
 
 
 #######################################################№№№№№№№№№№№№№№№№
@@ -2478,7 +2478,7 @@ def simple_upload(request):
 
         # if not new_person.name.endswith('xls'):
         #     messages.info(request, 'wrong format')
-        #     return render(request, 'proba1.html')
+        #     return render(request, 'proba1-eng.html')
         #
         # imported_data = dataset.load(new_person.read(),format='xls')
         # for data in imported_data:
@@ -2490,7 +2490,7 @@ def simple_upload(request):
         #     )
         #     value.save()
 
-    return render(request, 'proba1.html')
+    return render(request, 'proba1-eng.html')
 
 
 def generate_objects(request):

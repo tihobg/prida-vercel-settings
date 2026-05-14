@@ -46,17 +46,17 @@
                     </div>
                     <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
                         <ul>
-                            <li><a href="{% url 'home' %}">Начало</a></li>
-                            <li><a href="{% url 'about_us_emi' %}">За нас</a></li>
-                            <li><a href="{% url 'services_emi' %}">Дейности</a></li>
+                            <li><a href="{% url 'home' %}">Home (Начало)</a></li>
+                            <li><a href="{% url 'about_us_emi' %}">About Us (За нас)</a></li>
+                            <li><a href="{% url 'services_emi' %}">Activities (Дейности)</a></li>
 <!--                            <li><a href="{% url 'database_emi' %}">База данни</a></li>-->
-                            <li><a href="{% url 'news_emi' %}">Новини</a></li>
-                            <li><a href="{% url 'contact_us_emi' %}">Контакти</a></li>
-                            {% if user.is_authenticated %}
-                            <li><a href="{% url 'logout1' %}">Logout</a></li>
-                            {% else %}
-                            <li><a href="{% url 'login1' %}">Login</a></li>
-                            {% endif %}
+                            <li><a href="{% url 'news_emi' %}">News (Новини)</a></li>
+                            <li><a href="{% url 'contact_us_emi' %}">Contacts (Контакти)</a></li>
+<!--                            {% if user.is_authenticated %}-->
+<!--                            <li><a href="{% url 'logout1' %}">Logout</a></li>-->
+<!--                            {% else %}-->
+<!--                            <li><a href="{% url 'login1' %}">Login 1</a></li>-->
+<!--                            {% endif %}-->
 
 
                         </ul>
@@ -65,13 +65,13 @@
                        {% if user.is_authenticated %}
                        <div class="user-info">
                            <span class="navbar-text">{{ user.username }}</span>
-                           <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Изход</a>
+                           <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Logout</a>
 
                        </div>
                        {% else %}
                        <div class="auth-buttons">
-                           <a href="{% url 'login1' %}" class="btn btn-primary btn-sm">Вход</a>
-                           <a href="{% url 'register' %}" class="btn btn-success btn-sm">Регистрация</a>
+                           <a href="{% url 'login1' %}" class="btn btn-primary btn-sm">Login</a>
+                           <a href="{% url 'register' %}" class="btn btn-success btn-sm">Registration</a>
                        </div>
                        {% endif %}
                    </div>

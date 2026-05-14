@@ -3533,7 +3533,7 @@ def proba1(request):
     prida_abort_list = request.POST.getlist('abort')  ## Spisak s izbrani ot usera aborti
 
     start_line = request.POST.get('start_line')
-    end_line = request.POST.get('end_line')  ## Promenliva, poluchava vavedenata stoinost ot proba1.html
+    end_line = request.POST.get('end_line')  ## Promenliva, poluchava vavedenata stoinost ot proba1-eng.html
     list_name = (0, )
     list_age_0 = list_age[0]
     list_abort_0 = list_abort[0]
@@ -5082,7 +5082,7 @@ def proba1(request):
     save_nb_fields = 1
     context3['save_nb_fields'] = save_nb_fields
 
-    return render(request, 'proba1.html', context3)
+    return render(request, 'proba1-eng.html', context3)
 
 
 #######################################################№№№№№№№№№№№№№№№№
@@ -5449,7 +5449,7 @@ def simple_upload(request):
 
         # if not new_person.name.endswith('xls'):
         #     messages.info(request, 'wrong format')
-        #     return render(request, 'proba1.html')
+        #     return render(request, 'proba1-eng.html')
         #
         # imported_data = dataset.load(new_person.read(),format='xls')
         # for data in imported_data:
@@ -5461,7 +5461,7 @@ def simple_upload(request):
         #     )
         #     value.save()
 
-    return render(request, 'proba1.html')
+    return render(request, 'proba1-eng.html')
 
 
 def preeclampsia(request):
