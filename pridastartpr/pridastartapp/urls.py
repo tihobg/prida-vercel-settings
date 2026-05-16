@@ -10,6 +10,8 @@ urlpatterns = [
     path('database_emi/', viewsemi.database_emi, name='database_emi'),
     path('news_emi/', viewsemi.news_emi, name='news_emi'),
     path('contact_us_emi/', viewsemi.contact_us_emi, name='contact_us_emi'),
+    path('spontaneous_aborts/', viewsemi.spontaneous_aborts, name='spontaneous_aborts'),
+
     path('temporary_emi/', viewsemi.temporary_emi, name='temporary_emi'),
     path('bmql_emi/', viewsemi.bmql_emi, name='bmql_emi'),
     path('cellphysics_emi/', viewsemi.cellphysics_emi, name='cellphysics_emi'),
@@ -17,6 +19,7 @@ urlpatterns = [
     path('msystema_emi/', viewsemi.msystema_emi, name='msystema_emi'),
     path('biolic_emi/', viewsemi.biolic_emi, name='biolic_emi'),
     path('contact_us_emi/', viewsemi.contact_us_emi, name='contact_us_emi'),
+    path('new_patient/', viewsemi.new_patient, name='new_patient'),
 
     # path('', views.home, name='home'),
     path('preeclampsia1/', viewsemi.preeclampsia, name='preeclampsia1'),
