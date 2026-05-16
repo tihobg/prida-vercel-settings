@@ -5,6 +5,8 @@ from . import viewsemi
 urlpatterns = [
 
     path('', viewsemi.home, name='home'),
+    path('home_eng', viewsemi.home_eng, name='home_eng'),
+
     path('about_us_emi/', viewsemi.about_us_emi, name='about_us_emi'),
     path('services_emi/', viewsemi.services_emi, name='services_emi'),
     path('database_emi/', viewsemi.database_emi, name='database_emi'),

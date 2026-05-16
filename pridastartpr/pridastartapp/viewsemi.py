@@ -3427,6 +3427,9 @@ def index(request):
 def home(request):
     return render(request, 'homeemi.html')
 
+def home_eng(request):
+    return render(request, 'homeemi_eng.html')
+
 
 def about_us_emi(request):
     return render(request, 'about_us_emi.html')

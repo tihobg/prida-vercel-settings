@@ -37,64 +37,7 @@
                 </div>
             </div>
         </div>
-        <div id="nav-head" class="header-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
-                        <img src="{% static 'images/logo.jpg' %}" alt="Logo">
-                        <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
-                    </div>
-                    <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
-                        <ul>
-                            <li><a href="{% url 'home' %}">Home (Начало)</a></li>
-                            <li><a href="{% url 'about_us_emi' %}">About Us (За нас)</a></li>
-                            <li><a href="{% url 'services_emi' %}">Activities (Дейности)</a></li>
-<!--                            <li><a href="{% url 'database_emi' %}">База данни</a></li>-->
-                            <li><a href="{% url 'news_emi' %}">News (Новини)</a></li>
-                            <li><a href="{% url 'contact_us_emi' %}">Contacts (Контакти)</a></li>
-<!--                            {% if user.is_authenticated %}-->
-<!--                            <li><a href="{% url 'logout1' %}">Logout</a></li>-->
-<!--                            {% else %}-->
-<!--                            <li><a href="{% url 'login1' %}">Login 1</a></li>-->
-<!--                            {% endif %}-->
 
-
-                        </ul>
-                    </div>
-                    <div class="col-sm-2 d-none d-lg-block appoint">
-                       {% if user.is_authenticated %}
-                       <div class="user-info">
-                           <span class="navbar-text">{{ user.username }}</span>
-                           <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Logout</a>
-
-                       </div>
-                       {% else %}
-                       <div class="auth-buttons">
-                           <a href="{% url 'login1' %}" class="btn btn-primary btn-sm">Login</a>
-                           <a href="{% url 'register' %}" class="btn btn-success btn-sm">Registration</a>
-                       </div>
-                       {% endif %}
-                   </div>
-<!--                    <div class="col-sm-2 d-none d-lg-block appoint">-->
-<!--                        <button class="btn btn-info-register"><a href="{% url 'register' %}">Register</a></button>-->
-<!--                        <button class="btn btn-info-login"><a href="{% url 'login' %}">Login</a></button>-->
-<!--                    </div>-->
-<!--                    <div class="col-sm-2 d-none d-lg-block appoint">-->
-<!--                     {% if user.is_authenticated %}-->
-<!--                        <div class="user-info">-->
-<!--                            <span class="navbar-text">{{ user.username }}</span>-->
-<!--                        </div>-->
-<!--                        {% else %}-->
-<!--                        <div class="auth-buttons">-->
-<!--                            <a href="{% url 'login' %}" class="btn btn-primary btn-sm">Вход 1</a>-->
-<!--&lt;!&ndash;                            <a href="{% url 'register' %}" class="btn btn-success btn-sm">Регистрация</a>&ndash;&gt;-->
-<!--                        </div>-->
-<!--                        {% endif %}-->
-<!--                    </div>-->
-                </div>
-            </div>
-        </div>
-    </header>
     
     <!-- Page-Specific Content -->
     {% block content %}{% endblock %}
