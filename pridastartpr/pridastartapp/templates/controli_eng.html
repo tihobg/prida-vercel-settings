@@ -16,11 +16,11 @@
         <div class="user-info">
             <span class="navbar-text">{{ user.username }}</span>
 <!--        <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Изход</a>-->
-            <a href="{% url 'logout' %}" class="btn btn-primary btn-lg">Изход</a>
+            <a href="{% url 'logout_eng' %}" class="btn btn-primary btn-lg">Logout</a>
         </div>
         {% else %}
         <div class="auth-buttons">
-            <a href="{% url 'login1' %}" class="btn btn-primary btn-lg">Вход</a>
+            <a href="{% url 'login1' %}" class="btn btn-primary btn-lg">Login</a>
 <!--                           <a href="{% url 'register' %}" class="btn btn-success btn-sm">Регистрация</a>-->
         </div>
         {% endif %}
@@ -30,9 +30,9 @@
     <div class="row mt-4">
         <div class="col">
             <h1>PRIDA</h1>
-            <form method="post" action="{% url 'database_emi' %}">
+            <form method="post" action="{% url 'database_eng' %}">
                 {% csrf_token %}
-                <button class="btn btn-primary btn-lg">Назад</button>
+                <button class="btn btn-primary btn-lg">Back</button>
             </form>
         </div>
     </div>
@@ -45,7 +45,7 @@
             <table>
             {% csrf_token %}
                 <tr>
-                    <th> <div align="center"> Възраст </div> </th>
+                    <th> <div align="center"> Age </div> </th>
 <!--                    <th> <div align="center"> ABORTS </div></th>-->
                     <th> <div align="center"> Factor V Leiden </div> </th>
                     <th> <div align="center"> Factor II (Prothrombin) </div> </th>
@@ -56,7 +56,7 @@
                     <td>
 
                         <input type="radio" name="age" value="age1">
-                        <label>Възраст между 20 и 30 години</label>
+                        <label>Age between 20 and 30 years</label>
 
                     </td>
 
@@ -83,7 +83,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="radio" name="age" value="age2">Възраст между 31 и 40 години
+                        <input type="radio" name="age" value="age2">Age between 31 and 40 years
                     </td>
 <!--                    <td>-->
 <!--                        <input type="radio" name="abort" value="abort_2">2 Aborts-->
@@ -108,7 +108,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="radio" name="age" value="age3">Възраст между 41 и 50 години
+                        <input type="radio" name="age" value="age3">Age between 41 and 50 years
                     </td>
 <!--                    <td>-->
 <!--                        <input type="radio" name="abort" value="abort_3"> More than 2 Aborts-->
@@ -142,7 +142,7 @@
                         </div>
                     </td>
                     <td>
-                        <button name="submit" class="btn btn-primary btn-lg">Изчислете Броя Пациенти с Мутации</button>
+                        <button name="submit" class="btn btn-primary btn-lg">Calculate Nbr Patients with Mutations</button>
                     </td>
 <!--                    <td>-->
 <!--                        <button name="nbr_patients_selected_mutations" class="btn btn-primary btn-lg">-->
@@ -154,7 +154,7 @@
                         <form method="post" action="{% url 'calc_patients_more_mut_controli' %}">
                         {% csrf_token %}
                         <button name="btn_patients_more_mut_controli" class="btn btn-primary btn-lg">
-                            Резултати: Мутации 2
+                            Results: Mutations 2
                         </button>
                         </form>
                     </td>

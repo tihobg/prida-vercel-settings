@@ -7,10 +7,7 @@
 <!--    <link rel="stylesheet" href="style.css">-->
     <link rel="stylesheet" href="{% static 'css.css' %}">
     <title>Title</title>
-
-
 </head>
-<br/><br/><br/><br/><br/>
 <body>
 {% csrf_token %}
 <!--            <div style="height: 500px; overflow-x:auto;">-->
@@ -18,7 +15,7 @@
     <div class="row mt-4">
         <div class="col">
             <h1>PRIDA</h1>
-            <form method="post" action="{% url 'database_emi' %}">
+            <form method="post" action="{% url 'database_eng' %}">
                 {% csrf_token %}
                 <button class="btn btn-primary btn-lg">Back</button>
             </form>
@@ -168,7 +165,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <button name="submit" class="btn btn-primary btn-lg">Calculate Number of Patients with Mutations (Изчислете Пациенти с Мутации)</button>
+                        <button name="submit" class="btn btn-primary btn-lg">Calculate Number of Patients with
+                            Mutations</button>
                     </td>
                     <td>
                         <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">
@@ -258,28 +256,28 @@
             <table>
                 <tr>
                     <th>
-                        Patient Sample (Извадка пациенти)
+                        Patient Sample
                         <br>
                         [бр.]
                     </th>
                     <th>
-                        Age Limit (Възрастова граница)
+                        Age Limit
                     </th>
                     <th>
-                        Mutation Faktor (Фактор)
+                        Mutation Faktor
                     </th>
                     <th>
-                        Patients with 1 Abort (Пациенти с 1 аборт)
+                        Patients with 1 Abort
                         <br>
                         [бр. / %]
                     </th>
                     <th>
-                        Patients with 2 Aborts (Пациенти с 2 аборта)
+                        Patients with 2 Aborts
                         <br>
                         [бр. / %]
                     </th>
                     <th>
-                        Patients with > then 2 Aborts (Пациенти с > от 2 аборта)
+                        Patients with > then 2 Aborts
                         <br>
                         [бр. / %]
                     </th>
@@ -309,24 +307,24 @@
                     <tr>
                         <th>
                             <div align="center">
-                                Row Numbers Used (Извадка (Брой редове))
+                                Row Numbers Used
                                 <br>
-                                Брой Събития
+
                             </div>
                         </th>
                         <th>
                             <div align="center">
-                                Age (Възрастова граница)
+                                Age
                             </div>
                         </th>
                         <th scope="col">
                             <div align="center">
-                                Aborts (Брой Аборти)
+                                Aborts
                             </div>
                         </th>
                         <th>
                             <div align="center">
-                                Number of Patients (Брой Пациенти)
+                                Number of Patients
                             </div>
                         </th>
 
@@ -538,7 +536,7 @@
 
                     </tr>
                 </table>
-        <h1>Results for Distribution of Patients with Mutations! (Резултати за Разпределение на Пациенти с Мутации)</h1>
+        <h1>Results for Distribution of Patients with Mutations!</h1>
 
             <table>
 
@@ -825,7 +823,7 @@
     <div class="row mt-4">
 <!--        <div class="col">-->
             <div style="height: 270px; overflow-x:auto; width: 1200px; overflow-y:auto;">
-                <h1>Моля въведете данни за пациента1! (Please enter the Patient!)</h1>
+                <h1>Please Enter Data for New Patient!</h1>
                 <table>
                     <tr>
                         <th rowspan="2"><div align="center"> Name</div></th>
@@ -879,7 +877,7 @@
         <form method="post" action="{% url 'proba1' %}">
             {% csrf_token %}
             <div style="height: 500px; overflow-x:auto;width: 1200px; overflow-y:auto;">
-                <h1>Table with Patients (Таблица с Пациенти)</h1>
+                <h1>Table with Patients</h1>
                 <table>
                     <tr>
                         <th>
@@ -1035,7 +1033,7 @@
     <table>
         <tr>
             <td>
-                <h1>Legenda (Легенда)</h1>
+                <h1>Legenda</h1>
             </td>
         </tr>
         <tr>

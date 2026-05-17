@@ -4368,7 +4368,7 @@ def proba1(request):
     prida_abort_list = request.POST.getlist('abort')  ## Spisak s izbrani ot usera aborti
 
     start_line = request.POST.get('start_line')
-    end_line = request.POST.get('end_line')  ## Promenliva, poluchava vavedenata stoinost ot proba1-eng.html
+    end_line = request.POST.get('end_line')  ## Promenliva, poluchava vavedenata stoinost ot proba1_eng.html
 
     print('START LINE', start_line)
 
@@ -6108,7 +6108,7 @@ def proba1(request):
     context3['prida_mutations_form'] = prida_mutations_form
     context3['st_line'] = start_line
 
-    return render(request, 'proba1-eng.html', context3)
+    return render(request, 'proba1_eng.html', context3)
 
 
 #######################################################№№№№№№№№№№№№№№№№
@@ -6578,7 +6578,7 @@ def simple_upload(request):
 
         # if not new_person.name.endswith('xls'):
         #     messages.info(request, 'wrong format')
-        #     return render(request, 'proba1-eng.html')
+        #     return render(request, 'proba1_eng.html')
         #
         # imported_data = dataset.load(new_person.read(),format='xls')
         # for data in imported_data:
@@ -6590,7 +6590,7 @@ def simple_upload(request):
         #     )
         #     value.save()
 
-    return render(request, 'proba1-eng.html')
+    return render(request, 'proba1_eng.html')
 
 
 def generate_objects(request):

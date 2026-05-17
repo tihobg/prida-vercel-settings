@@ -10,6 +10,8 @@ urlpatterns = [
     path('about_us_emi/', viewsemi.about_us_emi, name='about_us_emi'),
     path('services_emi/', viewsemi.services_emi, name='services_emi'),
     path('database_emi/', viewsemi.database_emi, name='database_emi'),
+    path('database_eng/', viewsemi.database_eng, name='database_eng'),
+
     path('news_emi/', viewsemi.news_emi, name='news_emi'),
     path('contact_us_emi/', viewsemi.contact_us_emi, name='contact_us_emi'),
     path('spontaneous_aborts/', viewsemi.spontaneous_aborts, name='spontaneous_aborts'),
@@ -34,9 +36,11 @@ urlpatterns = [
     # path('contact_us/', views.contact_us, name='contact_us'),
     path('logout/', viewsemi.logout_view, name='logout'),
     path('logout1/', viewsemi.logout1, name='logout1'),
+    path('logout_eng/', viewsemi.logout_view_eng, name='logout_eng'),
 
     path('login/', viewsemi.login_view, name='login'),
     path('login1/', viewsemi.login1, name='login1'),
+    path('login_eng/', viewsemi.login_eng, name='login_eng'),
 
     path('test1/', viewsemi.test1, name='test'),
 
@@ -52,8 +56,12 @@ urlpatterns = [
     # path('users/correlation', views.correlation, name='correlation'),
     # path('proba/', views.proba, name='proba'),
     path('controli/', viewsemi.controli, name='controli'),
+    path('controli_eng/', viewsemi.controli_eng, name='controli_eng'),
+
     # # path('proba1/', views.simple_upload, name='proba1'),
     path('proba1/', viewsemi.proba1, name='proba1'),
+    path('proba1_eng/', viewsemi.proba1_eng, name='proba1_eng'),
+
     path('calc_patients_more_mut_p/', viewsemi.calc_patients_more_mut_p, name='calc_patients_more_mut_p'),
     path('calc_patients_more_mut_controli/', viewsemi.calc_patients_more_mut_controli, name='calc_patients_more_mut_controli'),
     # # path('preeclampsia1/', views.preeclampsia, name='preeclampsia'),

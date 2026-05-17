@@ -7,7 +7,7 @@
  Home Page
 {% endblock %}
 {% block content %}
-
+<header>
 <div id="nav-head" class="header-nav">
             <div class="container">
                 <div class="row">
@@ -43,8 +43,8 @@
                        </div>
                        {% else %}
                        <div class="auth-buttons">
-                           <a href="{% url 'login1' %}" class="btn btn-primary btn-sm">Login</a>
-                           <a href="{% url 'register' %}" class="btn btn-success btn-sm">Registration</a>
+                           <a href="{% url 'login_eng' %}" class="btn btn-primary btn-sm">Login</a>
+<!--                           <a href="{% url 'register' %}" class="btn btn-success btn-sm">Registration</a>-->
                        </div>
                        {% endif %}
                    </div>

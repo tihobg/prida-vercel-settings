@@ -13,22 +13,21 @@
         <div class="user-info">
             <span class="navbar-text">{{ user.username }}</span>
 <!--        <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Изход</a>-->
-            <a href="{% url 'logout' %}" class="btn btn-primary btn-lg">Изход</a>
+            <a href="{% url 'logout_eng' %}" class="btn btn-primary btn-lg">Logout</a>
         </div>
         {% else %}
         <div class="auth-buttons">
-            <a href="{% url 'login1' %}" class="btn btn-primary btn-lg">Вход</a>
+            <a href="{% url 'login_eng' %}" class="btn btn-primary btn-lg">Login</a>
 <!--                           <a href="{% url 'register' %}" class="btn btn-success btn-sm">Регистрация</a>-->
         </div>
         {% endif %}
     </div>
 </div>
 <!--    </header>-->
-
 <div class="page-nav no-margin row">
     <div class="container">
         <div class="row">
-            <h1>Таблици</h1>
+            <h1>Tables</h1>
             <ul>
 <!--                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>-->
 <!--                <li><i class="fas fa-angle-double-right"></i> Tables</li>-->
@@ -42,13 +41,13 @@
 <div class="db container">
     <div class="btn-group my-4">
          <button class="btn btn-info">
-            <a href="{% url 'controli' %}">Бременни контроли</a>
+            <a href="{% url 'controli_eng' %}">Pregnant controls</a>
         </button>
         <button class="btn btn-info">
-            <a href="{% url 'proba1' %}">Спонтанни аборти</a>
+            <a href="{% url 'proba1_eng' %}">Spontaneous Aborts</a>
         </button>
         <button class="btn btn-info">
-            <a href="{% url 'temporary_emi' %}">Прееклампсия</a>
+            <a href="{% url 'temporary_emi' %}">Preeclampsia</a>
         </button>
     </div>
    

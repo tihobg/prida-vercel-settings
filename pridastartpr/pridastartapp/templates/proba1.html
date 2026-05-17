@@ -13,69 +13,42 @@
 <br/><br/><br/><br/><br/>
 <body>
 {% csrf_token %}
-<!--            <div style="height: 500px; overflow-x:auto;">-->
+
 <div class="container">
     <div class="row mt-4">
         <div class="col">
             <h1>PRIDA</h1>
-            <form method="post" action="{% url 'controli' %}">
+            <form method="post" action="{% url 'database_emi' %}">
                 {% csrf_token %}
-                <button class="btn btn-primary btn-lg">Таблица със Здрави Пациенти (Контроли)</button>
+                <button class="btn btn-primary btn-lg">Назад</button>
             </form>
         </div>
     </div>
 </div>
 <div class="container">
     <div class="row mt-4">
-<!--        <div class="col">-->
-            <div style="height: 270px; overflow-x:auto; width: 1200px; overflow-y:auto;">
-                <h1>Моля въведете данни за пациента! (Please enter the Patient!)</h1>
-                <table>
-                    <tr>
-                        <th rowspan="2"><div align="center"> Name</div></th>
-                        <th rowspan="2"><div align="center">Age</div></th>
-                        <th rowspan="2"><div align="center">Aborts</div></th>
-                        <th colspan="2"><div align="center">FVL Mutation</div></th>
-                        <th colspan="2"><div align="center">Prothrombin Mutation</div> </th>
-                        <th colspan="2"><div align="center">PAI I</div> </th>
-                        <th colspan="2"><div align="center">MTHFR</div> </th>
-                        <th colspan="2"><div align="center">Action</div></th>
-                    </tr>
-                    <tr>
-                        <th>Hetero<br>zygous<br></th>
-                        <th>Homo<br>zygous<br></th>
-                        <th>Hetero<br>zygous<br></th>
-                        <th>Homo<br>zygous<br></th>
-                        <th>Hetero<br>zygous<br></th>
-                        <th>Homo<br>zygous<br></th>
-                        <th>Hetero<br>zygous<br></th>
-                        <th>Homo<br>zygous<br></th>
-                        <th></th>
-<!--                    </tr>-->
-<!--                        {% for pm in prida_mutations2 %}-->
-<!--&lt;!&ndash;                        <td></td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td>{{ pm }}</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td>{{ pm.abort }}</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td>{{ pm.fvl_hetero }}</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td>{{ pm.fvl_homo }}</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td>{{ pm.prothr_hetero }}</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td>{{ pm.prothr_homo }}</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td>{{ pm.pai_hetero }}</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td>{{ pm.pai_hetero }}</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td>{{ pm.mthfr_hetero }}</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td>{{ pm.mthfr_hetero }}</td>&ndash;&gt;-->
+        <div class="col">
 
-
-<!--                        {% endfor %}-->
-                        {% if not prida_mutations_form.instance.id %}
-                        <tr>
-                            {% include 'save.html' %}
-                        </tr>
-                        {% endif %}
-                    </table>
-                </div>
-            </div>
+            <form method="post" action="{% url 'new_patient' %}">
+                {% csrf_token %}
+                <button class="btn btn-primary btn-lg">Въведете Нов Пациент</button>
+            </form>
         </div>
+    </div>
+</div>
+<!--            <div style="height: 500px; overflow-x:auto;">-->
+<!--<div class="container">-->
+<!--    <div class="row mt-4">-->
+<!--        <div class="col">-->
+<!--            <h1>PRIDA</h1>-->
+<!--            <form method="post" action="{% url 'controli' %}">-->
+<!--                {% csrf_token %}-->
+<!--                <button class="btn btn-primary btn-lg">Таблица със Здрави Пациенти (Контроли)</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
     </div>
 <div class="container">
     <div class="row mt-5">
@@ -858,6 +831,58 @@
             </tr>
         </form>
     </div>
+
+    <div class="container">
+    <div class="row mt-4">
+<!--        <div class="col">-->
+            <div style="height: 270px; overflow-x:auto; width: 1200px; overflow-y:auto;">
+                <h1>Моля въведете данни за пациента!</h1>
+                <table>
+                    <tr>
+                        <th rowspan="2"><div align="center"> Name</div></th>
+                        <th rowspan="2"><div align="center">Age</div></th>
+                        <th rowspan="2"><div align="center">Aborts</div></th>
+                        <th colspan="2"><div align="center">FVL Mutation</div></th>
+                        <th colspan="2"><div align="center">Prothrombin Mutation</div> </th>
+                        <th colspan="2"><div align="center">PAI I</div> </th>
+                        <th colspan="2"><div align="center">MTHFR</div> </th>
+                        <th colspan="2"><div align="center">Action</div></th>
+                    </tr>
+                    <tr>
+                        <th>Hetero<br>zygous<br></th>
+                        <th>Homo<br>zygous<br></th>
+                        <th>Hetero<br>zygous<br></th>
+                        <th>Homo<br>zygous<br></th>
+                        <th>Hetero<br>zygous<br></th>
+                        <th>Homo<br>zygous<br></th>
+                        <th>Hetero<br>zygous<br></th>
+                        <th>Homo<br>zygous<br></th>
+                        <th></th>
+<!--                    </tr>-->
+<!--                        {% for pm in prida_mutations2 %}-->
+<!--&lt;!&ndash;                        <td></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.abort }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.fvl_hetero }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.fvl_homo }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.prothr_hetero }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.prothr_homo }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.pai_hetero }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.pai_hetero }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.mthfr_hetero }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>{{ pm.mthfr_hetero }}</td>&ndash;&gt;-->
+
+
+<!--                        {% endfor %}-->
+                        {% if not prida_mutations_form.instance.id %}
+                        <tr>
+                            {% include 'save.html' %}
+                        </tr>
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+        </div>
 
 
 

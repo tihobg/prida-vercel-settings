@@ -16,24 +16,24 @@
                 </div>
                 <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
                     <ul>
-                        <li><a href="{% url 'home' %}">Начало</a></li>
-                        <li><a href="{% url 'about_us_emi' %}">За нас</a></li>
-                        <li><a href="{% url 'services_emi' %}">Дейности</a></li>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'about_us_emi' %}">About Us</a></li>
+                        <li><a href="{% url 'services_emi' %}">Activities</a></li>
 <!--                <li><a href="{% url 'database_emi' %}">База данни</a></li>-->
-                        <li><a href="{% url 'news_emi' %}">Новини</a></li>
-                        <li><a href="{% url 'contact_us_emi' %}">Контакти</a></li>
-                        <li><a href="{% url 'home' %}">Английски</a></li>
+                        <li><a href="{% url 'news_emi' %}">News</a></li>
+                        <li><a href="{% url 'contact_us_emi' %}">Contacts</a></li>
+                        <li><a href="{% url 'home' %}">Bulgarian</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-2 d-none d-lg-block appoint">
                     {% if user.is_authenticated %}
                     <div class="user-info">
                         <span class="navbar-text">{{ user.username }}</span>
-                        <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Изход</a>
+                        <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Logout</a>
                     </div>
                     {% else %}
                     <div class="auth-buttons">
-                        <a href="{% url 'login1' %}" class="btn btn-primary btn-sm">Вход</a>
+                        <a href="{% url 'login_eng' %}" class="btn btn-primary btn-sm">Login</a>
                     </div>
                     {% endif %}
                 </div>
@@ -41,13 +41,16 @@
         </div>
     </div>
 </header>
+
+
+
 <div class="page-nav no-margin row">
     <div class="container">
         <div class="row">
-            <h2>Начало</h2>
+            <h2>Login</h2>
             <ul>
-                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
-                <li><i class="fas fa-angle-double-right"></i> Вход</li>
+                <li><a href="{% url 'home_eng' %}"><i class="fas fa-home"></i> Home</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Login</li>
             </ul>
         </div>
     </div>
@@ -69,17 +72,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <form method="POST" action="{% url 'login1' %}">
+                <form method="POST" action="{% url 'login_eng' %}">
                     {% csrf_token %}
                     <form>
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="username" placeholder="Въведете Потребителско Име">
+                            <input type="text" class="form-control" name="username" placeholder="Enter Your Username">
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control" name="password" placeholder="Въведете Парола">
+                            <input type="password" class="form-control" name="password" placeholder="Enter Your Password">
                         </div>
                         <br/><br/>
-                        <button type="submit" class="btn btn-secondary">Вход</button>
+                        <button type="submit" class="btn btn-secondary">Login</button>
                     </form>
                 </form>
             </div>
