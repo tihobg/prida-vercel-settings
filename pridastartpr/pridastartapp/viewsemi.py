@@ -3512,6 +3512,9 @@ def spontaneous_aborts(request):
 def temporary_emi(request):
     return render(request, 'temporary_emi.html')
 
+def temporary_eng(request):
+    return render(request, 'temporary_eng.html')
+
 
 def correlation(request):
     return render(request, 'correlation.html')

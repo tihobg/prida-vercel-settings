@@ -17,6 +17,8 @@ urlpatterns = [
     path('spontaneous_aborts/', viewsemi.spontaneous_aborts, name='spontaneous_aborts'),
 
     path('temporary_emi/', viewsemi.temporary_emi, name='temporary_emi'),
+    path('temporary_eng/', viewsemi.temporary_eng, name='temporary_eng'),
+
     path('bmql_emi/', viewsemi.bmql_emi, name='bmql_emi'),
     path('cellphysics_emi/', viewsemi.cellphysics_emi, name='cellphysics_emi'),
     path('techpark_emi/', viewsemi.techpark_emi, name='techpark_emi'),

@@ -1,6 +1,6 @@
 {% extends "base-emi.html" %}
 {% load static %}
-{% block title %}Под конструкция сега{% endblock %}
+{% block title %}Under Construction{% endblock %}
 {% block content %}
 <div class="container">
 <!--<div class="col-sm-2 d-none d-lg-block appoint">-->
@@ -9,11 +9,11 @@
         <div class="user-info">
             <span class="navbar-text">{{ user.username }}</span>
 <!--        <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Изход</a>-->
-            <a href="{% url 'logout' %}" class="btn btn-primary btn-lg">Изход</a>
+            <a href="{% url 'logout_eng' %}" class="btn btn-primary btn-lg">Logout</a>
         </div>
         {% else %}
         <div class="auth-buttons">
-            <a href="{% url 'login1' %}" class="btn btn-primary btn-lg">Вход</a>
+            <a href="{% url 'login1' %}" class="btn btn-primary btn-lg">Login</a>
 <!--                           <a href="{% url 'register' %}" class="btn btn-success btn-sm">Регистрация</a>-->
         </div>
         {% endif %}
@@ -23,9 +23,9 @@
     <div class="row mt-4">
         <div class="col">
             <h1>PRIDA</h1>
-            <form method="post" action="{% url 'database_emi' %}">
+            <form method="post" action="{% url 'database_eng' %}">
                 {% csrf_token %}
-                <button class="btn btn-primary btn-lg">Назад</button>
+                <button class="btn btn-primary btn-lg">Back</button>
             </form>
         </div>
     </div>
@@ -34,7 +34,7 @@
 <div class="page-nav no-margin row">
     <div class="container">
         <div class="row">
-            <h2>База данни</h2>
+            <h2>Database</h2>
 <!--            <ul>-->
 <!--                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>-->
 <!--                <li><i class="fas fa-angle-double-right"></i> База данни</li>-->
@@ -51,11 +51,11 @@
             <div class="col-md-8 text-center">
                 <div class="single-key" style="padding: 60px 40px; margin-top: 50px; margin-bottom: 100px;">
                     <i class="fas fa-tools" style="font-size: 80px; color: #00a8df; margin-bottom: 30px;"></i>
-                    <h2 style="color: #03509e; margin-bottom: 20px;">Страницата е в процес на разработка</h2>
+                    <h2 style="color: #03509e; margin-bottom: 20px;">The page is under construction</h2>
                     <p style="font-size: 18px; color: #6a6a6a; line-height: 1.8;">
-                        Работим усилено по създаването на тази база данни. 
+                        We are working hard to create this database.
                         <br>
-                        Моля, проверете отново скоро.
+                        Please check back soon.
                     </p>
 <!--                    <div style="margin-top: 40px;">-->
 <!--                        <a href="{% url 'home' %}" class="btn btn-info-register">-->
