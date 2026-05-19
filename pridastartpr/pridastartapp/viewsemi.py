@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from typing import Tuple
+import pandas as pd
 
 # from .forms import CustomRegistrationForm, LoginForm, PatientForm, ControlForm, AbortionForm
 # from .models import Patients
@@ -22,6 +23,7 @@ import matplotlib
 import io
 import base64
 import urllib
+from openpyxl import Workbook
 from bs4 import BeautifulSoup
 
 """ import pandas as pd
@@ -5319,7 +5321,7 @@ def proba1_eng(request):
                            data.pai_ng, data.pai_hetero, data.pai_homo,
                            data.mthfr_ng, data.mthfr_hetero, data.mthfr_homo])
 
-            wb.save('prida_mutations_excel.xlsx')
+            wb.save('prida_mutations_excel1.xlsx')
             print('Extract Data to Excel 2')
 
     # Control Button "Results: Mutations"

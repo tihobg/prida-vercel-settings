@@ -14,32 +14,29 @@
 <div class="container">
     <div class="row mt-4">
         <div class="col">
-            <h1>PRIDA</h1>
-            <form method="post" action="{% url 'database_eng' %}">
-                {% csrf_token %}
-                <button class="btn btn-primary btn-lg">Back</button>
-            </form>
+            <table>
+                <tr>
+                    <td>
+                        <h1>PRIDA</h1>
+                        <h2>Patients with Spontaneous  Miscarriages</h2>
+                    </td>
+                    <td>
+                        <form method="post" action="{% url 'database_eng' %}">
+                            {% csrf_token %}
+                            <button class="btn btn-primary btn-lg">Back</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row mt-4">
-        <div class="col">
-
-            <form method="post" action="{% url 'new_patient' %}">
-                {% csrf_token %}
-                <button class="btn btn-primary btn-lg">Enter New Patient</button>
-            </form>
-        </div>
-    </div>
-</div>
-
 
 <div class="container">
     <div class="row mt-5">
-        <form method="post" action="{% url 'proba1' %}">
-            <h1>Please enter the Age, Aborts, Mutations Factors!</h1>
-            <table>
+        <form method="post" action="{% url 'proba1_eng' %}">
+            <h1>Please enter the Age, Miscarriages, Mutations Factors!</h1>
+            <table id="table1">
                 {% csrf_token %}
                 <tr>
                     <th> <div align="center"> AGE </div> </th>
@@ -163,95 +160,20 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <button name="submit" class="btn btn-primary btn-lg">Calculate Number of Patients with
-                            Mutations</button>
-                    </td>
-                    <td>
-                        <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">
-                            Calculate Number of Patients with Mutations after Abort
-                        </button>
-                    </td>
-                </tr>
+
 
 
             </table>
-        </form>
-<!--        <table>-->
-<!--            <tr>-->
-
-
-<!--                <td>-->
-<!--                    <button name="submit" class="btn btn-primary btn-lg">Calculate Frequency Mutations</button>-->
-<!--                </td>-->
-
-<!--                    <td>-->
-<!--                        <button name="submit" class="btn btn-primary btn-lg">Calculate Frequency Mutations</button>-->
-<!--                    </td>-->
-<!--                    <td>-->
-<!--                        <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">-->
-<!--                            Calculate Aborts Mutations-->
-<!--                        </button>-->
-<!--                    </td>-->
-<!--                    <td>-->
-<!--                        <form method="post" action="{% url 'proba1' %}">-->
-<!--                            {% csrf_token %}-->
-<!--                            <button name="btn_excel_extract" class="btn btn-primary btn-lg">-->
-<!--                                Export Data to Excel-->
-<!--                            </button>-->
-<!--                        </form>-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--            <tr></tr>-->
-        </table>
-        <table>
-<!--            <td>-->
-<!--                        <button name="submit" class="btn btn-primary btn-lg">Calculate Frequency Mutations</button>-->
-<!--                    </td>-->
-<!--                    <td>-->
-<!--                        <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">-->
-<!--                            Calculate Aborts Mutations-->
-<!--                        </button>-->
-<!--                    </td>-->
-                    <td>
-                        <form method="post" action="{% url 'proba1' %}">
-                            {% csrf_token %}
-                            <button name="btn_excel_extract" class="btn btn-primary btn-lg">
-                                Export Data to Excel
-                            </button>
-                        </form>
-                    </td>
-        </table>
-        <table>
-            <tr>
-                <td>
-                    <form method="post" action="{% url 'conclusions' %}">
-                        {% csrf_token %}
-                        <button name="btn_conclusions" class="btn btn-primary btn-lg">
-                            Conclusions
+            <div class="container">
+                <div class="row mt-4">
+                    <div class="col">
+                        <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">
+                            Calculate Number of Patients <br>with Mutations after Miscarriages
                         </button>
-                    </form>
-                </td>
-                <td>
-                    <form method="post" action="{% url 'calc_patients_more_mut_p' %}">
-                        {% csrf_token %}
-                        <button name="btn_patients_more_mutations" class="btn btn-primary btn-lg">
-                            Results: Mutations
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    <form method="post" action="{% url 'preeclampsia1' %}">
-                        {% csrf_token %}
-                        <button name="btn_patients_more_mutations" class="btn btn-primary btn-lg">
-                            Results: Correlations
-                        </button>
-                    </form>
-                </td>
-            </tr>
-        </table>
-        <h1>Distribution Results of Patients after Abort</h1>
+                    </div>
+                </div>
+            </div>
+            <h1>Distribution Results of Patients after a Miscarriage</h1>
 
             <table>
                 <tr>
@@ -264,20 +186,20 @@
                         Age Limit
                     </th>
                     <th>
-                        Mutation Faktor
+                        Mutation Factor
                     </th>
                     <th>
-                        Patients with 1 Abort
+                        Patients with 1 Miscarriages
                         <br>
                         [бр. / %]
                     </th>
                     <th>
-                        Patients with 2 Aborts
+                        Patients with 2 Miscarriages
                         <br>
                         [бр. / %]
                     </th>
                     <th>
-                        Patients with > then 2 Aborts
+                        Patients with > then 2 Miscarriages
                         <br>
                         [бр. / %]
                     </th>
@@ -536,6 +458,110 @@
 
                     </tr>
                 </table>
+            <br><br>
+
+            <button name="btn_excel_extract1" class="btn btn-primary btn-lg" id="export_button2" onclick="myFunc()">
+                                Export Data to Excel2
+            </button>
+            <script type="text/javascript" src="{% static 'js/xlsx_ex.js' %}">
+            </script>
+        </div>
+<!--        <table>-->
+<!--            <tr>-->
+
+
+<!--                <td>-->
+<!--                    <button name="submit" class="btn btn-primary btn-lg">Calculate Frequency Mutations</button>-->
+<!--                </td>-->
+
+<!--                    <td>-->
+<!--                        <button name="submit" class="btn btn-primary btn-lg">Calculate Frequency Mutations</button>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">-->
+<!--                            Calculate Aborts Mutations-->
+<!--                        </button>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <form method="post" action="{% url 'proba1' %}">-->
+<!--                            {% csrf_token %}-->
+<!--                            <button name="btn_excel_extract" class="btn btn-primary btn-lg">-->
+<!--                                Export Data to Excel-->
+<!--                            </button>-->
+<!--                        </form>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            <tr></tr>-->
+        </table>
+        <table>
+            <td>
+                        <button name="submit" class="btn btn-primary btn-lg">Calculate Number of Patients with
+                            Mutations</button>
+                    </td>
+<!--            <td>-->
+<!--                        <button name="submit" class="btn btn-primary btn-lg">Calculate Frequency Mutations</button>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">-->
+<!--                            Calculate Aborts Mutations-->
+<!--                        </button>-->
+<!--                    </td>-->
+                    <td>
+                        <form method="post" action="{% url 'proba1_eng' %}">
+                            {% csrf_token %}
+                            <button name="btn_excel_extract" class="btn btn-primary btn-lg">
+                                Export Data to Excel
+                            </button>
+                            <button name="btn_excel_extract1" class="btn btn-primary btn-lg" id="export_button">
+                                Export Data to Excel1
+                            </button>
+<!--                            <script type="text/javascript" src="{% static 'js/xlsx_ex.js' %}">-->
+<!--                            </script>-->
+                        </form>
+                    </td>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <form method="post" action="{% url 'conclusions' %}">
+                        {% csrf_token %}
+                        <button name="btn_conclusions" class="btn btn-primary btn-lg">
+                            Conclusions
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="{% url 'calc_patients_more_mut_p' %}">
+                        {% csrf_token %}
+                        <button name="btn_patients_more_mutations" class="btn btn-primary btn-lg">
+                            Results: Mutations
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <div class="container">
+    <div class="row mt-4">
+        <div class="col">
+
+            <form method="post" action="{% url 'new_patient' %}">
+                {% csrf_token %}
+                <button class="btn btn-primary btn-lg">Enter New Patient</button>
+            </form>
+        </div>
+    </div>
+</div>
+                </td>
+                <td>
+                    <form method="post" action="{% url 'preeclampsia1' %}">
+                        {% csrf_token %}
+                        <button name="btn_patients_more_mutations" class="btn btn-primary btn-lg">
+                            Results: Correlations
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
         <h1>Results for Distribution of Patients with Mutations!</h1>
 
             <table>
@@ -1050,5 +1076,19 @@
 </div>
 <!--            </div>-->
 </body>
+<script>
+    function html_table_to_excel(type)
+    {
+        var data = document.getElementById('table1');
+        var file = XLSX.utils.table_to_book(data, sheet{sheet: "sheet1"});
+        XLSX.write(file, {bookType: type, bookSST: true, type: base64})
+        XLSX.writeFile(file, 'file.' + type)
+
+    }
+    const export_button = document.getElementById('export_button');
+    export_button.addEventListener('click', () => {
+        html_table_to_excel('xlsx');
+    });
+</script>
 
 {% endblock %}

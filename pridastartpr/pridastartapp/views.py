@@ -4497,7 +4497,7 @@ def proba1(request):
                            data.pai_ng, data.pai_hetero, data.pai_homo,
                            data.mthfr_ng, data.mthfr_hetero, data.mthfr_homo])
 
-            wb.save('prida_mutations_excel.xlsx')
+            wb.save('prida_mutations_excel1.xlsx')
             print('Extract Data to Excel 2')
 
     # Control Button "Results: Mutations"
