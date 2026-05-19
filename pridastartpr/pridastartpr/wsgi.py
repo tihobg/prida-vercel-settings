@@ -9,9 +9,26 @@ https://docs.djangoproject.com/en/5.1/howto/deployment/wsgi/
 
 import os
 
+# Configure matplotlib for serverless environment BEFORE any other imports
+os.environ['MPLCONFIGDIR'] = '/tmp/matplotlib'
+
+# Optionally pre-configure matplotlib
+try:
+    import matplotlib
+    matplotlib.use('Agg')
+except ImportError:
+    pass
+
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pridastartpr.settings')
 
 application = get_wsgi_application()
+
+
+
+
+
+
+
 
