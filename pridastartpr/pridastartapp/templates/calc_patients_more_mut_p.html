@@ -6,8 +6,27 @@
     <meta charset="UTF-8">
     <title>CalculateMoreMutations</title>
 </head>
-<br/><br/><br/><br/>
 <body>
+<div class="container">
+    <div class="row mt-4">
+        <div class="col">
+            <table>
+                <tr>
+                    <td>
+                        <h1>PRIDA</h1>
+                        <h2>Patients with Spontaneous  Miscarriages</h2>
+                    </td>
+                    <td>
+                        <form method="post" action="{% url 'database_eng' %}">
+                            {% csrf_token %}
+                            <button class="btn btn-primary btn-lg">Back</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row mt-5">
         <form method="post" action="{% url 'proba1' %}">
