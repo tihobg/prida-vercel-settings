@@ -21,6 +21,8 @@ urlpatterns = [
 
     path('bmql_emi/', viewsemi.bmql_emi, name='bmql_emi'),
     path('cellphysics_emi/', viewsemi.cellphysics_emi, name='cellphysics_emi'),
+    path('prida_publication_bg/', viewsemi.prida_publication_bg, name='prida_publication_bg'),
+
     path('techpark_emi/', viewsemi.techpark_emi, name='techpark_emi'),
     path('msystema_emi/', viewsemi.msystema_emi, name='msystema_emi'),
     path('biolic_emi/', viewsemi.biolic_emi, name='biolic_emi'),

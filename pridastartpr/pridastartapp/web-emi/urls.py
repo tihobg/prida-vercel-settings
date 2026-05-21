@@ -12,9 +12,10 @@ urlpatterns = [
     path('news/', views.news, name='news'),
     path('biolic/', views.biolic, name='biolic'),
     path('cellphysics/', views.cellphysics, name='cellphysics'),
+
     path('techpark/', views.techpark, name='techpark'),
     path('msystema/', views.msystema, name='msystema'),
-    path('bmql/', views.bmql, name='bmql'),
+    # path('bmql_emi/', views.bmql_emi, name='bmql_emi'),
     path('gallery/', views.gallery, name='gallery'),
     path('contact_us/', views.contact_us, name='contact_us'),
     path('logout/', views.logout_view, name='logout'),

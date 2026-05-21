@@ -1,0 +1,63 @@
+{% extends "base-emi.html" %}
+{% load static %}
+
+{% block title %}Научна презентация{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2>Публикуване на статия „Severity-Dependent Modulation of Red Blood Cell Aging Patterns in Preeclampsia:
+                Insights from Calorimetry and Atomic Force Microscopy“ </h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Презентация</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Posters Section ######## -->
+<section class="posters-section">
+    <div class="container">
+        <!-- Poster 1: Текст ВЛЯВО, Снимка ВДЯСНО -->
+        <div class="poster-item poster-reverse">
+              <div class="poster-image">
+                <a href="{% static 'images/blog/paper-publication.png' %}" target="_blank">
+                    <img src="{% static 'images/blog/paper-publication.png' %}" alt="Cell Physics Poster">
+                </a>
+            </div>
+            <div class="poster-text">
+                <h4>„Severity-Dependent Modulation of Red Blood Cell Aging Patterns in Preeclampsia:
+                Insights from Calorimetry and Atomic Force Microscopy“ (18.04.2026 г.)</h4>
+                <p>На 18.04.2026 г. в списание International Journal of Molecular Sciences беше публикувана статия на
+                    тема „Severity-Dependent Modulation of Red Blood Cell Aging Patterns in Preeclampsia: Insights
+                    from Calorimetry and Atomic Force Microscopy“ с авторски колектив Svetla Todinova, Velichka
+                    Strijkova, Ariana Langari, Ina Giosheva, Emil Gartchev, Vesela Katrova, Alexey Savov, Sashka
+                    Krumova, Tania Pencheva. Изследването е проведено във връзка с изпълнението на проект “Създаване
+                    на база данни за патологична бременност и извличане на нови знания с цел идентифициране на
+                    диагностични маркери“, финансиран от Европейски съюз чрез инструмента СледващоПоколениеЕС
+                    (NextGenerationEU) по Механизъм за възстановяване и устойчивост в изпълнение на инвестиция C2I2:
+                    Повишаване на иновационния капацитет на Българската академия на науките в сферата на зелените и
+                    цифровите технологии. Представените резултати разкриват важни детайли по отношение на структурните
+                    и наномеханични изменения в еритроцити при пациенти с прееклампсия в лека и тежка форма.
+                    риложението на биофизичните методи атомно-силова микроскопия и диференциална сканираща
+                    калориметрия, както и на статистическия подход на линейните смесени модели доведе до установяване
+                    на значително дестабилизиране на макрокомплекса между хемоглобин и ивица 3 белтъка, което е
+                    най-силно изразено при случаите на тежка прееклампсия. Представеният подход позволява
+                    идентифициране на ранни субклинични увреждания на еритроцити по време на бременността, които не
+                    биха могли да бъдат установени с рутинни хематологични тестове.</p>
+                <p>Публикация: Int. J. Mol. Sci. 2026, 27(8), 3633; https://doi.org/10.3390/ijms27083633
+</p>
+            </div>
+          
+        </div>
+
+        <!-- Poster 2: Снимка ВЛЯВО, Текст ВДЯСНО -->
+        
+    </div>
+</section>
+<!-- ######## Posters Section End ######## -->
+{% endblock %}
