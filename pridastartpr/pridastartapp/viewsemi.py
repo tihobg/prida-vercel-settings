@@ -4322,10 +4322,12 @@ def proba1(request):
             count_age1 = 0
             count_age2 = 0
             count_age3 = 0
+            count_age4 = 0
 
             index_array_age1 = []
             index_array_age2 = []
             index_array_age3 = []
+            index_array_age4 = []
 
             count_index_array_age = 0
 
@@ -4339,11 +4341,15 @@ def proba1(request):
                 elif 41 <= age[0] <= 50:
                     count_age3 = count_age3 + 1
                     index_array_age3.append(count_index_array_age)
+                count_age4 = count_age4 + 1
+                index_array_age4.append(count_index_array_age)
                 count_index_array_age = count_index_array_age + 1
+
 
             print(index_array_age1, 'OK Age1')
             print(index_array_age2, 'OK Age2')
             print(index_array_age3, 'OK Age3')
+            print(index_array_age4, 'OK Age4')
 
             for age in prida_age_list:
                 if age == 'age1':
@@ -5239,6 +5245,7 @@ def proba1_eng(request):
             index_array_age2 = create_age_array(sublist_age)[1]
             index_array_age3 = create_age_array(sublist_age)[2]
 
+
             create_array_age_and_age_interval_access_html(prida_age_list,
                                                           index_array_age1,
                                                           index_array_age2,
@@ -5914,10 +5921,14 @@ def proba1_eng(request):
             count_age1 = 0
             count_age2 = 0
             count_age3 = 0
+            count_age4 = 0
+
 
             index_array_age1 = []
             index_array_age2 = []
             index_array_age3 = []
+            index_array_age4 = []
+
 
             count_index_array_age = 0
 
@@ -5931,11 +5942,16 @@ def proba1_eng(request):
                 elif 41 <= age[0] <= 50:
                     count_age3 = count_age3 + 1
                     index_array_age3.append(count_index_array_age)
+                count_age4 = count_age4 + 1
+                index_array_age4.append(count_index_array_age)
                 count_index_array_age = count_index_array_age + 1
 
             print(index_array_age1, 'OK Age1')
             print(index_array_age2, 'OK Age2')
             print(index_array_age3, 'OK Age3')
+            print(index_array_age4, 'OK Age4')
+
+
 
             for age in prida_age_list:
                 if age == 'age1':
@@ -5947,16 +5963,23 @@ def proba1_eng(request):
                 elif age == 'age3':
                     context3['index_array_age'] = index_array_age3
                     context3['age_interval'] = age
+                elif age == 'age4':
+                    context3['index_array_age'] = index_array_age4
+                    context3['age_interval'] = age
 
-            # print(context3['index_array_age'], 'OK')
+            print('Conext3 Index', context3['index_array_age'])
 
             count_abort1 = 0
             count_abort2 = 0
             count_abort3 = 0
+            count_abort4 = 0
+
 
             index_array_abort1 = []
             index_array_abort2 = []
             index_array_abort3 = []
+            index_array_abort4 = []
+
 
             count_index_array_abort = 0
 
@@ -6024,7 +6047,7 @@ def proba1_eng(request):
             count_mthfr_ng = 0
             count_mthfr_hetero = 0
             count_mthfr_homo = 0
-            print(prida_list_data)
+            print('PRIDA LIST DATA', prida_list_data)
             for f in prida_list_data:
                 print(f, 'OK2')
                 if f == 'fvl_ng':
@@ -6095,10 +6118,11 @@ def proba1_eng(request):
                     else:
                         context3['mutations_age1_abort1_prothr_homo_percent'] = 0
                 elif f == 'pai_ng':
+                    print('F is:', f, context3['index_array_abort'])
                     for pai_ng in context3['index_array_abort']:
                         if sublist_pai_ng[pai_ng][0] == '1.0':
                             count_pai_ng = count_pai_ng + 1
-                    print(count_pai_ng, 'pai_ng')
+                    print('pai_ng', count_pai_ng)
                     if count_pai_ng > 0:
                         mutations_age1_abort1_pai_ng_percent = count_pai_ng / len(context3['index_array_abort']) * 100
                         context3['mutations_age1_abort1_pai_ng_percent'] = mutations_age1_abort1_pai_ng_percent
