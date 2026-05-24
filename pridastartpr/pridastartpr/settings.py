@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(BASE_DIR / '.env')  # Use explicit path
 
-print("DEBUG - DATABASE_URL:", os.environ.get('DATABASE_URL'))
+# print("DEBUG - DATABASE_URL:", os.environ.get('DATABASE_URL'))
 
 
 # Quick-start development settings - unsuitable for production
