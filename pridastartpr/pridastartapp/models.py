@@ -59,7 +59,7 @@ class Prida(models.Model):
 
 
 class PridaMutations(models.Model):
-    # id = models.PositiveSmallIntegerField(default=0, primary_key=1)
+    id = models.PositiveSmallIntegerField(default=0, primary_key=1)
     code = models.CharField(max_length=20)
     # birth_year = models.PositiveIntegerField(null=True, blank=True)
     age = models.PositiveIntegerField(null=True, blank=True)

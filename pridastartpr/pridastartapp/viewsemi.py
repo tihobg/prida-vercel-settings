@@ -5139,7 +5139,7 @@ def proba1_eng(request):
     context3 = {}
 
     prida_mutations = PridaMutations.objects.all()  ## Zarejda model PridaMutations ot models.py
-
+    print(f"Total records from Django: {prida_mutations.count()}")
     prida_mutations_form = PridaMutationsForm()  ## Zarejda form PridaMutationsForm ot forms.py
     list_age = PridaMutations.objects.values_list('age')  ## Promenliva - spisak sas stoinostite na colona "age"
     # print('PRIDA', list_age[slice(0, 2)])
