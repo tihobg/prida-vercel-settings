@@ -16,7 +16,9 @@ urlpatterns = [
     path('contact_us_emi/', viewsemi.contact_us_emi, name='contact_us_emi'),
     path('spontaneous_aborts/', viewsemi.spontaneous_aborts, name='spontaneous_aborts'),
 
-    path('temporary_emi/', viewsemi.temporary_emi, name='temporary_emi'),
+    path('preeclampsia/', viewsemi.preeclampsia, name='preeclampsia'),
+    path('preeclampsia_eng/', viewsemi.preeclampsia_eng, name='preeclampsia_eng'),
+
     path('temporary_eng/', viewsemi.temporary_eng, name='temporary_eng'),
 
     path('bmql_emi/', viewsemi.bmql_emi, name='bmql_emi'),

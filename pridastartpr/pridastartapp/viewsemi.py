@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import PreeclampsiaForm, PatientProbaForm, PridaMutationsForm, PridaControliForm, PridaControliForm2
-from .models import Patients, Person, PridaMutations, PridaControli
+from .forms import PridaPreeclampsiaForm, PreeclampsiaForm, PatientProbaForm, PridaMutationsForm, PridaControliForm, PridaControliForm2
+from .models import Patients, Person, PridaMutations, PridaControli, PridaPreeclampsia
 from .forms import RegisterForm, LoginForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -3522,6 +3522,9 @@ def spontaneous_aborts(request):
 
 def temporary_emi(request):
     return render(request, 'temporary_emi.html')
+
+def preeclampsia_eng(request):
+    return render(request, 'preeclampsia_eng.html')
 
 
 def temporary_eng(request):
@@ -7125,6 +7128,32 @@ def simple_upload(request):
 
 
 def preeclampsia(request):
+    context3 = {}
+
+    prida_mutations = PridaMutations.objects.all()  ## Zarejda model PridaMutations ot models.py
+
+    prida_mutations_form = PridaMutationsForm()  ## Zarejda form PridaMutationsForm ot forms.py
+
+    context3['prida_mutations'] = prida_mutations
+    context3['prida_mutations_form'] = prida_mutations_form
+
+    prida_preeclampsia = PridaPreeclampsia.objects.all()  ## Zarejda model PridaMutations ot models.py
+
+    prida_preeclampsia_form = PridaPreeclampsiaForm()  ## Zarejda form PridaMutationsForm ot forms.py
+
+    context3['prida_preeclampsia'] = prida_preeclampsia
+    context3['prida_preeclampsia_form'] = prida_preeclampsia_form
+
+    # prida_mutations = PridaMutations.objects.all()  ## Zarejda model PridaMutations ot models.py
+    #
+    # prida_mutations_form = PridaMutationsForm()  ## Zarejda form PridaMutationsForm ot forms.py
+    #
+    # context3['prida_mutations'] = prida_mutations
+    # context3['prida_mutations_form'] = prida_mutations_form
+    # context3['st_line'] = start_line
+    # save_nb_fields = 1
+    # context3['save_nb_fields'] = save_nb_fields
+
     # with open('login.html', 'r', encoding='utf-8') as file:
     #     html_cont = file.read()
     # all_tags = html_cont.find()
@@ -7202,7 +7231,7 @@ def preeclampsia(request):
 
     }
 
-    return render(request, 'preeclampsia1.html', context1)
+    return render(request, 'preeclampsia.html', context3)
 
 
 def correlation(request):

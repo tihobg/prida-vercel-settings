@@ -81,6 +81,53 @@ class PridaMutations(models.Model):
 
     abort = models.CharField(max_length=50, null=True, blank=True)
 
+
+class PridaPreeclampsia(models.Model):
+    # id = models.PositiveSmallIntegerField(default=0, primary_key=1)
+    patient = models.CharField(max_length=20)
+    age = models.PositiveIntegerField(null=True, blank=True)
+    sist_pressure = models.CharField(max_length=20, null=True, blank=True)
+    diasist_pressure = models.CharField(max_length=20, null=True, blank=True)
+    gw = models.CharField(max_length=20, null=True, blank=True)
+
+    weight = models.CharField(max_length=20, null=True, blank=True)
+    eai1 = models.CharField(max_length=20, null=True, blank=True)
+    nea1 = models.CharField(max_length=20, null=True, blank=True)
+
+    eai2 = models.CharField(max_length=20, null=True, blank=True)
+    nea2 = models.CharField(max_length=20, null=True, blank=True)
+    erythrocytes = models.CharField(max_length=20, null=True, blank=True)
+
+    hgb = models.CharField(max_length=20, null=True, blank=True)
+    hct = models.CharField(max_length=20, null=True, blank=True)
+    mcv = models.CharField(max_length=20, null=True, blank=True)
+
+    mch = models.CharField(max_length=20, null=True, blank=True)
+    mchc = models.CharField(max_length=20, null=True, blank=True)
+    rdw = models.CharField(max_length=20, null=True, blank=True)
+    prothrombin_time = models.CharField(max_length=20, null=True, blank=True)
+
+    prothrombin_time_percent = models.CharField(max_length=20, null=True, blank=True)
+    prothrombin_time_inr = models.CharField(max_length=20, null=True, blank=True)
+    plt = models.CharField(max_length=20, null=True, blank=True)
+
+    mpv = models.CharField(max_length=20, null=True, blank=True)
+    pct = models.CharField(max_length=20, null=True, blank=True)
+    pdw_percent = models.CharField(max_length=20, null=True, blank=True)
+
+    creatine_serum = models.CharField(max_length=20, null=True, blank=True)
+    total_protein_serum = models.CharField(max_length=20, null=True, blank=True)
+    albumin_serum = models.CharField(max_length=20, null=True, blank=True)
+
+    fibrinugen = models.CharField(max_length=20, null=True, blank=True)
+    crp = models.CharField(max_length=20, null=True, blank=True)
+    proetin_urine = models.CharField(max_length=20, null=True, blank=True)
+
+    asat = models.CharField(max_length=20, null=True, blank=True)
+    alat = models.CharField(max_length=20, null=True, blank=True)
+    mcv = models.CharField(max_length=20, null=True, blank=True)
+
+
 class PridaMutations2(models.Model):
     # id = models.PositiveSmallIntegerField(default=0, primary_key=1)
     code = models.CharField(max_length=20)
