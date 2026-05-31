@@ -15,7 +15,7 @@
                 <tr>
                     <td>
                         <h1>PRIDA</h1>
-                        <h2>Patients with Spontaneous  Miscarriages</h2>
+                        <h2>Patients with Mutations</h2>
                     </td>
                     <td>
                         <form method="post" action="{% url 'controli_eng' %}">
@@ -34,7 +34,7 @@
 <!--                {% csrf_token %}-->
 <!--                <button class="btn btn-primary btn-lg">BACK</button>-->
 <!--            </form>-->
-        <form method="post" action="{% url 'controli' %}">
+<!--        <form method="post" action="{% url 'controli_eng' %}">-->
             <table>
                 {% csrf_token %}
                 <caption>
@@ -42,52 +42,56 @@
                 </caption>
                 <thead>
                 <tr>
-                    <td bgcolor="gray"><b>Factor Type</b></td>
-                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 0 Miscarriages</b></td>
-                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 1 Miscarriage</b></td>
-                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 2 or more Miscarriages</b></td>
+                    <th><div align="center"><b>Factor Type</b></div></th>
+<!--                    <th bgcolor="gray" style="text-align: center; vertical-align: middle;">-->
+<!--                        <b>For Patients with 0 Miscarriages</b></th>-->
+<!--                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 1 Miscarriage</b></td>-->
+<!--                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 2 or more Miscarriages</b></td>-->
+                    <th><div align="center"><b>Number of Patients</b></div></th>
 
 
                 </tr>
                 <tr>
                     <td >Heterozygous Factor V Leiden Mutation</td>
                     <td >{{ fvl_hetero_mut }}</td>
-                    <td >{{ fvl_hetero_mut_1_abort }}</td>
-                    <td >{{ 2_3_aborts_fvl_hetero_mut }}</td>
+<!--                    <td >{{ fvl_hetero_mut_1_abort }}</td>-->
+<!--                    <td >{{ 2_3_aborts_fvl_hetero_mut }}</td>-->
                 </tr>
                 <tr>
                     <td >Homozygous Factor V Leiden Mutation</td>
                     <td >{{ fvl_homo_mut }}</td>
-                    <td >{{ fvl_homo_mut_1_abort }}</td>
-                    <td >{{ 2_3_aborts_fvl_homo_mut }}</td>
+<!--                    <td >{{ fvl_homo_mut_1_abort }}</td>-->
+<!--                    <td >{{ 2_3_aborts_fvl_homo_mut }}</td>-->
                 </tr>
                 <tr>
                     <td >Factor II (Prothrombin) Heterozygous Mutation</td>
                     <td >{{ prothr_hetero_mut }}</td>
-                    <td >{{ prothr_hetero_mut_1_abort }}</td>
-                    <td >{{ 2_3_aborts_prothr_hetero_mut }}</td>
-                </tr>
+
+<!--                    <td >{{ prothr_hetero_mut }}</td>-->
+<!--                    <td >{{ prothr_hetero_mut_1_abort }}</td>-->
+<!--                    <td >{{ 2_3_aborts_prothr_hetero_mut }}</td>-->
+<!--                </tr>-->
                 <tr>
                     <td >Factor II (Prothrombin) Homozygous Mutation</td>
                     <td >{{ prothr_homo_mut }}</td>
-                    <td >{{ prothr_homo_mut_1_abort }}</td>
-                    <td >{{ 2_3_aborts_prothr_homo_mut }}</td>
+<!--                    <td >{{ prothr_homo_mut_1_abort }}</td>-->
+<!--                    <td >{{ 2_3_aborts_prothr_homo_mut }}</td>-->
                 </tr>
                 <tr>
                     <td >Factor PAI I Homozygous Mutation</td>
                     <td >{{ pai_homo_mut }}</td>
-                    <td >{{ pai_homo_mut_1_abort }}</td>
-                    <td >{{ 2_3_aborts_pai_homo_mut }}</td>
+<!--                    <td >{{ pai_homo_mut_1_abort }}</td>-->
+<!--                    <td >{{ 2_3_aborts_pai_homo_mut }}</td>-->
                 </tr>
                 <tr>
                     <td >Factor MTHFR Homozygous Mutation</td>
                     <td >{{ mthfr_homo_mut }}</td>
-                    <td >{{ mthfr_homo_mut_1_abort }}</td>
-                    <td >{{ 2_3_aborts_mthfr_homo_mut }}</td>
+<!--                    <td >{{ mthfr_homo_mut_1_abort }}</td>-->
+<!--                    <td >{{ 2_3_aborts_mthfr_homo_mut }}</td>-->
                 </tr>
 
-                </thead>
-                <thead>
+<!--                </thead>-->
+<!--                <thead>-->
 
             </table>
             <table>
@@ -97,8 +101,8 @@
                 </caption>
                 <thead>
                 <tr>
-                    <td bgcolor="gray"><b>Factor Type</b></td>
-                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>Number of Patients</b></td>
+                    <th bgcolor="gray"><b>Factor Type</b></th>
+                    <th bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>Number of Patients</b></th>
 <!--                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 1 Abort</b></td>-->
 <!--                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 2 or more Aborts</b></td>-->
                 </tr>
@@ -281,7 +285,7 @@
                 </thead>
 
             </table>-->
-        </form>
+<!--        </form>-->
     </div>
 </div>
 </body>

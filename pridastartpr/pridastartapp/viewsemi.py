@@ -43,6 +43,7 @@ def calc_patients_more_mut_controli(request):
     prida_controli = PridaControli.objects.all()
 
     list_fvl_ng = PridaControli.objects.values_list('fvl_ng')
+    print('FVL NG', list_fvl_ng)
     list_fvl_hetero = PridaControli.objects.values_list('fvl_hetero')
     list_fvl_homo = PridaControli.objects.values_list('fvl_homo')
 
@@ -60,10 +61,10 @@ def calc_patients_more_mut_controli(request):
 
     list_abort = PridaControli.objects.values_list('abort')
     prida_age_list_controli = request.POST.getlist('age')  ## Spisak s izbrana ot usera vazrast
-    # print('CONTROLI1')
+    print('CONTROLI1')
     if request.method == 'POST':
         if 'btn_patients_more_mut_controli' in request.POST:
-            # print('CONTROLI2')
+            print('btn controli')
 
             ######################################################
             ### Heterozygous Factor V Leiden               #######
@@ -73,10 +74,14 @@ def calc_patients_more_mut_controli(request):
             c_cnt_fvl_hetero_prothr_hetero_mut = 0
             for fvl_hetero in range(len(list_fvl_hetero)):
 
-                if list_fvl_hetero[fvl_hetero][0] == list_prothr_hetero[fvl_hetero][0] == '1.0':
+                if (list_fvl_hetero[fvl_hetero][0] == list_prothr_hetero[fvl_hetero][0] == '1.0'
+                        or list_fvl_hetero[fvl_hetero][0] == list_prothr_hetero[fvl_hetero][0] == '1')\
+                        or (list_fvl_hetero[fvl_hetero][0] == '1.0' and list_prothr_hetero[fvl_hetero][0] == '1')\
+                        or (list_fvl_hetero[fvl_hetero][0] == '1' and list_prothr_hetero[fvl_hetero][0] == '1.0'):
                     c_cnt_fvl_hetero_prothr_hetero_mut = c_cnt_fvl_hetero_prothr_hetero_mut + 1
 
             context3['c_cnt_fvl_hetero_prothr_hetero_mut'] = c_cnt_fvl_hetero_prothr_hetero_mut
+            print('OK')
             ######################################################
             ### Heterozygous Factor V Leiden            ##########
             ### and PROTHROMBIN Homo Mutation           ##########
@@ -89,6 +94,7 @@ def calc_patients_more_mut_controli(request):
                     c_cnt_fvl_hetero_prothr_homo_mut = c_cnt_fvl_hetero_prothr_homo_mut + 1
 
             context3['c_cnt_fvl_hetero_prothr_homo_mut'] = c_cnt_fvl_hetero_prothr_homo_mut
+            print('OK')
 
             ######################################################
             ### Start Count Heterozygous Factor V       ##########
@@ -102,7 +108,7 @@ def calc_patients_more_mut_controli(request):
                     c_cnt_fvl_hetero_pai_homo_mut = c_cnt_fvl_hetero_pai_homo_mut + 1
 
             context3['c_cnt_fvl_hetero_pai_homo_mut'] = c_cnt_fvl_hetero_pai_homo_mut
-
+            print('OK')
             ######################################################
             ### Start Count Heterozygous Factor V       ##########
             ### Leiden and MTHFR Homo Mutation        ##########
@@ -115,7 +121,7 @@ def calc_patients_more_mut_controli(request):
                     c_cnt_fvl_hetero_mthfr_homo_mut = c_cnt_fvl_hetero_mthfr_homo_mut + 1
 
             context3['c_cnt_fvl_hetero_mthfr_homo_mut'] = c_cnt_fvl_hetero_mthfr_homo_mut
-
+            print('OK')
             # ######################################################
             # ### Start Count Homozygous Factor V         ##########
             # ### Leiden and Prothrombin Hetero Mutation  ##########
@@ -128,7 +134,7 @@ def calc_patients_more_mut_controli(request):
                     c_cnt_fvl_homo_prothr_hetero_mut = c_cnt_fvl_homo_prothr_hetero_mut + 1
 
             context3['c_cnt_fvl_homo_prothr_hetero_mut'] = c_cnt_fvl_homo_prothr_hetero_mut
-
+            print('OK')
             # ######################################################
             # ### Start Count Homozygous Factor V         ##########
             # ### Leiden and Prothrombin Homo Mutation    ##########
@@ -141,7 +147,7 @@ def calc_patients_more_mut_controli(request):
                     c_cnt_fvl_homo_prothr_homo_mut = c_cnt_fvl_homo_prothr_homo_mut + 1
 
             context3['c_cnt_fvl_homo_prothr_homo_mut'] = c_cnt_fvl_homo_prothr_homo_mut
-
+            print('OK')
             # ######################################################
             # ### Start Count Homozygous Factor V         ##########
             # ### Leiden and PAI I Homo Mutation          ##########
@@ -154,7 +160,7 @@ def calc_patients_more_mut_controli(request):
                     c_cnt_fvl_homo_pai_homo_mut = c_cnt_fvl_homo_pai_homo_mut + 1
 
             context3['c_cnt_fvl_homo_pai_homo_mut'] = c_cnt_fvl_homo_pai_homo_mut
-
+            print('OK')
             # ######################################################
             # ### Start Count Homozygous Factor V         ##########
             # ### Leiden and MTHFR Homo Mutation          ##########
@@ -167,7 +173,7 @@ def calc_patients_more_mut_controli(request):
                     c_cnt_fvl_homo_mthfr_homo_mut = c_cnt_fvl_homo_mthfr_homo_mut + 1
 
             context3['c_cnt_fvl_homo_mthfr_homo_mut'] = c_cnt_fvl_homo_mthfr_homo_mut
-
+            print('OK')
             # ######################################################
             # ### Start Count Heterozygous Prothrombin    ##########
             # ### and PAI I Homo Mutation                 ##########
@@ -180,7 +186,7 @@ def calc_patients_more_mut_controli(request):
                     c_cnt_prothr_hetero_pai_homo_mut = c_cnt_prothr_hetero_pai_homo_mut + 1
 
             context3['c_cnt_prothr_hetero_pai_homo_mut'] = c_cnt_prothr_hetero_pai_homo_mut
-
+            print('OK')
             # ######################################################
             # ### Start Count Heterozygous Prothrombin    ##########
             # ### and MTHFR Homo Mutation                 ##########
@@ -193,7 +199,7 @@ def calc_patients_more_mut_controli(request):
                     c_cnt_prothr_hetero_mthfr_homo_mut = c_cnt_prothr_hetero_mthfr_homo_mut + 1
 
             context3['c_cnt_prothr_hetero_mthfr_homo_mut'] = c_cnt_prothr_hetero_mthfr_homo_mut
-
+            print('OK')
             # ######################################################
             # ### Start Count Homozygous PAI I            ##########
             # ### and MTHFR Homo Mutation                 ##########
@@ -206,19 +212,20 @@ def calc_patients_more_mut_controli(request):
                     c_cnt_pai_homo_mthfr_homo_mut = c_cnt_pai_homo_mthfr_homo_mut + 1
 
             context3['c_cnt_pai_homo_mthfr_homo_mut'] = c_cnt_pai_homo_mthfr_homo_mut
-
-        if 'btn_patients_more_mutations' in request.POST:
-            print('UraUraUra')
-            print('Aborts List', list_abort)
-            print('List FVL', list_abort[3][0])
-
-            print('A 2 M1_0', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[0])
-            print('A 2 M1_1', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[1])
-            print('A 2 M1_2', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[2])
+            print('OK')
+        # if 'btn_patients_more_mutations' in request.POST:
+            # print('UraUraUra')
+            # print('Aborts List', list_abort)
+            # print('List FVL', list_abort[3][0])
+            #
+            # print('A 2 M1_0', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[0])
+            # print('A 2 M1_1', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[1])
+            # print('A 2 M1_2', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[2])
 
             # print('1 A 2 M1 ', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[0])
             context3['cnt_fvl_hetero_pr_hetero_abort_0_c'] = \
                 mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[0]
+            print('OK 1')
 
             # print('MORE A 2 M1 ', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[1])
             # context3['cnt_fvl_hetero_pr_hetero_abort_1_c'] = mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[1]
@@ -244,9 +251,9 @@ def calc_patients_more_mut_controli(request):
             # print('FVL Hetero and PROTHR Homo Mutations for Patients with 1 Abort are:')
             # print(cnt_fvl_hetero_prothr_homo_mut_abort1)
 
-            print('A 2 M2_0', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_homo)[0])
-            print('A 2 M2_1', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_homo)[1])
-            print('A 2 M2_2', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_homo)[2])
+            # print('A 2 M2_0', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_homo)[0])
+            # print('A 2 M2_1', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_homo)[1])
+            # print('A 2 M2_2', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_homo)[2])
 
             # print('1 A 2 M2 ', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_homo)[0])
             context3['cnt_fvl_hetero_pr_homo_abort_0_c'] = \
@@ -276,9 +283,9 @@ def calc_patients_more_mut_controli(request):
             # print('FVL Hetero and PAI I Homo Mutations for Patients with 1 Abort are:')
             # print(cnt_fvl_hetero_pai_homo_mut_abort1)
 
-            print('A 2 M3_0', mutations_2_abort(list_abort, list_fvl_hetero, list_pai_homo)[0])
-            print('A 2 M3_1', mutations_2_abort(list_abort, list_fvl_hetero, list_pai_homo)[1])
-            print('A 2 M3_2', mutations_2_abort(list_abort, list_fvl_hetero, list_pai_homo)[2])
+            # print('A 2 M3_0', mutations_2_abort(list_abort, list_fvl_hetero, list_pai_homo)[0])
+            # print('A 2 M3_1', mutations_2_abort(list_abort, list_fvl_hetero, list_pai_homo)[1])
+            # print('A 2 M3_2', mutations_2_abort(list_abort, list_fvl_hetero, list_pai_homo)[2])
 
             # print('1 A 2 M3 ', mutations_2_abort(list_abort, list_fvl_hetero, list_pai_homo)[0])
             context3['cnt_fvl_hetero_pai_homo_abort_0_c'] = \
@@ -308,9 +315,9 @@ def calc_patients_more_mut_controli(request):
             # print('FVL Hetero and MTHFR Homo Mutations for Patients with 1 Abort are:')
             # print(cnt_fvl_hetero_mthfr_homo_mut_abort1)
 
-            print('A 2 M4_0', mutations_2_abort(list_abort, list_fvl_hetero, list_mthfr_homo)[0])
-            print('A 2 M4_1', mutations_2_abort(list_abort, list_fvl_hetero, list_mthfr_homo)[1])
-            print('A 2 M4_2', mutations_2_abort(list_abort, list_fvl_hetero, list_mthfr_homo)[2])
+            # print('A 2 M4_0', mutations_2_abort(list_abort, list_fvl_hetero, list_mthfr_homo)[0])
+            # print('A 2 M4_1', mutations_2_abort(list_abort, list_fvl_hetero, list_mthfr_homo)[1])
+            # print('A 2 M4_2', mutations_2_abort(list_abort, list_fvl_hetero, list_mthfr_homo)[2])
 
             # print('1 A 2 M4 ', mutations_2_abort(list_abort, list_fvl_hetero, list_mthfr_homo)[0])
             context3['cnt_fvl_hetero_mthfr_homo_abort_0_c'] = \
@@ -339,9 +346,9 @@ def calc_patients_more_mut_controli(request):
             # print('FVL Homo and Prothr Hetero Mutations for Patients with 1 Abort are:')
             # print(cnt_fvl_homo_prothr_hetero_mut_abort1)
 
-            print('A 2 M5_0', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_hetero)[0])
-            print('A 2 M5_1', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_hetero)[1])
-            print('A 2 M5_2', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_hetero)[2])
+            # print('A 2 M5_0', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_hetero)[0])
+            # print('A 2 M5_1', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_hetero)[1])
+            # print('A 2 M5_2', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_hetero)[2])
 
             # print('1 A 2 M5 ', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_hetero)[0])
             context3['cnt_fvl_homo_prothr_hetero_abort_0_c'] = \
@@ -370,9 +377,9 @@ def calc_patients_more_mut_controli(request):
             # print('FVL Homo and Prothr Homo Mutations for Patients with 1 Abort are:')
             # print(cnt_fvl_homo_prothr_homo_mut_abort1)
 
-            print('A 2 M6_0', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_homo)[0])
-            print('A 2 M6_1', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_homo)[1])
-            print('A 2 M6_2', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_homo)[2])
+            # print('A 2 M6_0', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_homo)[0])
+            # print('A 2 M6_1', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_homo)[1])
+            # print('A 2 M6_2', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_homo)[2])
 
             # print('1 A 2 M6 ', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_homo)[0])
             context3['cnt_fvl_homo_prothr_homo_abort_0_c'] = \
@@ -401,9 +408,9 @@ def calc_patients_more_mut_controli(request):
             # print('FVL Homo and PAI I Homo Mutations for Patients with 1 Abort are:')
             # print(cnt_fvl_homo_pai_homo_mut_abort1)
 
-            print('A 2 M7_0', mutations_2_abort(list_abort, list_fvl_homo, list_pai_homo)[0])
-            print('A 2 M7_1', mutations_2_abort(list_abort, list_fvl_homo, list_pai_homo)[1])
-            print('A 2 M7_2', mutations_2_abort(list_abort, list_fvl_homo, list_pai_homo)[2])
+            # print('A 2 M7_0', mutations_2_abort(list_abort, list_fvl_homo, list_pai_homo)[0])
+            # print('A 2 M7_1', mutations_2_abort(list_abort, list_fvl_homo, list_pai_homo)[1])
+            # print('A 2 M7_2', mutations_2_abort(list_abort, list_fvl_homo, list_pai_homo)[2])
 
             # print('1 A 2 M7 ', mutations_2_abort(list_abort, list_fvl_homo, list_pai_homo)[0])
             context3['cnt_fvl_homo_pai_homo_abort_0_c'] = mutations_2_abort(list_abort, list_fvl_homo, list_pai_homo)[0]
@@ -431,9 +438,9 @@ def calc_patients_more_mut_controli(request):
             # print('FVL Homo and MTHFR Homo Mutations for Patients with 1 Abort are:')
             # print(cnt_fvl_homo_mthfr_homo_mut_abort1)
 
-            print('A 2 M8_0', mutations_2_abort(list_abort, list_fvl_homo, list_mthfr_homo)[0])
-            print('A 2 M8_1', mutations_2_abort(list_abort, list_fvl_homo, list_mthfr_homo)[1])
-            print('A 2 M8_2', mutations_2_abort(list_abort, list_fvl_homo, list_mthfr_homo)[2])
+            # print('A 2 M8_0', mutations_2_abort(list_abort, list_fvl_homo, list_mthfr_homo)[0])
+            # print('A 2 M8_1', mutations_2_abort(list_abort, list_fvl_homo, list_mthfr_homo)[1])
+            # print('A 2 M8_2', mutations_2_abort(list_abort, list_fvl_homo, list_mthfr_homo)[2])
 
             # print('1 A 2 M8 ', mutations_2_abort(list_abort, list_fvl_homo, list_mthfr_homo)[0])
             context3['cnt_fvl_homo_mrhfr_homo_abort_0_c'] = \
@@ -476,9 +483,9 @@ def calc_patients_more_mut_controli(request):
 
             # print('Prothrombin Hetero and PAI I Homo Mutations for Patients with 1 Abort are:')
             # print(cnt_prothr_hetero_pai_homo_mut_abort1)
-            print('A 2 M9_0', mutations_2_abort(list_abort, list_prothr_hetero, list_pai_homo)[0])
-            print('A 2 M9_1', mutations_2_abort(list_abort, list_prothr_hetero, list_pai_homo)[1])
-            print('A 2 M9_2', mutations_2_abort(list_abort, list_prothr_hetero, list_pai_homo)[2])
+            # print('A 2 M9_0', mutations_2_abort(list_abort, list_prothr_hetero, list_pai_homo)[0])
+            # print('A 2 M9_1', mutations_2_abort(list_abort, list_prothr_hetero, list_pai_homo)[1])
+            # print('A 2 M9_2', mutations_2_abort(list_abort, list_prothr_hetero, list_pai_homo)[2])
 
             # print('1 A 2 M9 ', mutations_2_abort(list_abort, list_prothr_hetero, list_pai_homo)[0])
             context3['cnt_prothr_hetero_pai_homo_abort_0_c'] = mutations_2_abort(list_abort,
@@ -534,9 +541,9 @@ def calc_patients_more_mut_controli(request):
             # print('Prothrombin Hetero and MTHFR Homo Mutations for Patients with 1 Abort are:')
             # print(cnt_prothr_hetero_mthfr_homo_mut_abort1)
 
-            print('A 2 M10_0', mutations_2_abort(list_abort, list_prothr_hetero, list_mthfr_homo)[0])
-            print('A 2 M10_1', mutations_2_abort(list_abort, list_prothr_hetero, list_mthfr_homo)[1])
-            print('A 2 M10_2', mutations_2_abort(list_abort, list_prothr_hetero, list_mthfr_homo)[2])
+            # print('A 2 M10_0', mutations_2_abort(list_abort, list_prothr_hetero, list_mthfr_homo)[0])
+            # print('A 2 M10_1', mutations_2_abort(list_abort, list_prothr_hetero, list_mthfr_homo)[1])
+            # print('A 2 M10_2', mutations_2_abort(list_abort, list_prothr_hetero, list_mthfr_homo)[2])
 
             context3['cnt_prothr_hetero_mthfr_homo_abort_0_c'] = mutations_2_abort(list_abort,
                                                                                    list_prothr_hetero,
@@ -567,9 +574,9 @@ def calc_patients_more_mut_controli(request):
             # print('PAI I Homo and MTHFR Homo Mutations for Patients with 1 Abort are:')
             # print(cnt_pai_homo_mthfr_homo_mut_abort1)
 
-            print('A 2 M11_0', mutations_2_abort(list_abort, list_pai_homo, list_mthfr_homo)[0])
-            print('A 2 M11_1', mutations_2_abort(list_abort, list_pai_homo, list_mthfr_homo)[1])
-            print('A 2 M11_2', mutations_2_abort(list_abort, list_pai_homo, list_mthfr_homo)[2])
+            # print('A 2 M11_0', mutations_2_abort(list_abort, list_pai_homo, list_mthfr_homo)[0])
+            # print('A 2 M11_1', mutations_2_abort(list_abort, list_pai_homo, list_mthfr_homo)[1])
+            # print('A 2 M11_2', mutations_2_abort(list_abort, list_pai_homo, list_mthfr_homo)[2])
 
             # print('1 A 2 M11', mutations_2_abort(list_abort, list_pai_homo, list_mthfr_homo)[0])
             context3['cnt_pai_homo_mthfr_homo_abort_0_c'] = mutations_2_abort(list_abort, list_pai_homo,
@@ -583,87 +590,87 @@ def calc_patients_more_mut_controli(request):
             ### Start Count Heterozygous Factor V       ##########
             ### Leiden Mutation for 1 Abort             ##########
             ######################################################
-            cnt_fvl_hetero_mut_1_abort = 0
-            for in_fvl_hetero_abort_1 in range(len(list_abort)):
-                if ((list_abort[in_fvl_hetero_abort_1][0] == '1.0') and
-                        list_fvl_hetero[in_fvl_hetero_abort_1][0] == '1.0'):
-                    cnt_fvl_hetero_mut_1_abort = cnt_fvl_hetero_mut_1_abort + 1
-            print('FVL Hetero Mutations for 1 abort:', cnt_fvl_hetero_mut_1_abort)
+            # cnt_fvl_hetero_mut_1_abort = 0
+            # for in_fvl_hetero_abort_1 in range(len(list_abort)):
+            #     if ((list_abort[in_fvl_hetero_abort_1][0] == '1.0') and
+            #             list_fvl_hetero[in_fvl_hetero_abort_1][0] == '1.0'):
+            #         cnt_fvl_hetero_mut_1_abort = cnt_fvl_hetero_mut_1_abort + 1
+            # print('FVL Hetero Mutations for 1 abort:', cnt_fvl_hetero_mut_1_abort)
 
             ######################################################
             ### Start Count Homozygous Factor V         ##########
             ### Leiden Mutation for 1 Abort             ##########
             ######################################################
-            cnt_fvl_homo_mut_1_abort = 0
-            for in_fvl_homo_abort_1 in range(len(list_abort)):
-                if ((list_abort[in_fvl_homo_abort_1][0] == '1.0') and
-                        list_fvl_homo[in_fvl_homo_abort_1][0] == '1.0'):
-                    cnt_fvl_homo_mut_1_abort = cnt_fvl_homo_mut_1_abort + 1
-            print('FVL Homo Mutations for 1 abort:', cnt_fvl_homo_mut_1_abort)
+            # cnt_fvl_homo_mut_1_abort = 0
+            # for in_fvl_homo_abort_1 in range(len(list_abort)):
+            #     if ((list_abort[in_fvl_homo_abort_1][0] == '1.0') and
+            #             list_fvl_homo[in_fvl_homo_abort_1][0] == '1.0'):
+            #         cnt_fvl_homo_mut_1_abort = cnt_fvl_homo_mut_1_abort + 1
+            # print('FVL Homo Mutations for 1 abort:', cnt_fvl_homo_mut_1_abort)
 
             ######################################################
             ### Start Count Factor II(Prothrombin)            ####
             ### Heterozygous Mutation for 1 Abort             ####
             ######################################################
-            cnt_prothr_hetero_mut_1_abort = 0
-            for in_prothr_hetero_abort_1 in range(len(list_abort)):
-                if ((list_abort[in_prothr_hetero_abort_1][0] == '1.0') and
-                        list_prothr_hetero[in_prothr_hetero_abort_1][0] == '1.0'):
-                    cnt_prothr_hetero_mut_1_abort = cnt_prothr_hetero_mut_1_abort + 1
-            print('FVL Hetero Mutations for 1 abort:', cnt_prothr_hetero_mut_1_abort)
+            # cnt_prothr_hetero_mut_1_abort = 0
+            # for in_prothr_hetero_abort_1 in range(len(list_abort)):
+            #     if ((list_abort[in_prothr_hetero_abort_1][0] == '1.0') and
+            #             list_prothr_hetero[in_prothr_hetero_abort_1][0] == '1.0'):
+            #         cnt_prothr_hetero_mut_1_abort = cnt_prothr_hetero_mut_1_abort + 1
+            # print('FVL Hetero Mutations for 1 abort:', cnt_prothr_hetero_mut_1_abort)
 
             ######################################################
             ### Start Count Factor II(Prothrombin)            ####
             ### Homozygous Mutation for 1 Abort               ####
             ######################################################
-            cnt_prothr_homo_mut_1_abort = 0
-            for in_prothr_homo_abort_1 in range(len(list_abort)):
-                if ((list_abort[in_prothr_homo_abort_1][0] == '1.0') and
-                        list_prothr_homo[in_prothr_homo_abort_1][0] == '1.0'):
-                    cnt_prothr_homo_mut_1_abort = cnt_prothr_homo_mut_1_abort + 1
-            print('PROTHR Homo Mutations for 1 abort:', cnt_prothr_homo_mut_1_abort)
+            # cnt_prothr_homo_mut_1_abort = 0
+            # for in_prothr_homo_abort_1 in range(len(list_abort)):
+            #     if ((list_abort[in_prothr_homo_abort_1][0] == '1.0') and
+            #             list_prothr_homo[in_prothr_homo_abort_1][0] == '1.0'):
+            #         cnt_prothr_homo_mut_1_abort = cnt_prothr_homo_mut_1_abort + 1
+            # print('PROTHR Homo Mutations for 1 abort:', cnt_prothr_homo_mut_1_abort)
 
             ######################################################
             ### Start Count Factor PAI I Homozigous           ####
             ### Mutation for 1 Abort                          ####
             ######################################################
-            cnt_pai_homo_mut_1_abort = 0
-            for in_pai_homo_abort_1 in range(len(list_abort)):
-                if ((list_abort[in_pai_homo_abort_1][0] == '1.0') and
-                        list_pai_homo[in_pai_homo_abort_1][0] == '1.0'):
-                    cnt_pai_homo_mut_1_abort = cnt_pai_homo_mut_1_abort + 1
-            print('PAI I Homo Mutations for 1 abort:', cnt_pai_homo_mut_1_abort)
+            # cnt_pai_homo_mut_1_abort = 0
+            # for in_pai_homo_abort_1 in range(len(list_abort)):
+            #     if ((list_abort[in_pai_homo_abort_1][0] == '1.0') and
+            #             list_pai_homo[in_pai_homo_abort_1][0] == '1.0'):
+            #         cnt_pai_homo_mut_1_abort = cnt_pai_homo_mut_1_abort + 1
+            # print('PAI I Homo Mutations for 1 abort:', cnt_pai_homo_mut_1_abort)
 
             ######################################################
             ### Start Count Factor MTHFR                      ####
             ### Homozygous Mutation for 1 Abort               ####
             ######################################################
-            cnt_mthfr_homo_mut_1_abort = 0
-            for in_mthfr_homo_abort_1 in range(len(list_abort)):
-                if ((list_abort[in_mthfr_homo_abort_1][0] == '1.0') and
-                        list_mthfr_homo[in_mthfr_homo_abort_1][0] == '1.0'):
-                    cnt_mthfr_homo_mut_1_abort = cnt_mthfr_homo_mut_1_abort + 1
-            print('MTHFR Homo Mutations for 1 abort:', cnt_mthfr_homo_mut_1_abort)
+            # cnt_mthfr_homo_mut_1_abort = 0
+            # for in_mthfr_homo_abort_1 in range(len(list_abort)):
+            #     if ((list_abort[in_mthfr_homo_abort_1][0] == '1.0') and
+            #             list_mthfr_homo[in_mthfr_homo_abort_1][0] == '1.0'):
+            #         cnt_mthfr_homo_mut_1_abort = cnt_mthfr_homo_mut_1_abort + 1
+            # print('MTHFR Homo Mutations for 1 abort:', cnt_mthfr_homo_mut_1_abort)
 
             ######################################################
             ### Start Count Count Heterozygous Factor V ##########
             ### Leiden Mutation for 2 or 3 Aborts       ##########
             ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
             ######################################################
-            cnt_fvl_hetero_mut_2_3_aborts = 0
-            for in_fvl_hetero_aborts_2 in range(len(list_abort)):
-                if ((list_abort[in_fvl_hetero_aborts_2][0] == '2.0' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == '3.0' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == '4.0' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == '5.0' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == '6.0' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == '7.0' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == '-' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == ''
-                ) and
-                        list_fvl_hetero[in_fvl_hetero_aborts_2][0] == '1.0'):
-                    cnt_fvl_hetero_mut_2_3_aborts = cnt_fvl_hetero_mut_2_3_aborts + 1
-            print('FVL Hetero Mutations 2 or more are:', cnt_fvl_hetero_mut_2_3_aborts)
+            # cnt_fvl_hetero_mut_2_3_aborts = 0
+            # for in_fvl_hetero_aborts_2 in range(len(list_abort)):
+            #     if ((list_abort[in_fvl_hetero_aborts_2][0] == '2.0' or
+            #          list_abort[in_fvl_hetero_aborts_2][0] == '3.0' or
+            #          list_abort[in_fvl_hetero_aborts_2][0] == '4.0' or
+            #          list_abort[in_fvl_hetero_aborts_2][0] == '5.0' or
+            #          list_abort[in_fvl_hetero_aborts_2][0] == '6.0' or
+            #          list_abort[in_fvl_hetero_aborts_2][0] == '7.0' or
+            #          list_abort[in_fvl_hetero_aborts_2][0] == '-' or
+            #          list_abort[in_fvl_hetero_aborts_2][0] == ''
+            #     ) and
+            #             list_fvl_hetero[in_fvl_hetero_aborts_2][0] == '1.0'):
+            #         cnt_fvl_hetero_mut_2_3_aborts = cnt_fvl_hetero_mut_2_3_aborts + 1
+            # print('FVL Hetero Mutations 2 or more are:', cnt_fvl_hetero_mut_2_3_aborts)
 
             ######################################################
             ### End Count Count Heterozygous Factor V   ##########
@@ -676,102 +683,102 @@ def calc_patients_more_mut_controli(request):
             ### Leiden Mutation for 2 or 3 Aborts       ##########
             ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
             ######################################################
-            cnt_fvl_homo_mut_2_3_aborts = 0
-            for in_fvl_homo_aborts_2 in range(len(list_abort)):
-                if ((list_abort[in_fvl_homo_aborts_2][0] == '2.0' or
-                     list_abort[in_fvl_homo_aborts_2][0] == '3.0' or
-                     list_abort[in_fvl_homo_aborts_2][0] == '4.0' or
-                     list_abort[in_fvl_homo_aborts_2][0] == '5.0' or
-                     list_abort[in_fvl_homo_aborts_2][0] == '6.0' or
-                     list_abort[in_fvl_homo_aborts_2][0] == '7.0' or
-                     list_abort[in_fvl_homo_aborts_2][0] == '-' or
-                     list_abort[in_fvl_homo_aborts_2][0] == ''
-                ) and
-                        list_fvl_homo[in_fvl_homo_aborts_2][0] == '1.0'):
-                    cnt_fvl_homo_mut_2_3_aborts = cnt_fvl_homo_mut_2_3_aborts + 1
-            print('FVL Homo Mutations 2 or more are:', cnt_fvl_homo_mut_2_3_aborts)
+            # cnt_fvl_homo_mut_2_3_aborts = 0
+            # for in_fvl_homo_aborts_2 in range(len(list_abort)):
+            #     if ((list_abort[in_fvl_homo_aborts_2][0] == '2.0' or
+            #          list_abort[in_fvl_homo_aborts_2][0] == '3.0' or
+            #          list_abort[in_fvl_homo_aborts_2][0] == '4.0' or
+            #          list_abort[in_fvl_homo_aborts_2][0] == '5.0' or
+            #          list_abort[in_fvl_homo_aborts_2][0] == '6.0' or
+            #          list_abort[in_fvl_homo_aborts_2][0] == '7.0' or
+            #          list_abort[in_fvl_homo_aborts_2][0] == '-' or
+            #          list_abort[in_fvl_homo_aborts_2][0] == ''
+            #     ) and
+            #             list_fvl_homo[in_fvl_homo_aborts_2][0] == '1.0'):
+            #         cnt_fvl_homo_mut_2_3_aborts = cnt_fvl_homo_mut_2_3_aborts + 1
+            # print('FVL Homo Mutations 2 or more are:', cnt_fvl_homo_mut_2_3_aborts)
 
             ######################################################
             ###       Start Count Factor II(Prothrombin)      ####
             ###             Heterozygous Mutation             ####
             ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
             ######################################################
-            cnt_prothr_hetero_mut_2_3_aborts = 0
-            for in_prothr_hetero_aborts_2 in range(len(list_abort)):
-                if ((list_abort[in_prothr_hetero_aborts_2][0] == '2.0' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == '3.0' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == '4.0' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == '5.0' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == '6.0' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == '7.0' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == '-' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == ''
-                ) and
-                        list_prothr_hetero[in_prothr_hetero_aborts_2][0] == '1.0'):
-                    cnt_prothr_hetero_mut_2_3_aborts = cnt_prothr_hetero_mut_2_3_aborts + 1
-            print('PROTHR Hetero Mutations 2 or more are:', cnt_prothr_hetero_mut_2_3_aborts)
+            # cnt_prothr_hetero_mut_2_3_aborts = 0
+            # for in_prothr_hetero_aborts_2 in range(len(list_abort)):
+            #     if ((list_abort[in_prothr_hetero_aborts_2][0] == '2.0' or
+            #          list_abort[in_prothr_hetero_aborts_2][0] == '3.0' or
+            #          list_abort[in_prothr_hetero_aborts_2][0] == '4.0' or
+            #          list_abort[in_prothr_hetero_aborts_2][0] == '5.0' or
+            #          list_abort[in_prothr_hetero_aborts_2][0] == '6.0' or
+            #          list_abort[in_prothr_hetero_aborts_2][0] == '7.0' or
+            #          list_abort[in_prothr_hetero_aborts_2][0] == '-' or
+            #          list_abort[in_prothr_hetero_aborts_2][0] == ''
+            #     ) and
+            #             list_prothr_hetero[in_prothr_hetero_aborts_2][0] == '1.0'):
+            #         cnt_prothr_hetero_mut_2_3_aborts = cnt_prothr_hetero_mut_2_3_aborts + 1
+            # print('PROTHR Hetero Mutations 2 or more are:', cnt_prothr_hetero_mut_2_3_aborts)
             ######################################################
             ###       Start Count Factor II(Prothrombin)      ####
             ###             Homozygous Mutation               ####
             ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
             ######################################################
-            cnt_prothr_homo_mut_2_3_aborts = 0
-            for in_prothr_homo_aborts_2 in range(len(list_abort)):
-                if ((list_abort[in_prothr_homo_aborts_2][0] == '2.0' or
-                     list_abort[in_prothr_homo_aborts_2][0] == '3.0' or
-                     list_abort[in_prothr_homo_aborts_2][0] == '4.0' or
-                     list_abort[in_prothr_homo_aborts_2][0] == '5.0' or
-                     list_abort[in_prothr_homo_aborts_2][0] == '6.0' or
-                     list_abort[in_prothr_homo_aborts_2][0] == '7.0' or
-                     list_abort[in_prothr_homo_aborts_2][0] == '-' or
-                     list_abort[in_prothr_homo_aborts_2][0] == ''
-                ) and
-                        list_prothr_homo[in_prothr_homo_aborts_2][0] == '1.0'):
-                    cnt_prothr_homo_mut_2_3_aborts = cnt_prothr_homo_mut_2_3_aborts + 1
-            print('PROTHR Homo Mutations 2 or more are:', cnt_prothr_homo_mut_2_3_aborts)
+            # cnt_prothr_homo_mut_2_3_aborts = 0
+            # for in_prothr_homo_aborts_2 in range(len(list_abort)):
+            #     if ((list_abort[in_prothr_homo_aborts_2][0] == '2.0' or
+            #          list_abort[in_prothr_homo_aborts_2][0] == '3.0' or
+            #          list_abort[in_prothr_homo_aborts_2][0] == '4.0' or
+            #          list_abort[in_prothr_homo_aborts_2][0] == '5.0' or
+            #          list_abort[in_prothr_homo_aborts_2][0] == '6.0' or
+            #          list_abort[in_prothr_homo_aborts_2][0] == '7.0' or
+            #          list_abort[in_prothr_homo_aborts_2][0] == '-' or
+            #          list_abort[in_prothr_homo_aborts_2][0] == ''
+            #     ) and
+            #             list_prothr_homo[in_prothr_homo_aborts_2][0] == '1.0'):
+            #         cnt_prothr_homo_mut_2_3_aborts = cnt_prothr_homo_mut_2_3_aborts + 1
+            # print('PROTHR Homo Mutations 2 or more are:', cnt_prothr_homo_mut_2_3_aborts)
             ######################################################
             ### Start Count Factor PAI I Homozigous Mutation  ####
             ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
             ######################################################
-            cnt_pai_homo_mut_2_3_aborts = 0
-            for in_pai_homo_aborts_2 in range(len(list_abort)):
-                if ((list_abort[in_pai_homo_aborts_2][0] == '2.0' or
-                     list_abort[in_pai_homo_aborts_2][0] == '3.0' or
-                     list_abort[in_pai_homo_aborts_2][0] == '4.0' or
-                     list_abort[in_pai_homo_aborts_2][0] == '5.0' or
-                     list_abort[in_pai_homo_aborts_2][0] == '6.0' or
-                     list_abort[in_pai_homo_aborts_2][0] == '7.0' or
-                     list_abort[in_pai_homo_aborts_2][0] == '-' or
-                     list_abort[in_pai_homo_aborts_2][0] == ''
-                ) and
-                        list_pai_homo[in_pai_homo_aborts_2][0] == '1.0'):
-                    cnt_pai_homo_mut_2_3_aborts = cnt_pai_homo_mut_2_3_aborts + 1
-            print('PAI Homo Mutations 2 or more are:', cnt_pai_homo_mut_2_3_aborts)
+            # cnt_pai_homo_mut_2_3_aborts = 0
+            # for in_pai_homo_aborts_2 in range(len(list_abort)):
+            #     if ((list_abort[in_pai_homo_aborts_2][0] == '2.0' or
+            #          list_abort[in_pai_homo_aborts_2][0] == '3.0' or
+            #          list_abort[in_pai_homo_aborts_2][0] == '4.0' or
+            #          list_abort[in_pai_homo_aborts_2][0] == '5.0' or
+            #          list_abort[in_pai_homo_aborts_2][0] == '6.0' or
+            #          list_abort[in_pai_homo_aborts_2][0] == '7.0' or
+            #          list_abort[in_pai_homo_aborts_2][0] == '-' or
+            #          list_abort[in_pai_homo_aborts_2][0] == ''
+            #     ) and
+            #             list_pai_homo[in_pai_homo_aborts_2][0] == '1.0'):
+            #         cnt_pai_homo_mut_2_3_aborts = cnt_pai_homo_mut_2_3_aborts + 1
+            # print('PAI Homo Mutations 2 or more are:', cnt_pai_homo_mut_2_3_aborts)
             ######################################################
             ### Start Count Factor MTHFR Homozigous Mutation  ####
             ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
             ######################################################
-            cnt_mthfr_homo_mut_2_3_aborts = 0
-            for in_mthfr_homo_aborts_2 in range(len(list_abort)):
-                if ((list_abort[in_mthfr_homo_aborts_2][0] == '2.0' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == '3.0' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == '4.0' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == '5.0' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == '6.0' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == '7.0' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == '-' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == ''
-                ) and
-                        list_mthfr_homo[in_mthfr_homo_aborts_2][0] == '1.0'):
-                    cnt_mthfr_homo_mut_2_3_aborts = cnt_mthfr_homo_mut_2_3_aborts + 1
-            print('MTHFR Homo Mutations 2 or more are:', cnt_mthfr_homo_mut_2_3_aborts)
+            # cnt_mthfr_homo_mut_2_3_aborts = 0
+            # for in_mthfr_homo_aborts_2 in range(len(list_abort)):
+            #     if ((list_abort[in_mthfr_homo_aborts_2][0] == '2.0' or
+            #          list_abort[in_mthfr_homo_aborts_2][0] == '3.0' or
+            #          list_abort[in_mthfr_homo_aborts_2][0] == '4.0' or
+            #          list_abort[in_mthfr_homo_aborts_2][0] == '5.0' or
+            #          list_abort[in_mthfr_homo_aborts_2][0] == '6.0' or
+            #          list_abort[in_mthfr_homo_aborts_2][0] == '7.0' or
+            #          list_abort[in_mthfr_homo_aborts_2][0] == '-' or
+            #          list_abort[in_mthfr_homo_aborts_2][0] == ''
+            #     ) and
+            #             list_mthfr_homo[in_mthfr_homo_aborts_2][0] == '1.0'):
+            #         cnt_mthfr_homo_mut_2_3_aborts = cnt_mthfr_homo_mut_2_3_aborts + 1
+            # print('MTHFR Homo Mutations 2 or more are:', cnt_mthfr_homo_mut_2_3_aborts)
             ######################################################
             ### Start Count Factor FVL Heterozigous Mutation  ####
             ###                ALL PATIENTS                   ####
             ######################################################
             cnt_fvl_hetero_mutations = 0
             for fvl_hetero_data in list_fvl_hetero:
-                if fvl_hetero_data[0] == '1.0':
+                if fvl_hetero_data[0] == '1.0' or fvl_hetero_data[0] == '1':
                     cnt_fvl_hetero_mutations = cnt_fvl_hetero_mutations + 1
             print('FVL Hetero Mutations are:', cnt_fvl_hetero_mutations)
             ######################################################
@@ -780,7 +787,7 @@ def calc_patients_more_mut_controli(request):
             ######################################################
             cnt_fvl_homo_mutations = 0
             for fvl_homo_data in list_fvl_homo:
-                if fvl_homo_data[0] == '1.0':
+                if fvl_homo_data[0] == '1.0' or fvl_homo_data[0] == '1':
                     cnt_fvl_homo_mutations = cnt_fvl_homo_mutations + 1
             print('FVL Homo Mutations are:', cnt_fvl_homo_mutations)
             ######################################################
@@ -790,7 +797,7 @@ def calc_patients_more_mut_controli(request):
             ######################################################
             cnt_prothr_hetero_mutations = 0
             for prothr_hetero_data in list_prothr_hetero:
-                if prothr_hetero_data[0] == '1.0':
+                if prothr_hetero_data[0] == '1.0' or prothr_hetero_data[0] == '1':
                     cnt_prothr_hetero_mutations = cnt_prothr_hetero_mutations + 1
             print('PROTHR Hetero Mutations are:', cnt_prothr_hetero_mutations)
             ######################################################
@@ -800,7 +807,7 @@ def calc_patients_more_mut_controli(request):
             ######################################################
             cnt_prothr_homo_mutations = 0
             for prothr_homo_data in list_prothr_homo:
-                if prothr_homo_data[0] == '1.0':
+                if prothr_homo_data[0] == '1.0' or prothr_homo_data[0] == '1':
                     cnt_prothr_homo_mutations = cnt_prothr_homo_mutations + 1
             print('PROTHR Homo Mutations are:', cnt_prothr_homo_mutations)
             ######################################################
@@ -809,7 +816,7 @@ def calc_patients_more_mut_controli(request):
             ######################################################
             cnt_pai_homo_mutations = 0
             for pai_homo_data in list_pai_homo:
-                if pai_homo_data[0] == '1.0':
+                if pai_homo_data[0] == '1.0' or pai_homo_data[0] == '1':
                     cnt_pai_homo_mutations = cnt_pai_homo_mutations + 1
             print('PAI Homo Mutations are:', cnt_pai_homo_mutations)
             ######################################################
@@ -818,16 +825,16 @@ def calc_patients_more_mut_controli(request):
             ######################################################
             cnt_mthfr_homo_mutations = 0
             for mthfr_homo_data in list_mthfr_homo:
-                if mthfr_homo_data[0] == '1.0':
+                if mthfr_homo_data[0] == '1.0' or mthfr_homo_data[0] == '1':
                     cnt_mthfr_homo_mutations = cnt_mthfr_homo_mutations + 1
             print('MTHFR Homo Mutations are:', cnt_mthfr_homo_mutations)
 
-            context3['fvl_hetero_mut_1_abort'] = cnt_fvl_hetero_mut_1_abort
-            context3['fvl_homo_mut_1_abort'] = cnt_fvl_homo_mut_1_abort
-            context3['prothr_hetero_mut_1_abort'] = cnt_prothr_hetero_mut_1_abort
-            context3['prothr_homo_mut_1_abort'] = cnt_prothr_homo_mut_1_abort
-            context3['pai_homo_mut_1_abort'] = cnt_pai_homo_mut_1_abort
-            context3['mthfr_homo_mut_1_abort'] = cnt_mthfr_homo_mut_1_abort
+            # context3['fvl_hetero_mut_1_abort'] = cnt_fvl_hetero_mut_1_abort
+            # context3['fvl_homo_mut_1_abort'] = cnt_fvl_homo_mut_1_abort
+            # context3['prothr_hetero_mut_1_abort'] = cnt_prothr_hetero_mut_1_abort
+            # context3['prothr_homo_mut_1_abort'] = cnt_prothr_homo_mut_1_abort
+            # context3['pai_homo_mut_1_abort'] = cnt_pai_homo_mut_1_abort
+            # context3['mthfr_homo_mut_1_abort'] = cnt_mthfr_homo_mut_1_abort
 
             # context3['cnt_fvl_hetero_prothr_hetero_mutations'] = cnt_fvl_hetero_prothr_hetero_mutations
             # context3['cnt_fvl_hetero_prothr_homo_mutations'] = cnt_fvl_hetero_prothr_homo_mutations
@@ -873,12 +880,12 @@ def calc_patients_more_mut_controli(request):
             context3['fvl_homo_mut'] = cnt_fvl_homo_mutations
             context3['fvl_hetero_mut'] = cnt_fvl_hetero_mutations
             ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
-            context3['2_3_aborts_mthfr_homo_mut'] = cnt_mthfr_homo_mut_2_3_aborts
-            context3['2_3_aborts_pai_homo_mut'] = cnt_pai_homo_mut_2_3_aborts
-            context3['2_3_aborts_prothr_homo_mut'] = cnt_prothr_homo_mut_2_3_aborts
-            context3['2_3_aborts_prothr_hetero_mut'] = cnt_prothr_hetero_mut_2_3_aborts
-            context3['2_3_aborts_fvl_homo_mut'] = cnt_fvl_homo_mut_2_3_aborts
-            context3['2_3_aborts_fvl_hetero_mut'] = cnt_fvl_hetero_mut_2_3_aborts
+            # context3['2_3_aborts_mthfr_homo_mut'] = cnt_mthfr_homo_mut_2_3_aborts
+            # context3['2_3_aborts_pai_homo_mut'] = cnt_pai_homo_mut_2_3_aborts
+            # context3['2_3_aborts_prothr_homo_mut'] = cnt_prothr_homo_mut_2_3_aborts
+            # context3['2_3_aborts_prothr_hetero_mut'] = cnt_prothr_hetero_mut_2_3_aborts
+            # context3['2_3_aborts_fvl_homo_mut'] = cnt_fvl_homo_mut_2_3_aborts
+            # context3['2_3_aborts_fvl_hetero_mut'] = cnt_fvl_hetero_mut_2_3_aborts
 
     return render(request, 'calc_patients_more_mut_controli.html', context3)
 
