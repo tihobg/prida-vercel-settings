@@ -1,5 +1,6 @@
 from django import forms
-from .models import Patients, PatientProba, Score, Prida, Person, PridaMutations, PridaMutations2, PridaPreeclampsia
+from .models import (Patients, PatientProba, Score, Prida, Person, PridaMutations, PridaMutations2, PridaPreeclampsia,
+                     PridaControli)
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -71,11 +72,11 @@ class PridaMutationsForm2(forms.ModelForm):
                   'abort']
 class PridaControliForm(forms.ModelForm):
     class Meta:
-        model = PridaMutations
+        model = PridaControli
         # fields = ['code', 'birth_year', 'age', 'fvl_ng', 'fvl_hetero', 'fvl_homo', 'prothr_ng', 'prothr_hetero', \
         #           'prothr_homo', 'pai_ng', 'pai_hetero', 'pai_homo', 'mthfr_ng', 'mthfr_hetero', 'mthfr_homo']
         #
-        fields = ['code', 'age', 'fvl_ng', 'fvl_hetero', 'fvl_homo', 'prothr_ng', 'prothr_hetero',
+        fields = ['id', 'code', 'age', 'fvl_ng', 'fvl_hetero', 'fvl_homo', 'prothr_ng', 'prothr_hetero',
                   'prothr_homo', 'pai_ng', 'pai_hetero', 'pai_homo', 'mthfr_ng', 'mthfr_hetero', 'mthfr_homo',
                   'abort']
 

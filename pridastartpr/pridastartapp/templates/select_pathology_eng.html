@@ -7,27 +7,28 @@
 <!-- ######## Page Title ######## -->
 <!--<header>-->
 <div class="container">
-<!--<div class="col-sm-2 d-none d-lg-block appoint">-->
-    <div class="row mt-4">
-        {% if user.is_authenticated %}
-        <div class="user-info">
-            <span class="navbar-text">{{ user.username }}</span>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <div class="row mt-4">
+            {% if user.is_authenticated %}
+            <div class="user-info">
+                <span class="navbar-text">user name: {{ user.username }}</span>
 <!--        <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Изход</a>-->
-            <a href="{% url 'logout_eng' %}" class="btn btn-primary btn-lg">Logout</a>
-        </div>
-        {% else %}
-        <div class="auth-buttons">
-            <a href="{% url 'login_eng' %}" class="btn btn-primary btn-lg">Login</a>
+                <a href="{% url 'logout_eng' %}" class="btn btn-primary btn-lg">Logout</a>
+            </div>
+            {% else %}
+            <div class="auth-buttons">
+                <a href="{% url 'login_eng' %}" class="btn btn-primary btn-lg">Login</a>
 <!--                           <a href="{% url 'register' %}" class="btn btn-success btn-sm">Регистрация</a>-->
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
     </div>
 </div>
 <!--    </header>-->
 <div class="page-nav no-margin row">
     <div class="container">
         <div class="row">
-            <h1>Tables</h1>
+            <h1>Pathology Selection</h1>
             <ul>
 <!--                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>-->
 <!--                <li><i class="fas fa-angle-double-right"></i> Tables</li>-->
@@ -40,15 +41,19 @@
 <!-- ######## Database Section ######## -->
 <div class="db container">
     <div class="btn-group my-4">
-         <button class="btn btn-info">
-            <a href="{% url 'controli_eng' %}">Pregnant controls</a>
+         <button type='button' class="btn btn-primary btn-lg">
+            <a href="{% url 'mutations_eng' %}">Mutations</a>
         </button>
-        <button class="btn btn-info">
-            <a href="{% url 'proba1_eng' %}">Spontaneous Aborts</a>
+
+<!--        <button type="button" class="btn btn-primary btn-lg">Large button</button>-->
+<!--<button type="button" class="btn btn-secondary btn-lg">Large button</button>-->
+
+        <button class="btn btn-primary btn-lg">
+            <a href="{% url 'proba1_eng' %}">Clinical and biophysical indicators</a>
         </button>
-        <button class="btn btn-info">
-            <a href="{% url 'temporary_eng' %}">Preeclampsia</a>
-        </button>
+<!--        <button class="btn btn-info">-->
+<!--            <a href="{% url 'temporary_eng' %}">Preeclampsia</a>-->
+<!--        </button>-->
     </div>
    
     <div class="database-image-container text-center">

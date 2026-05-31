@@ -10,7 +10,7 @@ urlpatterns = [
     path('about_us_emi/', viewsemi.about_us_emi, name='about_us_emi'),
     path('services_emi/', viewsemi.services_emi, name='services_emi'),
     path('database_emi/', viewsemi.database_emi, name='database_emi'),
-    path('database_eng/', viewsemi.database_eng, name='database_eng'),
+    path('mutations_eng/', viewsemi.mutations_eng, name='mutations_eng'),
 
     path('news_emi/', viewsemi.news_emi, name='news_emi'),
     path('contact_us_emi/', viewsemi.contact_us_emi, name='contact_us_emi'),
@@ -18,6 +18,7 @@ urlpatterns = [
 
     path('preeclampsia/', viewsemi.preeclampsia, name='preeclampsia'),
     path('preeclampsia_eng/', viewsemi.preeclampsia_eng, name='preeclampsia_eng'),
+    path('select_pathology_eng/', viewsemi.select_pathology_eng, name='select_pathology_eng'),
 
     path('temporary_eng/', viewsemi.temporary_eng, name='temporary_eng'),
 

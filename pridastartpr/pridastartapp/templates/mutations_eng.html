@@ -1,0 +1,63 @@
+{% extends "base-emi.html" %}
+{% load static %}
+
+{% block title %}Database{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<!--<header>-->
+<div class="container">
+    <div class="d-grid gap-2 d-md-block">
+        <div class="row mt-4">
+            {% if user.is_authenticated %}
+            <div class="user-info">
+                <a href="{% url 'select_pathology_eng' %}" class="btn btn-primary">BACK</a>
+            </div>
+            <div class="user-info">
+                <span class="navbar-text">user name: {{ user.username }}</span>
+                <a href="{% url 'logout_eng' %}" class="btn btn-primary btn-lg">Logout</a>
+            </div>
+            {% else %}
+            <div class="auth-buttons">
+                <a href="{% url 'login_eng' %}" class="btn btn-primary btn-lg">Login</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+<!--    </header>-->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h1>Risk Factor Selection</h1>
+            <ul>
+<!--                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>-->
+<!--                <li><i class="fas fa-angle-double-right"></i> Tables</li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Database Section ######## -->
+<div class="db container">
+    <div class="btn-group my-4">
+         <button class="btn btn-primary btn-lg">
+            <a href="{% url 'controli_eng' %}">Pregnant controls</a>
+        </button>
+        <button class="btn btn-primary btn-lg">
+            <a href="{% url 'proba1_eng' %}">Spontaneous Aborts</a>
+        </button>
+<!--        <button class="btn btn-primary btn-lg">-->
+<!--            <a href="{% url 'temporary_eng' %}">Preeclampsia</a>-->
+<!--        </button>-->
+    </div>
+   
+    <div class="database-image-container text-center">
+        <img src="{% static 'images/database.jpg' %}" alt="Database Description" class="img-fluid">
+    </div>
+</div>
+<!-- ######## Database Section End ######## -->
+{% endblock %}
