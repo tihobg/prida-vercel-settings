@@ -5,52 +5,206 @@
 
 
 <!-- ######## Page Title ######## -->
-<div class="page-nav no-margin row">
-    <div class="container">
-        <div class="row">
-            <h2>Прееклампсия</h2>
-            <ul>
-                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>
-                <li><i class="fas fa-angle-double-right"></i> Таблица с Прееклампсии</li>
-            </ul>
-        </div>
-    </div>
-</div>
+<!--<div class="page-nav no-margin row">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <h2>Прееклампсия</h2>-->
+<!--            <ul>-->
+<!--                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Начало</a></li>-->
+<!--                <li><i class="fas fa-angle-double-right"></i> Таблица с Прееклампсии</li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <div class="container">
-<!--<div class="col-sm-2 d-none d-lg-block appoint">-->
-    <div class="row mt-4">
-        {% if user.is_authenticated %}
-        <div class="user-info">
-            <span class="navbar-text">{{ user.username }}</span>
-<!--        <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Изход</a>-->
-            <a href="{% url 'logout' %}" class="btn btn-primary btn-lg">Изход</a>
+    <div class="d-grid gap-2 d-md-block">
+        <div class="row mt-4">
+            {% if user.is_authenticated %}
+            <div class="user-info">
+                <a href="{% url 'preeclampsia_eng_new' %}" class="btn btn-primary">BACK</a>
+            </div>
+            <div class="user-info">
+                <span class="navbar-text">user name: {{ user.username }}</span>
+                <a href="{% url 'logout_eng' %}" class="btn btn-primary btn-lg">Logout</a>
+            </div>
+            {% else %}
+            <div class="auth-buttons">
+                <a href="{% url 'login_eng' %}" class="btn btn-primary btn-lg">Login</a>
+            </div>
+            {% endif %}
         </div>
-        {% else %}
-        <div class="auth-buttons">
-            <a href="{% url 'login1' %}" class="btn btn-primary btn-lg">Вход</a>
-<!--                           <a href="{% url 'register' %}" class="btn btn-success btn-sm">Регистрация</a>-->
-        </div>
-        {% endif %}
     </div>
 </div>
+<!--<div class="container">-->
+<!--    <div class="row mt-4">-->
+<!--        <div class="col">-->
+<!--            <h1>PRIDA</h1>-->
+<!--            <form method="post" action="{% url 'database_emi' %}">-->
+<!--                {% csrf_token %}-->
+<!--                <button class="btn btn-primary btn-lg">Назад</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <div class="container">
-    <div class="row mt-4">
-        <div class="col">
-            <h1>PRIDA</h1>
-            <form method="post" action="{% url 'database_emi' %}">
-                {% csrf_token %}
-                <button class="btn btn-primary btn-lg">Назад</button>
-            </form>
-        </div>
+    <div class="row mt-5">
+        {% csrf_token %}
+        <h1>Select Data</h1>
+        <table>
+            <tr>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="patient"
+                           style="height:20px; width:20px;">Patient
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="age"
+                           style="height:20px; width:20px;">Age
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="sist_pressure"
+                           style="height:20px; width:20px;">Sistem Pressure
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="diasist_pressure"
+                           style="height:20px; width:20px;">Diasistolic Pressure
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="gw"
+                           style="height:20px; width:20px;">GW
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="weight"
+                           style="height:20px; width:20px;">Weight
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="eai1"
+                           style="height:20px; width:20px;">EAI1
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="nea1"
+                           style="height:20px; width:20px;">NEA1
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="eai2"
+                           style="height:20px; width:20px;">EAI2
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="nea2"
+                           style="height:20px; width:20px;">NEA2
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="erythrocytes"
+                           style="height:20px; width:20px;">Erythrocytes
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="hgb"
+                           style="height:20px; width:20px;">HGB
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="hct"
+                           style="height:20px; width:20px;">HCT
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="mcv"
+                           style="height:20px; width:20px;">MCV
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="mch"
+                           style="height:20px; width:20px;">MCH
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="mchc"
+                           style="height:20px; width:20px;">MCHC
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="rdw"
+                           style="height:20px; width:20px;">RDW
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="prothrombin_time"
+                           style="height:20px; width:20px;">Prothrombin Time
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="prothrombin_time_percent"
+                           style="height:20px; width:20px;">Prothrombin Time %
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="prothrombin_time_inr"
+                           style="height:20px; width:20px;">Prothrombin Time INR
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="plt"
+                           style="height:20px; width:20px;">PLT
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="mpv"
+                           style="height:20px; width:20px;">MPV
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="pct"
+                           style="height:20px; width:20px;">PCT
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="pdw_percent"
+                           style="height:20px; width:20px;">PDW %
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="creatine_serum"
+                           style="height:20px; width:20px;">Creatine Serum
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="total_protein_serum"
+                           style="height:20px; width:20px;">Total Protein Serum
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="albumin_serum"
+                           style="height:20px; width:20px;">Albumin Serum
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="fibrinugen"
+                           style="height:20px; width:20px;">Fibrinugen
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="crp"
+                           style="height:20px; width:20px;">CRP
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="proetin_urine"
+                           style="height:20px; width:20px;">Protein Urine
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="asat"
+                           style="height:20px; width:20px;">ASAT
+                </th>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="alat"
+                           style="height:20px; width:20px;">ALAT
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="checkbox" name="prida_list_preeclampsia" value="mcv"
+                           style="height:20px; width:20px;">MCV
+                </th>
+            </tr>
+
+        </table>
     </div>
 </div>
 <div class="container">
     <div class="row mt-5">
 <!--        <form method="post" action="{% url 'proba1' %}">-->
             {% csrf_token %}
+
             <div style="height: 500px; overflow-x:auto;width: 1200px; overflow-y:auto;">
-                <h1>Таблица с Пациенти с Прееклампсия</h1>
+                <h1>Table with Preeclampsia Patients</h1>
                 <table>
                     <tr>
                         <td>

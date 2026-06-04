@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import PridaPreeclampsiaForm, PreeclampsiaForm, PatientProbaForm, PridaMutationsForm, PridaControliForm, PridaControliForm2
+from .forms import PridaPreeclampsiaForm, PreeclampsiaForm, PatientProbaForm, PridaMutationsForm, PridaControliForm, \
+    PridaControliForm2
 from .models import Patients, Person, PridaMutations, PridaControli, PridaPreeclampsia
 from .forms import RegisterForm, LoginForm
 from django.contrib import messages
@@ -75,8 +76,8 @@ def calc_patients_more_mut_controli(request):
             for fvl_hetero in range(len(list_fvl_hetero)):
 
                 if (list_fvl_hetero[fvl_hetero][0] == list_prothr_hetero[fvl_hetero][0] == '1.0'
-                        or list_fvl_hetero[fvl_hetero][0] == list_prothr_hetero[fvl_hetero][0] == '1')\
-                        or (list_fvl_hetero[fvl_hetero][0] == '1.0' and list_prothr_hetero[fvl_hetero][0] == '1')\
+                    or list_fvl_hetero[fvl_hetero][0] == list_prothr_hetero[fvl_hetero][0] == '1') \
+                        or (list_fvl_hetero[fvl_hetero][0] == '1.0' and list_prothr_hetero[fvl_hetero][0] == '1') \
                         or (list_fvl_hetero[fvl_hetero][0] == '1' and list_prothr_hetero[fvl_hetero][0] == '1.0'):
                     c_cnt_fvl_hetero_prothr_hetero_mut = c_cnt_fvl_hetero_prothr_hetero_mut + 1
 
@@ -213,7 +214,7 @@ def calc_patients_more_mut_controli(request):
 
             context3['c_cnt_pai_homo_mthfr_homo_mut'] = c_cnt_pai_homo_mthfr_homo_mut
             print('OK')
-        # if 'btn_patients_more_mutations' in request.POST:
+            # if 'btn_patients_more_mutations' in request.POST:
             # print('UraUraUra')
             # print('Aborts List', list_abort)
             # print('List FVL', list_abort[3][0])
@@ -3530,6 +3531,7 @@ def spontaneous_aborts(request):
 def temporary_emi(request):
     return render(request, 'temporary_emi.html')
 
+
 def preeclampsia_eng(request):
     return render(request, 'preeclampsia_eng.html')
 
@@ -4356,7 +4358,6 @@ def proba1(request):
                 index_array_age4.append(count_index_array_age)
                 count_index_array_age = count_index_array_age + 1
 
-
             print(index_array_age1, 'OK Age1')
             print(index_array_age2, 'OK Age2')
             print(index_array_age3, 'OK Age3')
@@ -5150,21 +5151,72 @@ def proba1_eng(request):
     context3 = {}
 
     prida_mutations = PridaMutations.objects.all()  ## Zarejda model PridaMutations ot models.py
-    print(f"Total records from Django: {prida_mutations.count()}")
+    # print(f"Total records from Django: {prida_mutations.count()}")
+    prida_list_data = request.POST.getlist('prida_list_data')
+    # print('PRIDA LIST MUTATIONS', prida_list_data)
     prida_mutations_form = PridaMutationsForm()  ## Zarejda form PridaMutationsForm ot forms.py
-    list_age = PridaMutations.objects.values_list('age')  ## Promenliva - spisak sas stoinostite na colona "age"
+    # print('prida_mutations_form', prida_mutations_form)
+    # list_age = PridaMutations.objects.values_list('age')  ## Promenliva - spisak sas stoinostite na colona "age"
     # print('PRIDA', list_age[slice(0, 2)])
-    prida_controli_form2 = PridaControliForm2()
-    context3['prida_controli_form2'] = prida_controli_form2
+    # prida_controli_form2 = PridaControliForm2()
+    # context3['prida_controli_form2'] = prida_controli_form2
 
     list_fvl_ng = PridaMutations.objects.values_list('fvl_ng')
     list_fvl_hetero = PridaMutations.objects.values_list('fvl_hetero')
+    list_age = PridaMutations.objects.values_list('age')  ## Promenliva - spisak sas stoinostite na colona "age"
+    # print('LIST AGE', list_age)
+    # abort_list = request.POST.getlist('abort')
+    # print('LIST ABORTS', abort_list)
+    from_age = request.POST.get('from_age')
+    to_age = request.POST.get('to_age')
+    # context3['from_age'] = from_age
+    # context3['to_age'] = to_age
+    selected_age_array = []
+    count_age = 0
+    int_from_age = 0
+    # print('FROM AGE', from_age, type(from_age))
+    # if from_age is not None:
+    #     # print('TYPE', type(int(from_age)))
+    #     int_from_age = 25
+    #
+    #
+    # else:
+    #     print('NONE TYPE')
+
+    # if from_age:
+    # from_age = int(from_age)
+    # print('OK')
+
+    # for age in list_age:
+    # # #     # pass
+    # #     print(age)
+    #
+    #     if age[0] is not None:
+    #         pass
+    # count_age = count_age + 1
+    # print('COUNT AGE', count_age, from_age + 2)
+    # y = int(request.form["from_age"])
+    # print('Y')
+    # from_age.sort()
+    # print(from_age)
+    #         print('OK')
+
+    #     if age[0] is not None:
+    #         print('TYPE', type(age[0]))
+    #     else:
+    #         print('NONE TYPE')
+    #     in_age = age[0]
+    #     if int(from_age) <= in_age <= int(to_age):
+    #
+    # #         selected_age_array.append(count_age)
+    # #         count_age = count_age + 1
+    #         print('Selected New Age Array', selected_age_array)
 
     # prida_mutations2 = list_age[0]
-    if list_fvl_hetero[9][0] == '1.0':
-        print("LIST FVL HETERO", list_fvl_hetero[9][0])
-    else:
-        print("Error")
+    # if list_fvl_hetero[9][0] == '1.0':
+    #     print("LIST FVL HETERO", list_fvl_hetero[9][0])
+    # else:
+    #     print("Error")
     list_fvl_homo = PridaMutations.objects.values_list('fvl_homo')
 
     list_prothr_ng = PridaMutations.objects.values_list('prothr_ng')
@@ -5185,30 +5237,19 @@ def proba1_eng(request):
     prida_age_list = request.POST.getlist('age')  ## Spisak s izbrana ot usera vazrast
     prida_abort_list = request.POST.getlist('abort')  ## Spisak s izbrani ot usera aborti
 
-    start_line = request.POST.get('start_line')
-    end_line = request.POST.get('end_line')  ## Promenliva, poluchava vavedenata stoinost ot proba1_eng.html
-    list_name = (0,)
-    list_age_0 = list_age[0]
-    list_abort_0 = list_abort[0]
-    list_fvl_hetero_0 = list_fvl_hetero[0]
-    list_fvl_homo_0 = list_fvl_homo[0]
-    list_prothr_hetero_0 = list_prothr_hetero[0]
-    list_prothr_homo_0 = list_prothr_homo[0]
-    list_pai_hetero_0 = list_pai_hetero[0]
-    list_pai_homo_0 = list_pai_homo[0]
-    list_mthfr_hetero_0 = list_mthfr_hetero[0]
-    list_mthfr_homo_0 = list_mthfr_homo[0]
-    prida_mutations2 = (list_name +
-                        list_age_0 +
-                        list_abort_0 +
-                        list_fvl_hetero_0 +
-                        list_fvl_homo_0 +
-                        list_prothr_hetero_0 +
-                        list_prothr_homo_0 +
-                        list_pai_hetero_0 +
-                        list_pai_homo_0 +
-                        list_mthfr_hetero_0 +
-                        list_mthfr_homo_0)
+    # start_line = request.POST.get('start_line')
+    # end_line = request.POST.get('end_line')  ## Promenliva, poluchava vavedenata stoinost ot proba1_eng.html
+    # list_name = (0,)
+    # list_age_0 = list_age[0]
+    # list_abort_0 = list_abort[0]
+    # list_fvl_hetero_0 = list_fvl_hetero[0]
+    # list_fvl_homo_0 = list_fvl_homo[0]
+    # list_prothr_hetero_0 = list_prothr_hetero[0]
+    # list_prothr_homo_0 = list_prothr_homo[0]
+    # list_pai_hetero_0 = list_pai_hetero[0]
+    # list_pai_homo_0 = list_pai_homo[0]
+    # list_mthfr_hetero_0 = list_mthfr_hetero[0]
+    # list_mthfr_homo_0 = list_mthfr_homo[0]
     # prida_mutations2 = (list_name +
     #                     list_age_0 +
     #                     list_abort_0 +
@@ -5220,116 +5261,260 @@ def proba1_eng(request):
     #                     list_pai_homo_0 +
     #                     list_mthfr_hetero_0 +
     #                     list_mthfr_homo_0)
-    context3['prida_mutations2'] = prida_mutations2
+    # prida_mutations2 = (list_name +
+    #                     list_age_0 +
+    #                     list_abort_0 +
+    #                     list_fvl_hetero_0 +
+    #                     list_fvl_homo_0 +
+    #                     list_prothr_hetero_0 +
+    #                     list_prothr_homo_0 +
+    #                     list_pai_hetero_0 +
+    #                     list_pai_homo_0 +
+    #                     list_mthfr_hetero_0 +
+    #                     list_mthfr_homo_0)
+    # context3['prida_mutations2'] = prida_mutations2
 
-    print('START LINE', start_line)
+    # print('START LINE', start_line)
 
     age = ''
     for data in prida_age_list:
         if data == 'age1' or data == 'age2' or data == 'age3':
             age = data  ## Priema stoinost na izbran checkbox v colona AGE
-    print(age, 'AGE')
+    # print(age, 'AGE')
     abort = ''
     for data in prida_abort_list:
         if data == 'abort_1' or data == 'abort_2' or data == 'abort_3':
             abort = data  ## Priema stoinost na izbran checkbox v colona ABORTS
-    print(abort, 'ABORT')
+    # print(abort, 'ABORT')
 
     # Control Button "Calculate Aborts Mutations"
 
     if request.method == 'POST':
         if 'calculate_mutations_aborts' in request.POST:
+            count_age = 0
+            selected_age_array = []
+            selected_age = []
+            count_abort = 0
+            selected_abort_array = []
+            print('PRIDA LIST MUTATIONS', prida_list_data)
+            print('PRIDA LIST ABORTS', prida_abort_list)
+
+            for age in list_age:
+                if int(from_age) <= age[0] <= int(to_age):
+                    selected_age_array.append(count_age)
+                    selected_age.append(age[0])
+                count_age = count_age + 1
+            print('Selected Age', selected_age_array, selected_age)
+            context3['nbr_patients_selected_age'] = len(selected_age_array)
+            context3['from_age'] = from_age
+            context3['to_age'] = to_age
+
+            # for abort in list_abort:
+            #     if abort[0] == '1.0':
+            #         selected_abort_array.append(count_abort)
+            #         # print('COUNT AGE', count_abort, from_age)
+            #     count_abort = count_abort + 1
+            # print('Selected Abort', selected_abort_array)
+
+            selected_abort_age_1 = []
+            selected_abort_age_2 = []
+            selected_abort_age_3 = []
+
+
+            selected_abort = []
+
+            for prida_abort in prida_abort_list:
+
+                if prida_abort == 'abort_1':
+                    # print('OK')
+                    for index_mutation in selected_age_array:
+                        if list_abort[index_mutation][0] == '1.0' or list_abort[index_mutation][0] == '1':
+                            selected_abort_age_1.append(index_mutation)
+                            selected_abort.append(list_abort[index_mutation][0])
+                    print('Selected Abort Age', selected_abort_age_1, selected_abort)
+                if prida_abort == 'abort_2':
+                    for index_mutation in selected_age_array:
+                        if list_abort[index_mutation][0] == '2.0' or list_abort[index_mutation][0] == '2':
+                            selected_abort_age_2.append(index_mutation)
+                    print('Selected Abort Age', selected_abort_age_2)
+                if prida_abort == 'abort_3':
+                    for index_mutation in selected_age_array:
+                        if (list_abort[index_mutation][0] != '2.0' and list_abort[index_mutation][0] != '1.0'):
+                            selected_abort_age_3.append(index_mutation)
+                    print('Selected Abort Age', selected_abort_age_3)
+            context3['prida_list_data'] = prida_list_data
+            context3['selected_abort_age_1'] = len(selected_abort_age_1)
+            context3['selected_abort_age_2'] = len(selected_abort_age_2)
+            context3['selected_abort_age_3'] = len(selected_abort_age_3)
+
+
+            # count_fvl_ng = 0
+            # count_fvl_hetero = 0
+            # count_fvl_homo = 0
+            # count_prothr_ng = 0
+            # count_prothr_hetero = 0
+            # count_prothr_homo = 0
+            # count_pai_ng = 0
+            # count_pai_hetero = 0
+            # count_pai_homo = 0
+            # count_mthfr_ng = 0
+            # count_mthfr_hetero = 0
+            # count_mthfr_homo = 0
+            #
+            # for mutations in prida_list_data:
+            #     if mutations == 'fvl_ng':
+            #         for fvl_ng_mut in selected_abort_age:
+            #             if list_fvl_ng[fvl_ng_mut][0] == '1.0' or list_fvl_ng[fvl_ng_mut][0] == '1':
+            #                 count_fvl_ng = count_fvl_ng + 1
+            #         print('COUNT FVL NG', count_fvl_ng)
+            #     elif mutations == 'fvl_hetero':
+            #         for fvl_hetero_mut in selected_abort_age:
+            #             if list_fvl_hetero[fvl_hetero_mut][0] == '1.0' or list_fvl_hetero[fvl_hetero_mut][0] == '1':
+            #                 count_fvl_hetero = count_fvl_hetero + 1
+            #         print('COUNT FVL HETERO', count_fvl_hetero)
+            #     elif mutations == 'fvl_homo':
+            #         for fvl_homo_mut in selected_abort_age:
+            #             if list_fvl_homo[fvl_homo_mut][0] == '1.0' or list_fvl_homo[fvl_homo_mut][0] == '1':
+            #                 count_fvl_homo = count_fvl_homo + 1
+            #         print('COUNT FVL HOMO', count_fvl_homo)
+            #     elif mutations == 'prothr_ng':
+            #         for prothr_ng_mut in selected_abort_age:
+            #             if list_prothr_ng[prothr_ng_mut][0] == '1.0' or list_prothr_ng[prothr_ng_mut][0] == '1':
+            #                 count_prothr_ng = count_prothr_ng + 1
+            #         print('COUNT PROTHR NG', count_prothr_ng)
+            #     elif mutations == 'prothr_hetero':
+            #         for prothr_hetero_mut in selected_abort_age:
+            #             if list_prothr_hetero[prothr_hetero_mut][0] == '1.0' or list_prothr_hetero[prothr_hetero_mut][
+            #                 0] == '1':
+            #                 count_prothr_hetero = count_prothr_hetero + 1
+            #         print('COUNT PROTHR HETERO', count_prothr_hetero)
+            #     elif mutations == 'prothr_homo':
+            #         for prothr_homo_mut in selected_abort_age:
+            #             if list_prothr_homo[prothr_homo_mut][0] == '1.0' or list_prothr_homo[prothr_homo_mut][0] == '1':
+            #                 count_prothr_homo = count_prothr_homo + 1
+            #         print('COUNT PROTHR HOMO', count_prothr_homo)
+            #     elif mutations == 'pai_ng':
+            #         for pai_ng_mut in selected_abort_age:
+            #             if list_pai_ng[pai_ng_mut][0] == '1.0' or list_pai_ng[pai_ng_mut][0] == '1':
+            #                 count_pai_ng = count_pai_ng + 1
+            #         print('COUNT PAI NG', count_pai_ng)
+            #     elif mutations == 'pai_hetero':
+            #         for pai_hetero_mut in selected_abort_age:
+            #             if list_pai_hetero[pai_hetero_mut][0] == '1.0' or list_pai_hetero[pai_hetero_mut][0] == '1':
+            #                 count_pai_hetero = count_pai_hetero + 1
+            #         print('COUNT PAI HETERO', count_pai_hetero)
+            #     elif mutations == 'pai_homo':
+            #         for pai_homo_mut in selected_abort_age:
+            #             if list_pai_homo[pai_homo_mut][0] == '1.0' or list_pai_homo[pai_homo_mut][0] == '1':
+            #                 count_pai_homo = count_pai_homo + 1
+            #         print('COUNT PAI HOMO', count_pai_homo)
+            #     elif mutations == 'mthfr_ng':
+            #         for mthfr_ng_mut in selected_abort_age:
+            #             if list_mthfr_ng[mthfr_ng_mut][0] == '1.0' or list_mthfr_ng[mthfr_ng_mut][0] == '1':
+            #                 count_mthfr_ng = count_mthfr_ng + 1
+            #         print('COUNT MTHFR NG', count_mthfr_ng)
+            #     elif mutations == 'mthfr_hetero':
+            #         for mthfr_hetero_mut in selected_abort_age:
+            #             if list_mthfr_hetero[mthfr_hetero_mut][0] == '1.0' or list_mthfr_hetero[mthfr_hetero_mut][
+            #                 0] == '1':
+            #                 count_mthfr_hetero = count_mthfr_hetero + 1
+            #         print('COUNT MTHFR HETERO', count_mthfr_hetero)
+            #     elif mutations == 'mthfr_homo':
+            #         for mthfr_homo_mut in selected_abort_age:
+            #             if list_mthfr_homo[mthfr_homo_mut][0] == '1.0' or list_mthfr_homo[mthfr_homo_mut][0] == '1':
+            #                 count_mthfr_homo = count_mthfr_homo + 1
+            #         print('COUNT MTHFR HOMO', count_mthfr_homo)
+
             # print('Calculate Mutations Aborts')
             # print(prida_list_data, 'OK111')
-            context3['end_line'] = int(end_line)
-            context3['start_line'] = int(start_line)
-            context3['clients_list'] = int(end_line) - int(start_line)
-            clients_list = context3['clients_list']
-            sublist = slice(int(start_line), int(end_line))
+            # context3['end_line'] = int(end_line)
+            # context3['start_line'] = int(start_line)
+            # context3['clients_list'] = int(end_line) - int(start_line)
+            # clients_list = context3['clients_list']
+            # sublist = slice(int(start_line), int(end_line))
 
-            sublist_age = list_age[sublist]
-            print(sublist_age)
-            sublist_abort = list_abort[sublist]
-            print(sublist_abort)
+            # sublist_age = list_age[sublist]
+            # print(sublist_age)
+            # sublist_abort = list_abort[sublist]
+            # print(sublist_abort)
 
-            index_array_age1 = create_age_array(sublist_age)[0]
-            index_array_age2 = create_age_array(sublist_age)[1]
-            index_array_age3 = create_age_array(sublist_age)[2]
+            # index_array_age1 = create_age_array(sublist_age)[0]
+            # index_array_age2 = create_age_array(sublist_age)[1]
+            # index_array_age3 = create_age_array(sublist_age)[2]
 
+            # create_array_age_and_age_interval_access_html(prida_age_list,
+            #                                               index_array_age1,
+            #                                               index_array_age2,
+            #                                               index_array_age3)
+            #
+            # context3['index_array_age'] = create_array_age_and_age_interval_access_html(prida_age_list,
+            #                                                                             index_array_age1,
+            #                                                                             index_array_age2,
+            #                                                                             index_array_age3)[
+            #     'index_array_age']
 
-            create_array_age_and_age_interval_access_html(prida_age_list,
-                                                          index_array_age1,
-                                                          index_array_age2,
-                                                          index_array_age3)
+            # context3['age_interval_aborts'] = create_array_age_and_age_interval_access_html(prida_age_list,
+            #                                                                                 index_array_age1,
+            #                                                                                 index_array_age2,
+            #                                                                                 index_array_age3)[
+            #     'age_interval']
+            # index_array_age_data = context3['index_array_age']
+            #
+            # sublist_fvl_ng = list_fvl_ng[sublist]
+            # sublist_fvl_hetero = list_fvl_hetero[sublist]
+            # sublist_fvl_homo = list_fvl_homo[sublist]
+            #
+            # sublist_prothr_ng = list_prothr_ng[sublist]
+            # sublist_prothr_hetero = list_prothr_hetero[sublist]
+            # sublist_prothr_homo = list_prothr_homo[sublist]
+            #
+            # sublist_pai_ng = list_pai_ng[sublist]
+            # sublist_pai_hetero = list_pai_hetero[sublist]
+            # sublist_pai_homo = list_pai_homo[sublist]
+            #
+            # sublist_mthfr_ng = list_mthfr_ng[sublist]
+            # sublist_mthfr_hetero = list_mthfr_hetero[sublist]
+            # sublist_mthfr_homo = list_mthfr_homo[sublist]
+            #
+            # print(prida_list_data)
+            #
+            # res_func1 = func1(
+            #     prida_list_data,
+            #     index_array_age_data,
+            #     sublist_fvl_ng,
+            #     sublist_fvl_hetero,
+            #     sublist_fvl_homo,
+            #     sublist_prothr_ng,
+            #     sublist_prothr_hetero,
+            #     sublist_prothr_homo,
+            #     sublist_pai_ng,
+            #     sublist_pai_hetero,
+            #     sublist_pai_homo,
+            #     sublist_mthfr_ng,
+            #     sublist_mthfr_hetero,
+            #     sublist_mthfr_homo,
+            #     sublist_abort,
+            #     clients_list)
 
-            context3['index_array_age'] = create_array_age_and_age_interval_access_html(prida_age_list,
-                                                                                        index_array_age1,
-                                                                                        index_array_age2,
-                                                                                        index_array_age3)[
-                'index_array_age']
-
-            context3['age_interval_aborts'] = create_array_age_and_age_interval_access_html(prida_age_list,
-                                                                                            index_array_age1,
-                                                                                            index_array_age2,
-                                                                                            index_array_age3)[
-                'age_interval']
-            index_array_age_data = context3['index_array_age']
-
-            sublist_fvl_ng = list_fvl_ng[sublist]
-            sublist_fvl_hetero = list_fvl_hetero[sublist]
-            sublist_fvl_homo = list_fvl_homo[sublist]
-
-            sublist_prothr_ng = list_prothr_ng[sublist]
-            sublist_prothr_hetero = list_prothr_hetero[sublist]
-            sublist_prothr_homo = list_prothr_homo[sublist]
-
-            sublist_pai_ng = list_pai_ng[sublist]
-            sublist_pai_hetero = list_pai_hetero[sublist]
-            sublist_pai_homo = list_pai_homo[sublist]
-
-            sublist_mthfr_ng = list_mthfr_ng[sublist]
-            sublist_mthfr_hetero = list_mthfr_hetero[sublist]
-            sublist_mthfr_homo = list_mthfr_homo[sublist]
-
-            print(prida_list_data)
-
-            res_func1 = func1(
-                prida_list_data,
-                index_array_age_data,
-                sublist_fvl_ng,
-                sublist_fvl_hetero,
-                sublist_fvl_homo,
-                sublist_prothr_ng,
-                sublist_prothr_hetero,
-                sublist_prothr_homo,
-                sublist_pai_ng,
-                sublist_pai_hetero,
-                sublist_pai_homo,
-                sublist_mthfr_ng,
-                sublist_mthfr_hetero,
-                sublist_mthfr_homo,
-                sublist_abort,
-                clients_list)
-
-            context3['count_mutations_abort1'] = res_func1[0]
-            context3['percent_mutations_abort1'] = res_func1[1]
-            context3['count_mutations_abort2'] = res_func1[2]
-            context3['percent_mutations_abort2'] = res_func1[3]
-            context3['count_mutations_abort3'] = res_func1[4]
-            context3['percent_mutations_abort3'] = res_func1[5]
-            context3['factor_type'] = prida_list_data
+            # context3['count_mutations_abort1'] = res_func1[0]
+            # context3['percent_mutations_abort1'] = res_func1[1]
+            # context3['count_mutations_abort2'] = res_func1[2]
+            # context3['percent_mutations_abort2'] = res_func1[3]
+            # context3['count_mutations_abort3'] = res_func1[4]
+            # context3['percent_mutations_abort3'] = res_func1[5]
+            # context3['factor_type'] = prida_list_data
 
             # context3['factor_type'] = res_func1[6]
 
-            print(context3['count_mutations_abort1'],
-                  context3['percent_mutations_abort1'],
-                  context3['count_mutations_abort2'],
-                  context3['percent_mutations_abort2'],
-                  context3['count_mutations_abort3'],
-                  context3['percent_mutations_abort3'])
+            # print(context3['count_mutations_abort1'],
+            #       context3['percent_mutations_abort1'],
+            #       context3['count_mutations_abort2'],
+            #       context3['percent_mutations_abort2'],
+            #       context3['count_mutations_abort3'],
+            #       context3['percent_mutations_abort3'])
 
-            print(context3['index_array_age'], 'New', sublist_age)
-            print(prida_list_data[0], 'Prida List Data')
+            # print(context3['index_array_age'], 'New', sublist_age)
+            # print(prida_list_data[0], 'Prida List Data')
 
         # if request.method == 'POST':
         elif 'btn_excel_extract' in request.POST:
@@ -5355,7 +5540,7 @@ def proba1_eng(request):
 
     # Control Button "Results: Mutations"
     if request.method == 'POST':
-        print("Control Button Results: Mutations")
+        # print("Control Button Results: Mutations")
 
         if 'btn_patients_more_mutations' in request.POST:
             print("Control Button Results: Mutations")
@@ -5914,414 +6099,572 @@ def proba1_eng(request):
         if 'submit' in request.POST:
             # print(type(int(p)), 'OK')
             # print(int(p))
-            context3['end_line'] = int(end_line)
-            context3['start_line'] = int(start_line)
-            context3['clients_list'] = int(end_line) - int(start_line)
-            clients_list = context3['clients_list']
+            count_age = 0
+            selected_age_array = []
+            selected_age = []
+            count_abort = 0
+            selected_abort_array = []
+            print('PRIDA LIST MUTATIONS', prida_list_data)
+            print('PRIDA LIST ABORTS', prida_abort_list)
 
-            sublist = slice(int(start_line), int(end_line))
-            print('Tihomir 11')
+            for age in list_age:
+                if int(from_age) <= age[0] <= int(to_age):
+                    selected_age_array.append(count_age)
+                    selected_age.append(age[0])
+                count_age = count_age + 1
+            print('Selected Age', selected_age_array, selected_age)
+            # context3['nbr_patients_selected_age'] = len(selected_age_array)
+
+            selected_abort_age = []
+            selected_abort = []
+
+            for prida_abort in prida_abort_list:
+
+                if prida_abort == 'abort_1':
+                    # print('OK')
+                    for index_mutation in selected_age_array:
+                        if list_abort[index_mutation][0] == '1.0' or list_abort[index_mutation][0] == '1':
+                            selected_abort_age.append(index_mutation)
+                            selected_abort.append(list_abort[index_mutation][0])
+                    print('Selected Abort Age', selected_abort_age, selected_abort)
+                elif prida_abort == 'abort_2':
+                    for index_mutation in selected_age_array:
+                        if list_abort[index_mutation][0] == '2.0' or list_abort[index_mutation][0] == '2':
+                            selected_abort_age.append(index_mutation)
+                    print('Selected Abort Age', selected_abort_age)
+                else:
+                    for index_mutation in selected_age_array:
+                        if (list_abort[index_mutation][0] != '2.0' and list_abort[index_mutation][0] != '1.0'):
+                            selected_abort_age.append(index_mutation)
+                    print('Selected Abort Age', selected_abort_age)
+
+            # context3['prida_list_data'] = prida_list_data
+            # context3['selected_abort_age'] = len(selected_abort_age)
+
+            count_fvl_ng = 0
+            count_fvl_hetero = 0
+            count_fvl_homo = 0
+            count_prothr_ng = 0
+            count_prothr_hetero = 0
+            count_prothr_homo = 0
+            count_pai_ng = 0
+            count_pai_hetero = 0
+            count_pai_homo = 0
+            count_mthfr_ng = 0
+            count_mthfr_hetero = 0
+            count_mthfr_homo = 0
+
+            for mutations in prida_list_data:
+                if mutations == 'fvl_ng':
+                    for fvl_ng_mut in selected_abort_age:
+                        if (list_fvl_ng[fvl_ng_mut][0] == '1.0'
+                                or list_fvl_ng[fvl_ng_mut][0] == '1'):
+                            count_fvl_ng = count_fvl_ng + 1
+                    print('COUNT FVL NG', count_fvl_ng)
+                elif mutations == 'fvl_hetero':
+                    for fvl_hetero_mut in selected_abort_age:
+                        if (list_fvl_hetero[fvl_hetero_mut][0] == '1.0'
+                                or list_fvl_hetero[fvl_hetero_mut][0] == '1'):
+                            count_fvl_hetero = count_fvl_hetero + 1
+                    print('COUNT FVL HETERO', count_fvl_hetero)
+                elif mutations == 'fvl_homo':
+                    for fvl_homo_mut in selected_abort_age:
+                        if (list_fvl_homo[fvl_homo_mut][0] == '1.0'
+                                or list_fvl_homo[fvl_homo_mut][0] == '1'):
+                            count_fvl_homo = count_fvl_homo + 1
+                    print('COUNT FVL HOMO', count_fvl_homo)
+                elif mutations == 'prothr_ng':
+                    for prothr_ng_mut in selected_abort_age:
+                        if (list_prothr_ng[prothr_ng_mut][0] == '1.0'
+                                or list_prothr_ng[prothr_ng_mut][0] == '1'):
+                            count_prothr_ng = count_prothr_ng + 1
+                    print('COUNT PROTHR NG', count_prothr_ng)
+                elif mutations == 'prothr_hetero':
+                    for prothr_hetero_mut in selected_abort_age:
+                        if (list_prothr_hetero[prothr_hetero_mut][0] == '1.0'
+                                or list_prothr_hetero[prothr_hetero_mut][0] == '1'):
+                            count_prothr_hetero = count_prothr_hetero + 1
+                    print('COUNT PROTHR HETERO', count_prothr_hetero)
+                elif mutations == 'prothr_homo':
+                    for prothr_homo_mut in selected_abort_age:
+                        if (list_prothr_homo[prothr_homo_mut][0] == '1.0'
+                                or list_prothr_homo[prothr_homo_mut][0] == '1'):
+                            count_prothr_homo = count_prothr_homo + 1
+                    print('COUNT PROTHR HOMO', count_prothr_homo)
+                elif mutations == 'pai_ng':
+                    for pai_ng_mut in selected_abort_age:
+                        if (list_pai_ng[pai_ng_mut][0] == '1.0'
+                                or list_pai_ng[pai_ng_mut][0] == '1'):
+                            count_pai_ng = count_pai_ng + 1
+                    print('COUNT PAI NG', count_pai_ng)
+                elif mutations == 'pai_hetero':
+                    for pai_hetero_mut in selected_abort_age:
+                        if (list_pai_hetero[pai_hetero_mut][0] == '1.0'
+                                or list_pai_hetero[pai_hetero_mut][0] == '1'):
+                            count_pai_hetero = count_pai_hetero + 1
+                    print('COUNT PAI HETERO', count_pai_hetero)
+                elif mutations == 'pai_homo':
+                    for pai_homo_mut in selected_abort_age:
+                        if (list_pai_homo[pai_homo_mut][0] == '1.0'
+                                or list_pai_homo[pai_homo_mut][0] == '1'):
+                            count_pai_homo = count_pai_homo + 1
+                    print('COUNT PAI HOMO', count_pai_homo)
+                elif mutations == 'mthfr_ng':
+                    for mthfr_ng_mut in selected_abort_age:
+                        if (list_mthfr_ng[mthfr_ng_mut][0] == '1.0'
+                                or list_mthfr_ng[mthfr_ng_mut][0] == '1'):
+                            count_mthfr_ng = count_mthfr_ng + 1
+                    print('COUNT MTHFR NG', count_mthfr_ng)
+                elif mutations == 'mthfr_hetero':
+                    for mthfr_hetero_mut in selected_abort_age:
+                        if (list_mthfr_hetero[mthfr_hetero_mut][0] == '1.0'
+                                or list_mthfr_hetero[mthfr_hetero_mut][0] == '1'):
+                            count_mthfr_hetero = count_mthfr_hetero + 1
+                    print('COUNT MTHFR HETERO', count_mthfr_hetero)
+                elif mutations == 'mthfr_homo':
+                    for mthfr_homo_mut in selected_abort_age:
+                        if (list_mthfr_homo[mthfr_homo_mut][0] == '1.0'
+                                or list_mthfr_homo[mthfr_homo_mut][0] == '1'):
+                            count_mthfr_homo = count_mthfr_homo + 1
+                    print('COUNT MTHFR HOMO', count_mthfr_homo)
+
+            context3['count_fvl_ng'] = count_fvl_ng
+            context3['count_fvl_hetero'] = count_fvl_hetero
+            context3['count_fvl_homo'] = count_fvl_homo
+
+            context3['count_fvl_ng_percent'] = round((count_fvl_ng / len(selected_abort_age) * 100), 2)
+            context3['count_fvl_hetero_percent'] = round((count_fvl_hetero / len(selected_abort_age) * 100), 2)
+            context3['count_fvl_homo_percent'] = round((count_fvl_homo / len(selected_abort_age) * 100), 2)
+
+            context3['count_prothr_ng'] = count_prothr_ng
+            context3['count_prothr_hetero'] = count_prothr_hetero
+            context3['count_prothr_homo'] = count_prothr_homo
+
+            context3['count_prothr_ng_percent'] = round((count_prothr_ng / len(selected_abort_age) * 100), 2)
+            context3['count_prothr_hetero_percent'] = round((count_prothr_hetero / len(selected_abort_age) * 100), 2)
+            context3['count_prothr_homo_percent'] = round((count_prothr_homo / len(selected_abort_age) * 100), 2)
+
+            context3['count_pai_ng'] = count_pai_ng
+            context3['count_pai_hetero'] = count_pai_hetero
+            context3['count_pai_homo'] = count_pai_homo
+
+            context3['count_pai_ng_percent'] = round((count_pai_ng / len(selected_abort_age) * 100), 2)
+            context3['count_pai_hetero_percent'] = round((count_pai_hetero / len(selected_abort_age) * 100), 2)
+            context3['count_pai_homo_percent'] = round((count_pai_homo / len(selected_abort_age) * 100), 2)
+
+            context3['count_mthfr_ng'] = count_mthfr_ng
+            context3['count_mthfr_hetero'] = count_mthfr_hetero
+            context3['count_mthfr_homo'] = count_mthfr_homo
+
+            context3['count_mthfr_ng_percent'] = round((count_mthfr_ng / len(selected_abort_age) * 100), 2)
+            context3['count_mthfr_hetero_percent'] = round((count_mthfr_hetero / len(selected_abort_age) * 100), 2)
+            context3['count_mthfr_homo_percent'] = round((count_mthfr_homo / len(selected_abort_age) * 100), 2)
+
+
+
+
+            # context3['end_line'] = int(end_line)
+            # context3['start_line'] = int(start_line)
+            # context3['clients_list'] = int(end_line) - int(start_line)
+            # clients_list = context3['clients_list']
+            #
+            # sublist = slice(int(start_line), int(end_line))
+            # print('Tihomir 11')
             # print('OK')
             # print(prida_list_data)
 
-            sublist_age = list_age[sublist]
-            print(sublist_age)
-            sublist_abort = list_abort[sublist]
-            print(sublist_abort)
+            # sublist_age = list_age[sublist]
+            # print(sublist_age)
+            # sublist_abort = list_abort[sublist]
+            # print(sublist_abort)
 
-            count_age1 = 0
-            count_age2 = 0
-            count_age3 = 0
-            count_age4 = 0
+            # count_age1 = 0
+            # count_age2 = 0
+            # count_age3 = 0
+            # count_age4 = 0
+            #
+            # index_array_age1 = []
+            # index_array_age2 = []
+            # index_array_age3 = []
+            # index_array_age4 = []
+            #
+            # count_index_array_age = 0
+            #
+            # for age in sublist_age:
+            #     if 20 <= age[0] <= 30:
+            #         count_age1 = count_age1 + 1
+            #         index_array_age1.append(count_index_array_age)
+            #     elif 31 <= age[0] <= 40:
+            #         count_age2 = count_age2 + 1
+            #         index_array_age2.append(count_index_array_age)
+            #     elif 41 <= age[0] <= 50:
+            #         count_age3 = count_age3 + 1
+            #         index_array_age3.append(count_index_array_age)
+            #     count_age4 = count_age4 + 1
+            #     index_array_age4.append(count_index_array_age)
+            #     count_index_array_age = count_index_array_age + 1
+            #
+            # print(index_array_age1, 'OK Age1')
+            # print(index_array_age2, 'OK Age2')
+            # print(index_array_age3, 'OK Age3')
+            # print(index_array_age4, 'OK Age4')
 
+            # for age in prida_age_list:
+            #     if age == 'age1':
+            #         context3['index_array_age'] = index_array_age1
+            #         context3['age_interval'] = age
+            #     elif age == 'age2':
+            #         context3['index_array_age'] = index_array_age2
+            #         context3['age_interval'] = age
+            #     elif age == 'age3':
+            #         context3['index_array_age'] = index_array_age3
+            #         context3['age_interval'] = age
+            #     elif age == 'age4':
+            #         context3['index_array_age'] = index_array_age4
+            #         context3['age_interval'] = age
+            #
+            # print('Conext3 Index', context3['index_array_age'])
 
-            index_array_age1 = []
-            index_array_age2 = []
-            index_array_age3 = []
-            index_array_age4 = []
+            # count_abort1 = 0
+            # count_abort2 = 0
+            # count_abort3 = 0
+            # count_abort4 = 0
 
+            # index_array_abort1 = []
+            # index_array_abort2 = []
+            # index_array_abort3 = []
+            # index_array_abort4 = []
 
-            count_index_array_age = 0
+            # count_index_array_abort = 0
 
-            for age in sublist_age:
-                if 20 <= age[0] <= 30:
-                    count_age1 = count_age1 + 1
-                    index_array_age1.append(count_index_array_age)
-                elif 31 <= age[0] <= 40:
-                    count_age2 = count_age2 + 1
-                    index_array_age2.append(count_index_array_age)
-                elif 41 <= age[0] <= 50:
-                    count_age3 = count_age3 + 1
-                    index_array_age3.append(count_index_array_age)
-                count_age4 = count_age4 + 1
-                index_array_age4.append(count_index_array_age)
-                count_index_array_age = count_index_array_age + 1
-
-            print(index_array_age1, 'OK Age1')
-            print(index_array_age2, 'OK Age2')
-            print(index_array_age3, 'OK Age3')
-            print(index_array_age4, 'OK Age4')
-
-
-
-            for age in prida_age_list:
-                if age == 'age1':
-                    context3['index_array_age'] = index_array_age1
-                    context3['age_interval'] = age
-                elif age == 'age2':
-                    context3['index_array_age'] = index_array_age2
-                    context3['age_interval'] = age
-                elif age == 'age3':
-                    context3['index_array_age'] = index_array_age3
-                    context3['age_interval'] = age
-                elif age == 'age4':
-                    context3['index_array_age'] = index_array_age4
-                    context3['age_interval'] = age
-
-            print('Conext3 Index', context3['index_array_age'])
-
-            count_abort1 = 0
-            count_abort2 = 0
-            count_abort3 = 0
-            count_abort4 = 0
-
-
-            index_array_abort1 = []
-            index_array_abort2 = []
-            index_array_abort3 = []
-            index_array_abort4 = []
-
-
-            count_index_array_abort = 0
-
-            for abort in context3['index_array_age']:
-                if sublist_abort[abort][0] == '1.0':
-                    count_abort1 = count_abort1 + 1
-                    index_array_abort1.append(abort)
-                elif sublist_abort[abort][0] == '2.0':
-                    count_abort2 = count_abort2 + 1
-                    index_array_abort2.append(abort)
-                elif sublist_abort[abort][0] != '?' or sublist_abort[abort][0] != '2.0' or sublist_abort[abort][
-                    0] != '1.0':
-                    count_abort3 = count_abort3 + 1
-                    index_array_abort3.append(abort)
-
-                count_index_array_abort = count_index_array_abort + 1
+            # for abort in context3['index_array_age']:
+            #     if sublist_abort[abort][0] == '1.0':
+            #         count_abort1 = count_abort1 + 1
+            #         index_array_abort1.append(abort)
+            #     elif sublist_abort[abort][0] == '2.0':
+            #         count_abort2 = count_abort2 + 1
+            #         index_array_abort2.append(abort)
+            #     elif sublist_abort[abort][0] != '?' or sublist_abort[abort][0] != '2.0' or sublist_abort[abort][
+            #         0] != '1.0':
+            #         count_abort3 = count_abort3 + 1
+            #         index_array_abort3.append(abort)
+            #
+            #     count_index_array_abort = count_index_array_abort + 1
 
             # print(index_array_abort1, 'OK')
             # print(index_array_abort2, 'OK')
             # print(index_array_abort3, 'OK')
 
-            for abort in prida_abort_list:
-                if abort == 'abort_1':
-                    context3['index_array_abort'] = index_array_abort1
-                    context3['abort_variant'] = abort
-                elif abort == 'abort_2':
-                    context3['index_array_abort'] = index_array_abort2
-                    context3['abort_variant'] = abort
-                elif abort == 'abort_3':
-                    context3['index_array_abort'] = index_array_abort3
-                    context3['abort_variant'] = abort
-
-            context3['number_abort_patients'] = len(context3['index_array_abort'])
+            # for abort in prida_abort_list:
+            #     if abort == 'abort_1':
+            #         context3['index_array_abort'] = index_array_abort1
+            #         context3['abort_variant'] = abort
+            #     elif abort == 'abort_2':
+            #         context3['index_array_abort'] = index_array_abort2
+            #         context3['abort_variant'] = abort
+            #     elif abort == 'abort_3':
+            #         context3['index_array_abort'] = index_array_abort3
+            #         context3['abort_variant'] = abort
+            #
+            # context3['number_abort_patients'] = len(context3['index_array_abort'])
 
             # print(context3['index_array_abort'], 'OK', context3['number_abort_patients'])
 
-            sublist_fvl_ng = list_fvl_ng[sublist]
-            sublist_fvl_hetero = list_fvl_hetero[sublist]
-            sublist_fvl_homo = list_fvl_homo[sublist]
+            # sublist_fvl_ng = list_fvl_ng[sublist]
+            # sublist_fvl_hetero = list_fvl_hetero[sublist]
+            # sublist_fvl_homo = list_fvl_homo[sublist]
+            #
+            # sublist_prothr_ng = list_prothr_ng[sublist]
+            # sublist_prothr_hetero = list_prothr_hetero[sublist]
+            # sublist_prothr_homo = list_prothr_homo[sublist]
+            #
+            # sublist_pai_ng = list_pai_ng[sublist]
+            # sublist_pai_hetero = list_pai_hetero[sublist]
+            # sublist_pai_homo = list_pai_homo[sublist]
+            #
+            # sublist_mthfr_ng = list_mthfr_ng[sublist]
+            # sublist_mthfr_hetero = list_mthfr_hetero[sublist]
+            # sublist_mthfr_homo = list_mthfr_homo[sublist]
 
-            sublist_prothr_ng = list_prothr_ng[sublist]
-            sublist_prothr_hetero = list_prothr_hetero[sublist]
-            sublist_prothr_homo = list_prothr_homo[sublist]
+            # count_fvl_ng = 0
+            # count_fvl_hetero = 0
+            # count_fvl_homo = 0
+            #
+            # count_prothr_ng = 0
+            # count_prothr_hetero = 0
+            # count_prothr_homo = 0
+            #
+            # count_pai_ng = 0
+            # count_pai_hetero = 0
+            # count_pai_homo = 0
+            #
+            # count_mthfr_ng = 0
+            # count_mthfr_hetero = 0
+            # count_mthfr_homo = 0
+            # # print('PRIDA LIST DATA', prida_list_data)
+            # for f in prida_list_data:
+            #     print(f, 'OK2')
+            #     if f == 'fvl_ng':
+            #         for fvl_ng in context3['index_array_abort']:
+            #             if sublist_fvl_ng[fvl_ng][0] == '1.0':
+            #                 count_fvl_ng = count_fvl_ng + 1
+            #         print(count_fvl_ng, 'fvl_ng')
+            #         if count_fvl_ng > 0:
+            #             mutations_age1_abort1_fvl_ng_percent = count_fvl_ng / len(context3['index_array_abort']) * 100
+            #             context3['mutations_age1_abort1_fvl_ng_percent'] = mutations_age1_abort1_fvl_ng_percent
+            #         else:
+            #             context3['mutations_age1_abort1_fvl_ng_percent'] = 0
+            #     elif f == 'fvl_hetero':
+            #         for fvl_hetero in context3['index_array_abort']:
+            #             if sublist_fvl_hetero[fvl_hetero][0] == '1.0':
+            #                 count_fvl_hetero = count_fvl_hetero + 1
+            #         print(count_fvl_hetero, 'fvl_hetero')
+            #         if count_fvl_hetero > 0:
+            #             mutations_age1_abort1_fvl_hetero_percent = count_fvl_hetero / len(
+            #                 context3['index_array_abort']) * 100
+            #             context3['mutations_age1_abort1_fvl_hetero_percent'] = mutations_age1_abort1_fvl_hetero_percent
+            #         else:
+            #             context3['mutations_age1_abort1_fvl_hetero_percent'] = 0
+            #     elif f == 'fvl_homo':
+            #         for fvl_homo in context3['index_array_abort']:
+            #             if sublist_fvl_homo[fvl_homo][0] == '1.0':
+            #                 count_fvl_homo = count_fvl_homo + 1
+            #         print(count_fvl_homo, 'fvl_homo')
+            #         if count_fvl_homo > 0:
+            #             mutations_age1_abort1_fvl_homo_percent = count_fvl_homo / len(
+            #                 context3['index_array_abort']) * 100
+            #             context3['mutations_age1_abort1_fvl_homo_percent'] = mutations_age1_abort1_fvl_homo_percent
+            #         else:
+            #             context3['mutations_age1_abort1_fvl_homo_percent'] = 0
+            #     elif f == 'prothr_ng':
+            #         for prothr_ng in context3['index_array_abort']:
+            #             if sublist_prothr_ng[prothr_ng][0] == '1.0':
+            #                 count_prothr_ng = count_prothr_ng + 1
+            #         print(count_prothr_ng, 'prothr_ng')
+            #         if count_prothr_ng > 0:
+            #             mutations_age1_abort1_prothr_ng_percent = count_prothr_ng / len(
+            #                 context3['index_array_abort']) * 100
+            #             context3['mutations_age1_abort1_prothr_ng_percent'] = mutations_age1_abort1_prothr_ng_percent
+            #         else:
+            #             context3['mutations_age1_abort1_prothr_ng_percent'] = 0
+            #     elif f == 'prothr_hetero':
+            #         for prothr_hetero in context3['index_array_abort']:
+            #             if sublist_prothr_hetero[prothr_hetero][0] == '1.0':
+            #                 count_prothr_hetero = count_prothr_hetero + 1
+            #         print(count_prothr_hetero, 'prothr_hetero')
+            #         if count_prothr_hetero > 0:
+            #             mutations_age1_abort1_prothr_hetero_percent = count_prothr_hetero / len(
+            #                 context3['index_array_abort']) * 100
+            #             context3[
+            #                 'mutations_age1_abort1_prothr_hetero_percent'] = mutations_age1_abort1_prothr_hetero_percent
+            #         else:
+            #             context3['mutations_age1_abort1_prothr_hetero_percent'] = 0
+            #     elif f == 'prothr_homo':
+            #         for prothr_homo in context3['index_array_abort']:
+            #             if sublist_prothr_homo[prothr_homo][0] == '1.0':
+            #                 count_prothr_homo = count_prothr_homo + 1
+            #         print(count_prothr_homo, 'prothr_homo')
+            #         if count_prothr_homo > 0:
+            #             mutations_age1_abort1_prothr_homo_percent = count_prothr_homo / len(
+            #                 context3['index_array_abort']) * 100
+            #             context3[
+            #                 'mutations_age1_abort1_prothr_homo_percent'] = mutations_age1_abort1_prothr_homo_percent
+            #         else:
+            #             context3['mutations_age1_abort1_prothr_homo_percent'] = 0
+            #     elif f == 'pai_ng':
+            #         print('F is:', f, context3['index_array_abort'])
+            #         for pai_ng in context3['index_array_abort']:
+            #             if sublist_pai_ng[pai_ng][0] == '1.0':
+            #                 count_pai_ng = count_pai_ng + 1
+            #         print('pai_ng', count_pai_ng)
+            #         if count_pai_ng > 0:
+            #             mutations_age1_abort1_pai_ng_percent = count_pai_ng / len(context3['index_array_abort']) * 100
+            #             context3['mutations_age1_abort1_pai_ng_percent'] = mutations_age1_abort1_pai_ng_percent
+            #         else:
+            #             context3['mutations_age1_abort1_pai_ng_percent'] = 0
+            #
+            #     elif f == 'pai_hetero':
+            #         for pai_hetero in context3['index_array_abort']:
+            #             if sublist_pai_hetero[pai_hetero][0] == '1.0':
+            #                 count_pai_hetero = count_pai_hetero + 1
+            #         print(count_pai_hetero, 'pai_hetero')
+            #         if count_pai_hetero > 0:
+            #             mutations_age1_abort1_pai_hetero_percent = count_pai_hetero / len(
+            #                 context3['index_array_abort']) * 100
+            #             context3['mutations_age1_abort1_pai_hetero_percent'] = mutations_age1_abort1_pai_hetero_percent
+            #         else:
+            #             context3['mutations_age1_abort1_pai_hetero_percent'] = 0
+            #     elif f == 'pai_homo':
+            #         for pai_homo in context3['index_array_abort']:
+            #             if sublist_pai_homo[pai_homo][0] == '1.0':
+            #                 count_pai_homo = count_pai_homo + 1
+            #         print(count_pai_homo, 'pai_homo')
+            #         if count_pai_homo > 0:
+            #             mutations_age1_abort1_pai_homo_percent = count_pai_homo / len(
+            #                 context3['index_array_abort']) * 100
+            #             context3['mutations_age1_abort1_pai_homo_percent'] = mutations_age1_abort1_pai_homo_percent
+            #         else:
+            #             context3['mutations_age1_abort1_pai_homo_percent'] = 0
+            #     elif f == 'mthfr_ng':
+            #         for mthfr_ng in context3['index_array_abort']:
+            #             if sublist_mthfr_ng[mthfr_ng][0] == '1.0':
+            #                 count_mthfr_ng = count_mthfr_ng + 1
+            #         print(count_mthfr_ng, 'mthfr_ng')
+            #         if count_mthfr_ng > 0:
+            #             mutations_age1_abort1_mthfr_ng_percent = count_mthfr_ng / len(
+            #                 context3['index_array_abort']) * 100
+            #             context3['mutations_age1_abort1_mthfr_ng_percent'] = mutations_age1_abort1_mthfr_ng_percent
+            #         else:
+            #             context3['mutations_age1_abort1_mthfr_ng_percent'] = 0
+            #     elif f == 'mthfr_hetero':
+            #         for mthfr_hetero in context3['index_array_abort']:
+            #             if sublist_mthfr_hetero[mthfr_hetero][0] == '1.0':
+            #                 count_mthfr_hetero = count_mthfr_hetero + 1
+            #         print(count_mthfr_hetero, 'mthfr_hetero')
+            #         if count_mthfr_hetero > 0:
+            #             mutations_age1_abort1_mthfr_hetero_percent = count_mthfr_hetero / len(
+            #                 context3['index_array_abort']) * 100
+            #             context3[
+            #                 'mutations_age1_abort1_mthfr_hetero_percent'] = mutations_age1_abort1_mthfr_hetero_percent
+            #         else:
+            #             context3['mutations_age1_abort1_mthfr_hetero_percent'] = 0
+            #     elif f == 'mthfr_homo':
+            #         for mthfr_homo in context3['index_array_abort']:
+            #             if sublist_mthfr_homo[mthfr_homo][0] == '1.0':
+            #                 count_mthfr_homo = count_mthfr_homo + 1
+            #         print(count_mthfr_homo, 'mthfr_homo')
+            #         if count_mthfr_homo > 0:
+            #             mutations_age1_abort1_mthfr_homo_percent = count_mthfr_homo / len(
+            #                 context3['index_array_abort']) * 100
+            #             context3['mutations_age1_abort1_mthfr_homo_percent'] = mutations_age1_abort1_mthfr_homo_percent
+            #         else:
+            #             context3['mutations_age1_abort1_mthfr_homo_percent'] = 0
 
-            sublist_pai_ng = list_pai_ng[sublist]
-            sublist_pai_hetero = list_pai_hetero[sublist]
-            sublist_pai_homo = list_pai_homo[sublist]
-
-            sublist_mthfr_ng = list_mthfr_ng[sublist]
-            sublist_mthfr_hetero = list_mthfr_hetero[sublist]
-            sublist_mthfr_homo = list_mthfr_homo[sublist]
-
-            count_fvl_ng = 0
-            count_fvl_hetero = 0
-            count_fvl_homo = 0
-
-            count_prothr_ng = 0
-            count_prothr_hetero = 0
-            count_prothr_homo = 0
-
-            count_pai_ng = 0
-            count_pai_hetero = 0
-            count_pai_homo = 0
-
-            count_mthfr_ng = 0
-            count_mthfr_hetero = 0
-            count_mthfr_homo = 0
-            print('PRIDA LIST DATA', prida_list_data)
-            for f in prida_list_data:
-                print(f, 'OK2')
-                if f == 'fvl_ng':
-                    for fvl_ng in context3['index_array_abort']:
-                        if sublist_fvl_ng[fvl_ng][0] == '1.0':
-                            count_fvl_ng = count_fvl_ng + 1
-                    print(count_fvl_ng, 'fvl_ng')
-                    if count_fvl_ng > 0:
-                        mutations_age1_abort1_fvl_ng_percent = count_fvl_ng / len(context3['index_array_abort']) * 100
-                        context3['mutations_age1_abort1_fvl_ng_percent'] = mutations_age1_abort1_fvl_ng_percent
-                    else:
-                        context3['mutations_age1_abort1_fvl_ng_percent'] = 0
-                elif f == 'fvl_hetero':
-                    for fvl_hetero in context3['index_array_abort']:
-                        if sublist_fvl_hetero[fvl_hetero][0] == '1.0':
-                            count_fvl_hetero = count_fvl_hetero + 1
-                    print(count_fvl_hetero, 'fvl_hetero')
-                    if count_fvl_hetero > 0:
-                        mutations_age1_abort1_fvl_hetero_percent = count_fvl_hetero / len(
-                            context3['index_array_abort']) * 100
-                        context3['mutations_age1_abort1_fvl_hetero_percent'] = mutations_age1_abort1_fvl_hetero_percent
-                    else:
-                        context3['mutations_age1_abort1_fvl_hetero_percent'] = 0
-                elif f == 'fvl_homo':
-                    for fvl_homo in context3['index_array_abort']:
-                        if sublist_fvl_homo[fvl_homo][0] == '1.0':
-                            count_fvl_homo = count_fvl_homo + 1
-                    print(count_fvl_homo, 'fvl_homo')
-                    if count_fvl_homo > 0:
-                        mutations_age1_abort1_fvl_homo_percent = count_fvl_homo / len(
-                            context3['index_array_abort']) * 100
-                        context3['mutations_age1_abort1_fvl_homo_percent'] = mutations_age1_abort1_fvl_homo_percent
-                    else:
-                        context3['mutations_age1_abort1_fvl_homo_percent'] = 0
-                elif f == 'prothr_ng':
-                    for prothr_ng in context3['index_array_abort']:
-                        if sublist_prothr_ng[prothr_ng][0] == '1.0':
-                            count_prothr_ng = count_prothr_ng + 1
-                    print(count_prothr_ng, 'prothr_ng')
-                    if count_prothr_ng > 0:
-                        mutations_age1_abort1_prothr_ng_percent = count_prothr_ng / len(
-                            context3['index_array_abort']) * 100
-                        context3['mutations_age1_abort1_prothr_ng_percent'] = mutations_age1_abort1_prothr_ng_percent
-                    else:
-                        context3['mutations_age1_abort1_prothr_ng_percent'] = 0
-                elif f == 'prothr_hetero':
-                    for prothr_hetero in context3['index_array_abort']:
-                        if sublist_prothr_hetero[prothr_hetero][0] == '1.0':
-                            count_prothr_hetero = count_prothr_hetero + 1
-                    print(count_prothr_hetero, 'prothr_hetero')
-                    if count_prothr_hetero > 0:
-                        mutations_age1_abort1_prothr_hetero_percent = count_prothr_hetero / len(
-                            context3['index_array_abort']) * 100
-                        context3[
-                            'mutations_age1_abort1_prothr_hetero_percent'] = mutations_age1_abort1_prothr_hetero_percent
-                    else:
-                        context3['mutations_age1_abort1_prothr_hetero_percent'] = 0
-                elif f == 'prothr_homo':
-                    for prothr_homo in context3['index_array_abort']:
-                        if sublist_prothr_homo[prothr_homo][0] == '1.0':
-                            count_prothr_homo = count_prothr_homo + 1
-                    print(count_prothr_homo, 'prothr_homo')
-                    if count_prothr_homo > 0:
-                        mutations_age1_abort1_prothr_homo_percent = count_prothr_homo / len(
-                            context3['index_array_abort']) * 100
-                        context3[
-                            'mutations_age1_abort1_prothr_homo_percent'] = mutations_age1_abort1_prothr_homo_percent
-                    else:
-                        context3['mutations_age1_abort1_prothr_homo_percent'] = 0
-                elif f == 'pai_ng':
-                    print('F is:', f, context3['index_array_abort'])
-                    for pai_ng in context3['index_array_abort']:
-                        if sublist_pai_ng[pai_ng][0] == '1.0':
-                            count_pai_ng = count_pai_ng + 1
-                    print('pai_ng', count_pai_ng)
-                    if count_pai_ng > 0:
-                        mutations_age1_abort1_pai_ng_percent = count_pai_ng / len(context3['index_array_abort']) * 100
-                        context3['mutations_age1_abort1_pai_ng_percent'] = mutations_age1_abort1_pai_ng_percent
-                    else:
-                        context3['mutations_age1_abort1_pai_ng_percent'] = 0
-
-                elif f == 'pai_hetero':
-                    for pai_hetero in context3['index_array_abort']:
-                        if sublist_pai_hetero[pai_hetero][0] == '1.0':
-                            count_pai_hetero = count_pai_hetero + 1
-                    print(count_pai_hetero, 'pai_hetero')
-                    if count_pai_hetero > 0:
-                        mutations_age1_abort1_pai_hetero_percent = count_pai_hetero / len(
-                            context3['index_array_abort']) * 100
-                        context3['mutations_age1_abort1_pai_hetero_percent'] = mutations_age1_abort1_pai_hetero_percent
-                    else:
-                        context3['mutations_age1_abort1_pai_hetero_percent'] = 0
-                elif f == 'pai_homo':
-                    for pai_homo in context3['index_array_abort']:
-                        if sublist_pai_homo[pai_homo][0] == '1.0':
-                            count_pai_homo = count_pai_homo + 1
-                    print(count_pai_homo, 'pai_homo')
-                    if count_pai_homo > 0:
-                        mutations_age1_abort1_pai_homo_percent = count_pai_homo / len(
-                            context3['index_array_abort']) * 100
-                        context3['mutations_age1_abort1_pai_homo_percent'] = mutations_age1_abort1_pai_homo_percent
-                    else:
-                        context3['mutations_age1_abort1_pai_homo_percent'] = 0
-                elif f == 'mthfr_ng':
-                    for mthfr_ng in context3['index_array_abort']:
-                        if sublist_mthfr_ng[mthfr_ng][0] == '1.0':
-                            count_mthfr_ng = count_mthfr_ng + 1
-                    print(count_mthfr_ng, 'mthfr_ng')
-                    if count_mthfr_ng > 0:
-                        mutations_age1_abort1_mthfr_ng_percent = count_mthfr_ng / len(
-                            context3['index_array_abort']) * 100
-                        context3['mutations_age1_abort1_mthfr_ng_percent'] = mutations_age1_abort1_mthfr_ng_percent
-                    else:
-                        context3['mutations_age1_abort1_mthfr_ng_percent'] = 0
-                elif f == 'mthfr_hetero':
-                    for mthfr_hetero in context3['index_array_abort']:
-                        if sublist_mthfr_hetero[mthfr_hetero][0] == '1.0':
-                            count_mthfr_hetero = count_mthfr_hetero + 1
-                    print(count_mthfr_hetero, 'mthfr_hetero')
-                    if count_mthfr_hetero > 0:
-                        mutations_age1_abort1_mthfr_hetero_percent = count_mthfr_hetero / len(
-                            context3['index_array_abort']) * 100
-                        context3[
-                            'mutations_age1_abort1_mthfr_hetero_percent'] = mutations_age1_abort1_mthfr_hetero_percent
-                    else:
-                        context3['mutations_age1_abort1_mthfr_hetero_percent'] = 0
-                elif f == 'mthfr_homo':
-                    for mthfr_homo in context3['index_array_abort']:
-                        if sublist_mthfr_homo[mthfr_homo][0] == '1.0':
-                            count_mthfr_homo = count_mthfr_homo + 1
-                    print(count_mthfr_homo, 'mthfr_homo')
-                    if count_mthfr_homo > 0:
-                        mutations_age1_abort1_mthfr_homo_percent = count_mthfr_homo / len(
-                            context3['index_array_abort']) * 100
-                        context3['mutations_age1_abort1_mthfr_homo_percent'] = mutations_age1_abort1_mthfr_homo_percent
-                    else:
-                        context3['mutations_age1_abort1_mthfr_homo_percent'] = 0
-
-            context3['mutations_fvl_ng'] = count_fvl_ng
-            context3['mutations_fvl_hetero'] = count_fvl_hetero
-            context3['mutations_fvl_homo'] = count_fvl_homo
-            context3['mutations_prothr_ng'] = count_prothr_ng
-            context3['mutations_prothr_hetero'] = count_prothr_hetero
-            context3['mutations_prothr_homo'] = count_prothr_homo
-            context3['mutations_pai_ng'] = count_pai_ng
-            context3['mutations_pai_hetero'] = count_pai_hetero
-            context3['mutations_pai_homo'] = count_pai_homo
-            context3['mutations_mthfr_ng'] = count_mthfr_ng
-            context3['mutations_mthfr_hetero'] = count_mthfr_hetero
-            context3['mutations_mthfr_homo'] = count_mthfr_homo
+            # context3['mutations_fvl_ng'] = count_fvl_ng
+            # context3['mutations_fvl_hetero'] = count_fvl_hetero
+            # context3['mutations_fvl_homo'] = count_fvl_homo
+            # context3['mutations_prothr_ng'] = count_prothr_ng
+            # context3['mutations_prothr_hetero'] = count_prothr_hetero
+            # context3['mutations_prothr_homo'] = count_prothr_homo
+            # context3['mutations_pai_ng'] = count_pai_ng
+            # context3['mutations_pai_hetero'] = count_pai_hetero
+            # context3['mutations_pai_homo'] = count_pai_homo
+            # context3['mutations_mthfr_ng'] = count_mthfr_ng
+            # context3['mutations_mthfr_hetero'] = count_mthfr_hetero
+            # context3['mutations_mthfr_homo'] = count_mthfr_homo
 
             # print(context3['age_interval'], 'New')
             # print(context3['index_array_age'], 'New', sublist_age)
             # print(prida_list_data, 'Prida List Data')
 
-            print(sublist_fvl_hetero)
-            context3['sublist_abort'] = sublist_abort
+            # print(sublist_fvl_hetero)
+            # context3['sublist_abort'] = sublist_abort
 
             ####################################################
             ############## Start Count Age #####################
             ####################################################
-            print('Tihomir')
-            for i in range(0, len(prida_list_data)):
-                if prida_list_data[i] == 'age1':
-                    count_age1 = 0
-                    list_num_array_data = []
-                    index_sublist_age1 = 0
-                    for age1 in sublist_age:
-                        if 20 <= age1[0] <= 30:
-                            count_age1 = count_age1 + 1
-                            list_num_array_data.append(index_sublist_age1)
-                        index_sublist_age1 = index_sublist_age1 + 1
-                    context3['num_array_data_age1'] = list_num_array_data
-                    print(context3['num_array_data_age1'])
-
-                elif prida_list_data[i] == 'age2':
-                    list_num_array_data = []
-                    index_sublist_age2 = 0
-                    count_age2 = 0
-                    for age2 in sublist_age:
-                        if 31 <= age2[0] <= 40:
-                            count_age2 = count_age2 + 1
-                            list_num_array_data.append(index_sublist_age2)
-                        index_sublist_age2 = index_sublist_age2 + 1
-                    # print(count_age2, list_num_array_data)
-                    context3['num_array_data_age2'] = list_num_array_data
-                    print(context3['num_array_data_age2'])
-
-                elif prida_list_data[i] == 'age3':
-                    list_num_array_data = []
-                    index_sublist_age3 = 0
-                    count_age3 = 0
-                    for age3 in sublist_age:
-                        if 41 <= age3[0] <= 50:
-                            count_age3 = count_age3 + 1
-                            list_num_array_data.append(index_sublist_age3)
-                        index_sublist_age3 = index_sublist_age3 + 1
-                    # print(count_age3, list_num_array_data)
-                    context3['num_array_data_age3'] = list_num_array_data
-                    print(context3['num_array_data_age3'])
-
-            print('End Tihomir')
+            # print('Tihomir')
+            # for i in range(0, len(prida_list_data)):
+            #     if prida_list_data[i] == 'age1':
+            #         count_age1 = 0
+            #         list_num_array_data = []
+            #         index_sublist_age1 = 0
+            #         for age1 in sublist_age:
+            #             if 20 <= age1[0] <= 30:
+            #                 count_age1 = count_age1 + 1
+            #                 list_num_array_data.append(index_sublist_age1)
+            #             index_sublist_age1 = index_sublist_age1 + 1
+            #         context3['num_array_data_age1'] = list_num_array_data
+            #         print(context3['num_array_data_age1'])
+            #
+            #     elif prida_list_data[i] == 'age2':
+            #         list_num_array_data = []
+            #         index_sublist_age2 = 0
+            #         count_age2 = 0
+            #         for age2 in sublist_age:
+            #             if 31 <= age2[0] <= 40:
+            #                 count_age2 = count_age2 + 1
+            #                 list_num_array_data.append(index_sublist_age2)
+            #             index_sublist_age2 = index_sublist_age2 + 1
+            #         # print(count_age2, list_num_array_data)
+            #         context3['num_array_data_age2'] = list_num_array_data
+            #         print(context3['num_array_data_age2'])
+            #
+            #     elif prida_list_data[i] == 'age3':
+            #         list_num_array_data = []
+            #         index_sublist_age3 = 0
+            #         count_age3 = 0
+            #         for age3 in sublist_age:
+            #             if 41 <= age3[0] <= 50:
+            #                 count_age3 = count_age3 + 1
+            #                 list_num_array_data.append(index_sublist_age3)
+            #             index_sublist_age3 = index_sublist_age3 + 1
+            #         # print(count_age3, list_num_array_data)
+            #         context3['num_array_data_age3'] = list_num_array_data
+            #         print(context3['num_array_data_age3'])
+            #
+            # print('End Tihomir')
             ####################################################
             ############## End Count Age #######################
             ####################################################
-            index_data_array_age1_abort1 = []
-
-            count_fvl_ng_age1_abort1 = 0
-            count_fvl_hetero_age1_abort1 = 0
-            count_fvl_homo_age1_abort1 = 0
-
-            count_prothr_ng_age1_abort1 = 0
-            count_prothr_hetero_age1_abort1 = 0
-            count_prothr_homo_age1_abort1 = 0
-
-            count_pai_ng_age1_abort1 = 0
-            count_pai_hetero_age1_abort1 = 0
-            count_pai_homo_age1_abort1 = 0
-
-            count_mthfr_ng_age1_abort1 = 0
-            count_mthfr_hetero_age1_abort1 = 0
-            count_mthfr_homo_age1_abort1 = 0
-
-            for index_age1_abort1 in index_data_array_age1_abort1:
-                if sublist_fvl_ng[index_age1_abort1][0] == '1.0':
-                    count_fvl_ng_age1_abort1 = count_fvl_ng_age1_abort1 + 1
-
-                elif sublist_fvl_hetero[index_age1_abort1][0] == '1.0':
-                    count_fvl_hetero_age1_abort1 = count_fvl_hetero_age1_abort1 + 1
-
-                elif sublist_fvl_homo[index_age1_abort1][0] == '1.0':
-                    count_fvl_homo_age1_abort1 = count_fvl_homo_age1_abort1 + 1
-
-                elif sublist_prothr_ng[index_age1_abort1][0] == '1.0':
-                    count_prothr_ng_age1_abort1 = count_prothr_ng_age1_abort1 + 1
-
-                elif sublist_prothr_hetero[index_age1_abort1][0] == '1.0':
-                    count_prothr_hetero_age1_abort1 = count_prothr_hetero_age1_abort1 + 1
-
-                elif sublist_prothr_homo[index_age1_abort1][0] == '1.0':
-                    count_prothr_homo_age1_abort1 = count_prothr_homo_age1_abort1 + 1
-
-                elif sublist_pai_ng[index_age1_abort1][0] == '1.0':
-                    count_pai_ng_age1_abort1 = count_pai_ng_age1_abort1 + 1
-
-                elif sublist_pai_hetero[index_age1_abort1][0] == '1.0':
-                    count_pai_hetero_age1_abort1 = count_pai_hetero_age1_abort1 + 1
-
-                elif sublist_pai_homo[index_age1_abort1][0] == '1.0':
-                    count_pai_homo_age1_abort1 = count_pai_homo_age1_abort1 + 1
-
-                elif sublist_mthfr_ng[index_age1_abort1][0] == '1.0':
-                    count_mthfr_ng_age1_abort1 = count_mthfr_ng_age1_abort1 + 1
-
-                elif sublist_mthfr_hetero[index_age1_abort1][0] == '1.0':
-                    count_mthfr_hetero_age1_abort1 = count_mthfr_hetero_age1_abort1 + 1
-
-                elif sublist_mthfr_homo[index_age1_abort1][0] == '1.0':
-                    count_mthfr_homo_age1_abort1 = count_mthfr_homo_age1_abort1 + 1
-
-                print(sublist_fvl_ng[index_age1_abort1], 'Bravo 1')
-
-            print(count_fvl_ng_age1_abort1)
+            # index_data_array_age1_abort1 = []
+            #
+            # count_fvl_ng_age1_abort1 = 0
+            # count_fvl_hetero_age1_abort1 = 0
+            # count_fvl_homo_age1_abort1 = 0
+            #
+            # count_prothr_ng_age1_abort1 = 0
+            # count_prothr_hetero_age1_abort1 = 0
+            # count_prothr_homo_age1_abort1 = 0
+            #
+            # count_pai_ng_age1_abort1 = 0
+            # count_pai_hetero_age1_abort1 = 0
+            # count_pai_homo_age1_abort1 = 0
+            #
+            # count_mthfr_ng_age1_abort1 = 0
+            # count_mthfr_hetero_age1_abort1 = 0
+            # count_mthfr_homo_age1_abort1 = 0
+            #
+            # for index_age1_abort1 in index_data_array_age1_abort1:
+            #     if sublist_fvl_ng[index_age1_abort1][0] == '1.0':
+            #         count_fvl_ng_age1_abort1 = count_fvl_ng_age1_abort1 + 1
+            #
+            #     elif sublist_fvl_hetero[index_age1_abort1][0] == '1.0':
+            #         count_fvl_hetero_age1_abort1 = count_fvl_hetero_age1_abort1 + 1
+            #
+            #     elif sublist_fvl_homo[index_age1_abort1][0] == '1.0':
+            #         count_fvl_homo_age1_abort1 = count_fvl_homo_age1_abort1 + 1
+            #
+            #     elif sublist_prothr_ng[index_age1_abort1][0] == '1.0':
+            #         count_prothr_ng_age1_abort1 = count_prothr_ng_age1_abort1 + 1
+            #
+            #     elif sublist_prothr_hetero[index_age1_abort1][0] == '1.0':
+            #         count_prothr_hetero_age1_abort1 = count_prothr_hetero_age1_abort1 + 1
+            #
+            #     elif sublist_prothr_homo[index_age1_abort1][0] == '1.0':
+            #         count_prothr_homo_age1_abort1 = count_prothr_homo_age1_abort1 + 1
+            #
+            #     elif sublist_pai_ng[index_age1_abort1][0] == '1.0':
+            #         count_pai_ng_age1_abort1 = count_pai_ng_age1_abort1 + 1
+            #
+            #     elif sublist_pai_hetero[index_age1_abort1][0] == '1.0':
+            #         count_pai_hetero_age1_abort1 = count_pai_hetero_age1_abort1 + 1
+            #
+            #     elif sublist_pai_homo[index_age1_abort1][0] == '1.0':
+            #         count_pai_homo_age1_abort1 = count_pai_homo_age1_abort1 + 1
+            #
+            #     elif sublist_mthfr_ng[index_age1_abort1][0] == '1.0':
+            #         count_mthfr_ng_age1_abort1 = count_mthfr_ng_age1_abort1 + 1
+            #
+            #     elif sublist_mthfr_hetero[index_age1_abort1][0] == '1.0':
+            #         count_mthfr_hetero_age1_abort1 = count_mthfr_hetero_age1_abort1 + 1
+            #
+            #     elif sublist_mthfr_homo[index_age1_abort1][0] == '1.0':
+            #         count_mthfr_homo_age1_abort1 = count_mthfr_homo_age1_abort1 + 1
+            #
+            #     print(sublist_fvl_ng[index_age1_abort1], 'Bravo 1')
+            #
+            # print(count_fvl_ng_age1_abort1)
             # context3['count_fvl_ng_age1_abort1'] = count_fvl_ng_age1_abort1
             # # mutations_age1_abort1_fvl_ng = count_fvl_ng_age1_abort1 / num_patients_abort1 * 100
             # context3['mutations_age1_abort1_fvl_ng'] = mutations_age1_abort1_fvl_ng
@@ -6387,26 +6730,26 @@ def proba1_eng(request):
             #         num_array_abort3.append(index_array_age3)
             #         print(num_array_abort3, 'Bravo 3')
 
-            context3['count_age1'] = count_age1
-            print(sublist_age)
-            sublist_fvl_ng = list_fvl_ng[sublist]
-            sublist_age = list_age[sublist]
-            context3['sublist_age'] = sublist_age
-            print(sublist_age)
-            sublist_fvl_hetero = list_fvl_hetero[sublist]
-            sublist_fvl_homo = list_fvl_homo[sublist]
-
-            sublist_prothr_ng = list_prothr_ng[sublist]
-            sublist_prothr_hetero = list_prothr_hetero[sublist]
-            sublist_prothr_homo = list_prothr_homo[sublist]
-
-            sublist_pai_ng = list_pai_ng[sublist]
-            sublist_pai_hetero = list_pai_hetero[sublist]
-            sublist_pai_homo = list_pai_homo[sublist]
-
-            sublist_mthfr_ng = list_mthfr_ng[sublist]
-            sublist_mthfr_hetero = list_mthfr_hetero[sublist]
-            sublist_mthfr_homo = list_mthfr_homo[sublist]
+            # context3['count_age1'] = count_age1
+            # # print(sublist_age)
+            # sublist_fvl_ng = list_fvl_ng[sublist]
+            # sublist_age = list_age[sublist]
+            # context3['sublist_age'] = sublist_age
+            # # print(sublist_age)
+            # sublist_fvl_hetero = list_fvl_hetero[sublist]
+            # sublist_fvl_homo = list_fvl_homo[sublist]
+            #
+            # sublist_prothr_ng = list_prothr_ng[sublist]
+            # sublist_prothr_hetero = list_prothr_hetero[sublist]
+            # sublist_prothr_homo = list_prothr_homo[sublist]
+            #
+            # sublist_pai_ng = list_pai_ng[sublist]
+            # sublist_pai_hetero = list_pai_hetero[sublist]
+            # sublist_pai_homo = list_pai_homo[sublist]
+            #
+            # sublist_mthfr_ng = list_mthfr_ng[sublist]
+            # sublist_mthfr_hetero = list_mthfr_hetero[sublist]
+            # sublist_mthfr_homo = list_mthfr_homo[sublist]
 
             ####################################################
             ####################### FVL_NG #####################
@@ -6422,12 +6765,12 @@ def proba1_eng(request):
             # count_fvl_ng_0 = count_all_fvl_ng_data - count_fvl_ng
             # fvl_1_ng_percent = count_fvl_ng * 100 / count_all_fvl_ng_data
 
-            f_fvl_ng = factor(sublist_fvl_ng)
-
-            context3['count_fvl_ng'] = f_fvl_ng[0]
-            context3['count_fvl_ng_0'] = f_fvl_ng[1]
-            context3['fvl_1_ng_percent'] = f_fvl_ng[2]
-            context3['count_all_fvl_ng_data'] = f_fvl_ng[3]
+            # f_fvl_ng = factor(sublist_fvl_ng)
+            #
+            # context3['count_fvl_ng'] = f_fvl_ng[0]
+            # context3['count_fvl_ng_0'] = f_fvl_ng[1]
+            # context3['fvl_1_ng_percent'] = f_fvl_ng[2]
+            # context3['count_all_fvl_ng_data'] = f_fvl_ng[3]
 
             # print(sublist_fvl_ng)
             ####################################################
@@ -6448,12 +6791,12 @@ def proba1_eng(request):
             # count_fvl_hetero_0 = count_all_fvl_hetero_data - count_fvl_hetero
             # fvl_1_hetero_percent = count_fvl_hetero * 100 / count_all_fvl_hetero_data
 
-            f_fvl_hetero = factor(sublist_fvl_hetero)
+            # f_fvl_hetero = factor(sublist_fvl_hetero)
 
-            context3['count_fvl_hetero'] = f_fvl_hetero[0]
-            context3['count_fvl_hetero_0'] = f_fvl_hetero[1]
-            context3['fvl_1_hetero_percent'] = f_fvl_hetero[2]
-            context3['count_all_fvl_hetero_data'] = f_fvl_hetero[3]
+            # context3['count_fvl_hetero'] = f_fvl_hetero[0]
+            # context3['count_fvl_hetero_0'] = f_fvl_hetero[1]
+            # context3['fvl_1_hetero_percent'] = f_fvl_hetero[2]
+            # context3['count_all_fvl_hetero_data'] = f_fvl_hetero[3]
 
             ####################################################
             ####################################################
@@ -6472,12 +6815,12 @@ def proba1_eng(request):
             # count_fvl_homo_0 = count_all_fvl_homo_data - count_fvl_homo
             # fvl_1_homo_percent = count_fvl_homo * 100 / count_all_fvl_homo_data
 
-            f_fvl_homo = factor(sublist_fvl_homo)
-
-            context3['count_fvl_homo'] = f_fvl_homo[0]
-            context3['count_fvl_homo_0'] = f_fvl_homo[1]
-            context3['fvl_1_homo_percent'] = f_fvl_homo[2]
-            context3['count_all_fvl_homo_data'] = f_fvl_homo[3]
+            # f_fvl_homo = factor(sublist_fvl_homo)
+            #
+            # context3['count_fvl_homo'] = f_fvl_homo[0]
+            # context3['count_fvl_homo_0'] = f_fvl_homo[1]
+            # context3['fvl_1_homo_percent'] = f_fvl_homo[2]
+            # context3['count_all_fvl_homo_data'] = f_fvl_homo[3]
 
             ####################################################
             ####################################################
@@ -6496,12 +6839,12 @@ def proba1_eng(request):
             # count_prothr_ng_0 = count_all_prothr_ng_data - count_prothr_ng
             # prothr_1_ng_percent = count_prothr_ng * 100 / count_all_prothr_ng_data
 
-            f_prothr_ng = factor(sublist_prothr_ng)
-
-            context3['count_prothr_ng'] = f_prothr_ng[0]
-            context3['count_prothr_ng_0'] = f_prothr_ng[1]
-            context3['prothr_1_ng_percent'] = f_prothr_ng[2]
-            context3['count_all_prothr_ng_data'] = f_prothr_ng[3]
+            # f_prothr_ng = factor(sublist_prothr_ng)
+            #
+            # context3['count_prothr_ng'] = f_prothr_ng[0]
+            # context3['count_prothr_ng_0'] = f_prothr_ng[1]
+            # context3['prothr_1_ng_percent'] = f_prothr_ng[2]
+            # context3['count_all_prothr_ng_data'] = f_prothr_ng[3]
 
             ####################################################
             ####################################################
@@ -6520,12 +6863,12 @@ def proba1_eng(request):
             # count_prothr_hetero_0 = count_all_prothr_hetero_data - count_prothr_hetero
             # prothr_1_hetero_percent = count_prothr_hetero * 100 / count_all_prothr_hetero_data
 
-            f_prothr_hetero = factor(sublist_prothr_hetero)
-
-            context3['count_prothr_hetero'] = f_prothr_hetero[0]
-            context3['count_prothr_hetero_0'] = f_prothr_hetero[1]
-            context3['prothr_1_hetero_percent'] = f_prothr_hetero[2]
-            context3['count_all_prothr_hetero_data'] = f_prothr_hetero[3]
+            # f_prothr_hetero = factor(sublist_prothr_hetero)
+            #
+            # context3['count_prothr_hetero'] = f_prothr_hetero[0]
+            # context3['count_prothr_hetero_0'] = f_prothr_hetero[1]
+            # context3['prothr_1_hetero_percent'] = f_prothr_hetero[2]
+            # context3['count_all_prothr_hetero_data'] = f_prothr_hetero[3]
 
             ####################################################
             ####################################################
@@ -6544,12 +6887,12 @@ def proba1_eng(request):
             # count_prothr_homo_0 = count_all_prothr_homo_data - count_prothr_homo
             # prothr_1_homo_percent = count_prothr_homo * 100 / count_all_prothr_homo_data
 
-            f_prothr_homo = factor(sublist_prothr_homo)
-
-            context3['count_prothr_homo'] = f_prothr_homo[0]
-            context3['count_prothr_homo_0'] = f_prothr_homo[1]
-            context3['prothr_1_homo_percent'] = f_prothr_homo[2]
-            context3['count_all_prothr_homo_data'] = f_prothr_homo[3]
+            # f_prothr_homo = factor(sublist_prothr_homo)
+            #
+            # context3['count_prothr_homo'] = f_prothr_homo[0]
+            # context3['count_prothr_homo_0'] = f_prothr_homo[1]
+            # context3['prothr_1_homo_percent'] = f_prothr_homo[2]
+            # context3['count_all_prothr_homo_data'] = f_prothr_homo[3]
 
             ####################################################
             ####################################################
@@ -6567,12 +6910,12 @@ def proba1_eng(request):
             # count_pai_ng_0 = count_all_pai_ng_data - count_pai_ng
             # pai_1_ng_percent = count_pai_ng * 100 / count_all_pai_ng_data
 
-            f_pai_ng = factor(sublist_pai_ng)
-
-            context3['count_pai_ng'] = f_pai_ng[0]
-            context3['count_pai_ng_0'] = f_pai_ng[1]
-            context3['pai_1_ng_percent'] = f_pai_ng[2]
-            context3['count_all_pai_ng_data'] = f_pai_ng[3]
+            # f_pai_ng = factor(sublist_pai_ng)
+            #
+            # context3['count_pai_ng'] = f_pai_ng[0]
+            # context3['count_pai_ng_0'] = f_pai_ng[1]
+            # context3['pai_1_ng_percent'] = f_pai_ng[2]
+            # context3['count_all_pai_ng_data'] = f_pai_ng[3]
 
             ####################################################
             ####################################################
@@ -6590,12 +6933,12 @@ def proba1_eng(request):
             # count_pai_hetero_0 = count_all_pai_hetero_data - count_pai_hetero
             # pai_1_hetero_percent = count_pai_hetero * 100 / count_all_pai_hetero_data
 
-            f_pai_hetero = factor(sublist_pai_hetero)
-
-            context3['count_pai_hetero'] = f_pai_hetero[0]
-            context3['count_pai_hetero_0'] = f_pai_hetero[1]
-            context3['pai_1_hetero_percent'] = f_pai_hetero[2]
-            context3['count_all_pai_hetero_data'] = f_pai_hetero[3]
+            # f_pai_hetero = factor(sublist_pai_hetero)
+            #
+            # context3['count_pai_hetero'] = f_pai_hetero[0]
+            # context3['count_pai_hetero_0'] = f_pai_hetero[1]
+            # context3['pai_1_hetero_percent'] = f_pai_hetero[2]
+            # context3['count_all_pai_hetero_data'] = f_pai_hetero[3]
 
             ####################################################
             ####################################################
@@ -6613,17 +6956,17 @@ def proba1_eng(request):
             # count_pai_homo_0 = count_all_pai_homo_data - count_pai_homo
             # pai_1_homo_percent = count_pai_homo * 100 / count_all_pai_homo_data
 
-            f_pai_homo = factor(sublist_pai_homo)
+            # f_pai_homo = factor(sublist_pai_homo)
 
             # context3['count_pai_homo'] = count_pai_homo
             # context3['count_pai_homo_0'] = count_pai_homo_0
             # context3['pai_1_homo_percent'] = pai_1_homo_percent
             # context3['count_all_pai_homo_data'] = count_all_pai_homo_data
 
-            context3['count_pai_homo'] = f_pai_homo[0]
-            context3['count_pai_homo_0'] = f_pai_homo[1]
-            context3['pai_1_homo_percent'] = f_pai_homo[2]
-            context3['count_all_pai_homo_data'] = f_pai_homo[3]
+            # context3['count_pai_homo'] = f_pai_homo[0]
+            # context3['count_pai_homo_0'] = f_pai_homo[1]
+            # context3['pai_1_homo_percent'] = f_pai_homo[2]
+            # context3['count_all_pai_homo_data'] = f_pai_homo[3]
 
             ####################################################
             ####################################################
@@ -6641,17 +6984,17 @@ def proba1_eng(request):
             # count_mthfr_ng_0 = count_all_mthfr_ng_data - count_mthfr_ng
             # mthfr_1_ng_percent = count_mthfr_ng * 100 / count_all_mthfr_ng_data
 
-            f_mthfr_ng = factor(sublist_mthfr_ng)
+            # f_mthfr_ng = factor(sublist_mthfr_ng)
 
             # context3['count_mthfr_ng'] = count_mthfr_ng
             # context3['count_mthfr_ng_0'] = count_mthfr_ng_0
             # context3['mthfr_1_ng_percent'] = mthfr_1_ng_percent
             # context3['count_all_mthfr_ng_data'] = count_all_mthfr_ng_data
 
-            context3['count_mthfr_ng'] = f_mthfr_ng[0]
-            context3['count_mthfr_ng_0'] = f_mthfr_ng[1]
-            context3['mthfr_1_ng_percent'] = f_mthfr_ng[2]
-            context3['count_all_mthfr_ng_data'] = f_mthfr_ng[3]
+            # context3['count_mthfr_ng'] = f_mthfr_ng[0]
+            # context3['count_mthfr_ng_0'] = f_mthfr_ng[1]
+            # context3['mthfr_1_ng_percent'] = f_mthfr_ng[2]
+            # context3['count_all_mthfr_ng_data'] = f_mthfr_ng[3]
 
             ####################################################
             ####################################################
@@ -6669,17 +7012,17 @@ def proba1_eng(request):
             # count_mthfr_hetero_0 = count_all_mthfr_hetero_data - count_mthfr_hetero
             # mthfr_1_hetero_percent = count_mthfr_hetero * 100 / count_all_mthfr_hetero_data
 
-            f_mthfr_hetero = factor(sublist_mthfr_hetero)
+            # f_mthfr_hetero = factor(sublist_mthfr_hetero)
 
             # context3['count_mthfr_hetero'] = count_mthfr_hetero
             # context3['count_mthfr_hetero_0'] = count_mthfr_hetero_0
             # context3['mthfr_1_hetero_percent'] = mthfr_1_hetero_percent
             # context3['count_all_mthfr_hetero_data'] = count_all_mthfr_hetero_data
 
-            context3['count_mthfr_hetero'] = f_mthfr_hetero[0]
-            context3['count_mthfr_hetero_0'] = f_mthfr_hetero[1]
-            context3['mthfr_1_hetero_percent'] = f_mthfr_hetero[2]
-            context3['count_all_mthfr_hetero_data'] = f_mthfr_hetero[3]
+            # context3['count_mthfr_hetero'] = f_mthfr_hetero[0]
+            # context3['count_mthfr_hetero_0'] = f_mthfr_hetero[1]
+            # context3['mthfr_1_hetero_percent'] = f_mthfr_hetero[2]
+            # context3['count_all_mthfr_hetero_data'] = f_mthfr_hetero[3]
 
             ####################################################
             ####################################################
@@ -6696,17 +7039,17 @@ def proba1_eng(request):
             #         count_mthfr_homo = count_mthfr_homo + 1
             # count_mthfr_homo_0 = count_all_mthfr_homo_data - count_mthfr_homo
             # mthfr_1_homo_percent = count_mthfr_homo * 100 / count_all_mthfr_homo_data
-            f_mthfr_homo = factor(sublist_mthfr_homo)
+            # f_mthfr_homo = factor(sublist_mthfr_homo)
 
             # context3['count_mthfr_homo'] = count_mthfr_homo
             # context3['count_mthfr_homo_0'] = count_mthfr_homo_0
             # context3['mthfr_1_homo_percent'] = mthfr_1_homo_percent
             # context3['count_all_mthfr_homo_data'] = count_all_mthfr_homo_data
 
-            context3['count_mthfr_homo'] = f_mthfr_homo[0]
-            context3['count_mthfr_homo_0'] = f_mthfr_homo[1]
-            context3['mthfr_1_homo_percent'] = f_mthfr_homo[2]
-            context3['count_all_mthfr_homo_data'] = f_mthfr_homo[3]
+            # context3['count_mthfr_homo'] = f_mthfr_homo[0]
+            # context3['count_mthfr_homo_0'] = f_mthfr_homo[1]
+            # context3['mthfr_1_homo_percent'] = f_mthfr_homo[2]
+            # context3['count_all_mthfr_homo_data'] = f_mthfr_homo[3]
     ####################################################
     ####################################################
     # print("PRida Mutations Form", prida_mutations_form)
@@ -6738,18 +7081,18 @@ def proba1_eng(request):
             context3['factor_fvl_ng'] = select_factor
         elif select_factor == 'fvl_hetero':
             context3['factor_fvl_hetero'] = select_factor
-        print(select_factor)
+        # print(select_factor)
 
     if prida_list_data:
         print(prida_list_data[0])
 
         context3['prida_list_data'] = prida_list_data
-        print(context3['prida_list_data'])
+        # print(context3['prida_list_data'])
 
     # context3['prida_list_data'] = prida_list_data
     context3['prida_mutations'] = prida_mutations
     context3['prida_mutations_form'] = prida_mutations_form
-    context3['st_line'] = start_line
+    # context3['st_line'] = start_line
     save_nb_fields = 1
     context3['save_nb_fields'] = save_nb_fields
 
@@ -9176,7 +9519,6 @@ def controli_eng(request):
     list_abort = PridaControli.objects.values_list('abort')
     prida_age_list_controli = request.POST.getlist('age')  ## Spisak s izbrana ot usera vazrast
 
-
     # print('LIST AGE', list_age_controli[0][0]+list_age_controli[0][0])
     # from_age_controli = request.POST.get('from_age_controli')
     # to_age_controli = request.POST.get('to_age_controli')
@@ -9189,8 +9531,8 @@ def controli_eng(request):
     #     # print(context3['to_age_controli'])
     #     pass
 
-    for age in list_age_controli:
-        pass
+    # for age in list_age_controli:
+    #     pass
     # print(from_age_controli, to_age_controli)
 
     prida_list_data_controli = request.POST.getlist('prida_list_data_controli')
@@ -9316,10 +9658,10 @@ def controli_eng(request):
             selected_age_array = []
             count_age = 0
             # for age in list_age_controli:
-                # print(age[0])
-                # if int(from_age_controli) <= age[0] <= int(to_age_controli):
-                #     selected_age_array.append(count_age)
-                # count_age = count_age + 1
+            # print(age[0])
+            # if int(from_age_controli) <= age[0] <= int(to_age_controli):
+            #     selected_age_array.append(count_age)
+            # count_age = count_age + 1
             # print('Selected New Age Array', selected_age_array)
 
             sublist = slice(22, len(list_age_controli))
@@ -9387,7 +9729,6 @@ def controli_eng(request):
             mthfr_hetero = []
             mthfr_homo = []
 
-
             for age in sublist_age:
                 print(age[0])
                 if int(from_age_controli) <= age[0] <= int(to_age_controli):
@@ -9408,7 +9749,6 @@ def controli_eng(request):
                 pai_hetero.append(sublist_pai_hetero_controli[age][0])
                 pai_homo.append(sublist_pai_homo_controli[age][0])
 
-
             print('Selected FVL NG', fvl_ng)
             print('Selected FVL HETERO', fvl_hetero)
             print('Selected FVL HOMO', fvl_homo)
@@ -9420,10 +9760,6 @@ def controli_eng(request):
             print('Selected pai NG', pai_ng)
             print('Selected pai HETERO', pai_hetero)
             print('Selected pai HOMO', pai_homo)
-
-
-
-
 
             sublist_abort = list_abort[sublist]
             # print('Sublist ABORTS', sublist_abort)
@@ -9491,8 +9827,6 @@ def controli_eng(request):
             #         index_array_abort3.append(abort)
             #
             #     count_index_array_abort = count_index_array_abort + 1
-
-
 
             sublist_fvl_ng = list_fvl_ng[sublist]
             # print('Sub FVL NG', sublist_fvl_ng)
@@ -9613,18 +9947,18 @@ def controli_eng(request):
                             count_mthfr_homo = count_mthfr_homo + 1
                     print('mthfr_homo NUMBER', count_mthfr_homo)
 
-            print('FVL NG NUMBER', count_fvl_ng, count_fvl_ng/len(selected_age_array)*100)
-            print('FVL HETERO NUMBER', count_fvl_hetero, count_fvl_hetero/len(selected_age_array)*100)
-            print('FVL HOMO NUMBER', count_fvl_homo, count_fvl_homo/len(selected_age_array)*100)
-            print('PROTHR NG NUMBER', count_prothr_ng, count_prothr_ng/len(selected_age_array)*100)
-            print('PROTHR HETERO NUMBER', count_prothr_hetero, count_prothr_hetero/len(selected_age_array)*100)
-            print('PROTHR HOMO NUMBER', count_prothr_homo, count_prothr_homo/len(selected_age_array)*100)
-            print('PAI NG NUMBER', count_pai_ng, count_pai_ng/len(selected_age_array)*100)
-            print('PAI HETERO NUMBER', count_pai_hetero, count_pai_hetero/len(selected_age_array)*100)
-            print('PAI HOMO NUMBER', count_pai_homo, count_pai_homo/len(selected_age_array)*100)
-            print('MTHFR NG NUMBER', count_mthfr_ng, count_mthfr_ng/len(selected_age_array)*100)
-            print('MTHFR HETERO NUMBER', count_mthfr_hetero, count_mthfr_hetero/len(selected_age_array)*100)
-            print('MTHFR HOMO NUMBER', count_mthfr_homo, count_mthfr_homo/len(selected_age_array)*100)
+            print('FVL NG NUMBER', count_fvl_ng, count_fvl_ng / len(selected_age_array) * 100)
+            print('FVL HETERO NUMBER', count_fvl_hetero, count_fvl_hetero / len(selected_age_array) * 100)
+            print('FVL HOMO NUMBER', count_fvl_homo, count_fvl_homo / len(selected_age_array) * 100)
+            print('PROTHR NG NUMBER', count_prothr_ng, count_prothr_ng / len(selected_age_array) * 100)
+            print('PROTHR HETERO NUMBER', count_prothr_hetero, count_prothr_hetero / len(selected_age_array) * 100)
+            print('PROTHR HOMO NUMBER', count_prothr_homo, count_prothr_homo / len(selected_age_array) * 100)
+            print('PAI NG NUMBER', count_pai_ng, count_pai_ng / len(selected_age_array) * 100)
+            print('PAI HETERO NUMBER', count_pai_hetero, count_pai_hetero / len(selected_age_array) * 100)
+            print('PAI HOMO NUMBER', count_pai_homo, count_pai_homo / len(selected_age_array) * 100)
+            print('MTHFR NG NUMBER', count_mthfr_ng, count_mthfr_ng / len(selected_age_array) * 100)
+            print('MTHFR HETERO NUMBER', count_mthfr_hetero, count_mthfr_hetero / len(selected_age_array) * 100)
+            print('MTHFR HOMO NUMBER', count_mthfr_homo, count_mthfr_homo / len(selected_age_array) * 100)
 
             context3['mutations_fvl_ng'] = count_fvl_ng
             context3['mutations_fvl_hetero'] = count_fvl_hetero
@@ -9639,19 +9973,18 @@ def controli_eng(request):
             context3['mutations_mthfr_hetero'] = count_mthfr_hetero
             context3['mutations_mthfr_homo'] = count_mthfr_homo
 
-            context3['mutations_fvl_ng_percent'] = count_fvl_ng/len(selected_age_array)*100
-            context3['mutations_fvl_hetero_percent'] = count_fvl_hetero/len(selected_age_array)*100
-            context3['mutations_fvl_homo_percent'] = count_fvl_homo/len(selected_age_array)*100
-            context3['mutations_prothr_ng_percent'] = count_prothr_ng/len(selected_age_array)*100
-            context3['mutations_prothr_hetero_percent'] = count_prothr_hetero/len(selected_age_array)*100
-            context3['mutations_prothr_homo_percent'] = count_prothr_homo/len(selected_age_array)*100
-            context3['mutations_pai_ng_percent'] = count_pai_ng/len(selected_age_array)*100
-            context3['mutations_pai_hetero_percent'] = count_pai_hetero/len(selected_age_array)*100
-            context3['mutations_pai_homo_percent'] = count_pai_homo/len(selected_age_array)*100
-            context3['mutations_mthfr_ng_percent'] = count_mthfr_ng/len(selected_age_array)*100
-            context3['mutations_mthfr_hetero_percent'] = count_mthfr_hetero/len(selected_age_array)*100
-            context3['mutations_mthfr_homo_percent'] = count_mthfr_homo/len(selected_age_array)*100
-
+            context3['mutations_fvl_ng_percent'] = count_fvl_ng / len(selected_age_array) * 100
+            context3['mutations_fvl_hetero_percent'] = count_fvl_hetero / len(selected_age_array) * 100
+            context3['mutations_fvl_homo_percent'] = count_fvl_homo / len(selected_age_array) * 100
+            context3['mutations_prothr_ng_percent'] = count_prothr_ng / len(selected_age_array) * 100
+            context3['mutations_prothr_hetero_percent'] = count_prothr_hetero / len(selected_age_array) * 100
+            context3['mutations_prothr_homo_percent'] = count_prothr_homo / len(selected_age_array) * 100
+            context3['mutations_pai_ng_percent'] = count_pai_ng / len(selected_age_array) * 100
+            context3['mutations_pai_hetero_percent'] = count_pai_hetero / len(selected_age_array) * 100
+            context3['mutations_pai_homo_percent'] = count_pai_homo / len(selected_age_array) * 100
+            context3['mutations_mthfr_ng_percent'] = count_mthfr_ng / len(selected_age_array) * 100
+            context3['mutations_mthfr_hetero_percent'] = count_mthfr_hetero / len(selected_age_array) * 100
+            context3['mutations_mthfr_homo_percent'] = count_mthfr_homo / len(selected_age_array) * 100
 
             # print(context3['age_interval'], 'New')
             # print(context3['index_array_age'], 'New', sublist_age)
@@ -10010,8 +10343,119 @@ def controli_eng(request):
 
     return render(request, 'controli_eng.html', context3)
 
+
 def select_pathology_eng(request):
     return render(request, 'select_pathology_eng.html')
+
+def preeclampsia_eng_new(request):
+    return render(request, 'preeclampsia_eng_new.html')
+
+def preeclampsia_controli_eng(request):
+    context3 = {}
+
+    prida_mutations = PridaMutations.objects.all()  ## Zarejda model PridaMutations ot models.py
+
+    prida_mutations_form = PridaMutationsForm()  ## Zarejda form PridaMutationsForm ot forms.py
+
+    context3['prida_mutations'] = prida_mutations
+    context3['prida_mutations_form'] = prida_mutations_form
+
+    prida_preeclampsia = PridaPreeclampsia.objects.all()  ## Zarejda model PridaMutations ot models.py
+
+    prida_preeclampsia_form = PridaPreeclampsiaForm()  ## Zarejda form PridaMutationsForm ot forms.py
+
+    context3['prida_preeclampsia'] = prida_preeclampsia
+    context3['prida_preeclampsia_form'] = prida_preeclampsia_form
+
+    # prida_mutations = PridaMutations.objects.all()  ## Zarejda model PridaMutations ot models.py
+    #
+    # prida_mutations_form = PridaMutationsForm()  ## Zarejda form PridaMutationsForm ot forms.py
+    #
+    # context3['prida_mutations'] = prida_mutations
+    # context3['prida_mutations_form'] = prida_mutations_form
+    # context3['st_line'] = start_line
+    # save_nb_fields = 1
+    # context3['save_nb_fields'] = save_nb_fields
+
+    # with open('login.html', 'r', encoding='utf-8') as file:
+    #     html_cont = file.read()
+    # all_tags = html_cont.find()
+    # for tag in all_tags:
+    #     print(tag.get_text())
+    form_pre = PreeclampsiaForm()
+    patients = Patients.objects.all()
+    s = request.POST.getlist('ss')
+
+    # Visualization of Correlation
+    matplotlib.use('agg')
+    # # plt.style.use('ggplot')
+    nx = np.arange(10, 20)
+    ny = np.array([2, 1, 4, 5, 8, 12, 18, 25, 96, 48])
+    xyz = np.array([[10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+                    [2, 1, 4, 5, 8, 12, 18, 25, 96, 48],
+                    [5, 3, 2, 1, 0, -2, -8, -11, -15, -16]])
+
+    corr_matrix = np.corrcoef(xyz).round(decimals=2)
+    # # print(corr_matrix)
+    #
+    fig, ax = plt.subplots()
+    im = ax.imshow(corr_matrix)
+    im.set_clim(-1, 1)
+    ax.grid(False)
+    ax.xaxis.set(ticks=(0, 1, 2), ticklabels=('x', 'y', 'z'))
+    ax.yaxis.set(ticks=(0, 1, 2), ticklabels=('x', 'y', 'z'))
+    ax.set_ylim(2.5, -0.5)
+    for i in range(3):
+        for j in range(3):
+            ax.text(j, i, corr_matrix[i, j], ha='center', va='center',
+                    color='r')
+    cbar = ax.figure.colorbar(im, ax=ax, format='% .2f')
+
+    fig = plt.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    url = urllib.parse.quote(string)
+    #
+    # # ax.plot(nx, ny, linewidth=0, marker='s', label='Data Points')
+    # # plt.savefig("mygraph.png")
+    # # plt.show()
+    # form = ScoreForm()
+    form_pre = PreeclampsiaForm()
+    form_pre1 = PatientProbaForm()
+
+    if request.method == "POST":
+        if 'save' in request.POST:
+            pk = request.POST.get('save')
+            if not pk:
+                form_pre = PreeclampsiaForm(request.POST)
+            else:
+                patient = Patients.objects.get(patient_id=pk)
+                form_pre = PreeclampsiaForm(request.POST, instance=patient)
+            form_pre.save()
+            form_pre = PreeclampsiaForm()
+
+        elif 'delete' in request.POST:
+            pk = request.POST.get('delete')
+            patient = Patients.objects.get(patient_id=pk)
+            patient.delete()
+        elif 'edit' in request.POST:
+            pk = request.POST.get('edit')
+            patient = Patients.objects.get(patient_id=pk)
+            form_pre = PreeclampsiaForm(instance=patient)
+            print('Hello')
+    context1 = {
+        'patients': patients,
+        'key': s,
+        'key6': url,
+        'key7': form_pre1['name'],
+        'key8': form_pre,
+
+    }
+
+    return render(request, 'preeclampsia_controli_eng.html')
+
 
 def conclusions(request):
     return render(request, 'conclusions.html')

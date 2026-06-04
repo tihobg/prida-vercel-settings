@@ -18,6 +18,9 @@ urlpatterns = [
 
     path('preeclampsia/', viewsemi.preeclampsia, name='preeclampsia'),
     path('preeclampsia_eng/', viewsemi.preeclampsia_eng, name='preeclampsia_eng'),
+    path('preeclampsia_eng_new/', viewsemi.preeclampsia_eng_new, name='preeclampsia_eng_new'),
+    path('preeclampsia_controli_eng/', viewsemi.preeclampsia_controli_eng, name='preeclampsia_controli_eng'),
+
     path('select_pathology_eng/', viewsemi.select_pathology_eng, name='select_pathology_eng'),
 
     path('temporary_eng/', viewsemi.temporary_eng, name='temporary_eng'),

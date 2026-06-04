@@ -35,110 +35,106 @@
 <div class="container">
     <div class="row mt-5">
         <form method="post" action="{% url 'proba1_eng' %}">
-            <h1>Please enter the Age, Miscarriages, Mutations Factors!</h1>
+            <h1>Please Select Aborts and Mutations Factors!</h1>
             <table id="table1">
                 {% csrf_token %}
                 <tr>
-                    <th> <div align="center"> AGE </div> </th>
                     <th> <div align="center"> ABORTS </div></th>
                     <th> <div align="center"> Factor V Leiden </div> </th>
                     <th> <div align="center"> Factor II (Prothrombin) </div> </th>
                     <th> <div align="center"> PAI I </div> </th>
                     <th> <div align="center"> MTHFR </div> </th>
+<!--                    <th> <div align="center"> AGE </div> </th>-->
+<!--                    <th> <div align="center"> ABORTS </div></th>-->
+<!--                    <th> <div align="center"> Factor V Leiden </div> </th>-->
+<!--                    <th> <div align="center"> Factor II (Prothrombin) </div> </th>-->
+<!--                    <th> <div align="center"> PAI I </div> </th>-->
+<!--                    <th> <div align="center"> MTHFR </div> </th>-->
                 </tr>
                 <tr>
-                    <td>
-                        <input type="radio" checked name="age" value="age1" style="height:20px; width:20px;">&nbsp;
-                        Age between 20 and 30 years
-                    </td>
+<!--                    <td>-->
+<!--                        <input type="radio" checked name="age" value="age1" style="height:20px; width:20px;">&nbsp;-->
+<!--                        Age between 20 and 30 years-->
+<!--                    </td>-->
                     <td>
                         <input type="radio" checked name="abort" value="abort_1" style="height:20px; width:20px;">1 Abort
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="fvl_ng" style="height:20px; width:20px;">&nbsp;
-                        Factor V Leiden Normal Genotype
+                        <input type="checkbox" name="prida_list_data" value="fvl_ng" style="height:20px; width:20px;">&nbsp;Normal
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="prothr_ng" style="height:20px; width:20px;">&nbsp;
-                        Factor II (Prothrombin) Normal Genotype
+                        <input type="checkbox" name="prida_list_data" value="prothr_ng" style="height:20px; width:20px;">&nbsp;Normal
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="pai_ng" style="height:20px; width:20px;">&nbsp; PAI I Normal Genotype
+                        <input type="checkbox" name="prida_list_data" value="pai_ng" style="height:20px; width:20px;">&nbsp;Normal
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="mthfr_ng" style="height:20px; width:20px;">&nbsp; MTHFR Normal Genotype
+                        <input type="checkbox" name="prida_list_data" value="mthfr_ng" style="height:20px; width:20px;">&nbsp;Normal
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <input type="radio" name="age" value="age2" style="height:20px; width:20px;">&nbsp;Age between 31 and 40 years
-                    </td>
+<!--                    <td>-->
+<!--                        <input type="radio" name="age" value="age2" style="height:20px; width:20px;">&nbsp;Age between 31 and 40 years-->
+<!--                    </td>-->
                     <td>
                         <input type="radio" name="abort" value="abort_2" style="height:20px; width:20px;">&nbsp;2 Aborts
                     </td>
                     <td>
-                        <input type="checkbox" checked name="prida_list_data" value="fvl_hetero" style="height:20px; width:20px;">&nbsp;
-                        Heterozygous Factor V Leiden Mutation
+                        <input type="checkbox" checked name="prida_list_data" value="fvl_hetero" style="height:20px; width:20px;">&nbsp;Heterozygous
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="prothr_hetero" style="height:20px; width:20px;">&nbsp;
-                        Factor II (Prothrombin) Heterozygous Mutation
+                        <input type="checkbox" name="prida_list_data" value="prothr_hetero" style="height:20px; width:20px;">&nbsp;Heterozygous
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="pai_hetero" style="height:20px; width:20px;">&nbsp;
-                        PAI I Heterozygous Mutation
+                        <input type="checkbox" name="prida_list_data" value="pai_hetero" style="height:20px; width:20px;">&nbsp;Heterozygous
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="mthfr_hetero" style="height:20px; width:20px;">&nbsp;
-                        MTHFR Heterozygous Mutation
+                        <input type="checkbox" name="prida_list_data" value="mthfr_hetero" style="height:20px; width:20px;">&nbsp;Heterozygous
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <input type="radio" name="age" value="age3" style="height:20px; width:20px;">&nbsp;Age between 41 and 50 years
-                    </td>
+<!--                    <td>-->
+<!--                        <input type="radio" name="age" value="age3" style="height:20px; width:20px;">&nbsp;Age between 41 and 50 years-->
+<!--                    </td>-->
                     <td>
                         <input type="radio" name="abort" value="abort_3" style="height:20px; width:20px;">&nbsp;More than 2 Aborts
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="fvl_homo" style="height:20px; width:20px;">&nbsp;
-                        Homozygous Factor V Leiden Mutation
+                        <input type="checkbox" name="prida_list_data" value="fvl_homo" style="height:20px; width:20px;">&nbsp;Homozygous
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="prothr_homo" style="height:20px; width:20px;">&nbsp;
-                        Factor II (Prothrombin) Homozygous Mutation
+                        <input type="checkbox" name="prida_list_data" value="prothr_homo" style="height:20px; width:20px;">&nbsp;Homozygous
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="pai_homo" style="height:20px; width:20px;">&nbsp;
-                        PAI I Homozygous Mutation
+                        <input type="checkbox" name="prida_list_data" value="pai_homo" style="height:20px; width:20px;">&nbsp;Homozygous
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="mthfr_homo" style="height:20px; width:20px;">&nbsp;
-                        MTHFR Homozygous Mutation
+                        <input type="checkbox" name="prida_list_data" value="mthfr_homo" style="height:20px; width:20px;">&nbsp;Homozygous
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <input type="radio" name="age" value="age4" style="height:20px; width:20px;">&nbsp;All Ages
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <input type="radio" name="age" value="age4" style="height:20px; width:20px;">&nbsp;All Ages-->
+<!--                    </td>-->
+<!--                    <td></td>-->
+<!--                    <td></td>-->
+<!--                    <td></td>-->
+<!--                    <td></td>-->
+<!--                    <td></td>-->
+<!--                </tr>-->
             </table>
-            <h1>Please Enter the Number of Patients</h1>
+            <h1>Please Enter the Age of the Patients</h1>
             <table>
                 <tr>
                     <td>
                         <div align="center">
-                            <input type="text" name="start_line" value="1"> From Patient
+                            From <input type="number" name="from_age" value="25"> Years
                         </div>
+
                     </td>
                     <td>
                         <div align="center">
-                            <input type="text" name="end_line" value="10"> To Patient
+                            To <input align="left" type="number" name="to_age" value="26"> Years
                         </div>
                     </td>
                 </tr>
@@ -156,9 +152,7 @@
             <table>
                 <tr>
                     <th>
-                        Patient Sample
-                        <br>
-                        [бр.]
+                        Number of Patients
                     </th>
                     <th>
                         Age Limit
@@ -167,39 +161,33 @@
                         Mutation Factor
                     </th>
                     <th>
-                        Patients with 1 Miscarriages
-                        <br>
-                        [бр. / %]
+                        Patients with 1 Miscarriage
                     </th>
                     <th>
                         Patients with 2 Miscarriages
-                        <br>
-                        [бр. / %]
                     </th>
                     <th>
                         Patients with > then 2 Miscarriages
-                        <br>
-                        [бр. / %]
                     </th>
                 </tr>
                 <tr>
                     <td>
-                        {{ clients_list }}
+                        {{ nbr_patients_selected_age }}
                     </td>
                     <td>
-                        {{ age_interval_aborts }}
+                        {{ from_age }} - {{ to_age }}
                     </td>
                     <td>
-                        {{ factor_type }}
+                        {{ prida_list_data }}
                     </td>
                     <td>
-                        {{ count_mutations_abort1 }} / {{ percent_mutations_abort1 }}
+                        {{ selected_abort_age_1 }}
                     </td>
                     <td>
-                        {{ count_mutations_abort2 }} / {{ percent_mutations_abort2 }}
+                        {{ selected_abort_age_2 }}
                     </td>
                     <td>
-                        {{ count_mutations_abort3 }} / {{ percent_mutations_abort3 }}
+                        {{ selected_abort_age_3 }}
                     </td>
                 </tr>
             </table>
@@ -427,7 +415,7 @@
     <tr>
         <th></th>
         <th>
-            <div align="center">Frequency Mutations
+            <div align="center">Mutation Frequency
             </div>
         </th>
         <th>
@@ -437,100 +425,101 @@
     </tr>
     <tr>
         <th>
-            <div align="center">FVL NG
+            <div align="center"> Factor V Leiden Nonegenotype Mutation
+
             </div>
         </th>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'fvl_ng' %}
-            {{ mutations_fvl_ng }}
+            {{ count_fvl_ng }}
             {% endif %}
             {% endfor %}
         </td>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'fvl_ng' %}
-            {{ mutations_age1_abort1_fvl_ng_percent }}
+            {{ count_fvl_ng_percent }}
             {% endif %}
             {% endfor %}
         </td>
     </tr>
     <tr>
         <th scope="col">
-            <div align="center">Heterozigous FVL
+            <div align="center">Factor V Leiden Heterozigous Mutation
             </div>
         </th>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'fvl_hetero' %}
-            {{ mutations_fvl_hetero }}
+            {{ count_fvl_hetero }}
             {% endif %}
             {% endfor %}
         </td>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'fvl_hetero' %}
-            {{ mutations_age1_abort1_fvl_hetero_percent }}
+            {{ count_fvl_hetero_percent }}
             {% endif %}
             {% endfor %}
         </td>
     </tr>
     <tr>
         <th scope="col">
-            <div align="center">Homozigous FVL
+            <div align="center">Factor V Leiden Homozigous Mutation
             </div>
         </th>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'fvl_homo' %}
-            {{ mutations_fvl_homo }}
+            {{ count_fvl_homo }}
             {% endif %}
             {% endfor %}
         </td>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'fvl_homo' %}
-            {{ mutations_age1_abort1_fvl_homo_percent }}
+            {{ count_fvl_homo_percent }}
             {% endif %}
             {% endfor %}
         </td>
     </tr>
     <tr>
         <th scope="col">
-            <div align="center">Factor II NG
+            <div align="center">Factor II (Prothrombin) None Genotype Mutation
             </div>
         </th>
         <td>
             {%for s_factor in prida_list_data %}
             {% if s_factor == 'prothr_ng' %}
-            {{ mutations_prothr_ng }}
+            {{ count_prothr_ng }}
             {% endif %}
             {% endfor %}
         </td>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'prothr_ng' %}
-            {{ mutations_age1_abort1_prothr_ng_percent }}
+            {{ count_prothr_ng_percent }}
             {% endif %}
             {% endfor %}
         </td>
     </tr>
     <tr>
         <th scope="col">
-            <div align="center">Heterozious Factor II
+            <div align="center">Factor II (Prothrombin) Heterozigous Mutation
             </div>
         </th>
         <td>
             {%for s_factor in prida_list_data %}
             {% if s_factor == 'prothr_hetero' %}
-            {{ mutations_prothr_hetero }}
+            {{ count_prothr_hetero }}
             {% endif %}
             {% endfor %}
         </td>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'prothr_hetero' %}
-            {{ mutations_age1_abort1_prothr_hetero_percent }}
+            {{ count_prothr_hetero_percent }}
             {% endif %}
             {% endfor %}
         </td>
@@ -538,20 +527,20 @@
     <tr>
         <th scope="col">
             <div align="center">
-                Homozigous Factor II
+                Factor II (Prothrombin) Homozigous Mutation
             </div>
         </th>
         <td>
             {%for s_factor in prida_list_data %}
             {% if s_factor == 'prothr_homo' %}
-            {{ mutations_prothr_homo }}
+            {{ count_prothr_homo }}
             {% endif %}
             {% endfor %}
         </td>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'prothr_homo' %}
-            {{ mutations_age1_abort1_prothr_homo_percent }}
+            {{ count_prothr_homo_percent }}
             {% endif %}
             {% endfor %}
         </td>
@@ -559,20 +548,20 @@
     <tr>
         <th scope="col">
             <div align="center">
-                PAI I NG
+                Factor PAI I None Genotype Mutation
             </div>
         </th>
         <td>
             {%for s_factor in prida_list_data %}
             {% if s_factor == 'pai_ng' %}
-            {{ mutations_pai_ng }}
+            {{ count_pai_ng }}
             {% endif %}
             {% endfor %}
         </td>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'pai_ng' %}
-            {{ mutations_age1_abort1_pai_ng_percent }}
+            {{ count_pai_ng_percent }}
             {% endif %}
             {% endfor %}
         </td>
@@ -580,20 +569,20 @@
     <tr>
         <th scope="col">
             <div align="center">
-                Heterozigous PAI I
+                Factor PAI I Heterozigous Mutation
             </div>
         </th>
         <td>
             {%for s_factor in prida_list_data %}
             {% if s_factor == 'pai_hetero' %}
-            {{ mutations_pai_hetero }}
+            {{ count_pai_hetero }}
             {% endif %}
             {% endfor %}
         </td>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'pai_hetero' %}
-            {{ mutations_age1_abort1_pai_hetero_percent }}
+            {{ count_pai_hetero_percent }}
             {% endif %}
             {% endfor %}
         </td>
@@ -601,20 +590,20 @@
     <tr>
         <th scope="col">
             <div align="center">
-                Homozigous PAI I
+                Factor PAI I Homozigous Mutation
             </div>
         </th>
         <td>
             {%for s_factor in prida_list_data %}
             {% if s_factor == 'pai_homo' %}
-            {{ mutations_pai_homo }}
+            {{ count_pai_homo }}
             {% endif %}
             {% endfor %}
         </td>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'pai_homo' %}
-            {{ mutations_age1_abort1_pai_homo_percent }}
+            {{ count_pai_homo_percent }}
             {% endif %}
             {% endfor %}
         </td>
@@ -622,20 +611,20 @@
     <tr>
         <th scope="col">
             <div align="center">
-                MTHFR NG
+                Factor MTHFR None Genotype Mutation
             </div>
         </th>
         <td>
             {%for s_factor in prida_list_data %}
             {% if s_factor == 'mthfr_ng' %}
-            {{ mutations_mthfr_ng }}
+            {{ count_mthfr_ng }}
             {% endif %}
             {% endfor %}
         </td>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'mthfr_ng' %}
-            {{ mutations_age1_abort1_mthfr_ng_percent }}
+            {{ count_mthfr_ng_percent }}
             {% endif %}
             {% endfor %}
         </td>
@@ -643,20 +632,20 @@
     <tr>
         <th scope="col">
             <div align="center">
-                Heterozigous MTHFR
+                Factor MTHFR Heterozigous Mutation
             </div>
         </th>
         <td>
             {%for s_factor in prida_list_data %}
             {% if s_factor == 'mthfr_hetero' %}
-            {{ mutations_mthfr_hetero }}
+            {{ count_mthfr_hetero }}
             {% endif %}
             {% endfor %}
         </td>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'mthfr_hetero' %}
-            {{ mutations_age1_abort1_mthfr_hetero_percent }}
+            {{ count_mthfr_hetero_percent }}
             {% endif %}
             {% endfor %}
         </td>
@@ -664,20 +653,20 @@
     <tr>
         <th scope="col">
             <div align="center">
-                Homozigous MTHFR
+                Factor MTHFR Homozigous Mutation
             </div>
         </th>
         <td>
             {%for s_factor in prida_list_data %}
             {% if s_factor == 'mthfr_homo' %}
-            {{ mutations_mthfr_homo }}
+            {{ count_mthfr_homo }}
             {% endif %}
             {% endfor %}
         </td>
         <td>
             {% for s_factor in prida_list_data %}
             {% if s_factor == 'mthfr_homo' %}
-            {{ mutations_age1_abort1_mthfr_homo_percent }}
+            {{ count_mthfr_homo_percent }}
             {% endif %}
             {% endfor %}
         </td>

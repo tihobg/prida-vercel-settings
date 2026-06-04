@@ -14,7 +14,7 @@
         <div class="row mt-4">
             {% if user.is_authenticated %}
             <div class="user-info">
-                <a href="{% url 'select_pathology_eng' %}" class="btn btn-primary">BACK</a>
+                <a href="{% url 'mutations_eng' %}" class="btn btn-primary">BACK</a>
             </div>
             <div class="user-info">
                 <span class="navbar-text">user name: {{ user.username }}</span>
@@ -59,7 +59,7 @@
     <div class="row mt-5">
 
         <form method="post" action="{% url 'controli_eng' %}">
-            <h1>Please enter the Age, Miscarriages, Mutations Factors!</h1>
+            <h1>Please Select the Mutations Factors!</h1>
 
             <table>
                 {% csrf_token %}
@@ -160,8 +160,7 @@
                         <input type="checkbox" name="prida_list_data_controli" value="mthfr_homo">Homozygous
                     </td>
                 </tr>
-
-                <tr>
+<!--                <tr>-->
 
 
 <!--                    <td></td>-->
@@ -170,23 +169,25 @@
 <!--                            Nbr Patients With Selected Mutations-->
 <!--                        </button>-->
 <!--                    </td>-->
-        </form>
+
+
+            </table>
+<!--        </form>-->
 
 <!--        </form>-->
 <!--                    <td></td>-->
-                </tr>
-            </table>
+<!--                </tr>-->
         <h1>Please Enter the Age of the Patients</h1>
         <table>
                 <tr>
                     <td>
                         <div align="center">
-                            From <input align="left" type="text" name="from_age_controli" value="25"> Years
+                            From <input align="left" type="text" style="text-align: center;" name="from_age_controli" value="25"> Years
                         </div>
                     </td>
                     <td>
                         <div align="center">
-                            To <input align="left" type="text" name="to_age_controli" value="26"> Years
+                            To <input align="left" type="text" style="text-align: center;" name="to_age_controli" value="26"> Years
                         </div>
                     </td>
                 </tr>
@@ -194,8 +195,10 @@
             <div class="container">
                 <div class="row mt-4">
                     <div class="col">
-                        <button name="submit" class="btn btn-primary btn-lg">Calculate Number of
-                                <br>Patients with Mutations</button>
+
+                        <button name="submit" class="btn btn-primary btn-lg">Global Mutation Analysis
+                                </button>
+        </form>
                     </div>
                 </div>
             </div>
@@ -497,7 +500,7 @@
                 <tr>
                     <th>
                         <div align="center">
-                            FVL NG
+                            Factor V Leiden Nonegenotype Mutation
                         </div>
                     </th>
                     <td>
@@ -519,7 +522,7 @@
 
                     <th scope="col">
                         <div align="center">
-                            Heterozigous FVL
+                            Factor V Leiden Heterozigous Mutation
                         </div>
                     </th>
                     <td>
@@ -541,7 +544,7 @@
 
                     <th scope="col">
                         <div align="center">
-                            Homozigous FVL
+                            Factor V Leiden Homozigous Mutation
                         </div>
                     </th>
                     <td>
@@ -563,7 +566,7 @@
 
                     <th scope="col">
                         <div align="center">
-                            Factor II NG
+                            Factor II (Prothrombin) None Genotype Mutation
                         </div>
                     </th>
                     <td>
@@ -584,7 +587,7 @@
                 <tr>
                     <th scope="col">
                         <div align="center">
-                            Heterozious Factor II
+                            Factor II (Prothrombin) Heterozigous Mutation
                         </div>
                     </th>
                     <td>
@@ -605,7 +608,7 @@
                 <tr>
                     <th scope="col">
                         <div align="center">
-                            Homozigous Factor II
+                            Factor II (Prothrombin) Homozigous Mutation
                         </div>
                     </th>
                     <td>
@@ -626,7 +629,7 @@
                 <tr>
                     <th scope="col">
                         <div align="center">
-                            PAI I NG
+                            Factor PAI I None Genotype Mutation
                         </div>
                     </th>
                     <td>
@@ -647,7 +650,7 @@
                 <tr>
                     <th scope="col">
                         <div align="center">
-                            Heterozigous PAI I
+                            Factor PAI I Heterozigous Mutation
                         </div>
                     </th>
                     <td>
@@ -668,7 +671,7 @@
                 <tr>
                     <th scope="col">
                         <div align="center">
-                            Homozigous PAI I
+                            Factor PAI I Homozigous Mutation
                         </div>
                     </th>
                     <td>
@@ -689,7 +692,7 @@
                 <tr>
                     <th scope="col">
                         <div align="center">
-                            MTHFR NG
+                            Factor MTHFR None Genotype Mutation
                         </div>
                     </th>
                     <td>
@@ -710,7 +713,7 @@
                 <tr>
                     <th scope="col">
                         <div align="center">
-                            Heterozigous MTHFR
+                            Factor MTHFR Heterozigous Mutation
                         </div>
                     </th>
                     <td>
@@ -731,7 +734,7 @@
                 <tr>
                     <th scope="col">
                         <div align="center">
-                            Homozigous MTHFR
+                            Factor MTHFR Homozigous Mutation
                         </div>
                     </th>
                     <td>
@@ -771,7 +774,7 @@
             <form method="post" action="{% url 'calc_patients_more_mut_controli' %}">
                 {% csrf_token %}
                 <button name="btn_patients_more_mut_controli" class="btn btn-primary btn-lg">
-                    Results: Mutations 2
+                    Results: Mutations
                 </button>
             </form>
         </div>
