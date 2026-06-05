@@ -10026,6 +10026,8 @@ def controli_mut_analysis_eng(request):
 
             from_age_controli = request.POST.get('from_age_controli')
             to_age_controli = request.POST.get('to_age_controli')
+            context3['from_age_controli'] = from_age_controli
+            context3['to_age_controli'] = to_age_controli
             # sublist = slice(list_age_controli[23][0], len(list_age_controli))
             # print('SUBLIST', sublist)
 
@@ -10362,18 +10364,18 @@ def controli_mut_analysis_eng(request):
             context3['mutations_mthfr_homo'] = count_mthfr_homo
 
             if len(selected_age_array) != 0:
-                context3['mutations_fvl_ng_percent'] = count_fvl_ng / len(selected_age_array) * 100
-                context3['mutations_fvl_hetero_percent'] = count_fvl_hetero / len(selected_age_array) * 100
-                context3['mutations_fvl_homo_percent'] = count_fvl_homo / len(selected_age_array) * 100
-                context3['mutations_prothr_ng_percent'] = count_prothr_ng / len(selected_age_array) * 100
-                context3['mutations_prothr_hetero_percent'] = count_prothr_hetero / len(selected_age_array) * 100
-                context3['mutations_prothr_homo_percent'] = count_prothr_homo / len(selected_age_array) * 100
-                context3['mutations_pai_ng_percent'] = count_pai_ng / len(selected_age_array) * 100
-                context3['mutations_pai_hetero_percent'] = count_pai_hetero / len(selected_age_array) * 100
-                context3['mutations_pai_homo_percent'] = count_pai_homo / len(selected_age_array) * 100
-                context3['mutations_mthfr_ng_percent'] = count_mthfr_ng / len(selected_age_array) * 100
-                context3['mutations_mthfr_hetero_percent'] = count_mthfr_hetero / len(selected_age_array) * 100
-                context3['mutations_mthfr_homo_percent'] = count_mthfr_homo / len(selected_age_array) * 100
+                context3['mutations_fvl_ng_percent'] = round((count_fvl_ng / len(selected_age_array) * 100), 2)
+                context3['mutations_fvl_hetero_percent'] = round((count_fvl_hetero / len(selected_age_array) * 100), 2)
+                context3['mutations_fvl_homo_percent'] = round((count_fvl_homo / len(selected_age_array) * 100), 2)
+                context3['mutations_prothr_ng_percent'] = round((count_prothr_ng / len(selected_age_array) * 100),2)
+                context3['mutations_prothr_hetero_percent'] = round((count_prothr_hetero / len(selected_age_array) * 100), 2)
+                context3['mutations_prothr_homo_percent'] = round((count_prothr_homo / len(selected_age_array) * 100), 2)
+                context3['mutations_pai_ng_percent'] = round((count_pai_ng / len(selected_age_array) * 100), 2)
+                context3['mutations_pai_hetero_percent'] = round((count_pai_hetero / len(selected_age_array) * 100), 2)
+                context3['mutations_pai_homo_percent'] = round((count_pai_homo / len(selected_age_array) * 100), 2)
+                context3['mutations_mthfr_ng_percent'] = round((count_mthfr_ng / len(selected_age_array) * 100), 2)
+                context3['mutations_mthfr_hetero_percent'] = round((count_mthfr_hetero / len(selected_age_array) * 100), 2)
+                context3['mutations_mthfr_homo_percent'] = round((count_mthfr_homo / len(selected_age_array) * 100), 2)
 
             # print(context3['age_interval'], 'New')
             # print(context3['index_array_age'], 'New', sublist_age)
