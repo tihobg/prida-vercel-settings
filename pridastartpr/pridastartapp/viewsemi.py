@@ -1173,6 +1173,8 @@ def calc_patients_more_mut_p(request):
     prida_mutations = PridaMutations.objects.all()
 
     list_age = PridaMutations.objects.values_list('age')
+    list_abort = PridaMutations.objects.values_list('abort')
+    print('ABORT', list_abort)
     # print('list age', list_age, len(list_age))
 
     list_fvl_ng = PridaMutations.objects.values_list('fvl_ng')
@@ -1261,7 +1263,52 @@ def calc_patients_more_mut_p(request):
     count_mthfr_hetero = 0
     count_mthfr_homo = 0
 
+    count_fvl_ng1 = 0
+    count_fvl_hetero1 = 0
+    count_fvl_homo1 = 0
+
+    count_prothr_ng1 = 0
+    count_prothr_hetero1 = 0
+    count_prothr_homo1 = 0
+
+    count_pai_hetero1 = 0
+    count_pai_homo1 = 0
+
+    count_mthfr_hetero1 = 0
+    count_mthfr_homo1 = 0
+
     ###### Start 1 Mutation ##########
+    for abort in range(len(list_abort)):
+        if list_abort[abort][0] == '1.0' and list_fvl_hetero[abort][0] == '1.0':
+            count_fvl_hetero1 = count_fvl_hetero1 + 1
+    context3['count_fvl_hetero1'] = count_fvl_hetero1
+
+    for abort in range(len(list_abort)):
+        if list_abort[abort][0] == '1.0' and list_fvl_homo[abort][0] == '1.0':
+            count_fvl_homo1 = count_fvl_homo1 + 1
+    context3['count_fvl_homo1'] = count_fvl_homo1
+
+    for abort in range(len(list_abort)):
+        if list_abort[abort][0] == '1.0' and list_prothr_hetero[abort][0] == '1.0':
+            count_prothr_hetero1 = count_prothr_hetero1 + 1
+    context3['count_prothr_hetero1'] = count_prothr_hetero1
+
+    for abort in range(len(list_abort)):
+        if list_abort[abort][0] == '1.0' and list_prothr_homo[abort][0] == '1.0':
+            count_prothr_homo1 = count_prothr_homo1 + 1
+    context3['count_prothr_homo1'] = count_prothr_homo1
+
+    for abort in range(len(list_abort)):
+        if list_abort[abort][0] == '1.0' and list_pai_homo[abort][0] == '1.0':
+            count_pai_homo1 = count_pai_homo1 + 1
+    context3['count_pai_homo1'] = count_pai_homo1
+
+    for abort in range(len(list_abort)):
+        if list_abort[abort][0] == '1.0' and list_mthfr_homo[abort][0] == '1.0':
+            count_mthfr_homo1 = count_mthfr_homo1 + 1
+    context3['count_mthfr_homo1'] = count_mthfr_homo1
+
+
 
     for fvl_ng in list_fvl_ng:
         if fvl_ng[0] == '1.0':
@@ -1286,12 +1333,6 @@ def calc_patients_more_mut_p(request):
             count_prothr_ng = count_prothr_ng + 1
     print('FVL NG', count_prothr_ng)
     context3['count_prothr_ng'] = count_prothr_ng
-
-    # for prothr_ng in list_prothr_ng:
-    #     if prothr_ng[0] == '1.0':
-    #         count_prothr_ng = count_prothr_ng + 1
-    # print('FVL NG', count_prothr_ng)
-    # context3['count_prothr_ng'] = count_prothr_ng
 
     for prothr_hetero in list_prothr_hetero:
         if prothr_hetero[0] == '1.0' or prothr_hetero[0] == '1':
@@ -1328,6 +1369,20 @@ def calc_patients_more_mut_p(request):
             count_mthfr_homo = count_mthfr_homo + 1
     print('FVL NG', count_mthfr_homo)
     context3['count_mthfr_homo'] = count_mthfr_homo
+
+
+
+    context3['count_fvl_hetero2'] = count_fvl_hetero - count_fvl_hetero1
+    context3['count_fvl_homo2'] = count_fvl_homo - count_fvl_homo1
+    context3['count_prothr_hetero2'] = count_prothr_hetero - count_prothr_hetero1
+    context3['count_prothr_homo2'] = count_prothr_homo - count_prothr_homo1
+    context3['count_pai_homo2'] = count_pai_homo - count_pai_homo1
+    context3['count_mthfr_homo2'] = count_mthfr_homo - count_mthfr_homo1
+
+
+
+
+
 
     ###### End 1 Mutation ##########
 
@@ -9924,7 +9979,20 @@ def controli_mut_analysis_eng(request):
     # print(from_age_controli, to_age_controli)
 
     prida_list_data_controli = request.POST.getlist('prida_list_data_controli')
-    print('PRIDA LIST MUTATIONS', prida_list_data_controli)
+
+    for prida in prida_list_data_controli:
+        if prida == 'fvl_ng':
+            context3['checkbox_fvl_ng'] = prida
+            print('prida', prida)
+
+        elif prida == 'fvl_hetero':
+            context3['checkbox_fvl_hetero'] = prida
+
+    # print('prida list data controli', prida_list_data_controli)
+
+    # context3['prida_list_data_controli'] = prida_list_data_controli
+
+    # print('PRIDA LIST MUTATIONS', prida_list_data_controli)
 
     prida_abort_list_controli = request.POST.getlist('abort')
     end_line_controli = request.POST.get('end_line_controli')
