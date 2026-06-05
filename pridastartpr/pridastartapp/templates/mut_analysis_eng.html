@@ -31,7 +31,7 @@
 </div>
 <div class="container">
     <div class="row mt-5">
-        <form method="post" action="{% url 'proba1_eng' %}">
+        <form method="post" action="{% url 'mut_analysis_eng' %}">
             <h1>Please Select Miscarriages and Mutations Factors</h1>
             <table id="table1">
                 {% csrf_token %}
@@ -111,6 +111,22 @@
                 </tr>
             </table>
             <h1>Please Enter the Age of the Patients</h1>
+            <table>
+                <tr>
+                    <td>
+                        <div align="center">
+                            From <input align="left" type="text" style="text-align: center;" name="from_age" value="10"> Years
+                        </div>
+                    </td>
+                    <td>
+                        <div align="center">
+                            To <input align="left" type="text" style="text-align: center;" name="to_age" value="15"> Years
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+
             <div class="container">
                 <div class="row mt-4">
                     <div class="col">
@@ -120,7 +136,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+<!--        </form>-->
     </div>
 </div>
 <div class="container">
@@ -131,7 +147,7 @@
 
 <div class="container">
     <div class="row mt-5">
-        <form>
+<!--        <form>-->
             <table>
                 <tr>
                     <th></th>
