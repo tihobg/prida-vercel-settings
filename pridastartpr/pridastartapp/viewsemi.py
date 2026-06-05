@@ -9980,13 +9980,13 @@ def controli_mut_analysis_eng(request):
 
     prida_list_data_controli = request.POST.getlist('prida_list_data_controli')
 
-    for prida in prida_list_data_controli:
-        if prida == 'fvl_ng':
-            context3['checkbox_fvl_ng'] = prida
-            print('prida', prida)
-
-        elif prida == 'fvl_hetero':
-            context3['checkbox_fvl_hetero'] = prida
+    # for prida in prida_list_data_controli:
+    #     if prida == 'fvl_ng':
+    #         context3['checkbox_fvl_ng'] = prida
+    #         print('prida', prida)
+    #
+    #     elif prida == 'fvl_hetero':
+    #         context3['checkbox_fvl_hetero'] = prida
 
     # print('prida list data controli', prida_list_data_controli)
 
