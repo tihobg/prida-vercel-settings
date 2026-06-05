@@ -88,23 +88,36 @@
 
                     <td>
                         <input type="checkbox" name="prida_list_data_controli" value="fvl_ng"
-                               {% if prida_list_data_controli == 'fvl_ng' %}checked{% endif %}>Normal Genotype
+                               {% for prida_list in prida_list_data_controli %}
+                               {% if prida_list == 'fvl_ng' %}
+                        checked
+                        {% endif %}
+                        {% endfor %}>Normal Genotype
                     </td>
 
                     <td>
                         <input type="checkbox" name="prida_list_data_controli" value="prothr_ng"
-                        {% if prida_list_data_controli == 'prothr_ng' %}checked{% endif %}> Normal Genotype
+                               {% for prida_list in prida_list_data_controli %}
+                               {% if prida_list == 'prothr_ng' %}
+                        checked{% endif %}
+                        {% endfor %}> Normal Genotype
                     </td>
                     <td>
 <!--                        <input type="checkbox" name="prida_list_data_controli" value="pai_ng">PAI I Normal Genotype-->
                         <input type="checkbox" name="prida_list_data_controli" value="pai_ng"
-                        {% if prida_list_data_controli == 'pai_ng' %}checked{% endif %}>Normal Genotype
+                               {% for prida_list in prida_list_data_controli %}
+                               {% if prida_list == 'pai_ng' %}
+                        checked{% endif %}
+                        {% endfor %}>Normal Genotype
 
                     </td>
                     <td>
 <!--                        <input type="checkbox" name="prida_list_data_controli" value="mthfr_ng">MTHFR Normal Genotype-->
                         <input type="checkbox" name="prida_list_data_controli" value="mthfr_ng"
-                        {% if prida_list_data_controli == 'mthfr_ng' %}checked{% endif %}>Normal Genotype
+                               {% for prida_list in prida_list_data_controli %}
+                               {% if prida_list == 'mthfr_ng' %}
+                        checked{% endif %}
+                        {% endfor %}>Normal Genotype
                     </td>
                 </tr>
                 <tr>
@@ -119,25 +132,38 @@
 <!--                        <input type="checkbox" name="prida_list_data_controli" value="fvl_hetero">-->
 <!--                        Heterozygous Factor V Leiden Mutation-->
                         <input type="checkbox" name="prida_list_data_controli" value="fvl_hetero"
-                        {% if prida_list_data_controli == fvl_hetero %}checked{% endif %}>Heterozygous
+                               {% for prida_list in prida_list_data_controli %}
+                               {% if prida_list == 'fvl_hetero' %}
+                        checked
+                        {% endif %}
+                        {% endfor %}>Heterozygous
                     </td>
                     <td>
 <!--                        <input type="checkbox" name="prida_list_data_controli" value="prothr_hetero">-->
 <!--                        Factor II (Prothrombin) Heterozygous Mutation-->
                         <input type="checkbox" name="prida_list_data_controli" value="prothr_hetero"
-                        {% if prida_list_data_controli == prothr_hetero %}checked{% endif %}>Heterozygous
+                               {% for prida_list in prida_list_data_controli %}
+                               {% if prida_list == 'prothr_hetero' %}
+                        checked{% endif %}
+                        {% endfor %}>Heterozygous
                     </td>
                     <td>
 <!--                        <input type="checkbox" name="prida_list_data_controli" value="pai_hetero">-->
 <!--                        PAI I Heterozygous Mutation-->
                         <input type="checkbox" name="prida_list_data_controli" value="pai_hetero"
-                        {% if prida_list_data_controli == pai_hetero %}checked{% endif %}>Heterozygous
+                               {% for prida_list in prida_list_data_controli %}
+                               {% if prida_list == 'pai_hetero' %}
+                        checked{% endif %}
+                        {% endfor %}>Heterozygous
                     </td>
                     <td>
 <!--                        <input type="checkbox" name="prida_list_data_controli" value="mthfr_hetero">-->
 <!--                        MTHFR Heterozygous Mutation-->
                         <input type="checkbox" name="prida_list_data_controli" value="mthfr_hetero"
-                        {% if prida_list_data_controli == mthfr_hetero %}checked{% endif %}>Heterozygous
+                               {% for prida_list in prida_list_data_controli %}
+                               {% if prida_list == 'mthfr_hetero' %}
+                        checked{% endif %}
+                        {% endfor %}>Heterozygous
                     </td>
                 </tr>
                 <tr>
@@ -151,25 +177,37 @@
 <!--                        <input type="checkbox" name="prida_list_data_controli" value="fvl_homo">-->
 <!--                        Homozygous Factor V Leiden Mutation-->
                         <input type="checkbox" name="prida_list_data_controli" value="fvl_homo"
-                        {% if prida_list_data_controli == fvl_homo %}checked{% endif %}>Homozygous
+                               {% for prida_list in prida_list_data_controli %}
+                               {% if prida_list == 'fvl_homo' %}
+                        checked{% endif %}
+                        {% endfor %}>Homozygous
                     </td>
                     <td>
 <!--                        <input type="checkbox" name="prida_list_data_controli" value="prothr_homo">-->
 <!--                        Factor II (Prothrombin) Homozygous Mutation-->
                         <input type="checkbox" name="prida_list_data_controli" value="prothr_homo"
-                        {% if prida_list_data_controli == prothr_homo %}checked{% endif %}>Homozygous
+                               {% for prida_list in prida_list_data_controli %}
+                               {% if prida_list == 'prothr_homo' %}
+                        checked{% endif %}
+                        {% endfor %}>Homozygous
                     </td>
                     <td>
 <!--                        <input type="checkbox" name="prida_list_data_controli" value="pai_homo">-->
 <!--                        PAI I Homozygous Mutation-->
                         <input type="checkbox" name="prida_list_data_controli" value="pai_homo"
-                        {% if prida_list_data_controli == pai_homo %}checked{% endif %}>Homozygous
+                               {% for prida_list in prida_list_data_controli %}
+                               {% if prida_list == 'pai_homo' %}
+                        checked{% endif %}
+                        {% endfor %}>Homozygous
                     </td>
                     <td>
 <!--                        <input type="checkbox" name="prida_list_data_controli" value="mthfr_homo">-->
 <!--                        MTHFR Homozygous Mutation-->
                         <input type="checkbox" name="prida_list_data_controli" value="mthfr_homo"
-                        {% if prida_list_data_controli == mthfr_homo %}checked{% endif %}>Homozygous
+                               {% for prida_list in prida_list_data_controli %}
+                               {% if prida_list == 'mthfr_homo' %}
+                        checked{% endif %}
+                        {% endfor %}>Homozygous
                     </td>
                 </tr>
 <!--                <tr>-->

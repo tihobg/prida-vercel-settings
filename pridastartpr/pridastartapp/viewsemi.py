@@ -9060,6 +9060,7 @@ def mut_analysis_eng(request):
     prida_list_data = request.POST.getlist('prida_list_data')  ## Spisak s izbrani ot usera checkboxes s factori
     prida_age_list = request.POST.getlist('age')  ## Spisak s izbrana ot usera vazrast
     prida_abort_list = request.POST.getlist('abort')  ## Spisak s izbrani ot usera aborti
+    print('prida_abort_list', prida_abort_list)
 
 
 

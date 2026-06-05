@@ -54,19 +54,42 @@
 <!--                        Age between 20 and 30 years-->
 <!--                    </td>-->
                     <td>
-                        <input type="radio" checked name="abort" value="abort_1" style="height:20px; width:20px;">1 Miscarriage
+                        <input type="radio" name="abort" value="abort_1" style="height:20px; width:20px;"
+                               {% for prida_abort in abort %}
+                               {% if prida_abort == 'abort_1' %}checked
+                        {% endif %}
+<!--                        {% endfor %}-->
+
+                        >1 Miscarriage
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="fvl_ng" style="height:20px; width:20px;">&nbsp;Normal Genotype
+                        <input type="checkbox" name="prida_list_data" value="fvl_ng" style="height:20px; width:20px;"
+                               {% for prida_list in prida_list_data %}
+                               {% if prida_list == 'fvl_ng' %}checked
+                        {% endif %}
+                        {% endfor %}
+>&nbsp;Normal Genotype
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="prothr_ng" style="height:20px; width:20px;">&nbsp;Normal Genotype
+                        <input type="checkbox" name="prida_list_data" value="prothr_ng" style="height:20px; width:20px;"
+                                {% for prida_list in prida_list_data %}
+                                       {% if prida_list == 'prothr_ng' %}checked
+                                {% endif %}
+                                {% endfor %}>&nbsp;Normal Genotype
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="pai_ng" style="height:20px; width:20px;">&nbsp;Normal Genotype
+                        <input type="checkbox" name="prida_list_data" value="pai_ng" style="height:20px; width:20px;"
+                                {% for prida_list in prida_list_data %}
+                                       {% if prida_list == 'pai_ng' %}checked
+                                {% endif %}
+                                {% endfor %}>&nbsp;Normal Genotype
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="mthfr_ng" style="height:20px; width:20px;">&nbsp;Normal Genotype
+                        <input type="checkbox" name="prida_list_data" value="mthfr_ng" style="height:20px; width:20px;"
+                                {% for prida_list in prida_list_data %}
+                                       {% if prida_list == 'mthfr_ng' %}checked
+                                {% endif %}
+                                {% endfor %}>&nbsp;Normal Genotype
                     </td>
                 </tr>
                 <tr>
@@ -77,16 +100,32 @@
                         <input type="radio" name="abort" value="abort_2" style="height:20px; width:20px;">&nbsp;2 Miscarriages
                     </td>
                     <td>
-                        <input type="checkbox" checked name="prida_list_data" value="fvl_hetero" style="height:20px; width:20px;">&nbsp;Heterozygous
+                        <input type="checkbox" name="prida_list_data" value="fvl_hetero" style="height:20px; width:20px;"
+                                {% for prida_list in prida_list_data %}
+                                       {% if prida_list == 'fvl_hetero' %}checked
+                                {% endif %}
+                                {% endfor %}>&nbsp;Heterozygous
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="prothr_hetero" style="height:20px; width:20px;">&nbsp;Heterozygous
+                        <input type="checkbox" name="prida_list_data" value="prothr_hetero" style="height:20px; width:20px;"
+                                {% for prida_list in prida_list_data %}
+                                       {% if prida_list == 'prothr_hetero' %}checked
+                                {% endif %}
+                                {% endfor %}>&nbsp;Heterozygous
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="pai_hetero" style="height:20px; width:20px;">&nbsp;Heterozygous
+                        <input type="checkbox" name="prida_list_data" value="pai_hetero" style="height:20px; width:20px;"
+                                {% for prida_list in prida_list_data %}
+                                       {% if prida_list == 'pai_hetero' %}checked
+                                {% endif %}
+                                {% endfor %}>Heterozygous
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="mthfr_hetero" style="height:20px; width:20px;">&nbsp;Heterozygous
+                        <input type="checkbox" name="prida_list_data" value="mthfr_hetero" style="height:20px; width:20px;"
+                                {% for prida_list in prida_list_data %}
+                                       {% if prida_list == 'mthfr_hetero' %}checked
+                                {% endif %}
+                                {% endfor %}>&nbsp;Heterozygous
                     </td>
                 </tr>
                 <tr>
@@ -97,16 +136,32 @@
                         <input type="radio" name="abort" value="abort_3" style="height:20px; width:20px;">&nbsp;More than 2 Miscarriages
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="fvl_homo" style="height:20px; width:20px;">&nbsp;Homozygous
+                        <input type="checkbox" name="prida_list_data" value="fvl_homo" style="height:20px; width:20px;"
+                                {% for prida_list in prida_list_data %}
+                                       {% if prida_list == 'fvl_homo' %}checked
+                                {% endif %}
+                                {% endfor %}>&nbsp;Homozygous
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="prothr_homo" style="height:20px; width:20px;">&nbsp;Homozygous
+                        <input type="checkbox" name="prida_list_data" value="prothr_homo" style="height:20px; width:20px;"
+                                {% for prida_list in prida_list_data %}
+                                       {% if prida_list == 'prothr_homo' %}checked
+                                {% endif %}
+                                {% endfor %}>&nbsp;Homozygous
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="pai_homo" style="height:20px; width:20px;">&nbsp;Homozygous
+                        <input type="checkbox" name="prida_list_data" value="pai_homo" style="height:20px; width:20px;"
+                                {% for prida_list in prida_list_data %}
+                                       {% if prida_list == 'pai_homo' %}checked
+                                {% endif %}
+                                {% endfor %}>&nbsp;Homozygous
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="mthfr_homo" style="height:20px; width:20px;">&nbsp;Homozygous
+                        <input type="checkbox" name="prida_list_data" value="mthfr_homo" style="height:20px; width:20px;"
+                                {% for prida_list in prida_list_data %}
+                                       {% if prida_list == 'mthfr_homo' %}checked
+                                {% endif %}
+                                {% endfor %}>&nbsp;Homozygous
                     </td>
                 </tr>
             </table>
