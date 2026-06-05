@@ -11,35 +11,52 @@
 <body>
 {% csrf_token %}
 <!--            <div style="height: 500px; overflow-x:auto;">-->
+<!--<div class="container">-->
+<!--    <div class="row mt-4">-->
+<!--        <div class="col">-->
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <h1>PRIDA</h1>-->
+<!--                        <h2>Patients with Spontaneous  Miscarriages</h2>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <form method="post" action="{% url 'mutations_eng' %}">-->
+<!--                            {% csrf_token %}-->
+<!--                            <button class="btn btn-primary btn-lg">Back</button>-->
+<!--                        </form>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <div class="container">
-    <div class="row mt-4">
-        <div class="col">
-            <table>
-                <tr>
-                    <td>
-                        <h1>PRIDA</h1>
-                        <h2>Patients with Spontaneous  Miscarriages</h2>
-                    </td>
-                    <td>
-                        <form method="post" action="{% url 'mutations_eng' %}">
-                            {% csrf_token %}
-                            <button class="btn btn-primary btn-lg">Back</button>
-                        </form>
-                    </td>
-                </tr>
-            </table>
+    <div class="d-grid gap-2 d-md-block">
+        <div class="row mt-4">
+            {% if user.is_authenticated %}
+            <div class="user-info">
+                <a href="{% url 'mutations_eng' %}" class="btn btn-primary">BACK</a>
+            </div>
+            <div class="user-info">
+                <span class="navbar-text">user name: {{ user.username }}</span>
+                <a href="{% url 'logout_eng' %}" class="btn btn-primary btn-lg">Logout</a>
+            </div>
+            {% else %}
+            <div class="auth-buttons">
+                <a href="{% url 'login_eng' %}" class="btn btn-primary btn-lg">Login</a>
+            </div>
+            {% endif %}
         </div>
     </div>
-</div>
-
 <div class="container">
     <div class="row mt-5">
         <form method="post" action="{% url 'proba1_eng' %}">
-            <h1>Please Select Aborts and Mutations Factors!</h1>
+            <h1>Please Select Miscarriages and Mutations Factors</h1>
             <table id="table1">
                 {% csrf_token %}
                 <tr>
-                    <th> <div align="center"> ABORTS </div></th>
+                    <th> <div align="center"> Miscarriages </div></th>
                     <th> <div align="center"> Factor V Leiden </div> </th>
                     <th> <div align="center"> Factor II (Prothrombin) </div> </th>
                     <th> <div align="center"> PAI I </div> </th>
@@ -57,19 +74,19 @@
 <!--                        Age between 20 and 30 years-->
 <!--                    </td>-->
                     <td>
-                        <input type="radio" checked name="abort" value="abort_1" style="height:20px; width:20px;">1 Abort
+                        <input type="radio" checked name="abort" value="abort_1" style="height:20px; width:20px;">1 Miscarriage
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="fvl_ng" style="height:20px; width:20px;">&nbsp;Normal
+                        <input type="checkbox" name="prida_list_data" value="fvl_ng" style="height:20px; width:20px;">&nbsp;Normal Genotype
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="prothr_ng" style="height:20px; width:20px;">&nbsp;Normal
+                        <input type="checkbox" name="prida_list_data" value="prothr_ng" style="height:20px; width:20px;">&nbsp;Normal Genotype
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="pai_ng" style="height:20px; width:20px;">&nbsp;Normal
+                        <input type="checkbox" name="prida_list_data" value="pai_ng" style="height:20px; width:20px;">&nbsp;Normal Genotype
                     </td>
                     <td>
-                        <input type="checkbox" name="prida_list_data" value="mthfr_ng" style="height:20px; width:20px;">&nbsp;Normal
+                        <input type="checkbox" name="prida_list_data" value="mthfr_ng" style="height:20px; width:20px;">&nbsp;Normal Genotype
                     </td>
                 </tr>
                 <tr>
@@ -77,7 +94,7 @@
 <!--                        <input type="radio" name="age" value="age2" style="height:20px; width:20px;">&nbsp;Age between 31 and 40 years-->
 <!--                    </td>-->
                     <td>
-                        <input type="radio" name="abort" value="abort_2" style="height:20px; width:20px;">&nbsp;2 Aborts
+                        <input type="radio" name="abort" value="abort_2" style="height:20px; width:20px;">&nbsp;2 Miscarriages
                     </td>
                     <td>
                         <input type="checkbox" checked name="prida_list_data" value="fvl_hetero" style="height:20px; width:20px;">&nbsp;Heterozygous
@@ -97,7 +114,7 @@
 <!--                        <input type="radio" name="age" value="age3" style="height:20px; width:20px;">&nbsp;Age between 41 and 50 years-->
 <!--                    </td>-->
                     <td>
-                        <input type="radio" name="abort" value="abort_3" style="height:20px; width:20px;">&nbsp;More than 2 Aborts
+                        <input type="radio" name="abort" value="abort_3" style="height:20px; width:20px;">&nbsp;More than 2 Miscarriages
                     </td>
                     <td>
                         <input type="checkbox" name="prida_list_data" value="fvl_homo" style="height:20px; width:20px;">&nbsp;Homozygous
@@ -128,74 +145,74 @@
                 <tr>
                     <td>
                         <div align="center">
-                            From <input type="number" name="from_age" value="25"> Years
+                            From <input type="number" name="from_age" style="text-align: center;" value="25"> Years
                         </div>
 
                     </td>
                     <td>
                         <div align="center">
-                            To <input align="left" type="number" name="to_age" value="26"> Years
+                            To <input align="left" type="number" name="to_age" style="text-align: center;" value="26"> Years
                         </div>
                     </td>
                 </tr>
             </table>
-            <div class="container">
-                <div class="row mt-4">
-                    <div class="col">
-                        <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">
-                            Calculate Number of Patients <br>with Mutations after Miscarriages
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <h1>Distribution Results of Patients after a Miscarriage</h1>
-            <table>
-                <tr>
-                    <th>
-                        Number of Patients
-                    </th>
-                    <th>
-                        Age Limit
-                    </th>
-                    <th>
-                        Mutation Factor
-                    </th>
-                    <th>
-                        Patients with 1 Miscarriage
-                    </th>
-                    <th>
-                        Patients with 2 Miscarriages
-                    </th>
-                    <th>
-                        Patients with > then 2 Miscarriages
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        {{ nbr_patients_selected_age }}
-                    </td>
-                    <td>
-                        {{ from_age }} - {{ to_age }}
-                    </td>
-                    <td>
-                        {{ prida_list_data }}
-                    </td>
-                    <td>
-                        {{ selected_abort_age_1 }}
-                    </td>
-                    <td>
-                        {{ selected_abort_age_2 }}
-                    </td>
-                    <td>
-                        {{ selected_abort_age_3 }}
-                    </td>
-                </tr>
-            </table>
+<!--            <div class="container">-->
+<!--                <div class="row mt-4">-->
+<!--                    <div class="col">-->
+<!--                        <button name="calculate_mutations_aborts" class="btn btn-primary btn-lg">-->
+<!--                            Calculate Number of Patients <br>with Mutations after Aborts-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <h1>Distribution Results of Patients after a Miscarriage</h1>-->
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <th>-->
+<!--                        Number of Patients-->
+<!--                    </th>-->
+<!--                    <th>-->
+<!--                        Age Limit-->
+<!--                    </th>-->
+<!--                    <th>-->
+<!--                        Mutation Factor-->
+<!--                    </th>-->
+<!--                    <th>-->
+<!--                        Patients with 1 Miscarriage-->
+<!--                    </th>-->
+<!--                    <th>-->
+<!--                        Patients with 2 Miscarriages-->
+<!--                    </th>-->
+<!--                    <th>-->
+<!--                        Patients with > then 2 Miscarriages-->
+<!--                    </th>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        {{ nbr_patients_selected_age }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ from_age }} - {{ to_age }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ prida_list_data }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ selected_abort_age_1 }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ selected_abort_age_2 }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ selected_abort_age_3 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </table>-->
             <div class="container">
                 <div class="row mt-4">
                     <div class="col">
                         <button name="submit" class="btn btn-primary btn-lg">
-                            Calculate Number of Patients <br>with Mutations
+                            Mutation Analysis
                         </button>
                     </div>
                 </div>
@@ -205,206 +222,206 @@
 </div>
 <div class="container">
     <div class="row mt-5">
-        <h1>Results for Distribution of Patients with Mutations!</h1>
-        <form>
-<!--            <button name="submit" class="btn btn-primary btn-lg">Calculate Number of Patients with Mutations</button>-->
-            <table>
-                <tr>
-                    <th>
-                        <div align="center">
-                            Row Numbers Used
-                            <br>
-                        </div>
-                    </th>
-                    <th>
-                        <div align="center">
-                            Age
-                        </div>
-                    </th>
-                    <th scope="col">
-                        <div align="center">
-                            Miscarriages
-                        </div>
-                    </th>
-                    <th>
-                        <div align="center">
-                            Number of Patients
-                        </div>
-                    </th>
-                </tr>
-                <tr>
-                    <td>{{ clients_list }}</td>
-                    <td> {{ age_interval }} </td>
-                    <td> {{ abort_variant }} </td>
-                    <td> {{ number_abort_patients }} </td>
-                </tr>
-                <tr>
-                    {% if s_factor == 'abort_1' %}
-                    <td>
-                        {{ s_factor }}
-                    </td>
-                    {% elif s_factor == 'fvl_hetero' %}
-                    <td>
-                        {{ count_all_fvl_hetero_data }}
-                    </td>
-                    <td>
-                        {{ s_factor }}
-                    </td>
-                    <td>
-                        {{ count_fvl_hetero }}
-                    </td>
-                    <td>
-                        {{ fvl_1_hetero_percent }}
-                    </td>
-                    <td></td>
-                    {% elif s_factor == 'fvl_homo' %}
-                    <td>
-                        {{ count_all_fvl_homo_data }}
-                    </td>
-                    <td>
-                        {{ s_factor }}
-                    </td>
-                    <td>
-                        {{ count_fvl_homo }}
-                    </td>
-                    <td>
-                        {{ fvl_1_homo_percent }}
-                    </td>
-                    <td></td>
-                    {% elif s_factor == 'prothr_ng' %}
-                    <td>
-                        {{ count_all_prothr_ng_data }}
-                    </td>
-                    <td>
-                        {{ s_factor }}
-                    </td>
-                    <td>
-                        {{ count_prothr_ng }}
-                    </td>
-                    <td>
-                        {{ prothr_1_ng_percent }}
-                    </td>
-                    <td></td>
-                    {% elif s_factor == 'prothr_hetero' %}
-                    <td>
-                        {{ count_all_prothr_hetero_data }}
-                    </td>
-                    <td>
-                        {{ s_factor }}
-                    </td>
-                    <td>
-                        {{ count_prothr_hetero }}
-                    </td>
-                    <td>
-                        {{ prothr_1_hetero_percent }}
-                    </td>
-                    <td></td>
-                    {% elif s_factor == 'prothr_homo' %}
-                    <td>
-                        {{ count_all_prothr_homo_data }}
-                    </td>
-                    <td>
-                        {{ s_factor }}
-                    </td>
-                    <td>
-                        {{ count_prothr_homo }}
-                    </td>
-                    <td>
-                        {{ prothr_1_homo_percent }}
-                    </td>
-                    <td></td>
-                    {% elif s_factor == 'pai_ng' %}
-                    <td>
-                        {{ count_all_pai_ng_data }}
-                    </td>
-                    <td>
-                        {{ s_factor }}
-                    </td>
-                    <td>
-                        {{ count_pai_ng }}
-                    </td>
-                    <td>
-                        {{ pai_1_ng_percent }}
-                    </td>
-                    <td></td>
-                    {% elif s_factor == 'pai_hetero' %}
-                    <td>
-                        {{ count_all_pai_hetero_data }}
-                    </td>
-                    <td>
-                        {{ s_factor }}
-                    </td>
-                    <td>
-                        {{ count_pai_hetero }}
-                    </td>
-                    <td>
-                        {{ pai_1_hetero_percent }}
-                    </td>
-                    <td></td>
-                    {% elif s_factor == 'pai_homo' %}
-                    <td>
-                        {{ count_all_pai_homo_data }}
-                    </td>
-                    <td>
-                        {{ s_factor }}
-                    </td>
-                    <td>
-                        {{ count_pai_homo }}
-                    </td>
-                    <td>
-                        {{ pai_1_homo_percent }}
-                    </td>
-                    <td></td>
-                    {% elif s_factor == 'mthfr_ng' %}
-                    <td>
-                        {{ count_all_mthfr_ng_data }}
-                    </td>
-                    <td>
-                        {{ s_factor }}
-                    </td>
-                    <td>
-                        {{ count_mthfr_ng }}
-                    </td>
-                    <td>
-                        {{ mthfr_1_ng_percent }}
-                    </td>
-                    <td></td>
-                    {% elif s_factor == 'mthfr_hetero' %}
-                    <td>
-                        {{ count_all_mthfr_hetero_data }}
-                    </td>
-                    <td>
-                        {{ s_factor }}
-                    </td>
-                    <td>
-                        {{ count_mthfr_hetero }}
-                    </td>
-                    <td>
-                        {{ mthfr_1_hetero_percent }}
-                    </td>
-                    <td></td>
-                    {% elif s_factor == 'mthfr_homo' %}
-                    <td>
-                        {{ count_all_mthfr_homo_data }}
-                    </td>
-                    <td>
-                        {{ s_factor }}
-                    </td>
-                    <td>
-                        {{ count_mthfr_homo }}
-                    </td>
-                    <td>
-                        {{ mthfr_1_homo_percent }}
-                    </td>
-                    {% elif s_factor == 'abort_1' %}
-                    <td>
-                        {{ s_factor }}
-                    </td>
-                    {% endif %}
-                </tr>
-            </table>
-<!--            <br><br>-->
-        </form>
+        <h1>Results for Distribution of Patients with Mutations</h1>
+<!--        <form>-->
+<!--&lt;!&ndash;            <button name="submit" class="btn btn-primary btn-lg">Calculate Number of Patients with Mutations</button>&ndash;&gt;-->
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <th>-->
+<!--                        <div align="center">-->
+<!--                            Row Numbers Used-->
+<!--                            <br>-->
+<!--                        </div>-->
+<!--                    </th>-->
+<!--                    <th>-->
+<!--                        <div align="center">-->
+<!--                            Age-->
+<!--                        </div>-->
+<!--                    </th>-->
+<!--                    <th scope="col">-->
+<!--                        <div align="center">-->
+<!--                            Miscarriages-->
+<!--                        </div>-->
+<!--                    </th>-->
+<!--                    <th>-->
+<!--                        <div align="center">-->
+<!--                            Number of Patients-->
+<!--                        </div>-->
+<!--                    </th>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>{{ clients_list }}</td>-->
+<!--                    <td> {{ age_interval }} </td>-->
+<!--                    <td> {{ abort_variant }} </td>-->
+<!--                    <td> {{ number_abort_patients }} </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    {% if s_factor == 'abort_1' %}-->
+<!--                    <td>-->
+<!--                        {{ s_factor }}-->
+<!--                    </td>-->
+<!--                    {% elif s_factor == 'fvl_hetero' %}-->
+<!--                    <td>-->
+<!--                        {{ count_all_fvl_hetero_data }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ s_factor }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ count_fvl_hetero }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ fvl_1_hetero_percent }}-->
+<!--                    </td>-->
+<!--                    <td></td>-->
+<!--                    {% elif s_factor == 'fvl_homo' %}-->
+<!--                    <td>-->
+<!--                        {{ count_all_fvl_homo_data }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ s_factor }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ count_fvl_homo }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ fvl_1_homo_percent }}-->
+<!--                    </td>-->
+<!--                    <td></td>-->
+<!--                    {% elif s_factor == 'prothr_ng' %}-->
+<!--                    <td>-->
+<!--                        {{ count_all_prothr_ng_data }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ s_factor }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ count_prothr_ng }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ prothr_1_ng_percent }}-->
+<!--                    </td>-->
+<!--                    <td></td>-->
+<!--                    {% elif s_factor == 'prothr_hetero' %}-->
+<!--                    <td>-->
+<!--                        {{ count_all_prothr_hetero_data }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ s_factor }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ count_prothr_hetero }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ prothr_1_hetero_percent }}-->
+<!--                    </td>-->
+<!--                    <td></td>-->
+<!--                    {% elif s_factor == 'prothr_homo' %}-->
+<!--                    <td>-->
+<!--                        {{ count_all_prothr_homo_data }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ s_factor }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ count_prothr_homo }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ prothr_1_homo_percent }}-->
+<!--                    </td>-->
+<!--                    <td></td>-->
+<!--                    {% elif s_factor == 'pai_ng' %}-->
+<!--                    <td>-->
+<!--                        {{ count_all_pai_ng_data }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ s_factor }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ count_pai_ng }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ pai_1_ng_percent }}-->
+<!--                    </td>-->
+<!--                    <td></td>-->
+<!--                    {% elif s_factor == 'pai_hetero' %}-->
+<!--                    <td>-->
+<!--                        {{ count_all_pai_hetero_data }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ s_factor }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ count_pai_hetero }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ pai_1_hetero_percent }}-->
+<!--                    </td>-->
+<!--                    <td></td>-->
+<!--                    {% elif s_factor == 'pai_homo' %}-->
+<!--                    <td>-->
+<!--                        {{ count_all_pai_homo_data }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ s_factor }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ count_pai_homo }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ pai_1_homo_percent }}-->
+<!--                    </td>-->
+<!--                    <td></td>-->
+<!--                    {% elif s_factor == 'mthfr_ng' %}-->
+<!--                    <td>-->
+<!--                        {{ count_all_mthfr_ng_data }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ s_factor }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ count_mthfr_ng }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ mthfr_1_ng_percent }}-->
+<!--                    </td>-->
+<!--                    <td></td>-->
+<!--                    {% elif s_factor == 'mthfr_hetero' %}-->
+<!--                    <td>-->
+<!--                        {{ count_all_mthfr_hetero_data }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ s_factor }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ count_mthfr_hetero }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ mthfr_1_hetero_percent }}-->
+<!--                    </td>-->
+<!--                    <td></td>-->
+<!--                    {% elif s_factor == 'mthfr_homo' %}-->
+<!--                    <td>-->
+<!--                        {{ count_all_mthfr_homo_data }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ s_factor }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ count_mthfr_homo }}-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        {{ mthfr_1_homo_percent }}-->
+<!--                    </td>-->
+<!--                    {% elif s_factor == 'abort_1' %}-->
+<!--                    <td>-->
+<!--                        {{ s_factor }}-->
+<!--                    </td>-->
+<!--                    {% endif %}-->
+<!--                </tr>-->
+<!--            </table>-->
+<!--&lt;!&ndash;            <br><br>&ndash;&gt;-->
+<!--        </form>-->
     </div>
 </div>
 
@@ -415,7 +432,7 @@
     <tr>
         <th></th>
         <th>
-            <div align="center">Mutation Frequency
+            <div align="center">Number of Patients
             </div>
         </th>
         <th>
@@ -425,7 +442,7 @@
     </tr>
     <tr>
         <th>
-            <div align="center"> Factor V Leiden Nonegenotype Mutation
+            <div align="center"> Factor V Leiden Normal Genotype Mutation
 
             </div>
         </th>
@@ -486,7 +503,7 @@
     </tr>
     <tr>
         <th scope="col">
-            <div align="center">Factor II (Prothrombin) None Genotype Mutation
+            <div align="center">Factor II (Prothrombin) Normal Genotype Mutation
             </div>
         </th>
         <td>
@@ -548,7 +565,7 @@
     <tr>
         <th scope="col">
             <div align="center">
-                Factor PAI I None Genotype Mutation
+                Factor PAI I Normal Genotype Mutation
             </div>
         </th>
         <td>
@@ -611,7 +628,7 @@
     <tr>
         <th scope="col">
             <div align="center">
-                Factor MTHFR None Genotype Mutation
+                Factor MTHFR Normal Genotype Mutation
             </div>
         </th>
         <td>
@@ -688,7 +705,7 @@
                     <tr>
                         <th rowspan="2"><div align="center"> Name</div></th>
                         <th rowspan="2"><div align="center">Age</div></th>
-                        <th rowspan="2"><div align="center">Aborts</div></th>
+                        <th rowspan="2"><div align="center">Miscarriages</div></th>
                         <th colspan="2"><div align="center">FVL Mutation</div></th>
                         <th colspan="2"><div align="center">Prothrombin Mutation</div> </th>
                         <th colspan="2"><div align="center">PAI I</div> </th>
@@ -767,7 +784,7 @@
                             <form method="post" action="{% url 'calc_patients_more_mut_p' %}">
                                 {% csrf_token %}
                                 <button name="btn_patients_more_mutations" class="btn btn-primary btn-lg">
-                                    Results: Mutations
+                                    Global Combined
                                 </button>
                             </form>
                         </div>
@@ -916,7 +933,7 @@
                         </th>
                         <th>
                             <div align="center">
-                                ABORT
+                                Miscarriages
                             </div>
                         </th>
                         <th>Action</th>

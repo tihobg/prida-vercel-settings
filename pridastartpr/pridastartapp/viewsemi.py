@@ -43,8 +43,9 @@ def calc_patients_more_mut_controli(request):
     context3 = {}
     prida_controli = PridaControli.objects.all()
 
+    list_age_controli = PridaControli.objects.values_list('age')
+
     list_fvl_ng = PridaControli.objects.values_list('fvl_ng')
-    print('FVL NG', list_fvl_ng)
     list_fvl_hetero = PridaControli.objects.values_list('fvl_hetero')
     list_fvl_homo = PridaControli.objects.values_list('fvl_homo')
 
@@ -59,6 +60,327 @@ def calc_patients_more_mut_controli(request):
     list_mthfr_ng = PridaControli.objects.values_list('mthfr_ng')
     list_mthfr_hetero = PridaControli.objects.values_list('mthfr_hetero')
     list_mthfr_homo = PridaControli.objects.values_list('mthfr_homo')
+
+    sublist = slice(22, len(list_age_controli))
+    sublist_age = list_age_controli[sublist]
+    print('Sublist AGE', sublist_age)
+
+    sublist = slice(22, len(list_age_controli))
+    sublist_fvl_ng_controli = list_fvl_ng[sublist]
+    print('Sublist FVL_NG', sublist_fvl_ng_controli)
+
+    sublist = slice(22, len(list_age_controli))
+    sublist_fvl_hetero_controli = list_fvl_hetero[sublist]
+    print('Sublist FVL_HETERO', sublist_fvl_hetero_controli)
+
+    sublist = slice(22, len(list_age_controli))
+    sublist_fvl_homo_controli = list_fvl_homo[sublist]
+    print('Sublist FVL_HOMO', sublist_fvl_homo_controli)
+
+    sublist = slice(22, len(list_age_controli))
+    sublist_prothr_ng_controli = list_prothr_ng[sublist]
+    print('Sublist prothr_NG', sublist_prothr_ng_controli)
+
+    sublist = slice(22, len(list_age_controli))
+    sublist_prothr_hetero_controli = list_prothr_hetero[sublist]
+    print('Sublist prothr_HETERO', sublist_prothr_hetero_controli)
+
+    sublist = slice(22, len(list_age_controli))
+    sublist_prothr_homo_controli = list_prothr_homo[sublist]
+    print('Sublist prothr_HOMO', sublist_prothr_homo_controli)
+
+    sublist = slice(22, len(list_age_controli))
+    sublist_pai_ng_controli = list_pai_ng[sublist]
+    print('Sublist pai_NG', sublist_pai_ng_controli)
+
+    sublist = slice(22, len(list_age_controli))
+    sublist_pai_hetero_controli = list_pai_hetero[sublist]
+    print('Sublist pai_HETERO', sublist_pai_hetero_controli)
+
+    sublist = slice(22, len(list_age_controli))
+    sublist_pai_homo_controli = list_pai_homo[sublist]
+    print('Sublist pai_HOMO', sublist_pai_homo_controli)
+
+    sublist = slice(22, len(list_age_controli))
+    sublist_mthfr_ng_controli = list_mthfr_ng[sublist]
+    print('Sublist mthfr_NG', sublist_mthfr_ng_controli)
+
+    sublist = slice(22, len(list_age_controli))
+    sublist_mthfr_hetero_controli = list_mthfr_hetero[sublist]
+    print('Sublist mthfr_HETERO', sublist_mthfr_hetero_controli)
+
+    sublist = slice(22, len(list_age_controli))
+    sublist_mthfr_homo_controli = list_mthfr_homo[sublist]
+    print('Sublist mthfr_HOMO', sublist_mthfr_homo_controli)
+
+    count_fvl_ng_controli = 0
+    count_fvl_hetero_controli = 0
+    count_fvl_homo_controli = 0
+
+    count_prothr_ng_controli = 0
+    count_prothr_hetero_controli = 0
+    count_prothr_homo_controli = 0
+
+    count_pai_hetero_controli = 0
+    count_pai_homo_controli = 0
+
+    count_mthfr_hetero_controli = 0
+    count_mthfr_homo_controli = 0
+
+
+
+
+
+###### Start 1 Mutation ##########
+
+
+    for fvl_ng_controli in sublist_fvl_ng_controli:
+        if fvl_ng_controli[0] == '1.0':
+            count_fvl_ng_controli = count_fvl_ng_controli + 1
+    print('FVL NG', count_fvl_ng_controli)
+    context3['count_fvl_ng_controli'] = count_fvl_ng_controli
+
+    for fvl_hetero_controli in sublist_fvl_hetero_controli:
+        if fvl_hetero_controli[0] == '1.0':
+            count_fvl_hetero_controli = count_fvl_hetero_controli + 1
+    print('FVL NG', count_fvl_hetero_controli)
+    context3['count_fvl_hetero_controli'] = count_fvl_hetero_controli
+
+    for fvl_homo_controli in sublist_fvl_homo_controli:
+        if fvl_homo_controli[0] == '1.0':
+            count_fvl_homo_controli = count_fvl_homo_controli + 1
+    print('FVL HOMO', count_fvl_homo_controli)
+    context3['count_fvl_homo_controli'] = count_fvl_homo_controli
+
+    for prothr_ng_controli in sublist_prothr_ng_controli:
+        if prothr_ng_controli[0] == '1.0':
+            count_fvl_homo_controli = count_fvl_homo_controli + 1
+    print('FVL NG', count_fvl_homo_controli)
+    context3['count_fvl_homo_controli'] = count_fvl_homo_controli
+
+    for prothr_ng_controli in sublist_prothr_ng_controli:
+        if prothr_ng_controli[0] == '1.0':
+            count_prothr_ng_controli = count_prothr_ng_controli + 1
+    print('FVL NG', count_prothr_ng_controli)
+    context3['count_prothr_ng_controli'] = count_prothr_ng_controli
+
+    for prothr_hetero_controli in sublist_prothr_hetero_controli:
+        if prothr_hetero_controli[0] == '1.0':
+            count_prothr_hetero_controli = count_prothr_hetero_controli + 1
+    print('FVL NG', count_prothr_hetero_controli)
+    context3['count_prothr_hetero_controli'] = count_prothr_hetero_controli
+
+    for prothr_homo_controli in sublist_prothr_homo_controli:
+        if prothr_homo_controli[0] == '1.0':
+            count_prothr_homo_controli = count_prothr_homo_controli + 1
+    print('FVL NG', count_prothr_homo_controli)
+    context3['count_prothr_homo_controli'] = count_prothr_homo_controli
+
+    for pai_hetero_controli in sublist_pai_hetero_controli:
+        if pai_hetero_controli[0] == '1.0':
+            count_pai_hetero_controli = count_pai_hetero_controli + 1
+    print('FVL NG', count_pai_hetero_controli)
+    context3['count_pai_hetero_controli'] = count_pai_hetero_controli
+
+    for pai_homo_controli in sublist_pai_homo_controli:
+        if pai_homo_controli[0] == '1.0':
+            count_pai_homo_controli = count_pai_homo_controli + 1
+    print('FVL NG', count_pai_homo_controli)
+    context3['count_pai_homo_controli'] = count_pai_homo_controli
+
+    for mthfr_hetero_controli in sublist_mthfr_hetero_controli:
+        if mthfr_hetero_controli[0] == '1.0':
+            count_mthfr_hetero_controli = count_mthfr_hetero_controli + 1
+    print('FVL NG', count_mthfr_hetero_controli)
+    context3['count_mthfr_hetero_controli'] = count_mthfr_hetero_controli
+
+    for mthfr_homo_controli in sublist_mthfr_homo_controli:
+        if mthfr_homo_controli[0] == '1.0':
+            count_mthfr_homo_controli = count_mthfr_homo_controli + 1
+    print('FVL NG', count_mthfr_homo_controli)
+    context3['count_mthfr_homo_controli'] = count_mthfr_homo_controli
+
+###### End 1 Mutation ##########
+
+    count_fvl_prothr_hetero_controli = 0
+    count_fvl_hetero_prothr_homo_controli = 0
+    count_fvl_hetero_pai_homo_controli = 0
+    count_fvl_hetero_mthfr_homo_controli = 0
+    count_fvl_homo_prothr_hetero_controli = 0
+    count_fvl_homo_prothr_homo_controli = 0
+    count_fvl_homo_pai_homo_controli = 0
+    count_fvl_homo_mthfr_homo_controli = 0
+    count_prothr_hetero_pai_homo_controli = 0
+    count_prothr_hetero_mthfr_homo_controli = 0
+    count_pai_homo_mthfr_homo_controli = 0
+
+
+
+
+
+
+
+
+
+##### Start 2 Mutations at Once #######
+    for controli in range(len(sublist_fvl_ng_controli)):
+        # print(controli)
+        if sublist_fvl_hetero_controli[controli][0] == '1.0' == sublist_prothr_hetero_controli[controli][0]:
+            count_fvl_prothr_hetero_controli = count_fvl_prothr_hetero_controli + 1
+    print('count_fvl_prothr_hetero_controli', count_fvl_prothr_hetero_controli)
+
+    context3['count_fvl_prothr_hetero_controli'] = count_fvl_prothr_hetero_controli
+
+    for controli in range(len(sublist_fvl_ng_controli)):
+        # print(controli)
+        if sublist_fvl_hetero_controli[controli][0] == '1.0' == sublist_prothr_homo_controli[controli][0]:
+            count_fvl_hetero_prothr_homo_controli = count_fvl_hetero_prothr_homo_controli + 1
+    print('count_fvl_hetero_prothr_homo_controli', count_fvl_hetero_prothr_homo_controli)
+
+    context3['count_fvl_hetero_prothr_homo_controli'] = count_fvl_hetero_prothr_homo_controli
+
+    for controli in range(len(sublist_fvl_ng_controli)):
+        # print(controli)
+        if sublist_fvl_hetero_controli[controli][0] == '1.0' == sublist_pai_homo_controli[controli][0]:
+            count_fvl_hetero_pai_homo_controli = count_fvl_hetero_pai_homo_controli + 1
+    print('count_fvl_hetero_pai_homo_controli', count_fvl_hetero_pai_homo_controli)
+
+    context3['count_fvl_hetero_pai_homo_controli'] = count_fvl_hetero_pai_homo_controli
+
+    for controli in range(len(sublist_fvl_ng_controli)):
+        # print(controli)
+        if sublist_fvl_hetero_controli[controli][0] == '1.0' == sublist_mthfr_homo_controli[controli][0]:
+            count_fvl_hetero_mthfr_homo_controli = count_fvl_hetero_mthfr_homo_controli + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_fvl_hetero_mthfr_homo_controli'] = count_fvl_hetero_mthfr_homo_controli
+
+    for controli in range(len(sublist_fvl_ng_controli)):
+        # print(controli)
+        if sublist_fvl_homo_controli[controli][0] == '1.0' == sublist_prothr_hetero_controli[controli][0]:
+            count_fvl_homo_prothr_hetero_controli = count_fvl_homo_prothr_hetero_controli + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_fvl_homo_prothr_hetero_controli'] = count_fvl_homo_prothr_hetero_controli
+
+    for controli in range(len(sublist_fvl_ng_controli)):
+        # print(controli)
+        if sublist_fvl_homo_controli[controli][0] == '1.0' == sublist_prothr_homo_controli[controli][0]:
+            count_fvl_homo_prothr_homo_controli = count_fvl_homo_prothr_homo_controli + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_fvl_homo_prothr_homo_controli'] = count_fvl_homo_prothr_homo_controli
+
+    for controli in range(len(sublist_fvl_ng_controli)):
+        # print(controli)
+        if sublist_fvl_homo_controli[controli][0] == '1.0' == sublist_pai_homo_controli[controli][0]:
+            count_fvl_homo_pai_homo_controli = count_fvl_homo_pai_homo_controli + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_fvl_homo_pai_homo_controli'] = count_fvl_homo_pai_homo_controli
+
+    for controli in range(len(sublist_fvl_ng_controli)):
+        # print(controli)
+        if sublist_fvl_homo_controli[controli][0] == '1.0' == sublist_mthfr_homo_controli[controli][0]:
+            count_fvl_homo_mthfr_homo_controli = count_fvl_homo_mthfr_homo_controli + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_fvl_homo_mthfr_homo_controli'] = count_fvl_homo_mthfr_homo_controli
+
+    for controli in range(len(sublist_fvl_ng_controli)):
+        # print(controli)
+        if sublist_prothr_hetero_controli[controli][0] == '1.0' == sublist_pai_homo_controli[controli][0]:
+            count_prothr_hetero_pai_homo_controli = count_prothr_hetero_pai_homo_controli + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_prothr_hetero_pai_homo_controli'] = count_prothr_hetero_pai_homo_controli
+
+    for controli in range(len(sublist_fvl_ng_controli)):
+        # print(controli)
+        if sublist_prothr_hetero_controli[controli][0] == '1.0' == sublist_mthfr_homo_controli[controli][0]:
+            count_prothr_hetero_mthfr_homo_controli = count_prothr_hetero_mthfr_homo_controli + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_prothr_hetero_mthfr_homo_controli'] = count_prothr_hetero_mthfr_homo_controli
+
+    for controli in range(len(sublist_fvl_ng_controli)):
+        # print(controli)
+        if sublist_pai_homo_controli[controli][0] == '1.0' == sublist_mthfr_homo_controli[controli][0]:
+            count_pai_homo_mthfr_homo_controli = count_pai_homo_mthfr_homo_controli + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_pai_homo_mthfr_homo_controli'] = count_pai_homo_mthfr_homo_controli
+
+
+    #         for fvl_hetero_controli in sublist_fvl_hetero_controli:
+    #             if fvl_hetero_controli[0] == fvl_ng_controli[0] == '1.0':
+    #             count_fvl_ng_hetero_controli = count_fvl_ng_hetero_controli + 1
+    #         print('FVL NG', count_fvl_ng_hetero_controli)
+    # context3['count_fvl_ng_hetero_controli'] = count_fvl_ng_hetero_controli
+
+    for fvl_hetero_controli in sublist_fvl_hetero_controli:
+        if fvl_hetero_controli[0] == '1.0':
+            count_fvl_hetero_controli = count_fvl_hetero_controli + 1
+    print('FVL NG', count_fvl_hetero_controli)
+    context3['count_fvl_hetero_controli'] = count_fvl_hetero_controli
+
+    for fvl_homo_controli in sublist_fvl_homo_controli:
+        if fvl_homo_controli[0] == '1.0':
+            count_fvl_homo_controli = count_fvl_homo_controli + 1
+    print('FVL HOMO', count_fvl_homo_controli)
+    context3['count_fvl_homo_controli'] = count_fvl_homo_controli
+
+    for prothr_ng_controli in sublist_prothr_ng_controli:
+        if prothr_ng_controli[0] == '1.0':
+            count_fvl_homo_controli = count_fvl_homo_controli + 1
+    print('FVL NG', count_fvl_homo_controli)
+    context3['count_fvl_homo_controli'] = count_fvl_homo_controli
+
+    for prothr_ng_controli in sublist_prothr_ng_controli:
+        if prothr_ng_controli[0] == '1.0':
+            count_prothr_ng_controli = count_prothr_ng_controli + 1
+    print('FVL NG', count_prothr_ng_controli)
+    context3['count_prothr_ng_controli'] = count_prothr_ng_controli
+
+    for prothr_hetero_controli in sublist_prothr_hetero_controli:
+        if prothr_hetero_controli[0] == '1.0':
+            count_prothr_hetero_controli = count_prothr_hetero_controli + 1
+    print('FVL NG', count_prothr_hetero_controli)
+    context3['count_prothr_hetero_controli'] = count_prothr_hetero_controli
+
+    for prothr_homo_controli in sublist_prothr_homo_controli:
+        if prothr_homo_controli[0] == '1.0':
+            count_prothr_homo_controli = count_prothr_homo_controli + 1
+    print('FVL NG', count_prothr_homo_controli)
+    context3['count_prothr_homo_controli'] = count_prothr_homo_controli
+
+    for pai_hetero_controli in sublist_pai_hetero_controli:
+        if pai_hetero_controli[0] == '1.0':
+            count_pai_hetero_controli = count_pai_hetero_controli + 1
+    print('FVL NG', count_pai_hetero_controli)
+    context3['count_pai_hetero_controli'] = count_pai_hetero_controli
+
+    for pai_homo_controli in sublist_pai_homo_controli:
+        if pai_homo_controli[0] == '1.0':
+            count_pai_homo_controli = count_pai_homo_controli + 1
+    print('FVL NG', count_pai_homo_controli)
+    context3['count_pai_homo_controli'] = count_pai_homo_controli
+
+    for mthfr_hetero_controli in sublist_mthfr_hetero_controli:
+        if mthfr_hetero_controli[0] == '1.0':
+            count_mthfr_hetero_controli = count_mthfr_hetero_controli + 1
+    print('FVL NG', count_mthfr_hetero_controli)
+    context3['count_mthfr_hetero_controli'] = count_mthfr_hetero_controli
+
+    for mthfr_homo_controli in sublist_mthfr_homo_controli:
+        if mthfr_homo_controli[0] == '1.0':
+            count_mthfr_homo_controli = count_mthfr_homo_controli + 1
+    print('FVL NG', count_mthfr_homo_controli)
+    context3['count_mthfr_homo_controli'] = count_mthfr_homo_controli
+##### End 2 Mutations at Once #########
+
+
+
 
     list_abort = PridaControli.objects.values_list('abort')
     prida_age_list_controli = request.POST.getlist('age')  ## Spisak s izbrana ot usera vazrast
@@ -830,48 +1152,7 @@ def calc_patients_more_mut_controli(request):
                     cnt_mthfr_homo_mutations = cnt_mthfr_homo_mutations + 1
             print('MTHFR Homo Mutations are:', cnt_mthfr_homo_mutations)
 
-            # context3['fvl_hetero_mut_1_abort'] = cnt_fvl_hetero_mut_1_abort
-            # context3['fvl_homo_mut_1_abort'] = cnt_fvl_homo_mut_1_abort
-            # context3['prothr_hetero_mut_1_abort'] = cnt_prothr_hetero_mut_1_abort
-            # context3['prothr_homo_mut_1_abort'] = cnt_prothr_homo_mut_1_abort
-            # context3['pai_homo_mut_1_abort'] = cnt_pai_homo_mut_1_abort
-            # context3['mthfr_homo_mut_1_abort'] = cnt_mthfr_homo_mut_1_abort
 
-            # context3['cnt_fvl_hetero_prothr_hetero_mutations'] = cnt_fvl_hetero_prothr_hetero_mutations
-            # context3['cnt_fvl_hetero_prothr_homo_mutations'] = cnt_fvl_hetero_prothr_homo_mutations
-            # context3['cnt_fvl_hetero_pai_homo_mutations'] = cnt_fvl_hetero_pai_homo_mutations
-            # context3['cnt_fvl_hetero_mthfr_homo_mutations'] = cnt_fvl_hetero_mthfr_homo_mutations
-            # context3['cnt_fvl_homo_prothr_hetero_mutations'] = cnt_fvl_homo_prothr_hetero_mutations
-            # context3['cnt_fvl_homo_prothr_homo_mutations'] = cnt_fvl_homo_prothr_homo_mutations
-            # context3['cnt_fvl_homo_pai_homo_mutations'] = cnt_fvl_homo_pai_homo_mutations
-            # context3['cnt_fvl_homo_mthfr_homo_mutations'] = cnt_fvl_homo_mthfr_homo_mutations
-            # context3['cnt_prothr_hetero_pai_homo_mutations'] = cnt_prothr_hetero_pai_homo_mutations
-            # context3['cnt_prothr_hetero_mthfr_homo_mutations'] = cnt_prothr_hetero_mthfr_homo_mutations
-            # context3['cnt_pai_homo_mthfr_homo_mutations'] = cnt_pai_homo_mthfr_homo_mutations
-
-            # context3['cnt_fvl_hetero_prothr_hetero_mut_abort1'] = cnt_fvl_hetero_prothr_hetero_mut_abort1
-            # context3['cnt_fvl_hetero_prothr_homo_mut_abort1'] = cnt_fvl_hetero_prothr_homo_mut_abort1
-            # context3['cnt_fvl_hetero_pai_homo_mut_abort1'] = cnt_fvl_hetero_pai_homo_mut_abort1
-            # context3['cnt_fvl_hetero_mthfr_homo_mut_abort1'] = cnt_fvl_hetero_mthfr_homo_mut_abort1
-            # context3['cnt_fvl_homo_prothr_hetero_mut_abort1'] = cnt_fvl_homo_prothr_hetero_mut_abort1
-            # context3['cnt_fvl_homo_prothr_homo_mut_abort1'] = cnt_fvl_homo_prothr_homo_mut_abort1
-            # context3['cnt_fvl_homo_pai_homo_mut_abort1'] = cnt_fvl_homo_pai_homo_mut_abort1
-            # context3['cnt_fvl_homo_mthfr_homo_mut_abort1'] = cnt_fvl_homo_mthfr_homo_mut_abort1
-            # context3['cnt_prothr_hetero_pai_homo_mut_abort1'] = cnt_prothr_hetero_pai_homo_mut_abort1
-            # context3['cnt_prothr_hetero_mthfr_homo_mut_abort1'] = cnt_prothr_hetero_mthfr_homo_mut_abort1
-            # context3['cnt_pai_homo_mthfr_homo_mut_abort1'] = cnt_pai_homo_mthfr_homo_mut_abort1
-
-            # context3['cnt_fvl_hetero_prothr_hetero_mut_aborts'] = cnt_fvl_hetero_prothr_hetero_mut_aborts
-            # context3['cnt_fvl_hetero_prothr_homo_mut_aborts'] = cnt_fvl_hetero_prothr_homo_mut_aborts
-            # context3['cnt_fvl_hetero_pai_homo_mut_aborts'] = cnt_fvl_hetero_pai_homo_mut_aborts
-            # context3['cnt_fvl_hetero_mthfr_homo_mut_aborts'] = cnt_fvl_hetero_mthfr_homo_mut_aborts
-            # context3['cnt_fvl_homo_prothr_hetero_mut_aborts'] = cnt_fvl_homo_prothr_hetero_mut_aborts
-            # context3['cnt_fvl_homo_prothr_homo_mut_aborts'] = cnt_fvl_homo_prothr_homo_mut_aborts
-            # context3['cnt_fvl_homo_pai_homo_mut_aborts'] = cnt_fvl_homo_pai_homo_mut_aborts
-            # context3['cnt_fvl_homo_mthfr_homo_mut_aborts'] = cnt_fvl_homo_mthfr_homo_mut_aborts
-            # context3['cnt_prothr_hetero_pai_homo_mut_aborts'] = cnt_prothr_hetero_pai_homo_mut_aborts
-            # context3['cnt_prothr_hetero_mthfr_homo_mut_aborts'] = cnt_prothr_hetero_mthfr_homo_mut_aborts
-            # context3['cnt_pai_homo_mthfr_homo_mut_aborts'] = cnt_pai_homo_mthfr_homo_mut_aborts
 
             ###        1 MUTATION FOR ALL PATIENTS           ####
             context3['mthfr_homo_mut'] = cnt_mthfr_homo_mutations
@@ -880,15 +1161,11 @@ def calc_patients_more_mut_controli(request):
             context3['prothr_hetero_mut'] = cnt_prothr_hetero_mutations
             context3['fvl_homo_mut'] = cnt_fvl_homo_mutations
             context3['fvl_hetero_mut'] = cnt_fvl_hetero_mutations
-            ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
-            # context3['2_3_aborts_mthfr_homo_mut'] = cnt_mthfr_homo_mut_2_3_aborts
-            # context3['2_3_aborts_pai_homo_mut'] = cnt_pai_homo_mut_2_3_aborts
-            # context3['2_3_aborts_prothr_homo_mut'] = cnt_prothr_homo_mut_2_3_aborts
-            # context3['2_3_aborts_prothr_hetero_mut'] = cnt_prothr_hetero_mut_2_3_aborts
-            # context3['2_3_aborts_fvl_homo_mut'] = cnt_fvl_homo_mut_2_3_aborts
-            # context3['2_3_aborts_fvl_hetero_mut'] = cnt_fvl_hetero_mut_2_3_aborts
+
 
     return render(request, 'calc_patients_more_mut_controli.html', context3)
+
+
 
 
 def calc_patients_more_mut_p(request):
@@ -896,9 +1173,11 @@ def calc_patients_more_mut_p(request):
     prida_mutations = PridaMutations.objects.all()
 
     list_age = PridaMutations.objects.values_list('age')
-    print('AGE', list_age)
+    # print('list age', list_age, len(list_age))
 
     list_fvl_ng = PridaMutations.objects.values_list('fvl_ng')
+    # print('list fvl ng', list_fvl_ng, len(list_fvl_ng))
+
     list_fvl_hetero = PridaMutations.objects.values_list('fvl_hetero')
     list_fvl_homo = PridaMutations.objects.values_list('fvl_homo')
 
@@ -914,2190 +1193,403 @@ def calc_patients_more_mut_p(request):
     list_mthfr_hetero = PridaMutations.objects.values_list('mthfr_hetero')
     list_mthfr_homo = PridaMutations.objects.values_list('mthfr_homo')
 
-    list_abort = PridaMutations.objects.values_list('abort')
+    # print('list mthfr homo', len(list_mthfr_homo))
+
+    # sublist = slice(22, len(list_age_controli))
+    # sublist_age = list_age_controli[sublist]
+    # print('Sublist AGE', sublist_age)
+    #
+    # sublist = slice(22, len(list_age_controli))
+    # sublist_fvl_ng_controli = list_fvl_ng[sublist]
+    # print('Sublist FVL_NG', sublist_fvl_ng_controli)
+    #
+    # sublist = slice(22, len(list_age_controli))
+    # sublist_fvl_hetero_controli = list_fvl_hetero[sublist]
+    # print('Sublist FVL_HETERO', sublist_fvl_hetero_controli)
+    #
+    # sublist = slice(22, len(list_age_controli))
+    # sublist_fvl_homo_controli = list_fvl_homo[sublist]
+    # print('Sublist FVL_HOMO', sublist_fvl_homo_controli)
+    #
+    # sublist = slice(22, len(list_age_controli))
+    # sublist_prothr_ng_controli = list_prothr_ng[sublist]
+    # print('Sublist prothr_NG', sublist_prothr_ng_controli)
+    #
+    # sublist = slice(22, len(list_age_controli))
+    # sublist_prothr_hetero_controli = list_prothr_hetero[sublist]
+    # print('Sublist prothr_HETERO', sublist_prothr_hetero_controli)
+    #
+    # sublist = slice(22, len(list_age_controli))
+    # sublist_prothr_homo_controli = list_prothr_homo[sublist]
+    # print('Sublist prothr_HOMO', sublist_prothr_homo_controli)
+    #
+    # sublist = slice(22, len(list_age_controli))
+    # sublist_pai_ng_controli = list_pai_ng[sublist]
+    # print('Sublist pai_NG', sublist_pai_ng_controli)
+    #
+    # sublist = slice(22, len(list_age_controli))
+    # sublist_pai_hetero_controli = list_pai_hetero[sublist]
+    # print('Sublist pai_HETERO', sublist_pai_hetero_controli)
+    #
+    # sublist = slice(22, len(list_age_controli))
+    # sublist_pai_homo_controli = list_pai_homo[sublist]
+    # print('Sublist pai_HOMO', sublist_pai_homo_controli)
+    #
+    # sublist = slice(22, len(list_age_controli))
+    # sublist_mthfr_ng_controli = list_mthfr_ng[sublist]
+    # print('Sublist mthfr_NG', sublist_mthfr_ng_controli)
+    #
+    # sublist = slice(22, len(list_age_controli))
+    # sublist_mthfr_hetero_controli = list_mthfr_hetero[sublist]
+    # print('Sublist mthfr_HETERO', sublist_mthfr_hetero_controli)
+    #
+    # sublist = slice(22, len(list_age_controli))
+    # sublist_mthfr_homo_controli = list_mthfr_homo[sublist]
+    # print('Sublist mthfr_HOMO', sublist_mthfr_homo_controli)
+
+    count_fvl_ng = 0
+    count_fvl_hetero = 0
+    count_fvl_homo = 0
+
+    count_prothr_ng = 0
+    count_prothr_hetero = 0
+    count_prothr_homo = 0
+
+    count_pai_hetero = 0
+    count_pai_homo = 0
+
+    count_mthfr_hetero = 0
+    count_mthfr_homo = 0
+
+    ###### Start 1 Mutation ##########
+
+    for fvl_ng in list_fvl_ng:
+        if fvl_ng[0] == '1.0':
+            count_fvl_ng = count_fvl_ng + 1
+    print('FVL NG', count_fvl_ng)
+    context3['count_fvl_ng'] = count_fvl_ng
+
+    for fvl_hetero in list_fvl_hetero:
+        if fvl_hetero[0] == '1.0' or fvl_hetero[0] == '1':
+            count_fvl_hetero = count_fvl_hetero + 1
+    print('FVL NG', count_fvl_hetero)
+    context3['count_fvl_hetero'] = count_fvl_hetero
+
+    for fvl_homo in list_fvl_homo:
+        if fvl_homo[0] == '1.0' or fvl_homo[0] == '1':
+            count_fvl_homo = count_fvl_homo + 1
+    print('FVL HOMO', count_fvl_homo)
+    context3['count_fvl_homo'] = count_fvl_homo
+
+    for prothr_ng in list_prothr_ng:
+        if prothr_ng[0] == '1.0':
+            count_prothr_ng = count_prothr_ng + 1
+    print('FVL NG', count_prothr_ng)
+    context3['count_prothr_ng'] = count_prothr_ng
+
+    # for prothr_ng in list_prothr_ng:
+    #     if prothr_ng[0] == '1.0':
+    #         count_prothr_ng = count_prothr_ng + 1
+    # print('FVL NG', count_prothr_ng)
+    # context3['count_prothr_ng'] = count_prothr_ng
+
+    for prothr_hetero in list_prothr_hetero:
+        if prothr_hetero[0] == '1.0' or prothr_hetero[0] == '1':
+            count_prothr_hetero = count_prothr_hetero + 1
+    print('FVL NG', count_prothr_hetero)
+    context3['count_prothr_hetero'] = count_prothr_hetero
+
+    for prothr_homo in list_prothr_homo:
+        if prothr_homo[0] == '1.0' or prothr_homo[0] == '1':
+            count_prothr_homo = count_prothr_homo + 1
+    print('FVL NG', count_prothr_homo)
+    context3['count_prothr_homo'] = count_prothr_homo
+
+    for pai_hetero in list_pai_hetero:
+        if pai_hetero[0] == '1.0':
+            count_pai_hetero = count_pai_hetero + 1
+    print('FVL NG', count_pai_hetero)
+    context3['count_pai_hetero'] = count_pai_hetero
+
+    for pai_homo in list_pai_homo:
+        if pai_homo[0] == '1.0':
+            count_pai_homo = count_pai_homo + 1
+    print('FVL NG', count_pai_homo)
+    context3['count_pai_homo'] = count_pai_homo
+
+    for mthfr_hetero in list_mthfr_hetero:
+        if mthfr_hetero[0] == '1.0':
+            count_mthfr_hetero = count_mthfr_hetero + 1
+    print('FVL NG', count_mthfr_hetero)
+    context3['count_mthfr_hetero'] = count_mthfr_hetero
+
+    for mthfr_homo in list_mthfr_homo:
+        if mthfr_homo[0] == '1.0':
+            count_mthfr_homo = count_mthfr_homo + 1
+    print('FVL NG', count_mthfr_homo)
+    context3['count_mthfr_homo'] = count_mthfr_homo
+
+    ###### End 1 Mutation ##########
+
+    count_fvl_prothr_hetero = 0
+    count_fvl_hetero_prothr_homo = 0
+    count_fvl_hetero_pai_homo = 0
+    count_fvl_hetero_mthfr_homo = 0
+    count_fvl_homo_prothr_hetero = 0
+    count_fvl_homo_prothr_homo = 0
+    count_fvl_homo_pai_homo = 0
+    count_fvl_homo_mthfr_homo = 0
+    count_prothr_hetero_pai_homo = 0
+    count_prothr_hetero_mthfr_homo = 0
+    count_pai_homo_mthfr_homo = 0
+
+    ##### Start 2 Mutations at Once #######
+    for mut in range(len(list_fvl_ng)):
+        # print('mut', mut)
+        if list_fvl_hetero[mut][0] == '1.0' == list_prothr_hetero[mut][0]:
+            count_fvl_prothr_hetero = count_fvl_prothr_hetero + 1
+    print('count_fvl_prothr_hetero', count_fvl_prothr_hetero)
+
+    context3['count_fvl_prothr_hetero'] = count_fvl_prothr_hetero
+
+    for mut in range(len(list_fvl_ng)):
+        # print(controli)
+        if list_fvl_hetero[mut][0] == '1.0' == list_prothr_homo[mut][0]:
+            count_fvl_hetero_prothr_homo = count_fvl_hetero_prothr_homo + 1
+    print('count_fvl_hetero_prothr_homo', count_fvl_hetero_prothr_homo)
+
+    context3['count_fvl_hetero_prothr_homo'] = count_fvl_hetero_prothr_homo
+
+    for mut in range(len(list_fvl_ng)):
+        # print(controli)
+        if list_fvl_hetero[mut][0] == '1.0' == list_pai_homo[mut][0]:
+            count_fvl_hetero_pai_homo = count_fvl_hetero_pai_homo + 1
+    print('count_fvl_hetero_pai_homo', count_fvl_hetero_pai_homo)
+
+    context3['count_fvl_hetero_pai_homo'] = count_fvl_hetero_pai_homo
+
+    for mut in range(len(list_fvl_ng)):
+        # print(controli)
+        if list_fvl_hetero[mut][0] == '1.0' == list_mthfr_homo[mut][0]:
+            count_fvl_hetero_mthfr_homo = count_fvl_hetero_mthfr_homo + 1
+
+    context3['count_fvl_hetero_mthfr_homo'] = count_fvl_hetero_mthfr_homo
+
+    for mut in range(len(list_fvl_ng)):
+        # print(controli)
+        if list_fvl_homo[mut][0] == '1.0' == list_prothr_hetero[mut][0]:
+            count_fvl_homo_prothr_hetero = count_fvl_homo_prothr_hetero + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_fvl_homo_prothr_hetero'] = count_fvl_homo_prothr_hetero
+
+    for mut in range(len(list_fvl_ng)):
+        # print(controli)
+        if list_fvl_homo[mut][0] == '1.0' == list_prothr_homo[mut][0]:
+            count_fvl_homo_prothr_homo = count_fvl_homo_prothr_homo + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_fvl_homo_prothr_homo'] = count_fvl_homo_prothr_homo
+
+    for mut in range(len(list_fvl_ng)):
+        # print(controli)
+        if list_fvl_homo[mut][0] == '1.0' == list_pai_homo[mut][0]:
+            count_fvl_homo_pai_homo = count_fvl_homo_pai_homo + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_fvl_homo_pai_homo'] = count_fvl_homo_pai_homo
+
+    for mut in range(len(list_fvl_ng)):
+        # print(controli)
+        if list_fvl_homo[mut][0] == '1.0' == list_mthfr_homo[mut][0]:
+            count_fvl_homo_mthfr_homo = count_fvl_homo_mthfr_homo + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_fvl_homo_mthfr_homo'] = count_fvl_homo_mthfr_homo
+
+    for mut in range(len(list_fvl_ng)):
+        # print(controli)
+        if list_prothr_hetero[mut][0] == '1.0' == list_pai_homo[mut][0]:
+            count_prothr_hetero_pai_homo = count_prothr_hetero_pai_homo + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_prothr_hetero_pai_homo'] = count_prothr_hetero_pai_homo
+
+    for mut in range(len(list_fvl_ng)):
+        # print(controli)
+        if list_prothr_hetero[mut][0] == '1.0' == list_mthfr_homo[mut][0]:
+            count_prothr_hetero_mthfr_homo = count_prothr_hetero_mthfr_homo + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_prothr_hetero_mthfr_homo'] = count_prothr_hetero_mthfr_homo
+
+    for mut in range(len(list_fvl_ng)):
+        # print(controli)
+        if list_pai_homo[mut][0] == '1.0' == list_mthfr_homo[mut][0]:
+            count_pai_homo_mthfr_homo = count_pai_homo_mthfr_homo + 1
+    # print('count_fvl_hetero_mthfr_homo_controli', count_fvl_hetero_mthfr_homo_controli)
+
+    context3['count_pai_homo_mthfr_homo'] = count_pai_homo_mthfr_homo
+
+    #         for fvl_hetero_controli in sublist_fvl_hetero_controli:
+    #             if fvl_hetero_controli[0] == fvl_ng_controli[0] == '1.0':
+    #             count_fvl_ng_hetero_controli = count_fvl_ng_hetero_controli + 1
+    #         print('FVL NG', count_fvl_ng_hetero_controli)
+    # context3['count_fvl_ng_hetero_controli'] = count_fvl_ng_hetero_controli
+
+    # for fvl_hetero_controli in sublist_fvl_hetero_controli:
+    #     if fvl_hetero_controli[0] == '1.0':
+    #         count_fvl_hetero_controli = count_fvl_hetero_controli + 1
+    # print('FVL NG', count_fvl_hetero_controli)
+    # context3['count_fvl_hetero_controli'] = count_fvl_hetero_controli
+    #
+    # for fvl_homo_controli in sublist_fvl_homo_controli:
+    #     if fvl_homo_controli[0] == '1.0':
+    #         count_fvl_homo_controli = count_fvl_homo_controli + 1
+    # print('FVL HOMO', count_fvl_homo_controli)
+    # context3['count_fvl_homo_controli'] = count_fvl_homo_controli
+    #
+    # for prothr_ng_controli in sublist_prothr_ng_controli:
+    #     if prothr_ng_controli[0] == '1.0':
+    #         count_fvl_homo_controli = count_fvl_homo_controli + 1
+    # print('FVL NG', count_fvl_homo_controli)
+    # context3['count_fvl_homo_controli'] = count_fvl_homo_controli
+    #
+    # for prothr_ng_controli in sublist_prothr_ng_controli:
+    #     if prothr_ng_controli[0] == '1.0':
+    #         count_prothr_ng_controli = count_prothr_ng_controli + 1
+    # print('FVL NG', count_prothr_ng_controli)
+    # context3['count_prothr_ng_controli'] = count_prothr_ng_controli
+    #
+    # for prothr_hetero_controli in sublist_prothr_hetero_controli:
+    #     if prothr_hetero_controli[0] == '1.0':
+    #         count_prothr_hetero_controli = count_prothr_hetero_controli + 1
+    # print('FVL NG', count_prothr_hetero_controli)
+    # context3['count_prothr_hetero_controli'] = count_prothr_hetero_controli
+    #
+    # for prothr_homo_controli in sublist_prothr_homo_controli:
+    #     if prothr_homo_controli[0] == '1.0':
+    #         count_prothr_homo_controli = count_prothr_homo_controli + 1
+    # print('FVL NG', count_prothr_homo_controli)
+    # context3['count_prothr_homo_controli'] = count_prothr_homo_controli
+    #
+    # for pai_hetero_controli in sublist_pai_hetero_controli:
+    #     if pai_hetero_controli[0] == '1.0':
+    #         count_pai_hetero_controli = count_pai_hetero_controli + 1
+    # print('FVL NG', count_pai_hetero_controli)
+    # context3['count_pai_hetero_controli'] = count_pai_hetero_controli
+    #
+    # for pai_homo_controli in sublist_pai_homo_controli:
+    #     if pai_homo_controli[0] == '1.0':
+    #         count_pai_homo_controli = count_pai_homo_controli + 1
+    # print('FVL NG', count_pai_homo_controli)
+    # context3['count_pai_homo_controli'] = count_pai_homo_controli
+    #
+    # for mthfr_hetero_controli in sublist_mthfr_hetero_controli:
+    #     if mthfr_hetero_controli[0] == '1.0':
+    #         count_mthfr_hetero_controli = count_mthfr_hetero_controli + 1
+    # print('FVL NG', count_mthfr_hetero_controli)
+    # context3['count_mthfr_hetero_controli'] = count_mthfr_hetero_controli
+    #
+    # for mthfr_homo_controli in sublist_mthfr_homo_controli:
+    #     if mthfr_homo_controli[0] == '1.0':
+    #         count_mthfr_homo_controli = count_mthfr_homo_controli + 1
+    # print('FVL NG', count_mthfr_homo_controli)
+    # context3['count_mthfr_homo_controli'] = count_mthfr_homo_controli
+    ##### End 2 Mutations at Once #########
+
+    # list_abort = PridaControli.objects.values_list('abort')
+    # prida_age_list_controli = request.POST.getlist('age')  ## Spisak s izbrana ot usera vazrast
+    # print('CONTROLI1')
+    # if request.method == 'POST':
+    #     if 'btn_patients_more_mut_controli' in request.POST:
+    #         print('btn controli')
+    #
+    #         ######################################################
+    #         ### Heterozygous Factor V Leiden               #######
+    #         ###  and Prothr Hetero Mutation                #######
+    #         ######################################################
+    #
+    #         c_cnt_fvl_hetero_prothr_hetero_mut = 0
+    #         for fvl_hetero in range(len(list_fvl_hetero)):
+    #
+    #             if (list_fvl_hetero[fvl_hetero][0] == list_prothr_hetero[fvl_hetero][0] == '1.0'
+    #                 or list_fvl_hetero[fvl_hetero][0] == list_prothr_hetero[fvl_hetero][0] == '1') \
+    #                     or (list_fvl_hetero[fvl_hetero][0] == '1.0' and list_prothr_hetero[fvl_hetero][0] == '1') \
+    #                     or (list_fvl_hetero[fvl_hetero][0] == '1' and list_prothr_hetero[fvl_hetero][0] == '1.0'):
+    #                 c_cnt_fvl_hetero_prothr_hetero_mut = c_cnt_fvl_hetero_prothr_hetero_mut + 1
+    #
+    #         context3['c_cnt_fvl_hetero_prothr_hetero_mut'] = c_cnt_fvl_hetero_prothr_hetero_mut
+    #         print('OK')
+    #         ######################################################
+    #         ### Heterozygous Factor V Leiden            ##########
+    #         ### and PROTHROMBIN Homo Mutation           ##########
+    #         ######################################################
+    #
+    #         c_cnt_fvl_hetero_prothr_homo_mut = 0
+    #
+    #         for fvl_hetero in range(len(list_fvl_hetero)):
+    #             if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
+    #                 c_cnt_fvl_hetero_prothr_homo_mut = c_cnt_fvl_hetero_prothr_homo_mut + 1
+    #
+    #         context3['c_cnt_fvl_hetero_prothr_homo_mut'] = c_cnt_fvl_hetero_prothr_homo_mut
+    #         print('OK')
+    #
+    #         ######################################################
+    #         ### Start Count Heterozygous Factor V       ##########
+    #         ### Leiden and PAI I Homo Mutation          ##########
+    #         ######################################################
+    #
+    #         c_cnt_fvl_hetero_pai_homo_mut = 0
+    #
+    #         for fvl_hetero in range(len(list_fvl_hetero)):
+    #             if list_fvl_hetero[fvl_hetero][0] == list_pai_homo[fvl_hetero][0] == '1.0':
+    #                 c_cnt_fvl_hetero_pai_homo_mut = c_cnt_fvl_hetero_pai_homo_mut + 1
+    #
+    #         context3['c_cnt_fvl_hetero_pai_homo_mut'] = c_cnt_fvl_hetero_pai_homo_mut
+    #         print('OK')
+    #         ######################################################
+    #         ### Start Count Heterozygous Factor V       ##########
+    #         ### Leiden and MTHFR Homo Mutation        ##########
+    #         ######################################################
+    #
+    #         c_cnt_fvl_hetero_mthfr_homo_mut = 0
+    #
+    #         for fvl_hetero in range(len(list_fvl_hetero)):
+    #             if list_fvl_hetero[fvl_hetero][0] == list_mthfr_homo[fvl_hetero][0] == '1.0':
+    #                 c_cnt_fvl_hetero_mthfr_homo_mut = c_cnt_fvl_hetero_mthfr_homo_mut + 1
+    #
+    #         context3['c_cnt_fvl_hetero_mthfr_homo_mut'] = c_cnt_fvl_hetero_mthfr_homo_mut
+    #         print('OK')
+    #         # ######################################################
+    #         # ### Start Count Homozygous Factor V         ##########
+    #         # ### Leiden and Prothrombin Hetero Mutation  ##########
+    #         # ######################################################
+    #
+    #         c_cnt_fvl_homo_prothr_hetero_mut = 0
+    #
+    #         for fvl_homo in range(len(list_fvl_homo)):
+    #             if list_fvl_homo[fvl_homo][0] == list_prothr_hetero[fvl_homo][0] == '1.0':
+    #                 c_cnt_fvl_homo_prothr_hetero_mut = c_cnt_fvl_homo_prothr_hetero_mut + 1
+    #
+    #         context3['c_cnt_fvl_homo_prothr_hetero_mut'] = c_cnt_fvl_homo_prothr_hetero_mut
+    #         print('OK')
+    #         # ######################################################
+    #         # ### Start Count Homozygous Factor V         ##########
+    #         # ### Leiden and Prothrombin Homo Mutation    ##########
+    #         # ######################################################
+    #
+    #         c_cnt_fvl_homo_prothr_homo_mut = 0
+    #
+    #         for fvl_homo in range(len(list_fvl_homo)):
+    #             if list_fvl_homo[fvl_homo][0] == list_prothr_homo[fvl_homo][0] == '1.0':
+    #                 c_cnt_fvl_homo_prothr_homo_mut = c_cnt_fvl_homo_prothr_homo_mut + 1
+    #
+    #         context3['c_cnt_fvl_homo_prothr_homo_mut'] = c_cnt_fvl_homo_prothr_homo_mut
+    #         print('OK')
 
-    if request.method == 'POST':
-        if 'btn_patients_more_mutations' in request.POST:
-            # print('Patients')
-            #####################################################
-            ### Start 1 Abort 3 Mutations #######################
-            #####################################################
-            count_abort1_mutations3 = 0
-            for in_abort in range(20):
 
-                # for in_abort in range(len(list_abort)):
-                if ((list_abort[in_abort][0] == '1.0')
-                        and (list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == list_pai_homo[in_abort][
-                            0] == '1.0'
-                             or list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                             or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] ==
-                             list_pai_homo[in_abort][0] == '1.0'
-                             or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] ==
-                             list_pai_homo[in_abort][0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] == list_pai_homo[in_abort][
-                                 0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                        )
-                ):
-                    count_abort1_mutations3 = count_abort1_mutations3 + 1
-            print('1 Abort and 3 mutations: ', count_abort1_mutations3)
-            context3['cnt_abort1_mutations3'] = count_abort1_mutations3
-
-            #####################################################
-            ### End 1 Abort 3 Mutations #########################
-            #####################################################
-
-            #####################################################
-            ### Start 2 Aborts 3 Mutations ######################
-            #####################################################
-            count_abort2_mutations3 = 0
-            for in_abort in range(10):
-
-                # for in_abort in range(len(list_abort)):
-                if ((list_abort[in_abort][0] == '2.0')
-                        and (list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == list_pai_homo[in_abort][
-                            0] == '1.0'
-                             or list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                             or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] ==
-                             list_pai_homo[in_abort][0] == '1.0'
-                             or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] ==
-                             list_pai_homo[in_abort][0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] == list_pai_homo[in_abort][
-                                 0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                        )
-                ):
-                    count_abort2_mutations3 = count_abort2_mutations3 + 1
-            print('2 Aborts and 3 mutations: ', count_abort2_mutations3)
-
-            #####################################################
-            ### End 2 Aborts 3 Mutations ########################
-            #####################################################
-
-            #####################################################
-            ### Start 3 Aborts 3 Mutations ######################
-            #####################################################
-            count_abort3_mutations3 = 0
-            for in_abort in range(len(list_abort)):
-                if ((list_abort[in_abort][0] == '3.0')
-                        and (list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == list_pai_homo[in_abort][
-                            0] == '1.0'
-                             or list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                             or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] ==
-                             list_pai_homo[in_abort][0] == '1.0'
-                             or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] ==
-                             list_pai_homo[in_abort][0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] == list_pai_homo[in_abort][
-                                 0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                        )
-                ):
-                    count_abort3_mutations3 = count_abort3_mutations3 + 1
-            print('3 Aborts and 3 mutations: ', count_abort3_mutations3)
-
-            #####################################################
-            ### End 3 Aborts 3 Mutations ########################
-            #####################################################
-
-            #####################################################
-            ### Start 4 Aborts 3 Mutations ######################
-            #####################################################
-            count_abort4_mutations3 = 0
-            for in_abort in range(len(list_abort)):
-                if ((list_abort[in_abort][0] == '4.0')
-                        and (list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == list_pai_homo[in_abort][
-                            0] == '1.0'
-                             or list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                             or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] ==
-                             list_pai_homo[in_abort][0] == '1.0'
-                             or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] ==
-                             list_pai_homo[in_abort][0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] == list_pai_homo[in_abort][
-                                 0] == '1.0'
-                             or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] ==
-                             list_mthfr_homo[in_abort][0] == '1.0'
-                        )
-                ):
-                    count_abort4_mutations3 = count_abort4_mutations3 + 1
-            print('4 Aborts and 3 mutations: ', count_abort4_mutations3)
-            print('\n')
-
-            #####################################################
-            ### End 4 Aborts 3 Mutations ########################
-            #####################################################
-
-            #####################################################
-            ### Start 1 Abort 2 Mutations ######################
-            #####################################################
-            # count_abort1_mutations_2 = 0
-            # for in_abort in range(len(list_abort)):
-            #     if ((list_abort[in_abort][0] == '1.0')
-            #             and (list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_pai_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0')
-            #     ):
-            #         count_abort1_mutations_2 = count_abort1_mutations_2 + 1
-            # print('1 Abort and 2 mutations: ', count_abort1_mutations_2)
-
-            #####################################################
-            ### End 1 Abort 2 Mutations #########################
-            #####################################################
-
-            ######################################################
-            ### Start 2 Aborts and 2 mutations ###################
-            ######################################################
-            # count_abort2_mutations2 = 0
-            # for in_abort in range(len(list_abort)):
-            #     if ((list_abort[in_abort][0] == '2.0')
-            #             and (list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_pai_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0')
-            #     ):
-            #         count_abort2_mutations2 = count_abort2_mutations2 + 1
-            # print('2 Aborts and 2 mutations: ', count_abort2_mutations2)
-
-            ######################################################
-            ### End 2 Aborts and 2 mutations #####################
-            ######################################################
-
-            ######################################################
-            ### Start 3 Aborts and 2 mutations ###################
-            ######################################################
-            # count_abort3_mutations2 = 0
-            # for in_abort in range(len(list_abort)):
-            #     if ((list_abort[in_abort][0] == '3.0')
-            #             and (list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_pai_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0')
-            #     ):
-            #         count_abort3_mutations2 = count_abort3_mutations2 + 1
-            # print('3 Aborts and 2 mutations: ', count_abort3_mutations2)
-
-            ######################################################
-            ### End 3 Aborts and 2 mutations #####################
-            ######################################################
-
-            ######################################################
-            ### Start 4 Aborts and 2 mutations ###################
-            ######################################################
-            # count_abort4_mutations2 = 0
-            # for in_abort in range(len(list_abort)):
-            #     if ((list_abort[in_abort][0] == '4.0')
-            #             and (list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_pai_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0')
-            #     ):
-            #         count_abort4_mutations2 = count_abort4_mutations2 + 1
-            # print('4 Aborts and 2 mutations: ', count_abort4_mutations2)
-
-            ######################################################
-            ### End 4 Aborts and 2 mutations #####################
-            ######################################################
-
-            ######################################################
-            ### Start 5 Aborts and 2 mutations ###################
-            ######################################################
-            # count_abort5_mutations2 = 0
-            # for in_abort in range(len(list_abort)):
-            #     if ((list_abort[in_abort][0] == '5.0')
-            #             and (list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_pai_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0')
-            #     ):
-            #         count_abort5_mutations2 = count_abort5_mutations2 + 1
-            # print('5 Aborts and 2 mutations: ', count_abort5_mutations2)
-
-            ######################################################
-            ### End 5 Aborts and 2 mutations #####################
-            ######################################################
-
-            ######################################################
-            ### Start 6 Aborts and 2 mutations ###################
-            ######################################################
-            # count_abort6_mutations2 = 0
-            # for in_abort in range(len(list_abort)):
-            #     if ((list_abort[in_abort][0] == '6.0')
-            #             and (list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_pai_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0')
-            #     ):
-            #         count_abort6_mutations2 = count_abort6_mutations2 + 1
-            # print('6 Aborts and 2 mutations: ', count_abort6_mutations2)
-
-            ######################################################
-            ### End 6 Aborts and 2 mutations #####################
-            ######################################################
-
-            ######################################################
-            ### Start 7 Aborts and 2 mutations ###################
-            ######################################################
-            # count_abort7_mutations2 = 0
-            # for in_abort in range(len(list_abort)):
-            #     if ((list_abort[in_abort][0] == '7.0')
-            #             and (list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_prothr_hetero[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_fvl_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_hetero[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_pai_homo[in_abort][0] == '1.0'
-            #                  or list_prothr_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0'
-            #                  or list_pai_homo[in_abort][0] == list_mthfr_homo[in_abort][0] == '1.0')
-            #     ):
-            #         count_abort7_mutations2 = count_abort7_mutations2 + 1
-            # print('7 Aborts and 2 mutations: ', count_abort7_mutations2)
-            # print('\n')
-            ######################################################
-            ### End 7 Aborts and 2 mutations #####################
-            ######################################################
-
-            ######################################################
-            ###    Heterozygous Factor V Leiden Mutation    ######
-            ###  Factor II (Prothrombin) Heterozygous Mutation ###
-            ###        Factor PAI I Homozygous Mutation      #####
-            ###         3 Mutations 1 Abort                    ###
-            ######################################################
-
-            cnt_fvl_hetero_pr_hetero_pai_homo_mutations = 0
-            cnt_fvl_hetero_pr_hetero_pai_homo_mut_abort1 = 0
-            cnt_fvl_hetero_pr_hetero_pai_homo_mut_aborts = 0
-
-            for fvl_hetero in range(len(list_fvl_hetero)):
-                if (
-                        list_fvl_hetero[fvl_hetero][0] == '1.0' and
-                        list_prothr_hetero[fvl_hetero][0] == '1.0' and
-                        list_pai_homo[fvl_hetero][0] == '1.0'):
-
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        cnt_fvl_hetero_pr_hetero_pai_homo_mut_abort1 = cnt_fvl_hetero_pr_hetero_pai_homo_mut_abort1 + 1
-                    else:
-                        cnt_fvl_hetero_pr_hetero_pai_homo_mut_aborts = cnt_fvl_hetero_pr_hetero_pai_homo_mut_aborts + 1
-                    cnt_fvl_hetero_pr_hetero_pai_homo_mutations = cnt_fvl_hetero_pr_hetero_pai_homo_mutations + 1
-
-            print('FVL Hetero, PROTHR Hetero, PAI Homo Mutations, 1 Abort are:',
-                  cnt_fvl_hetero_pr_hetero_pai_homo_mut_abort1)
-            print('FVL Hetero and PROTHR Hetero, PAI Homo Mutations 2 more Aborts are:',
-                  cnt_fvl_hetero_pr_hetero_pai_homo_mut_aborts)
-            print('All Patients are:', cnt_fvl_hetero_pr_hetero_pai_homo_mutations)
-
-            context3['cnt_fvl_hetero_pr_hetero_pai_homo_mutations'] = cnt_fvl_hetero_pr_hetero_pai_homo_mutations
-            context3['cnt_fvl_hetero_pr_hetero_pai_homo_mut_abort1'] = cnt_fvl_hetero_pr_hetero_pai_homo_mut_abort1
-            context3['cnt_fvl_hetero_pr_hetero_pai_homo_mut_aborts'] = cnt_fvl_hetero_pr_hetero_pai_homo_mut_aborts
-
-            ######################################################
-            ###    Heterozygous Factor V Leiden Mutation    ######
-            ###  Factor II (Prothrombin) Heterozygous Mutation ###
-            ###        Factor MTHFR Homozygous Mutation      #####
-            ###         3 Mutations 1 Abort                    ###
-            ######################################################
-
-            cnt_fvl_hetero_pr_hetero_mthfr_homo_mutations = 0
-            cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_abort1 = 0
-            cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_aborts = 0
-
-            for fvl_hetero in range(len(list_fvl_hetero)):
-                if (
-                        list_fvl_hetero[fvl_hetero][0] == '1.0' and
-                        list_prothr_hetero[fvl_hetero][0] == '1.0' and
-                        list_mthfr_homo[fvl_hetero][0] == '1.0'):
-
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_abort1 = cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_abort1 + 1
-                    else:
-                        cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_aborts = cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_aborts + 1
-                    cnt_fvl_hetero_pr_hetero_mthfr_homo_mutations = cnt_fvl_hetero_pr_hetero_mthfr_homo_mutations + 1
-
-            print('All Patients are:', cnt_fvl_hetero_pr_hetero_mthfr_homo_mutations)
-            print('FVL Hetero, PROTHR Hetero, MTHFR Homo Mutations, 1 Abort are:',
-                  cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_abort1)
-            print('FVL Hetero and PROTHR Hetero, MTHFR Homo Mutations 2 more Aborts are:',
-                  cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_aborts)
-
-            context3['cnt_fvl_hetero_pr_hetero_mthfr_homo_mutations'] = cnt_fvl_hetero_pr_hetero_mthfr_homo_mutations
-            context3['cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_abort1'] = cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_abort1
-            context3['cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_aborts'] = cnt_fvl_hetero_pr_hetero_mthfr_homo_mut_aborts
-
-            ######################################################
-            ###    Heterozygous Factor V Leiden Mutation    ######
-            ###  Factor II (Prothrombin) Homozygous Mutation   ###
-            ###        Factor PAI I Homozygous Mutation      #####
-            ###         3 Mutations 1 Abort                    ###
-            ######################################################
-
-            cnt_fvl_hetero_pr_homo_pai_homo_mutations = 0
-            cnt_fvl_hetero_pr_homo_pai_homo_mut_abort1 = 0
-            cnt_fvl_hetero_pr_homo_pai_homo_mut_aborts = 0
-
-            for fvl_hetero in range(len(list_fvl_hetero)):
-                if (
-                        list_fvl_hetero[fvl_hetero][0] == '1.0' and
-                        list_prothr_homo[fvl_hetero][0] == '1.0' and
-                        list_pai_homo[fvl_hetero][0] == '1.0'):
-
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        cnt_fvl_hetero_pr_homo_pai_homo_mut_abort1 = cnt_fvl_hetero_pr_homo_pai_homo_mut_abort1 + 1
-                    else:
-                        cnt_fvl_hetero_pr_homo_pai_homo_mut_aborts = cnt_fvl_hetero_pr_homo_pai_homo_mut_aborts + 1
-                    cnt_fvl_hetero_pr_homo_pai_homo_mutations = cnt_fvl_hetero_pr_homo_pai_homo_mutations + 1
-
-            print('All Patients are:', cnt_fvl_hetero_pr_homo_pai_homo_mutations)
-            print('FVL Hetero, PROTHR Homo, PAI Homo Mutations, 1 Abort are:',
-                  cnt_fvl_hetero_pr_homo_pai_homo_mut_abort1)
-            print('FVL Hetero and PROTHR Homo, PAI Homo Mutations 2 more Aborts are:',
-                  cnt_fvl_hetero_pr_homo_pai_homo_mut_aborts)
-
-            context3['cnt_fvl_hetero_pr_homo_pai_homo_mutations'] = cnt_fvl_hetero_pr_homo_pai_homo_mutations
-            context3['cnt_fvl_hetero_pr_homo_pai_homo_mut_abort1'] = cnt_fvl_hetero_pr_homo_pai_homo_mut_abort1
-            context3['cnt_fvl_hetero_pr_homo_pai_homo_mut_aborts'] = cnt_fvl_hetero_pr_homo_pai_homo_mut_aborts
-
-            ######################################################
-            ###    Heterozygous Factor V Leiden Mutation    ######
-            ###  Factor II (Prothrombin) Homozygous Mutation   ###
-            ###        Factor MTHFR Homozygous Mutation      #####
-            ###         3 Mutations 1 Abort                    ###
-            ######################################################
-
-            cnt_fvl_hetero_pr_homo_mthfr_homo_mutations = 0
-            cnt_fvl_hetero_pr_homo_mthfr_homo_mut_abort1 = 0
-            cnt_fvl_hetero_pr_homo_mthfr_homo_mut_aborts = 0
-
-            for fvl_hetero in range(len(list_fvl_hetero)):
-                if (
-                        list_fvl_hetero[fvl_hetero][0] == '1.0' and
-                        list_prothr_homo[fvl_hetero][0] == '1.0' and
-                        list_mthfr_homo[fvl_hetero][0] == '1.0'):
-
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        cnt_fvl_hetero_pr_homo_mthfr_homo_mut_abort1 = cnt_fvl_hetero_pr_homo_mthfr_homo_mut_abort1 + 1
-                    else:
-                        cnt_fvl_hetero_pr_homo_mthfr_homo_mut_aborts = cnt_fvl_hetero_pr_homo_mthfr_homo_mut_aborts + 1
-                    cnt_fvl_hetero_pr_homo_mthfr_homo_mutations = cnt_fvl_hetero_pr_homo_mthfr_homo_mutations + 1
-
-            print('All Patients are:', cnt_fvl_hetero_pr_homo_mthfr_homo_mutations)
-            print('FVL Hetero, PROTHR Homo, MTHFR Homo Mutations, 1 Abort are:',
-                  cnt_fvl_hetero_pr_homo_mthfr_homo_mut_abort1)
-            print('FVL Hetero and PROTHR Homo, MTHFR Homo Mutations 2 more Aborts are:',
-                  cnt_fvl_hetero_pr_homo_mthfr_homo_mut_aborts)
-
-            context3['cnt_fvl_hetero_pr_homo_mthfr_homo_mutations'] = cnt_fvl_hetero_pr_homo_mthfr_homo_mutations
-            context3['cnt_fvl_hetero_pr_homo_mthfr_homo_mut_abort1'] = cnt_fvl_hetero_pr_homo_mthfr_homo_mut_abort1
-            context3['cnt_fvl_hetero_pr_homo_mthfr_homo_mut_aborts'] = cnt_fvl_hetero_pr_homo_mthfr_homo_mut_aborts
-
-            ######################################################
-            ###    Homoozygous Factor V Leiden Mutation     ######
-            ###  Factor II (Prothrombin) Heterozygous Mutation ###
-            ###        Factor PAI I Homozygous Mutation      #####
-            ###         3 Mutations 1 Abort                    ###
-            ######################################################
-
-            cnt_fvl_homo_pr_hetero_pai_homo_mutations = 0
-            cnt_fvl_homo_pr_hetero_pai_homo_mut_abort1 = 0
-            cnt_fvl_homo_pr_hetero_pai_homo_mut_aborts = 0
-
-            for fvl_homo in range(len(list_fvl_homo)):
-                if (
-                        list_fvl_homo[fvl_homo][0] == '1.0' and
-                        list_prothr_hetero[fvl_homo][0] == '1.0' and
-                        list_pai_homo[fvl_hetero][0] == '1.0'):
-
-                    if list_abort[fvl_homo][0] == '1.0':
-                        cnt_fvl_homo_pr_hetero_pai_homo_mut_abort1 = cnt_fvl_homo_pr_hetero_pai_homo_mut_abort1 + 1
-                    else:
-                        cnt_fvl_homo_pr_hetero_pai_homo_mut_aborts = cnt_fvl_homo_pr_hetero_pai_homo_mut_aborts + 1
-                    cnt_fvl_homo_pr_hetero_pai_homo_mutations = cnt_fvl_homo_pr_hetero_pai_homo_mutations + 1
-
-            print('All Patients are:', cnt_fvl_homo_pr_hetero_pai_homo_mutations)
-            print('FVL Hetero, PROTHR Hetero, PAI Homo Mutations, 1 Abort are:',
-                  cnt_fvl_hetero_pr_homo_mthfr_homo_mut_abort1)
-            print('FVL Hetero and PROTHR Hetero, PAI Homo Mutations 2 more Aborts are:',
-                  cnt_fvl_homo_pr_hetero_pai_homo_mut_aborts)
-
-            context3['cnt_fvl_homo_pr_hetero_pai_homo_mutations'] = cnt_fvl_homo_pr_hetero_pai_homo_mutations
-            context3['cnt_fvl_homo_pr_hetero_pai_homo_mut_abort1'] = cnt_fvl_homo_pr_hetero_pai_homo_mut_abort1
-            context3['cnt_fvl_homo_pr_hetero_pai_homo_mut_aborts'] = cnt_fvl_homo_pr_hetero_pai_homo_mut_aborts
-
-            ######################################################
-            ###    Homoozygous Factor V Leiden Mutation     ######
-            ###  Factor II (Prothrombin) Heterozygous Mutation ###
-            ###        Factor MTHFR Homozygous Mutation      #####
-            ###         3 Mutations 1 Abort                    ###
-            ######################################################
-
-            cnt_fvl_homo_pr_hetero_mthfr_homo_mutations = 0
-            cnt_fvl_homo_pr_hetero_mthfr_homo_mut_abort1 = 0
-            cnt_fvl_homo_pr_hetero_mthfr_homo_mut_aborts = 0
-
-            for fvl_homo in range(len(list_fvl_homo)):
-                if (
-                        list_fvl_homo[fvl_homo][0] == '1.0' and
-                        list_prothr_hetero[fvl_homo][0] == '1.0' and
-                        list_mthfr_homo[fvl_hetero][0] == '1.0'):
-
-                    if list_abort[fvl_homo][0] == '1.0':
-                        cnt_fvl_homo_pr_hetero_mthfr_homo_mut_abort1 = cnt_fvl_homo_pr_hetero_mthfr_homo_mut_abort1 + 1
-                    else:
-                        cnt_fvl_homo_pr_hetero_mthfr_homo_mut_aborts = cnt_fvl_homo_pr_hetero_mthfr_homo_mut_aborts + 1
-                    cnt_fvl_homo_pr_hetero_mthfr_homo_mutations = cnt_fvl_homo_pr_hetero_mthfr_homo_mutations + 1
-
-            print('All Patients are:', cnt_fvl_homo_pr_hetero_mthfr_homo_mutations)
-            print('FVL Hetero, PROTHR Hetero, MTHFR Homo Mutations, 1 Abort are:',
-                  cnt_fvl_homo_pr_hetero_mthfr_homo_mut_abort1)
-            print('FVL Hetero and PROTHR Hetero, MTHFR Homo Mutations 2 more Aborts are:',
-                  cnt_fvl_homo_pr_hetero_mthfr_homo_mut_aborts)
-
-            context3['cnt_fvl_homo_pr_hetero_mthfr_homo_mutations'] = cnt_fvl_homo_pr_hetero_mthfr_homo_mutations
-            context3['cnt_fvl_homo_pr_hetero_mthfr_homo_mut_abort1'] = cnt_fvl_homo_pr_hetero_mthfr_homo_mut_abort1
-            context3['cnt_fvl_homo_pr_hetero_mthfr_homo_mut_aborts'] = cnt_fvl_homo_pr_hetero_mthfr_homo_mut_aborts
-
-            ######################################################
-            ###    Homoozygous Factor V Leiden Mutation     ######
-            ###  Factor II (Prothrombin) Homozygous Mutation   ###
-            ###        Factor PAI I Homozygous Mutation      #####
-            ###         3 Mutations 1 Abort                    ###
-            ######################################################
-
-            cnt_fvl_homo_pr_homo_pai_homo_mutations = 0
-            cnt_fvl_homo_pr_homo_pai_homo_mut_abort1 = 0
-            cnt_fvl_homo_pr_homo_pai_homo_mut_aborts = 0
-
-            for fvl_homo in range(len(list_fvl_homo)):
-                if (
-                        list_fvl_homo[fvl_homo][0] == '1.0' and
-                        list_prothr_homo[fvl_homo][0] == '1.0' and
-                        list_pai_homo[fvl_hetero][0] == '1.0'):
-
-                    if list_abort[fvl_homo][0] == '1.0':
-                        cnt_fvl_homo_pr_homo_pai_homo_mut_abort1 = cnt_fvl_homo_pr_homo_pai_homo_mut_abort1 + 1
-                    else:
-                        cnt_fvl_homo_pr_homo_pai_homo_mut_aborts = cnt_fvl_homo_pr_homo_pai_homo_mut_aborts + 1
-                    cnt_fvl_homo_pr_homo_pai_homo_mutations = cnt_fvl_homo_pr_homo_pai_homo_mutations + 1
-
-            print('All Patients are:', cnt_fvl_homo_pr_homo_pai_homo_mutations)
-            print('FVL Hetero, PROTHR Homo, PAI Homo Mutations, 1 Abort are:',
-                  cnt_fvl_homo_pr_homo_pai_homo_mut_abort1)
-            print('FVL Hetero and PROTHR Homo, PAI Homo Mutations 2 more Aborts are:',
-                  cnt_fvl_homo_pr_homo_pai_homo_mut_aborts)
-
-            context3['cnt_fvl_homo_pr_homo_pai_homo_mutations'] = cnt_fvl_homo_pr_homo_pai_homo_mutations
-            context3['cnt_fvl_homo_pr_homo_pai_homo_mut_abort1'] = cnt_fvl_homo_pr_homo_pai_homo_mut_abort1
-            context3['cnt_fvl_homo_pr_homo_pai_homo_mut_aborts'] = cnt_fvl_homo_pr_homo_pai_homo_mut_aborts
-
-            ######################################################
-            ###    Homoozygous Factor V Leiden Mutation     ######
-            ###  Factor II (Prothrombin) Homozygous Mutation   ###
-            ###        Factor MTHFR Homozygous Mutation      #####
-            ###         3 Mutations 1 Abort                    ###
-            ######################################################
-
-            cnt_fvl_homo_pr_homo_mthfr_homo_mutations = 0
-            cnt_fvl_homo_pr_homo_mthfr_homo_mut_abort1 = 0
-            cnt_fvl_homo_pr_homo_mthfr_homo_mut_aborts = 0
-
-            for fvl_homo in range(len(list_fvl_homo)):
-                if (
-                        list_fvl_homo[fvl_homo][0] == '1.0' and
-                        list_prothr_homo[fvl_homo][0] == '1.0' and
-                        list_mthfr_homo[fvl_hetero][0] == '1.0'):
-
-                    if list_abort[fvl_homo][0] == '1.0':
-                        cnt_fvl_homo_pr_homo_mthfr_homo_mut_abort1 = cnt_fvl_homo_pr_homo_mthfr_homo_mut_abort1 + 1
-                    else:
-                        cnt_fvl_homo_pr_homo_mthfr_homo_mut_aborts = cnt_fvl_homo_pr_homo_mthfr_homo_mut_aborts + 1
-                    cnt_fvl_homo_pr_homo_mthfr_homo_mutations = cnt_fvl_homo_pr_homo_mthfr_homo_mutations + 1
-
-            print('All Patients are:', cnt_fvl_homo_pr_homo_mthfr_homo_mutations)
-            print('FVL Hetero, PROTHR Homo, MTHFR Homo Mutations, 1 Abort are:',
-                  cnt_fvl_homo_pr_homo_mthfr_homo_mut_abort1)
-            print('FVL Hetero and PROTHR Homo, MTHFR Homo Mutations 2 more Aborts are:',
-                  cnt_fvl_homo_pr_homo_mthfr_homo_mut_aborts)
-
-            context3['cnt_fvl_homo_pr_homo_mthfr_homo_mutations'] = cnt_fvl_homo_pr_homo_mthfr_homo_mutations
-            context3['cnt_fvl_homo_pr_homo_mthfr_homo_mut_abort1'] = cnt_fvl_homo_pr_homo_mthfr_homo_mut_abort1
-            context3['cnt_fvl_homo_pr_homo_mthfr_homo_mut_aborts'] = cnt_fvl_homo_pr_homo_mthfr_homo_mut_aborts
-
-            #########################################################
-            ###    Factor II (Prothrombin) Heterozygous Mutation  ###
-            ###            Factor PAI I Homozygous Mutation       ###
-            ###            Factor MTHFR Homozygous Mutation       ###
-            ###                 3 Mutations 1 Abort               ###
-            #########################################################
-
-            cnt_pr_hetero_pai_homo_mthfr_homo_mutations = 0
-            cnt_pr_hetero_pai_homo_mthfr_homo_mut_abort1 = 0
-            cnt_pr_hetero_pai_homo_mthfr_homo_mut_aborts = 0
-
-            for pr_hetero in range(len(list_prothr_hetero)):
-                if (
-                        list_prothr_hetero[pr_hetero][0] == '1.0' and
-                        list_pai_homo[pr_hetero][0] == '1.0' and
-                        list_mthfr_homo[pr_hetero][0] == '1.0'):
-
-                    if list_abort[pr_hetero][0] == '1.0':
-                        cnt_pr_hetero_pai_homo_mthfr_homo_mut_abort1 = cnt_pr_hetero_pai_homo_mthfr_homo_mut_abort1 + 1
-                    else:
-                        cnt_pr_hetero_pai_homo_mthfr_homo_mut_aborts = cnt_pr_hetero_pai_homo_mthfr_homo_mut_aborts + 1
-                    cnt_pr_hetero_pai_homo_mthfr_homo_mutations = cnt_pr_hetero_pai_homo_mthfr_homo_mutations + 1
-
-            print('All Patients are:', cnt_pr_hetero_pai_homo_mthfr_homo_mutations)
-            print('PROTHR Hetero, PAI Homo, MTHFR Homo Mutations, 1 Abort are:',
-                  cnt_pr_hetero_pai_homo_mthfr_homo_mut_abort1)
-            print('PROTHR Hetero, PAI Homo, MTHFR Homo Mutations 2 more Aborts are:',
-                  cnt_pr_hetero_pai_homo_mthfr_homo_mut_aborts)
-
-            context3['cnt_pr_hetero_pai_homo_mthfr_homo_mutations'] = cnt_pr_hetero_pai_homo_mthfr_homo_mutations
-            context3['cnt_pr_hetero_pai_homo_mthfr_homo_mut_abort1'] = cnt_pr_hetero_pai_homo_mthfr_homo_mut_abort1
-            context3['cnt_pr_hetero_pai_homo_mthfr_homo_mut_aborts'] = cnt_pr_hetero_pai_homo_mthfr_homo_mut_aborts
-
-            #########################################################
-            ###    Factor II (Prothrombin) Homozygous Mutation    ###
-            ###            Factor PAI I Homozygous Mutation       ###
-            ###            Factor MTHFR Homozygous Mutation       ###
-            ###                 3 Mutations 1 Abort               ###
-            #########################################################
-
-            cnt_pr_homo_pai_homo_mthfr_homo_mutations = 0
-            cnt_pr_homo_pai_homo_mthfr_homo_mut_abort1 = 0
-            cnt_pr_homo_pai_homo_mthfr_homo_mut_aborts = 0
-
-            for pr_homo in range(len(list_prothr_homo)):
-                if (
-                        list_prothr_homo[pr_homo][0] == '1.0' and
-                        list_pai_homo[pr_homo][0] == '1.0' and
-                        list_mthfr_homo[pr_homo][0] == '1.0'):
-
-                    if list_abort[pr_homo][0] == '1.0':
-                        cnt_pr_homo_pai_homo_mthfr_homo_mut_abort1 = cnt_pr_homo_pai_homo_mthfr_homo_mut_abort1 + 1
-                    else:
-                        cnt_pr_homo_pai_homo_mthfr_homo_mut_aborts = cnt_pr_homo_pai_homo_mthfr_homo_mut_aborts + 1
-                    cnt_pr_homo_pai_homo_mthfr_homo_mutations = cnt_pr_homo_pai_homo_mthfr_homo_mutations + 1
-
-            print('All Patients are:', cnt_pr_homo_pai_homo_mthfr_homo_mutations)
-            print('PROTHR Homo, PAI Homo, MTHFR Homo Mutations, 1 Abort are:',
-                  cnt_pr_homo_pai_homo_mthfr_homo_mut_abort1)
-            print('PROTHR Homo, PAI Homo, MTHFR Homo Mutations 2 more Aborts are:',
-                  cnt_pr_homo_pai_homo_mthfr_homo_mut_aborts)
-
-            context3['cnt_pr_homo_pai_homo_mthfr_homo_mutations'] = cnt_pr_homo_pai_homo_mthfr_homo_mutations
-            context3['cnt_pr_homo_pai_homo_mthfr_homo_mut_abort1'] = cnt_pr_homo_pai_homo_mthfr_homo_mut_abort1
-            context3['cnt_pr_homo_pai_homo_mthfr_homo_mut_aborts'] = cnt_pr_homo_pai_homo_mthfr_homo_mut_aborts
-            ######################################################
-            ### Heterozygous Factor V Leiden               #######
-            ###  and Prothr Hetero Mutation                #######
-            ######################################################
-
-            # cnt_fvl_hetero_prothr_hetero_mutations = 0
-            # cnt_fvl_hetero_prothr_hetero_mut_abort1 = 0
-            # cnt_fvl_hetero_prothr_hetero_mut_aborts = 0
-            #
-            # for fvl_hetero in range(len(list_fvl_hetero)):
-            #
-            #     if list_fvl_hetero[fvl_hetero][0] == list_prothr_hetero[fvl_hetero][0] == '1.0':
-            #         cnt_fvl_hetero_prothr_hetero_mut_abort1 = cnt_fvl_hetero_prothr_hetero_mut_abort1 + 1
-            #         cnt_fvl_hetero_prothr_hetero_mut_aborts = cnt_fvl_hetero_prothr_hetero_mut_aborts + 1
-            #     cnt_fvl_hetero_prothr_hetero_mutations = cnt_fvl_hetero_prothr_hetero_mutations + 1
-            #
-            # print('FVL Hetero and PROTHR Hetero Mutations are:', cnt_fvl_hetero_prothr_hetero_mut_abort1)
-            # print('FVL Hetero and PROTHR Hetero Mutations are:', cnt_fvl_hetero_prothr_hetero_mutations)
-            # print('FVL Hetero and PROTHR Hetero Mutations for Patients with 1 Abort are:')
-            # # print(cnt_fvl_hetero_prothr_hetero_mut_abort1)
-            #
-            # # print('A 2 M1_0', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[0])
-            # # print('A 2 M1_1', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[1])
-            # # print('A 2 M1_2', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[2])
-            #
-            # # print('1 A 2 M1 ', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[0])
-            # context3['cnt_fvl_hetero_pr_hetero_abort_0'] = mutations_2_abort(list_abort,
-            #                                                                  list_fvl_hetero,
-            #                                                                  list_prothr_hetero)[0]
-            #
-            # # print('MORE A 2 M1 ', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_hetero)[1])
-            # context3['cnt_fvl_hetero_pr_hetero_abort_1'] = mutations_2_abort(list_abort,
-            #                                                                  list_fvl_hetero,
-            #                                                                  list_prothr_hetero)[1]
-
-            ######################################################
-            ### Start Count Heterozygous Factor V       ##########
-            ### Leiden and Prothr Homo Mutation         ##########
-            ######################################################
-
-            cnt_fvl_hetero_prothr_homo_mutations = 0
-            cnt_fvl_hetero_prothr_homo_mut_abort1 = 0
-            cnt_fvl_hetero_prothr_homo_mut_aborts = 0
-
-            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_2030 = 0
-            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_2030 = 0
-            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_2030 = 0
-
-            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_3140 = 0
-            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_3140 = 0
-            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_3140 = 0
-
-            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_4150 = 0
-            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_4150 = 0
-            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_4150 = 0
-
-            cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_2030 = 0
-            cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_2030 = 0
-            cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_2030 = 0
-
-            cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_3140 = 0
-            cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_3140 = 0
-            cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_3140 = 0
-
-            cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_4150 = 0
-            cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_4150 = 0
-            cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_4150 = 0
-
-            cnt_age1_fvl_hetero_pai_homo_mut_aborts1_2030 = 0
-            cnt_age1_fvl_hetero_pai_homo_mut_aborts2_2030 = 0
-            cnt_age1_fvl_hetero_pai_homo_mut_aborts3_2030 = 0
-
-            cnt_age1_fvl_hetero_pai_homo_mut_aborts1_3140 = 0
-            cnt_age1_fvl_hetero_pai_homo_mut_aborts2_3140 = 0
-            cnt_age1_fvl_hetero_pai_homo_mut_aborts3_3140 = 0
-
-            cnt_age1_fvl_hetero_pai_homo_mut_aborts1_4150 = 0
-            cnt_age1_fvl_hetero_pai_homo_mut_aborts2_4150 = 0
-            cnt_age1_fvl_hetero_pai_homo_mut_aborts3_4150 = 0
-
-            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_2030 = 0
-            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_2030 = 0
-            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_2030 = 0
-
-            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_3140 = 0
-            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_3140 = 0
-            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_3140 = 0
-
-            cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_2030 = 0
-            cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_2030 = 0
-            cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_2030 = 0
-
-            cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_3140 = 0
-            cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_3140 = 0
-            cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_3140 = 0
-
-            cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_4150 = 0
-            cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_4150 = 0
-            cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_4150 = 0
-
-            cnt_age1_fvl_homo_prothr_homo_mut_aborts1_2030 = 0
-            cnt_age1_fvl_homo_prothr_homo_mut_aborts2_2030 = 0
-            cnt_age1_fvl_homo_prothr_homo_mut_aborts3_2030 = 0
-
-            cnt_age1_fvl_homo_prothr_homo_mut_aborts1_3140 = 0
-            cnt_age1_fvl_homo_prothr_homo_mut_aborts2_3140 = 0
-            cnt_age1_fvl_homo_prothr_homo_mut_aborts3_3140 = 0
-
-            cnt_age1_fvl_homo_prothr_homo_mut_aborts1_4150 = 0
-            cnt_age1_fvl_homo_prothr_homo_mut_aborts2_4150 = 0
-            cnt_age1_fvl_homo_prothr_homo_mut_aborts3_4150 = 0
-
-            cnt_age1_fvl_homo_pai_homo_mut_aborts1_2030 = 0
-            cnt_age1_fvl_homo_pai_homo_mut_aborts2_2030 = 0
-            cnt_age1_fvl_homo_pai_homo_mut_aborts3_2030 = 0
-
-            cnt_age1_fvl_homo_pai_homo_mut_aborts1_3140 = 0
-            cnt_age1_fvl_homo_pai_homo_mut_aborts2_3140 = 0
-            cnt_age1_fvl_homo_pai_homo_mut_aborts3_3140 = 0
-
-            cnt_age1_fvl_homo_pai_homo_mut_aborts1_4150 = 0
-            cnt_age1_fvl_homo_pai_homo_mut_aborts2_4150 = 0
-            cnt_age1_fvl_homo_pai_homo_mut_aborts3_4150 = 0
-
-            cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_2030 = 0
-            cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_2030 = 0
-            cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_2030 = 0
-
-            cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_3140 = 0
-            cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_3140 = 0
-            cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_3140 = 0
-
-            cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_4150 = 0
-            cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_4150 = 0
-            cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_4150 = 0
-
-            cnt_age1_prothr_hetero_pai_homo_mut_aborts1_2030 = 0
-            cnt_age1_prothr_hetero_pai_homo_mut_aborts2_2030 = 0
-            cnt_age1_prothr_hetero_pai_homo_mut_aborts3_2030 = 0
-
-            cnt_age1_prothr_hetero_pai_homo_mut_aborts1_3140 = 0
-            cnt_age1_prothr_hetero_pai_homo_mut_aborts2_3140 = 0
-            cnt_age1_prothr_hetero_pai_homo_mut_aborts3_3140 = 0
-
-            cnt_age1_prothr_hetero_pai_homo_mut_aborts1_4150 = 0
-            cnt_age1_prothr_hetero_pai_homo_mut_aborts2_4150 = 0
-            cnt_age1_prothr_hetero_pai_homo_mut_aborts3_4150 = 0
-
-            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_2030 = 0
-            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_2030 = 0
-            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_2030 = 0
-
-            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_3140 = 0
-            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_3140 = 0
-            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_3140 = 0
-
-            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_4150 = 0
-            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_4150 = 0
-            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_4150 = 0
-
-            cnt_age1_pai_homo_mthfr_homo_mut_aborts1_2030 = 0
-            cnt_age1_pai_homo_mthfr_homo_mut_aborts2_2030 = 0
-            cnt_age1_pai_homo_mthfr_homo_mut_aborts3_2030 = 0
-
-            cnt_age1_pai_homo_mthfr_homo_mut_aborts1_3140 = 0
-            cnt_age1_pai_homo_mthfr_homo_mut_aborts2_3140 = 0
-            cnt_age1_pai_homo_mthfr_homo_mut_aborts3_3140 = 0
-
-            cnt_age1_pai_homo_mthfr_homo_mut_aborts1_4150 = 0
-            cnt_age1_pai_homo_mthfr_homo_mut_aborts2_4150 = 0
-            cnt_age1_pai_homo_mthfr_homo_mut_aborts3_4150 = 0
-
-            cnt_age1_fvl_hetero_pai_homo_mut_aborts1 = 0
-            cnt_age1_fvl_hetero_pai_homo_mut_aborts2 = 0
-            cnt_age1_fvl_hetero_pai_homo_mut_aborts3 = 0
-
-            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1 = 0
-            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2 = 0
-            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3 = 0
-
-            cnt_age1_fvl_homo_prothr_hetero_mut_aborts1 = 0
-            cnt_age1_fvl_homo_prothr_hetero_mut_aborts2 = 0
-            cnt_age1_fvl_homo_prothr_hetero_mut_aborts3 = 0
-
-            cnt_age1_fvl_homo_prothr_homo_mut_aborts1 = 0
-            cnt_age1_fvl_homo_prothr_homo_mut_aborts2 = 0
-            cnt_age1_fvl_homo_prothr_homo_mut_aborts3 = 0
-
-            cnt_age1_fvl_homo_pai_homo_mut_aborts1 = 0
-            cnt_age1_fvl_homo_pai_homo_mut_aborts2 = 0
-            cnt_age1_fvl_homo_pai_homo_mut_aborts3 = 0
-
-            cnt_age1_fvl_homo_mthfr_homo_mut_aborts1 = 0
-            cnt_age1_fvl_homo_mthfr_homo_mut_aborts2 = 0
-            cnt_age1_fvl_homo_mthfr_homo_mut_aborts3 = 0
-
-            cnt_age1_prothr_hetero_pai_homo_mut_aborts1 = 0
-            cnt_age1_prothr_hetero_pai_homo_mut_aborts2 = 0
-            cnt_age1_prothr_hetero_pai_homo_mut_aborts3 = 0
-
-            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1 = 0
-            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2 = 0
-            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3 = 0
-
-            cnt_age1_prothr_homo_pai_homo_mut_aborts1 = 0
-            cnt_age1_prothr_homo_pai_homo_mut_aborts2 = 0
-            cnt_age1_prothr_homo_pai_homo_mut_aborts3 = 0
-
-            cnt_age1_prothr_homo_mthfr_homo_mut_aborts1 = 0
-            cnt_age1_prothr_homo_mthfr_homo_mut_aborts2 = 0
-            cnt_age1_prothr_homo_mthfr_homo_mut_aborts3 = 0
-
-            cnt_age1_pai_homo_mthfr_homo_mut_aborts1 = 0
-            cnt_age1_pai_homo_mthfr_homo_mut_aborts2 = 0
-            cnt_age1_pai_homo_mthfr_homo_mut_aborts3 = 0
-
-            ##############################################
-            ####    FVL Hetero and Prothrombin Hetero ####
-            ##############################################
-            for fvl_hetero in range(len(list_fvl_hetero)):
-                if 20 <= list_age[fvl_hetero][0] <= 30:
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_2030 = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_2030 + 1
-                    elif list_abort[fvl_hetero][0] == '2.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_2030 = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_2030 + 1
-                    else:
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_2030 = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_2030 + 1
-
-                elif 31 <= list_age[fvl_hetero][0] <= 40:
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_3140 = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_3140 + 1
-                    elif list_abort[fvl_hetero][0] == '2.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_3140 = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_3140 + 1
-                    else:
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_3140 = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_3140 + 1
-                elif 41 <= list_age[fvl_hetero][0] <= 50:
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_4150 = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_4150 + 1
-                    elif list_abort[fvl_hetero][0] == '2.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_4150 = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_4150 + 1
-                    else:
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_4150 = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_4150 + 1
-
-            print('AGE 1', cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_2030,
-                  cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_2030,
-                  cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_2030)
-            ############################################
-            #####   FVL Hetero and Prothrombin Homo ####
-            ############################################
-            for fvl_hetero in range(len(list_fvl_hetero)):
-                # print('Vlizam1', list_fvl_hetero[fvl_hetero][0],
-                #       list_prothr_homo[fvl_hetero][0], list_age[fvl_hetero][0])
-
-                if 20 <= list_age[fvl_hetero][0] <= 30:
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_2030 = cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_2030 + 1
-                    elif list_abort[fvl_hetero][0] == '2.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_2030 = cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_2030 + 1
-                    else:
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_2030 = cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_2030 + 1
-
-                elif 31 <= list_age[fvl_hetero][0] <= 40:
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_3140 = cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_3140 + 1
-                    elif list_abort[fvl_hetero][0] == '2.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_3140 = cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_3140 + 1
-                    else:
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_3140 = cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_3140 + 1
-
-                    # print('LIST AGE 11', list_age[fvl_hetero][0], list_abort[fvl_hetero][0],
-                    #       list_fvl_hetero[fvl_hetero][0])
-                elif 41 <= list_age[fvl_hetero][0] <= 50:
-                    # print('LIST AGE 11', list_age[fvl_hetero][0], list_abort[fvl_hetero][0], list_prothr_homo[fvl_hetero][0])
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_4150 = cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_4150 + 1
-                    elif list_abort[fvl_hetero][0] == '2.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_4150 = cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_4150 + 1
-                    else:
-                        if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_4150 = cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_4150 + 1
-
-            # print('AGE 2', cnt_age1_fvl_hetero_prothr_homo_mut_aborts1,
-            #       cnt_age1_fvl_hetero_prothr_homo_mut_aborts2,
-            #       cnt_age1_fvl_hetero_prothr_homo_mut_aborts3)
-
-            ############################################
-            #####   FVL Hetero and PAI Homo         ####
-            ############################################
-            # for fvl_hetero in range(0, 110):
-            for fvl_hetero in range(len(list_fvl_hetero)):
-                # print('Vlizam1', list_fvl_hetero[fvl_hetero][0],
-                #       list_prothr_homo[fvl_hetero][0], list_age[fvl_hetero][0],
-                #       fvl_hetero)
-
-                if 20 <= list_age[fvl_hetero][0] <= 30:
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        # print('Vlizam1', list_fvl_hetero[fvl_hetero][0],
-                        #       list_prothr_homo[fvl_hetero][0], list_age[fvl_hetero][0])
-                        if list_fvl_hetero[fvl_hetero][0] == list_pai_homo[fvl_hetero][0] == '1.0':
-                            # print('Vlizam-hetero1')
-                            cnt_age1_fvl_hetero_pai_homo_mut_aborts1_2030 = cnt_age1_fvl_hetero_pai_homo_mut_aborts1_2030 + 1
-                    elif list_abort[fvl_hetero][0] == '2.0':
-                        # print('Vlizam2')
-                        if list_fvl_hetero[fvl_hetero][0] == list_pai_homo[fvl_hetero][0] == '1.0':
-                            # print('Vlizam-hetero2')
-                            cnt_age1_fvl_hetero_pai_homo_mut_aborts2_2030 = cnt_age1_fvl_hetero_pai_homo_mut_aborts2_2030 + 1
-                    else:
-                        # print('Vlizam3')
-                        if list_fvl_hetero[fvl_hetero][0] == list_pai_homo[fvl_hetero][0] == '1.0':
-                            # print('Vlizam-hetero3')
-                            cnt_age1_fvl_hetero_pai_homo_mut_aborts3_2030 = cnt_age1_fvl_hetero_pai_homo_mut_aborts3_2030 + 1
-
-                elif 31 <= list_age[fvl_hetero][0] <= 40:
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_pai_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_pai_homo_mut_aborts1_3140 = cnt_age1_fvl_hetero_pai_homo_mut_aborts1_3140 + 1
-                    elif list_abort[fvl_hetero][0] == '2.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_pai_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_pai_homo_mut_aborts2_3140 = cnt_age1_fvl_hetero_pai_homo_mut_aborts2_3140 + 1
-                    else:
-                        if list_fvl_hetero[fvl_hetero][0] == list_pai_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_pai_homo_mut_aborts3_3140 = cnt_age1_fvl_hetero_pai_homo_mut_aborts3_3140 + 1
-
-                    # print('LIST AGE 11', list_age[fvl_hetero][0], list_abort[fvl_hetero][0],
-                    #       list_fvl_hetero[fvl_hetero][0])
-                elif 41 <= list_age[fvl_hetero][0] <= 50:
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_pai_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_pai_homo_mut_aborts1_4150 = cnt_age1_fvl_hetero_pai_homo_mut_aborts1_4150 + 1
-                    elif list_abort[fvl_hetero][0] == '2.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_pai_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_pai_homo_mut_aborts2_4150 = cnt_age1_fvl_hetero_pai_homo_mut_aborts2_4150 + 1
-                    else:
-                        if list_fvl_hetero[fvl_hetero][0] == list_pai_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_pai_homo_mut_aborts3_4150 = cnt_age1_fvl_hetero_pai_homo_mut_aborts3_4150 + 1
-
-            print('AGE 3', cnt_age1_fvl_hetero_pai_homo_mut_aborts1,
-                  cnt_age1_fvl_hetero_pai_homo_mut_aborts2,
-                  cnt_age1_fvl_hetero_pai_homo_mut_aborts3)
-
-            ############################################
-            #####   FVL Hetero and MTHFR Homo       ####
-            ############################################
-            for fvl_hetero in range(len(list_fvl_hetero)):
-
-                if 20 <= list_age[fvl_hetero][0] <= 30:
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        # print('Vlizam1', list_fvl_hetero[fvl_hetero][0],
-                        #       list_prothr_homo[fvl_hetero][0], list_age[fvl_hetero][0])
-                        if ((list_fvl_hetero[fvl_hetero][0] == list_mthfr_homo[fvl_hetero][0]) and
-                                (list_fvl_hetero[fvl_hetero][0] == '1.0')):
-                            # print('Vlizam-hetero1')
-                            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_2030 = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_2030 + 1
-                    elif list_abort[fvl_hetero][0] == '2.0':
-                        # print('Vlizam2')
-                        if list_fvl_hetero[fvl_hetero][0] == list_mthfr_homo[fvl_hetero][0] == '1.0':
-                            # print('Vlizam-hetero2')
-                            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_2030 = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_2030 + 1
-                    else:
-                        # print('Vlizam3')
-                        if list_fvl_hetero[fvl_hetero][0] == list_mthfr_homo[fvl_hetero][0] == '1.0':
-                            # print('Vlizam-hetero3')
-                            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_2030 = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_2030 + 1
-
-                elif 31 <= list_age[fvl_hetero][0] <= 40:
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_mthfr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_3140 = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_3140 + 1
-                    elif list_abort[fvl_hetero][0] == '2.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_mthfr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_3140 = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_3140 + 1
-                    else:
-                        if list_fvl_hetero[fvl_hetero][0] == list_mthfr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_3140 = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_3140 + 1
-
-                    # print('LIST AGE 11', list_age[fvl_hetero][0], list_abort[fvl_hetero][0],
-                    #       list_fvl_hetero[fvl_hetero][0])
-                elif 41 <= list_age[fvl_hetero][0] <= 50:
-                    # print('LIST AGE 11', list_age[fvl_hetero][0], list_abort[fvl_hetero][0], list_prothr_homo[fvl_hetero][0])
-                    if list_abort[fvl_hetero][0] == '1.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_mthfr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1 = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1 + 1
-                    elif list_abort[fvl_hetero][0] == '2.0':
-                        if list_fvl_hetero[fvl_hetero][0] == list_mthfr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2 = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2 + 1
-                    else:
-                        if list_fvl_hetero[fvl_hetero][0] == list_mthfr_homo[fvl_hetero][0] == '1.0':
-                            cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3 = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3 + 1
-
-            print('AGE 4', cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1,
-                  cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2,
-                  cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3)
-
-            ##############################################
-            ####    FVL Homo and Prothrombin Hetero ####
-            ##############################################
-            for fvl_homo in range(len(list_fvl_homo)):
-                if 20 <= list_age[fvl_homo][0] <= 30:
-                    if list_abort[fvl_homo][0] == '1.0':
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_hetero[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_2030 = cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_2030 + 1
-                    elif list_abort[fvl_homo][0] == '2.0':
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_hetero[fvl_homo][0] == '1.0':
-                            # print('Vlizam-hetero2')
-                            cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_2030 = cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_2030 + 1
-                    else:
-                        # print('Vlizam3')
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_hetero[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_2030 = cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_2030 + 1
-
-                elif 31 <= list_age[fvl_homo][0] <= 40:
-                    if list_abort[fvl_homo][0] == '1.0':
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_hetero[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_3140 = cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_3140 + 1
-                    elif list_abort[fvl_homo][0] == '2.0':
-                        if list_fvl_hetero[fvl_homo][0] == list_prothr_hetero[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_3140 = cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_3140 + 1
-                    else:
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_hetero[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_3140 = cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_3140 + 1
-
-                elif 41 <= list_age[fvl_homo][0] <= 50:
-                    if list_abort[fvl_homo][0] == '1.0':
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_hetero[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_4150 = cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_4150 + 1
-                    elif list_abort[fvl_homo][0] == '2.0':
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_hetero[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_4150 = cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_4150 + 1
-                    else:
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_hetero[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_4150 = cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_4150 + 1
-
-            print('AGE 5', cnt_age1_fvl_homo_prothr_hetero_mut_aborts1,
-                  cnt_age1_fvl_homo_prothr_hetero_mut_aborts2,
-                  cnt_age1_fvl_homo_prothr_hetero_mut_aborts3)
-
-            ##############################################
-            ####    FVL Homo and Prothrombin Hомo     ####
-            ##############################################
-            for fvl_homo in range(len(list_fvl_homo)):
-                if 20 <= list_age[fvl_homo][0] <= 30:
-                    if list_abort[fvl_homo][0] == '1.0':
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_homo_mut_aborts1_2030 = cnt_age1_fvl_homo_prothr_homo_mut_aborts1_2030 + 1
-                    elif list_abort[fvl_homo][0] == '2.0':
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_homo[fvl_homo][0] == '1.0':
-                            # print('Vlizam-hetero2')
-                            cnt_age1_fvl_homo_prothr_homo_mut_aborts2_2030 = cnt_age1_fvl_homo_prothr_homo_mut_aborts2_2030 + 1
-                    else:
-                        # print('Vlizam3')
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_homo_mut_aborts3_2030 = cnt_age1_fvl_homo_prothr_homo_mut_aborts3_2030 + 1
-
-                elif 31 <= list_age[fvl_homo][0] <= 40:
-                    if list_abort[fvl_homo][0] == '1.0':
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_homo_mut_aborts1_3140 = cnt_age1_fvl_homo_prothr_homo_mut_aborts1_3140 + 1
-                    elif list_abort[fvl_homo][0] == '2.0':
-                        if list_fvl_hetero[fvl_homo][0] == list_prothr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_homo_mut_aborts2_3140 = cnt_age1_fvl_homo_prothr_homo_mut_aborts2_3140 + 1
-                    else:
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_homo_mut_aborts3_3140 = cnt_age1_fvl_homo_prothr_homo_mut_aborts3_3140 + 1
-
-                elif 41 <= list_age[fvl_homo][0] <= 50:
-                    if list_abort[fvl_homo][0] == '1.0':
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_homo_mut_aborts1_4150 = cnt_age1_fvl_homo_prothr_homo_mut_aborts1_4150 + 1
-                    elif list_abort[fvl_homo][0] == '2.0':
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_homo_mut_aborts2_4150 = cnt_age1_fvl_homo_prothr_homo_mut_aborts2_4150 + 1
-                    else:
-                        if list_fvl_homo[fvl_homo][0] == list_prothr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_prothr_homo_mut_aborts3_4150 = cnt_age1_fvl_homo_prothr_homo_mut_aborts3_4150 + 1
-
-            print('AGE 6', cnt_age1_fvl_homo_prothr_homo_mut_aborts1,
-                  cnt_age1_fvl_homo_prothr_homo_mut_aborts2,
-                  cnt_age1_fvl_homo_prothr_homo_mut_aborts3)
-
-            ##############################################
-            ####    FVL Homo and PAI Hомo             ####
-            ##############################################
-            for fvl_homo in range(len(list_fvl_homo)):
-                if 20 <= list_age[fvl_homo][0] <= 30:
-                    if list_abort[fvl_homo][0] == '1.0':
-                        if list_fvl_homo[fvl_homo][0] == list_pai_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_pai_homo_mut_aborts1_2030 = cnt_age1_fvl_homo_pai_homo_mut_aborts1_2030 + 1
-                    elif list_abort[fvl_homo][0] == '2.0':
-                        if list_fvl_homo[fvl_homo][0] == list_pai_homo[fvl_homo][0] == '1.0':
-                            # print('Vlizam-hetero2')
-                            cnt_age1_fvl_homo_pai_homo_mut_aborts2_2030 = cnt_age1_fvl_homo_pai_homo_mut_aborts2_2030 + 1
-                    else:
-                        # print('Vlizam3')
-                        if list_fvl_homo[fvl_homo][0] == list_pai_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_pai_homo_mut_aborts3_2030 = cnt_age1_fvl_homo_pai_homo_mut_aborts3_2030 + 1
-
-                elif 31 <= list_age[fvl_homo][0] <= 40:
-                    if list_abort[fvl_homo][0] == '1.0':
-                        if list_fvl_homo[fvl_homo][0] == list_pai_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_pai_homo_mut_aborts1_3140 = cnt_age1_fvl_homo_pai_homo_mut_aborts1_3140 + 1
-                    elif list_abort[fvl_homo][0] == '2.0':
-                        if list_fvl_hetero[fvl_homo][0] == list_pai_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_pai_homo_mut_aborts2_3140 = cnt_age1_fvl_homo_pai_homo_mut_aborts2_3140 + 1
-                    else:
-                        if list_fvl_homo[fvl_homo][0] == list_pai_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_pai_homo_mut_aborts3_3140 = cnt_age1_fvl_homo_pai_homo_mut_aborts3_3140 + 1
-
-                    # print('LIST AGE 11', list_age[fvl_hetero][0], list_abort[fvl_hetero][0],
-                    #       list_fvl_hetero[fvl_hetero][0])
-                elif 41 <= list_age[fvl_homo][0] <= 50:
-                    # print('LIST AGE 11', list_age[fvl_hetero][0], list_abort[fvl_hetero][0], list_prothr_homo[fvl_hetero][0])
-                    if list_abort[fvl_homo][0] == '1.0':
-                        if list_fvl_homo[fvl_homo][0] == list_pai_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_pai_homo_mut_aborts1_4150 = cnt_age1_fvl_homo_pai_homo_mut_aborts1_4150 + 1
-                    elif list_abort[fvl_homo][0] == '2.0':
-                        if list_fvl_homo[fvl_homo][0] == list_pai_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_pai_homo_mut_aborts2_4150 = cnt_age1_fvl_homo_pai_homo_mut_aborts2_4150 + 1
-                    else:
-                        if list_fvl_homo[fvl_homo][0] == list_pai_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_pai_homo_mut_aborts3_4150 = cnt_age1_fvl_homo_pai_homo_mut_aborts3_4150 + 1
-
-            print('AGE 7', cnt_age1_fvl_homo_pai_homo_mut_aborts1,
-                  cnt_age1_fvl_homo_pai_homo_mut_aborts2,
-                  cnt_age1_fvl_homo_pai_homo_mut_aborts3)
-
-            ##############################################
-            ####    FVL Homo and MTHFR Hомo           ####
-            ##############################################
-            for fvl_homo in range(len(list_fvl_homo)):
-                if 20 <= list_age[fvl_homo][0] <= 30:
-                    if list_abort[fvl_homo][0] == '1.0':
-                        if list_fvl_homo[fvl_homo][0] == list_mthfr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_2030 = cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_2030 + 1
-                    elif list_abort[fvl_homo][0] == '2.0':
-                        if list_fvl_homo[fvl_homo][0] == list_mthfr_homo[fvl_homo][0] == '1.0':
-                            # print('Vlizam-hetero2')
-                            cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_2030 = cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_2030 + 1
-                    else:
-                        # print('Vlizam3')
-                        if list_fvl_homo[fvl_homo][0] == list_mthfr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_2030 = cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_2030 + 1
-
-                elif 31 <= list_age[fvl_homo][0] <= 40:
-                    if list_abort[fvl_homo][0] == '1.0':
-                        if list_fvl_homo[fvl_homo][0] == list_mthfr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_3140 = cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_3140 + 1
-                    elif list_abort[fvl_homo][0] == '2.0':
-                        if list_fvl_hetero[fvl_homo][0] == list_mthfr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_3140 = cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_3140 + 1
-                    else:
-                        if list_fvl_homo[fvl_homo][0] == list_mthfr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_3140 = cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_3140 + 1
-
-                    # print('LIST AGE 11', list_age[fvl_hetero][0], list_abort[fvl_hetero][0],
-                    #       list_fvl_hetero[fvl_hetero][0])
-                elif 41 <= list_age[fvl_homo][0] <= 50:
-                    # print('LIST AGE 11', list_age[fvl_hetero][0], list_abort[fvl_hetero][0], list_prothr_homo[fvl_hetero][0])
-                    if list_abort[fvl_homo][0] == '1.0':
-                        if list_fvl_homo[fvl_homo][0] == list_mthfr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_4150 = cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_4150 + 1
-                    elif list_abort[fvl_homo][0] == '2.0':
-                        if list_fvl_homo[fvl_homo][0] == list_mthfr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_4150 = cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_4150 + 1
-                    else:
-                        if list_fvl_homo[fvl_homo][0] == list_mthfr_homo[fvl_homo][0] == '1.0':
-                            cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_4150 = cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_4150 + 1
-
-            print('AGE 8', cnt_age1_fvl_homo_mthfr_homo_mut_aborts1,
-                  cnt_age1_fvl_homo_mthfr_homo_mut_aborts2,
-                  cnt_age1_fvl_homo_mthfr_homo_mut_aborts3)
-
-            ##############################################
-            ####    Prothrombin Hetero and PAI Hомo   ####
-            ##############################################
-            for prothr_hetero in range(len(list_prothr_hetero)):
-                if 20 <= list_age[prothr_hetero][0] <= 30:
-                    if list_abort[prothr_hetero][0] == '1.0':
-                        if list_prothr_hetero[prothr_hetero][0] == list_pai_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_pai_homo_mut_aborts1_2030 = cnt_age1_prothr_hetero_pai_homo_mut_aborts1_2030 + 1
-                    elif list_abort[prothr_hetero][0] == '2.0':
-                        if list_prothr_hetero[prothr_hetero][0] == list_pai_homo[prothr_hetero][0] == '1.0':
-                            # print('Vlizam-hetero2')
-                            cnt_age1_prothr_hetero_pai_homo_mut_aborts2_2030 = cnt_age1_prothr_hetero_pai_homo_mut_aborts2_2030 + 1
-                    else:
-                        # print('Vlizam3')
-                        if list_prothr_hetero[prothr_hetero][0] == list_pai_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_pai_homo_mut_aborts3_2030 = cnt_age1_prothr_hetero_pai_homo_mut_aborts3_2030 + 1
-
-                elif 31 <= list_age[prothr_hetero][0] <= 40:
-                    if list_abort[prothr_hetero][0] == '1.0':
-                        if list_prothr_hetero[prothr_hetero][0] == list_pai_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_pai_homo_mut_aborts1_3140 = cnt_age1_prothr_hetero_pai_homo_mut_aborts1_3140 + 1
-                    elif list_abort[prothr_hetero][0] == '2.0':
-                        if list_prothr_hetero[prothr_hetero][0] == list_pai_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_pai_homo_mut_aborts2_3140 = cnt_age1_prothr_hetero_pai_homo_mut_aborts2_3140 + 1
-                    else:
-                        if list_prothr_hetero[prothr_hetero][0] == list_pai_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_pai_homo_mut_aborts3_3140 = cnt_age1_prothr_hetero_pai_homo_mut_aborts3_3140 + 1
-
-                elif 41 <= list_age[prothr_hetero][0] <= 50:
-                    if list_abort[prothr_hetero][0] == '1.0':
-                        if list_prothr_homo[prothr_hetero][0] == list_pai_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_pai_homo_mut_aborts1_4150 = cnt_age1_prothr_hetero_pai_homo_mut_aborts1_4150 + 1
-                    elif list_abort[prothr_hetero][0] == '2.0':
-                        if list_prothr_homo[prothr_hetero][0] == list_pai_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_pai_homo_mut_aborts2_4150 = cnt_age1_prothr_hetero_pai_homo_mut_aborts2_4150 + 1
-                    else:
-                        if list_prothr_homo[prothr_hetero][0] == list_pai_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_pai_homo_mut_aborts3_4150 = cnt_age1_prothr_hetero_pai_homo_mut_aborts3_4150 + 1
-
-            print('AGE 9', cnt_age1_prothr_hetero_pai_homo_mut_aborts1,
-                  cnt_age1_prothr_hetero_pai_homo_mut_aborts2,
-                  cnt_age1_prothr_hetero_pai_homo_mut_aborts3)
-
-            ##############################################
-            ####    Prothrombin Hetero and MTHFR Hомo ####
-            ##############################################
-            for prothr_hetero in range(len(list_prothr_hetero)):
-                if 20 <= list_age[prothr_hetero][0] <= 30:
-                    if list_abort[prothr_hetero][0] == '1.0':
-                        if list_prothr_hetero[prothr_hetero][0] == list_mthfr_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_2030 = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_2030 + 1
-                    elif list_abort[prothr_hetero][0] == '2.0':
-                        if list_prothr_hetero[prothr_hetero][0] == list_mthfr_homo[prothr_hetero][0] == '1.0':
-                            # print('Vlizam-hetero2')
-                            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_2030 = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_2030 + 1
-                    else:
-                        # print('Vlizam3')
-                        if list_prothr_hetero[prothr_hetero][0] == list_mthfr_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_2030 = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_2030 + 1
-
-                elif 31 <= list_age[prothr_hetero][0] <= 40:
-                    if list_abort[prothr_hetero][0] == '1.0':
-                        if list_prothr_hetero[prothr_hetero][0] == list_mthfr_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_3140 = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_3140 + 1
-                    elif list_abort[prothr_hetero][0] == '2.0':
-                        if list_prothr_hetero[prothr_hetero][0] == list_mthfr_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_3140 = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_3140 + 1
-                    else:
-                        if list_prothr_hetero[prothr_hetero][0] == list_mthfr_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_3140 = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_3140 + 1
-
-                elif 41 <= list_age[prothr_hetero][0] <= 50:
-                    # print('LIST AGE 11', list_age[fvl_hetero][0], list_abort[fvl_hetero][0], list_prothr_homo[fvl_hetero][0])
-                    if list_abort[prothr_hetero][0] == '1.0':
-                        if list_prothr_homo[prothr_hetero][0] == list_mthfr_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_4150 = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_4150 + 1
-                    elif list_abort[prothr_hetero][0] == '2.0':
-                        if list_prothr_homo[prothr_hetero][0] == list_mthfr_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_4150 = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_4150 + 1
-                    else:
-                        if list_prothr_homo[prothr_hetero][0] == list_mthfr_homo[prothr_hetero][0] == '1.0':
-                            cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_4150 = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_4150 + 1
-
-            print('AGE 10', cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1,
-                  cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2,
-                  cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3)
-
-            ##############################################
-            ####    Prothrombin Homo and PAI Hомo     ####
-            ##############################################
-            # for prothr_homo in range(len(list_prothr_homo)):
-            #     if 20 <= list_age[prothr_homo][0] <= 30:
-            #         if list_abort[prothr_homo][0] == '1.0':
-            #             if list_prothr_homo[prothr_homo][0] == list_pai_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_pai_homo_mut_aborts1 = cnt_age1_prothr_homo_pai_homo_mut_aborts1 + 1
-            #         elif list_abort[prothr_homo][0] == '2.0':
-            #             if list_prothr_homo[prothr_homo][0] == list_pai_homo[prothr_homo][0] == '1.0':
-            #                 # print('Vlizam-hetero2')
-            #                 cnt_age1_prothr_homo_pai_homo_mut_aborts2 = cnt_age1_prothr_homo_pai_homo_mut_aborts2 + 1
-            #         else:
-            #             # print('Vlizam3')
-            #             if list_prothr_homo[prothr_homo][0] == list_pai_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_pai_homo_mut_aborts3 = cnt_age1_prothr_homo_pai_homo_mut_aborts3 + 1
-            #
-            #     elif 40 <= list_age[prothr_homo][0] <= 31:
-            #         if list_abort[prothr_homo][0] == '1.0':
-            #             if list_prothr_homo[prothr_homo][0] == list_pai_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_pai_homo_mut_aborts1 = cnt_age1_prothr_homo_pai_homo_mut_aborts1 + 1
-            #         elif list_abort[prothr_homo][0] == '2.0':
-            #             if list_prothr_homo[prothr_homo][0] == list_pai_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_pai_homo_mut_aborts2 = cnt_age1_prothr_homo_pai_homo_mut_aborts2 + 1
-            #         else:
-            #             if list_prothr_homo[prothr_homo][0] == list_pai_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_pai_homo_mut_aborts3 = cnt_age1_prothr_homo_pai_homo_mut_aborts3 + 1
-            #     elif 50 <= list_age[prothr_homo][0] <= 41:
-            #         if list_abort[prothr_homo][0] == '1.0':
-            #             if list_prothr_homo[prothr_homo][0] == list_pai_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_pai_homo_mut_aborts1 = cnt_age1_prothr_homo_pai_homo_mut_aborts1 + 1
-            #         elif list_abort[prothr_homo][0] == '2.0':
-            #             if list_prothr_homo[prothr_homo][0] == list_pai_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_pai_homo_mut_aborts2 = cnt_age1_prothr_homo_pai_homo_mut_aborts2 + 1
-            #         else:
-            #             if list_prothr_homo[prothr_homo][0] == list_pai_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_pai_homo_mut_aborts3 = cnt_age1_prothr_homo_pai_homo_mut_aborts3 + 1
-            #
-            # print('AGE 11', cnt_age1_prothr_homo_pai_homo_mut_aborts1,
-            #       cnt_age1_prothr_homo_pai_homo_mut_aborts2,
-            #       cnt_age1_prothr_homo_pai_homo_mut_aborts3)
-
-            ##############################################
-            ####    Prothrombin Homo and MTHR Hомo    ####
-            ##############################################
-            # for prothr_homo in range(len(list_prothr_homo)):
-            #     if 20 <= list_age[prothr_homo][0] <= 30:
-            #         if list_abort[prothr_homo][0] == '1.0':
-            #             if list_prothr_homo[prothr_homo][0] == list_mthfr_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_mthfr_homo_mut_aborts1 = cnt_age1_prothr_homo_mthfr_homo_mut_aborts1 + 1
-            #         elif list_abort[prothr_homo][0] == '2.0':
-            #             if list_prothr_homo[prothr_homo][0] == list_mthfr_homo[prothr_homo][0] == '1.0':
-            #                 # print('Vlizam-hetero2')
-            #                 cnt_age1_prothr_homo_mthfr_homo_mut_aborts2 = cnt_age1_prothr_homo_mthfr_homo_mut_aborts2 + 1
-            #         else:
-            #             # print('Vlizam3')
-            #             if list_prothr_homo[prothr_homo][0] == list_mthfr_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_mthfr_homo_mut_aborts3 = cnt_age1_prothr_homo_mthfr_homo_mut_aborts3 + 1
-            #
-            #     elif 40 <= list_age[prothr_homo][0] <= 31:
-            #         if list_abort[prothr_homo][0] == '1.0':
-            #             if list_prothr_homo[prothr_homo][0] == list_mthfr_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_mthfr_homo_mut_aborts1 = cnt_age1_prothr_homo_mthfr_homo_mut_aborts1 + 1
-            #         elif list_abort[prothr_homo][0] == '2.0':
-            #             if list_prothr_homo[prothr_homo][0] == list_mthfr_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_mthfr_homo_mut_aborts2 = cnt_age1_prothr_homo_mthfr_homo_mut_aborts2 + 1
-            #         else:
-            #             if list_prothr_homo[prothr_homo][0] == list_mthfr_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_mthfr_homo_mut_aborts3 = cnt_age1_prothr_homo_mthfr_homo_mut_aborts3 + 1
-            #     elif 50 <= list_age[prothr_homo][0] <= 41:
-            #         if list_abort[prothr_homo][0] == '1.0':
-            #             if list_prothr_homo[prothr_homo][0] == list_mthfr_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_mthfr_homo_mut_aborts1 = cnt_age1_prothr_homo_mthfr_homo_mut_aborts1 + 1
-            #         elif list_abort[prothr_homo][0] == '2.0':
-            #             if list_prothr_homo[prothr_homo][0] == list_mthfr_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_mthfr_homo_mut_aborts2 = cnt_age1_prothr_homo_mthfr_homo_mut_aborts2 + 1
-            #         else:
-            #             if list_prothr_homo[prothr_homo][0] == list_mthfr_homo[prothr_homo][0] == '1.0':
-            #                 cnt_age1_prothr_homo_mthfr_homo_mut_aborts3 = cnt_age1_prothr_homo_mthfr_homo_mut_aborts3 + 1
-            #
-            # print('AGE 12', cnt_age1_prothr_homo_mthfr_homo_mut_aborts1,
-            #       cnt_age1_prothr_homo_mthfr_homo_mut_aborts2,
-            #       cnt_age1_prothr_homo_mthfr_homo_mut_aborts3)
-
-            ##############################################
-            ####    PAI Homo and MTHR Hомo            ####
-            ##############################################
-            for pai_homo in range(len(list_pai_homo)):
-                if 20 <= list_age[pai_homo][0] <= 30:
-                    if list_abort[pai_homo][0] == '1.0':
-                        if list_pai_homo[pai_homo][0] == list_mthfr_homo[pai_homo][0] == '1.0':
-                            cnt_age1_pai_homo_mthfr_homo_mut_aborts1_2030 = cnt_age1_pai_homo_mthfr_homo_mut_aborts1_2030 + 1
-                    elif list_abort[pai_homo][0] == '2.0':
-                        if list_pai_homo[pai_homo][0] == list_mthfr_homo[pai_homo][0] == '1.0':
-                            cnt_age1_pai_homo_mthfr_homo_mut_aborts2_2030 = cnt_age1_pai_homo_mthfr_homo_mut_aborts2_2030 + 1
-                    else:
-                        if list_pai_homo[pai_homo][0] == list_mthfr_homo[pai_homo][0] == '1.0':
-                            cnt_age1_pai_homo_mthfr_homo_mut_aborts3_2030 = cnt_age1_pai_homo_mthfr_homo_mut_aborts3_2030 + 1
-                elif 31 <= list_age[pai_homo][0] <= 40:
-                    if list_abort[pai_homo][0] == '1.0':
-                        if list_pai_homo[pai_homo][0] == list_mthfr_homo[pai_homo][0] == '1.0':
-                            cnt_age1_pai_homo_mthfr_homo_mut_aborts1_3140 = cnt_age1_pai_homo_mthfr_homo_mut_aborts1_3140 + 1
-                    elif list_abort[pai_homo][0] == '2.0':
-                        if list_pai_homo[pai_homo][0] == list_mthfr_homo[pai_homo][0] == '1.0':
-                            cnt_age1_pai_homo_mthfr_homo_mut_aborts2_3140 = cnt_age1_pai_homo_mthfr_homo_mut_aborts2_3140 + 1
-                    else:
-                        if list_pai_homo[pai_homo][0] == list_mthfr_homo[pai_homo][0] == '1.0':
-                            cnt_age1_pai_homo_mthfr_homo_mut_aborts3_3140 = cnt_age1_pai_homo_mthfr_homo_mut_aborts3_3140 + 1
-                elif 41 <= list_age[pai_homo][0] <= 50:
-                    if list_abort[pai_homo][0] == '1.0':
-                        if list_pai_homo[pai_homo][0] == list_mthfr_homo[pai_homo][0] == '1.0':
-                            cnt_age1_pai_homo_mthfr_homo_mut_aborts1_4150 = cnt_age1_pai_homo_mthfr_homo_mut_aborts1_4150 + 1
-                    elif list_abort[pai_homo][0] == '2.0':
-                        if list_pai_homo[pai_homo][0] == list_mthfr_homo[pai_homo][0] == '1.0':
-                            cnt_age1_pai_homo_mthfr_homo_mut_aborts2_4150 = cnt_age1_pai_homo_mthfr_homo_mut_aborts2_4150 + 1
-                    else:
-                        if list_pai_homo[pai_homo][0] == list_mthfr_homo[pai_homo][0] == '1.0':
-                            cnt_age1_pai_homo_mthfr_homo_mut_aborts3_4150 = cnt_age1_pai_homo_mthfr_homo_mut_aborts3_4150 + 1
-
-            print('AGE 11', cnt_age1_pai_homo_mthfr_homo_mut_aborts1,
-                  cnt_age1_pai_homo_mthfr_homo_mut_aborts2,
-                  cnt_age1_pai_homo_mthfr_homo_mut_aborts3)
-
-            context3[
-                'cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_2030'] = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_2030
-            context3[
-                'cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_2030'] = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_2030
-            context3[
-                'cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_2030'] = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_2030
-            context3[
-                'cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_3140'] = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_3140
-            context3[
-                'cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_3140'] = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_3140
-            context3[
-                'cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_3140'] = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_3140
-            context3[
-                'cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_4150'] = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_4150
-            context3[
-                'cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_4150'] = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_4150
-            context3[
-                'cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_4150'] = cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_4150
-            context3[
-                'cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_2030'] = cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_2030
-            context3[
-                'cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_2030'] = cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_2030
-            context3[
-                'cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_2030'] = cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_2030
-            context3[
-                'cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_3140'] = cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_3140
-            context3[
-                'cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_3140'] = cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_3140
-            context3[
-                'cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_3140'] = cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_3140
-            context3[
-                'cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_4150'] = cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_4150
-            context3[
-                'cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_4150'] = cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_4150
-            context3[
-                'cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_4150'] = cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_4150
-            context3['cnt_age1_fvl_hetero_pai_homo_mut_aborts1_2030'] = cnt_age1_fvl_hetero_pai_homo_mut_aborts1_2030
-            context3['cnt_age1_fvl_hetero_pai_homo_mut_aborts2_2030'] = cnt_age1_fvl_hetero_pai_homo_mut_aborts2_2030
-            context3['cnt_age1_fvl_hetero_pai_homo_mut_aborts3_2030'] = cnt_age1_fvl_hetero_pai_homo_mut_aborts3_2030
-            context3['cnt_age1_fvl_hetero_pai_homo_mut_aborts1_3140'] = cnt_age1_fvl_hetero_pai_homo_mut_aborts1_3140
-            context3['cnt_age1_fvl_hetero_pai_homo_mut_aborts2_3140'] = cnt_age1_fvl_hetero_pai_homo_mut_aborts2_3140
-            context3['cnt_age1_fvl_hetero_pai_homo_mut_aborts3_3140'] = cnt_age1_fvl_hetero_pai_homo_mut_aborts3_3140
-            context3['cnt_age1_fvl_hetero_pai_homo_mut_aborts1_4150'] = cnt_age1_fvl_hetero_pai_homo_mut_aborts1_4150
-            context3['cnt_age1_fvl_hetero_pai_homo_mut_aborts2_4150'] = cnt_age1_fvl_hetero_pai_homo_mut_aborts2_4150
-            context3['cnt_age1_fvl_hetero_pai_homo_mut_aborts3_4150'] = cnt_age1_fvl_hetero_pai_homo_mut_aborts3_4150
-            context3[
-                'cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_2030'] = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_2030
-            context3[
-                'cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_2030'] = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_2030
-            context3[
-                'cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_2030'] = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_2030
-            context3[
-                'cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_3140'] = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_3140
-            context3[
-                'cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_3140'] = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_3140
-            context3[
-                'cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_3140'] = cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_3140
-            context3[
-                'cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_2030'] = cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_2030
-            context3[
-                'cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_2030'] = cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_2030
-            context3[
-                'cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_2030'] = cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_2030
-            context3[
-                'cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_3140'] = cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_3140
-            context3[
-                'cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_3140'] = cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_3140
-            context3[
-                'cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_3140'] = cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_3140
-            context3[
-                'cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_4150'] = cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_4150
-            context3[
-                'cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_4150'] = cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_4150
-            context3[
-                'cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_4150'] = cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_4150
-            context3['cnt_age1_fvl_homo_prothr_homo_mut_aborts1_2030'] = cnt_age1_fvl_homo_prothr_homo_mut_aborts1_2030
-            context3['cnt_age1_fvl_homo_prothr_homo_mut_aborts2_2030'] = cnt_age1_fvl_homo_prothr_homo_mut_aborts2_2030
-            context3['cnt_age1_fvl_homo_prothr_homo_mut_aborts3_2030'] = cnt_age1_fvl_homo_prothr_homo_mut_aborts3_2030
-            context3['cnt_age1_fvl_homo_prothr_homo_mut_aborts1_3140'] = cnt_age1_fvl_homo_prothr_homo_mut_aborts1_3140
-            context3['cnt_age1_fvl_homo_prothr_homo_mut_aborts2_3140'] = cnt_age1_fvl_homo_prothr_homo_mut_aborts2_3140
-            context3['cnt_age1_fvl_homo_prothr_homo_mut_aborts3_3140'] = cnt_age1_fvl_homo_prothr_homo_mut_aborts3_3140
-            context3['cnt_age1_fvl_homo_prothr_homo_mut_aborts1_4150'] = cnt_age1_fvl_homo_prothr_homo_mut_aborts1_4150
-            context3['cnt_age1_fvl_homo_prothr_homo_mut_aborts2_4150'] = cnt_age1_fvl_homo_prothr_homo_mut_aborts2_4150
-            context3['cnt_age1_fvl_homo_prothr_homo_mut_aborts3_4150'] = cnt_age1_fvl_homo_prothr_homo_mut_aborts3_4150
-            context3['cnt_age1_fvl_homo_pai_homo_mut_aborts1_2030'] = cnt_age1_fvl_homo_pai_homo_mut_aborts1_2030
-            context3['cnt_age1_fvl_homo_pai_homo_mut_aborts2_2030'] = cnt_age1_fvl_homo_pai_homo_mut_aborts2_2030
-            context3['cnt_age1_fvl_homo_pai_homo_mut_aborts3_2030'] = cnt_age1_fvl_homo_pai_homo_mut_aborts3_2030
-            context3['cnt_age1_fvl_homo_pai_homo_mut_aborts1_3140'] = cnt_age1_fvl_homo_pai_homo_mut_aborts1_3140
-            context3['cnt_age1_fvl_homo_pai_homo_mut_aborts2_3140'] = cnt_age1_fvl_homo_pai_homo_mut_aborts2_3140
-            context3['cnt_age1_fvl_homo_pai_homo_mut_aborts3_3140'] = cnt_age1_fvl_homo_pai_homo_mut_aborts3_3140
-            context3['cnt_age1_fvl_homo_pai_homo_mut_aborts1_4150'] = cnt_age1_fvl_homo_pai_homo_mut_aborts1_4150
-            context3['cnt_age1_fvl_homo_pai_homo_mut_aborts2_4150'] = cnt_age1_fvl_homo_pai_homo_mut_aborts2_4150
-            context3['cnt_age1_fvl_homo_pai_homo_mut_aborts3_4150'] = cnt_age1_fvl_homo_pai_homo_mut_aborts3_4150
-            context3['cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_2030'] = cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_2030
-            context3['cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_2030'] = cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_2030
-            context3['cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_2030'] = cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_2030
-            context3['cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_3140'] = cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_3140
-            context3['cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_3140'] = cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_3140
-            context3['cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_3140'] = cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_3140
-            context3['cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_4150'] = cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_4150
-            context3['cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_4150'] = cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_4150
-            context3['cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_4150'] = cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_4150
-            context3[
-                'cnt_age1_prothr_hetero_pai_homo_mut_aborts1_2030'] = cnt_age1_prothr_hetero_pai_homo_mut_aborts1_2030
-            context3[
-                'cnt_age1_prothr_hetero_pai_homo_mut_aborts2_2030'] = cnt_age1_prothr_hetero_pai_homo_mut_aborts2_2030
-            context3[
-                'cnt_age1_prothr_hetero_pai_homo_mut_aborts3_2030'] = cnt_age1_prothr_hetero_pai_homo_mut_aborts3_2030
-            context3[
-                'cnt_age1_prothr_hetero_pai_homo_mut_aborts1_3140'] = cnt_age1_prothr_hetero_pai_homo_mut_aborts1_3140
-            context3[
-                'cnt_age1_prothr_hetero_pai_homo_mut_aborts2_3140'] = cnt_age1_prothr_hetero_pai_homo_mut_aborts2_3140
-            context3[
-                'cnt_age1_prothr_hetero_pai_homo_mut_aborts3_3140'] = cnt_age1_prothr_hetero_pai_homo_mut_aborts3_3140
-            context3[
-                'cnt_age1_prothr_hetero_pai_homo_mut_aborts1_4150'] = cnt_age1_prothr_hetero_pai_homo_mut_aborts1_4150
-            context3[
-                'cnt_age1_prothr_hetero_pai_homo_mut_aborts2_4150'] = cnt_age1_prothr_hetero_pai_homo_mut_aborts2_4150
-            context3[
-                'cnt_age1_prothr_hetero_pai_homo_mut_aborts3_4150'] = cnt_age1_prothr_hetero_pai_homo_mut_aborts3_4150
-            context3[
-                'cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_2030'] = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_2030
-            context3[
-                'cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_2030'] = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_2030
-            context3[
-                'cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_2030'] = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_2030
-            context3[
-                'cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_3140'] = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_3140
-            context3[
-                'cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_3140'] = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_3140
-            context3[
-                'cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_3140'] = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_3140
-            context3[
-                'cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_4150'] = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_4150
-            context3[
-                'cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_4150'] = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_4150
-            context3[
-                'cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_4150'] = cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_4150
-            context3['cnt_age1_pai_homo_mthfr_homo_mut_aborts1_2030'] = cnt_age1_pai_homo_mthfr_homo_mut_aborts1_2030
-            context3['cnt_age1_pai_homo_mthfr_homo_mut_aborts2_2030'] = cnt_age1_pai_homo_mthfr_homo_mut_aborts2_2030
-            context3['cnt_age1_pai_homo_mthfr_homo_mut_aborts3_2030'] = cnt_age1_pai_homo_mthfr_homo_mut_aborts3_2030
-            context3['cnt_age1_pai_homo_mthfr_homo_mut_aborts1_3140'] = cnt_age1_pai_homo_mthfr_homo_mut_aborts1_3140
-            context3['cnt_age1_pai_homo_mthfr_homo_mut_aborts2_3140'] = cnt_age1_pai_homo_mthfr_homo_mut_aborts2_3140
-            context3['cnt_age1_pai_homo_mthfr_homo_mut_aborts3_3140'] = cnt_age1_pai_homo_mthfr_homo_mut_aborts3_3140
-            context3['cnt_age1_pai_homo_mthfr_homo_mut_aborts1_4150'] = cnt_age1_pai_homo_mthfr_homo_mut_aborts1_4150
-            context3['cnt_age1_pai_homo_mthfr_homo_mut_aborts2_4150'] = cnt_age1_pai_homo_mthfr_homo_mut_aborts2_4150
-            context3['cnt_age1_pai_homo_mthfr_homo_mut_aborts3_4150'] = cnt_age1_pai_homo_mthfr_homo_mut_aborts3_4150
-
-            ######################################################
-            ### Heterozygous Factor V Leiden               #######
-            ###  and Prothr Hetero Mutation                #######
-            ######################################################
-
-            cnt_fvl_hetero_prothr_hetero_mutations = 0
-            cnt_fvl_hetero_prothr_hetero_mut_abort1 = 0
-            cnt_fvl_hetero_prothr_hetero_mut_aborts = 0
-
-            for fvl_hetero in range(len(list_fvl_hetero)):
-
-                if list_fvl_hetero[fvl_hetero][0] == list_prothr_hetero[fvl_hetero][0] == '1.0':
-                    cnt_fvl_hetero_prothr_hetero_mut_abort1 = cnt_fvl_hetero_prothr_hetero_mut_abort1 + 1
-                    cnt_fvl_hetero_prothr_hetero_mut_aborts = cnt_fvl_hetero_prothr_hetero_mut_aborts + 1
-                cnt_fvl_hetero_prothr_hetero_mutations = cnt_fvl_hetero_prothr_hetero_mutations + 1
-
-            print('FVL Hetero and PROTHR Hetero Mutations are:', cnt_fvl_hetero_prothr_hetero_mut_abort1)
-            print('FVL Hetero and PROTHR Hetero Mutations are:', cnt_fvl_hetero_prothr_hetero_mutations)
-            print('FVL Hetero and PROTHR Hetero Mutations for Patients with 1 Abort are:')
-
-            ######################################################
-            ### Heterozygous Factor V Leiden            ##########
-            ### and PROTHROMBIN Homo Mutation           ##########
-            ######################################################
-
-            cnt_fvl_hetero_prothr_homo_mutations = 0
-            cnt_fvl_hetero_prothr_homo_mut_abort1 = 0
-            cnt_fvl_hetero_prothr_homo_mut_aborts = 0
-
-            for fvl_hetero in range(len(list_fvl_hetero)):
-                if list_fvl_hetero[fvl_hetero][0] == list_prothr_homo[fvl_hetero][0] == '1.0':
-                    cnt_fvl_hetero_prothr_homo_mut_abort1 = cnt_fvl_hetero_prothr_homo_mut_abort1 + 1
-                    cnt_fvl_hetero_prothr_homo_mut_aborts = cnt_fvl_hetero_prothr_homo_mut_aborts + 1
-
-                cnt_fvl_hetero_prothr_homo_mutations = cnt_fvl_hetero_prothr_homo_mutations + 1
-
-            # print('A 2 M2_0', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_homo)[0])
-            # print('A 2 M2_1', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_homo)[1])
-            # print('A 2 M2_2', mutations_2_abort(list_abort, list_fvl_hetero, list_prothr_homo)[2])
-            ######################################################
-            ### Start Count Heterozygous Factor V       ##########
-            ### Leiden and PAI I Homo Mutation          ##########
-            ######################################################
-
-            cnt_fvl_hetero_pai_homo_mutations = 0
-            cnt_fvl_hetero_pai_homo_mut_abort1 = 0
-            cnt_fvl_hetero_pai_homo_mut_aborts = 0
-
-            # for fvl_hetero in range(0, 133):
-
-            for fvl_hetero in range(len(list_fvl_hetero)):
-                if list_fvl_hetero[fvl_hetero][0] == list_pai_homo[fvl_hetero][0] == '1.0':
-                    cnt_fvl_hetero_pai_homo_mut_abort1 = cnt_fvl_hetero_pai_homo_mut_abort1 + 1
-                    cnt_fvl_hetero_pai_homo_mut_aborts = cnt_fvl_hetero_pai_homo_mut_aborts + 1
-                cnt_fvl_hetero_pai_homo_mutations = cnt_fvl_hetero_pai_homo_mutations + 1
-
-            # print('A 2 M3_0', mutations_2_abort(list_abort, list_fvl_hetero, list_pai_homo)[0])
-            # print('A 2 M3_1', mutations_2_abort(list_abort, list_fvl_hetero, list_pai_homo)[1])
-            # print('A 2 M3_2', mutations_2_abort(list_abort, list_fvl_hetero, list_pai_homo)[2])
-
-            print('FVL Hetero and PAI I Homo Mutations are:', cnt_fvl_hetero_pai_homo_mut_abort1)
-            print('FVL Hetero and PAI I Homo Mutations are:', cnt_fvl_hetero_pai_homo_mut_aborts)
-
-            ######################################################
-            ### Start Count Heterozygous Factor V       ##########
-            ### Leiden and MTHFR Homo Mutation        ##########
-            ######################################################
-
-            cnt_fvl_hetero_mthfr_homo_mutations = 0
-            cnt_fvl_hetero_mthfr_homo_mut_abort1 = 0
-            cnt_fvl_hetero_mthfr_homo_mut_aborts = 0
-
-            for fvl_hetero in range(len(list_fvl_hetero)):
-                if list_fvl_hetero[fvl_hetero][0] == list_mthfr_homo[fvl_hetero][0] == '1.0':
-                    cnt_fvl_hetero_mthfr_homo_mut_abort1 = cnt_fvl_hetero_mthfr_homo_mut_abort1 + 1
-                    cnt_fvl_hetero_mthfr_homo_mut_aborts = cnt_fvl_hetero_mthfr_homo_mut_aborts + 1
-                cnt_fvl_hetero_mthfr_homo_mutations = cnt_fvl_hetero_mthfr_homo_mutations + 1
-
-            # print('A 2 M4_0', mutations_2_abort(list_abort, list_fvl_hetero, list_mthfr_homo)[0])
-            # print('A 2 M4_1', mutations_2_abort(list_abort, list_fvl_hetero, list_mthfr_homo)[1])
-            # print('A 2 M4_2', mutations_2_abort(list_abort, list_fvl_hetero, list_mthfr_homo)[2])
-
-            print('FVL Hetero and MTHFR Homo Mutations are:', cnt_fvl_hetero_mthfr_homo_mut_abort1)
-            print('FVL Hetero and MTHFR Homo Mutations are:', cnt_fvl_hetero_mthfr_homo_mut_aborts)
-
-            # print('FVL Hetero and MTHFR Homo Mutations for Patients with 1 Abort are:')
-            # print(cnt_fvl_hetero_mthfr_homo_mut_abort1)
-
-            ######################################################
-            ### Start Count Homozygous Factor V         ##########
-            ### Leiden and Prothrombin Hetero Mutation  ##########
-            ######################################################
-
-            cnt_fvl_homo_prothr_hetero_mutations = 0
-            cnt_fvl_homo_prothr_hetero_mut_abort1 = 0
-            cnt_fvl_homo_prothr_hetero_mut_aborts = 0
-
-            for fvl_homo in range(len(list_fvl_homo)):
-                if list_fvl_homo[fvl_homo][0] == list_prothr_hetero[fvl_homo][0] == '1.0':
-                    cnt_fvl_homo_prothr_hetero_mut_abort1 = cnt_fvl_homo_prothr_hetero_mut_abort1 + 1
-                    cnt_fvl_homo_prothr_hetero_mut_aborts = cnt_fvl_homo_prothr_hetero_mut_aborts + 1
-                cnt_fvl_homo_prothr_hetero_mutations = cnt_fvl_homo_prothr_hetero_mutations + 1
-
-            # print('A 2 M5_0', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_hetero)[0])
-            # print('A 2 M5_1', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_hetero)[1])
-            # print('A 2 M5_2', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_hetero)[2])
-
-            print('FVL Homo and Prothr Hetero Mutations are:', cnt_fvl_homo_prothr_hetero_mut_abort1)
-            print('FVL Homo and Prothr Hetero Mutations are:', cnt_fvl_homo_prothr_hetero_mut_aborts)
-
-            # print('FVL Homo and Prothr Hetero Mutations for Patients with 1 Abort are:')
-            # print(cnt_fvl_homo_prothr_hetero_mut_abort1)
-
-            ######################################################
-            ### Start Count Homozygous Factor V         ##########
-            ### Leiden and Prothrombin Homo Mutation    ##########
-            ######################################################
-
-            cnt_fvl_homo_prothr_homo_mutations = 0
-            cnt_fvl_homo_prothr_homo_mut_abort1 = 0
-            cnt_fvl_homo_prothr_homo_mut_aborts = 0
-
-            for fvl_homo in range(len(list_fvl_homo)):
-                if list_fvl_homo[fvl_homo][0] == list_prothr_homo[fvl_homo][0] == '1.0':
-                    cnt_fvl_homo_prothr_homo_mut_abort1 = cnt_fvl_homo_prothr_homo_mut_abort1 + 1
-                    cnt_fvl_homo_prothr_homo_mut_aborts = cnt_fvl_homo_prothr_homo_mut_aborts + 1
-                cnt_fvl_homo_prothr_homo_mutations = cnt_fvl_homo_prothr_homo_mutations + 1
-
-            # print('A 2 M6_0', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_homo)[0])
-            # print('A 2 M6_1', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_homo)[1])
-            # print('A 2 M6_2', mutations_2_abort(list_abort, list_fvl_homo, list_prothr_homo)[2])
-
-            print('FVL Homo and Prothr Homo Mutations are:', cnt_fvl_homo_prothr_homo_mut_abort1)
-            print('FVL Homo and Prothr Homo Mutations are:', cnt_fvl_homo_prothr_homo_mut_aborts)
-
-            # print('FVL Homo and Prothr Homo Mutations for Patients with 1 Abort are:')
-            # print(cnt_fvl_homo_prothr_homo_mut_abort1)
-
-            ######################################################
-            ### Start Count Homozygous Factor V         ##########
-            ### Leiden and PAI I Homo Mutation          ##########
-            ######################################################
-
-            cnt_fvl_homo_pai_homo_mutations = 0
-            cnt_fvl_homo_pai_homo_mut_abort1 = 0
-            cnt_fvl_homo_pai_homo_mut_aborts = 0
-
-            for fvl_homo in range(len(list_fvl_homo)):
-                if list_fvl_homo[fvl_homo][0] == list_pai_homo[fvl_homo][0] == '1.0':
-                    cnt_fvl_homo_pai_homo_mut_abort1 = cnt_fvl_homo_pai_homo_mut_abort1 + 1
-                    cnt_fvl_homo_pai_homo_mut_aborts = cnt_fvl_homo_pai_homo_mut_aborts + 1
-                cnt_fvl_homo_pai_homo_mutations = cnt_fvl_homo_pai_homo_mutations + 1
-
-            # print('A 2 M7_0', mutations_2_abort(list_abort, list_fvl_homo, list_pai_homo)[0])
-            # print('A 2 M7_1', mutations_2_abort(list_abort, list_fvl_homo, list_pai_homo)[1])
-            # print('A 2 M7_2', mutations_2_abort(list_abort, list_fvl_homo, list_pai_homo)[2])
-
-            print('FVL Homo and PAI I Homo Mutations are:', cnt_fvl_homo_pai_homo_mut_abort1)
-            print('FVL Homo and PAI I Homo Mutations are:', cnt_fvl_homo_pai_homo_mut_aborts)
-
-            # print('FVL Homo and PAI I Homo Mutations for Patients with 1 Abort are:')
-            # print(cnt_fvl_homo_pai_homo_mut_abort1)
-
-            ######################################################
-            ### Start Count Homozygous Factor V         ##########
-            ### Leiden and MTHFR Homo Mutation          ##########
-            ######################################################
-
-            cnt_fvl_homo_mthfr_homo_mutations = 0
-            cnt_fvl_homo_mthfr_homo_mut_abort1 = 0
-            cnt_fvl_homo_mthfr_homo_mut_aborts = 0
-
-            for fvl_homo in range(len(list_fvl_homo)):
-                if list_fvl_homo[fvl_homo][0] == list_mthfr_homo[fvl_homo][0] == '1.0':
-                    cnt_fvl_homo_mthfr_homo_mut_abort1 = cnt_fvl_homo_mthfr_homo_mut_abort1 + 1
-                    cnt_fvl_homo_mthfr_homo_mut_aborts = cnt_fvl_homo_mthfr_homo_mut_aborts + 1
-                cnt_fvl_homo_mthfr_homo_mutations = cnt_fvl_homo_mthfr_homo_mutations + 1
-
-            print('A 2 M8_0', mutations_2_abort(list_abort, list_fvl_homo, list_mthfr_homo)[0])
-            print('A 2 M8_1', mutations_2_abort(list_abort, list_fvl_homo, list_mthfr_homo)[1])
-            print('A 2 M8_2', mutations_2_abort(list_abort, list_fvl_homo, list_mthfr_homo)[2])
-
-            print('FVL Homo and MTHFR Homo Mutations are:', cnt_fvl_homo_mthfr_homo_mut_abort1)
-            print('FVL Homo and MTHFR Homo Mutations are:', cnt_fvl_homo_mthfr_homo_mut_aborts)
-
-            # print('FVL Homo and MTHFR Homo Mutations for Patients with 1 Abort are:')
-            # print(cnt_fvl_homo_mthfr_homo_mut_abort1)
-
-            ######################################################
-            ### Start Count Heterozygous Prothrombin    ##########
-            ### and PAI I Homo Mutation                 ##########
-            ######################################################
-
-            cnt_prothr_hetero_pai_homo_mutations = 0
-            cnt_prothr_hetero_pai_homo_mut_abort1 = 0
-            cnt_prothr_hetero_pai_homo_mut_aborts = 0
-
-            for prothr_hetero in range(len(list_prothr_hetero)):
-                if list_prothr_hetero[prothr_hetero][0] == list_pai_homo[prothr_hetero][0] == '1.0':
-                    cnt_prothr_hetero_pai_homo_mut_abort1 = cnt_prothr_hetero_pai_homo_mut_abort1 + 1
-                    cnt_prothr_hetero_pai_homo_mut_aborts = cnt_prothr_hetero_pai_homo_mut_aborts + 1
-                cnt_prothr_hetero_pai_homo_mutations = cnt_prothr_hetero_pai_homo_mutations + 1
-
-            # print('A 2 M9_0', mutations_2_abort(list_abort, list_prothr_hetero, list_pai_homo)[0])
-            # print('A 2 M9_1', mutations_2_abort(list_abort, list_prothr_hetero, list_pai_homo)[1])
-            # print('A 2 M9_2', mutations_2_abort(list_abort, list_prothr_hetero, list_pai_homo)[2])
-
-            print('Prothrombin Hetero and PAI I Hetero Mutations are:', cnt_prothr_hetero_pai_homo_mut_abort1)
-            print('Prothrombin Hetero and PAI I Hetero Mutations are:', cnt_prothr_hetero_pai_homo_mut_aborts)
-
-            # print('Prothrombin Hetero and PAI I Homo Mutations for Patients with 1 Abort are:')
-            # print(cnt_prothr_hetero_pai_homo_mut_abort1)
-
-            ######################################################
-            ### Start Count Heterozygous Prothrombin    ##########
-            ### and MTHFR Homo Mutation                 ##########
-            ######################################################
-
-            cnt_prothr_hetero_mthfr_homo_mutations = 0
-            cnt_prothr_hetero_mthfr_homo_mut_abort1 = 0
-            cnt_prothr_hetero_mthfr_homo_mut_aborts = 0
-
-            for prothr_hetero in range(len(list_prothr_hetero)):
-                if list_prothr_hetero[prothr_hetero][0] == list_mthfr_homo[prothr_hetero][0] == '1.0':
-                    cnt_prothr_hetero_mthfr_homo_mut_abort1 = cnt_prothr_hetero_mthfr_homo_mut_abort1 + 1
-                    cnt_prothr_hetero_mthfr_homo_mut_aborts = cnt_prothr_hetero_mthfr_homo_mut_aborts + 1
-                cnt_prothr_hetero_mthfr_homo_mutations = cnt_prothr_hetero_mthfr_homo_mutations + 1
-
-            # print('A 2 M10_0', mutations_2_abort(list_abort, list_prothr_hetero, list_mthfr_homo)[0])
-            # print('A 2 M10_1', mutations_2_abort(list_abort, list_prothr_hetero, list_mthfr_homo)[1])
-            # print('A 2 M10_2', mutations_2_abort(list_abort, list_prothr_hetero, list_mthfr_homo)[2])
-
-            print('Prothrombin Hetero and MTHFR Homo Mutations are:', cnt_prothr_hetero_mthfr_homo_mut_abort1)
-            print('Prothrombin Hetero and MTHFR Homo Mutations are:', cnt_prothr_hetero_mthfr_homo_mut_aborts)
-
-            # print('Prothrombin Hetero and MTHFR Homo Mutations for Patients with 1 Abort are:')
-            # print(cnt_prothr_hetero_mthfr_homo_mut_abort1)
-
-            ######################################################
-            ### Start Count Homozygous PAI I            ##########
-            ### and MTHFR Homo Mutation                 ##########
-            ######################################################
-
-            cnt_pai_homo_mthfr_homo_mutations = 0
-            cnt_pai_homo_mthfr_homo_mut_abort1 = 0
-            cnt_pai_homo_mthfr_homo_mut_aborts = 0
-
-            for pai_homo in range(len(list_pai_homo)):
-                if list_pai_homo[pai_homo][0] == list_mthfr_homo[pai_homo][0] == '1.0':
-                    cnt_pai_homo_mthfr_homo_mut_abort1 = cnt_pai_homo_mthfr_homo_mut_abort1 + 1
-                    cnt_pai_homo_mthfr_homo_mut_aborts = cnt_pai_homo_mthfr_homo_mut_aborts + 1
-                cnt_pai_homo_mthfr_homo_mutations = cnt_pai_homo_mthfr_homo_mutations + 1
-
-            # print('A 2 M11_0', mutations_2_abort(list_abort, list_pai_homo, list_mthfr_homo)[0])
-            # print('A 2 M11_1', mutations_2_abort(list_abort, list_pai_homo, list_mthfr_homo)[1])
-            # print('A 2 M11_2', mutations_2_abort(list_abort, list_pai_homo, list_mthfr_homo)[2])
-
-            print('PAI I Homo and MTHFR Homo Mutations are:', cnt_pai_homo_mthfr_homo_mut_abort1)
-            print('PAI I Homo and MTHFR Homo Mutations are:', cnt_pai_homo_mthfr_homo_mut_aborts)
-
-            # print('PAI I Homo and MTHFR Homo Mutations for Patients with 1 Abort are:')
-            # print(cnt_pai_homo_mthfr_homo_mut_abort1)
-
-            ######################################################
-            ### Start Count Heterozygous Factor V       ##########
-            ### Leiden Mutation for 1 Abort             ##########
-            ######################################################
-            cnt_fvl_hetero_mut_1_abort = 0
-
-            for in_fvl_hetero_abort_1 in range(len(list_abort)):
-                if ((list_abort[in_fvl_hetero_abort_1][0] == '1.0') and
-                        list_fvl_hetero[in_fvl_hetero_abort_1][0] == '1.0'):
-                    cnt_fvl_hetero_mut_1_abort = cnt_fvl_hetero_mut_1_abort + 1
-            print('FVL Hetero Mutations for 1 abort:', cnt_fvl_hetero_mut_1_abort)
-
-            ######################################################
-            ### Start Count Homozygous Factor V         ##########
-            ### Leiden Mutation for 1 Abort             ##########
-            ######################################################
-            cnt_fvl_homo_mut_1_abort = 0
-            for in_fvl_homo_abort_1 in range(len(list_abort)):
-                if ((list_abort[in_fvl_homo_abort_1][0] == '1.0') and
-                        list_fvl_homo[in_fvl_homo_abort_1][0] == '1.0'):
-                    cnt_fvl_homo_mut_1_abort = cnt_fvl_homo_mut_1_abort + 1
-            print('FVL Homo Mutations for 1 abort:', cnt_fvl_homo_mut_1_abort)
-
-            ######################################################
-            ### Start Count Factor II(Prothrombin)            ####
-            ### Heterozygous Mutation for 1 Abort             ####
-            ######################################################
-            cnt_prothr_hetero_mut_1_abort = 0
-            for in_prothr_hetero_abort_1 in range(len(list_abort)):
-                if ((list_abort[in_prothr_hetero_abort_1][0] == '1.0') and
-                        list_prothr_hetero[in_prothr_hetero_abort_1][0] == '1.0'):
-                    cnt_prothr_hetero_mut_1_abort = cnt_prothr_hetero_mut_1_abort + 1
-            print('FVL Hetero Mutations for 1 abort:', cnt_prothr_hetero_mut_1_abort)
-
-            ######################################################
-            ### Start Count Factor II(Prothrombin)            ####
-            ### Homozygous Mutation for 1 Abort               ####
-            ######################################################
-            cnt_prothr_homo_mut_1_abort = 0
-            for in_prothr_homo_abort_1 in range(len(list_abort)):
-                if ((list_abort[in_prothr_homo_abort_1][0] == '1.0') and
-                        list_prothr_homo[in_prothr_homo_abort_1][0] == '1.0'):
-                    cnt_prothr_homo_mut_1_abort = cnt_prothr_homo_mut_1_abort + 1
-            print('PROTHR Homo Mutations for 1 abort:', cnt_prothr_homo_mut_1_abort)
-
-            ######################################################
-            ### Start Count Factor PAI I Homozigous           ####
-            ### Mutation for 1 Abort                          ####
-            ######################################################
-            cnt_pai_homo_mut_1_abort = 0
-
-            for in_pai_homo_abort_1 in range(len(list_abort)):
-                if ((list_abort[in_pai_homo_abort_1][0] == '1.0') and
-                        list_pai_homo[in_pai_homo_abort_1][0] == '1.0'):
-                    cnt_pai_homo_mut_1_abort = cnt_pai_homo_mut_1_abort + 1
-            print('PAI I Homo Mutations for 1 abort:', cnt_pai_homo_mut_1_abort)
-
-            ######################################################
-            ### Start Count Factor MTHFR                      ####
-            ### Homozygous Mutation for 1 Abort               ####
-            ######################################################
-            cnt_mthfr_homo_mut_1_abort = 0
-            for in_mthfr_homo_abort_1 in range(len(list_abort)):
-                if ((list_abort[in_mthfr_homo_abort_1][0] == '1.0') and
-                        list_mthfr_homo[in_mthfr_homo_abort_1][0] == '1.0'):
-                    cnt_mthfr_homo_mut_1_abort = cnt_mthfr_homo_mut_1_abort + 1
-            print('MTHFR Homo Mutations for 1 abort:', cnt_mthfr_homo_mut_1_abort)
-
-            ######################################################
-            ### Start Count Count Heterozygous Factor V ##########
-            ### Leiden Mutation for 2 or 3 Aborts       ##########
-            ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
-            ######################################################
-            cnt_fvl_hetero_mut_2_3_aborts = 0
-            for in_fvl_hetero_aborts_2 in range(len(list_abort)):
-                if ((list_abort[in_fvl_hetero_aborts_2][0] == '2.0' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == '3.0' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == '4.0' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == '5.0' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == '6.0' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == '7.0' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == '-' or
-                     list_abort[in_fvl_hetero_aborts_2][0] == ''
-                ) and
-                        list_fvl_hetero[in_fvl_hetero_aborts_2][0] == '1.0'):
-                    cnt_fvl_hetero_mut_2_3_aborts = cnt_fvl_hetero_mut_2_3_aborts + 1
-            print('FVL Hetero Mutations 2 or more are:', cnt_fvl_hetero_mut_2_3_aborts)
-
-            ######################################################
-            ### End Count Count Heterozygous Factor V   ##########
-            ### Leiden Mutation for 2 or 3 Aborts       ##########
-            ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
-            ######################################################
-
-            ######################################################
-            ### Start Count Count Homozygous Factor V   ##########
-            ### Leiden Mutation for 2 or 3 Aborts       ##########
-            ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
-            ######################################################
-            cnt_fvl_homo_mut_2_3_aborts = 0
-            for in_fvl_homo_aborts_2 in range(len(list_abort)):
-                if ((list_abort[in_fvl_homo_aborts_2][0] == '2.0' or
-                     list_abort[in_fvl_homo_aborts_2][0] == '3.0' or
-                     list_abort[in_fvl_homo_aborts_2][0] == '4.0' or
-                     list_abort[in_fvl_homo_aborts_2][0] == '5.0' or
-                     list_abort[in_fvl_homo_aborts_2][0] == '6.0' or
-                     list_abort[in_fvl_homo_aborts_2][0] == '7.0' or
-                     list_abort[in_fvl_homo_aborts_2][0] == '-' or
-                     list_abort[in_fvl_homo_aborts_2][0] == ''
-                ) and
-                        list_fvl_homo[in_fvl_homo_aborts_2][0] == '1.0'):
-                    cnt_fvl_homo_mut_2_3_aborts = cnt_fvl_homo_mut_2_3_aborts + 1
-            print('FVL Homo Mutations 2 or more are:', cnt_fvl_homo_mut_2_3_aborts)
-
-            ######################################################
-            ###       Start Count Factor II(Prothrombin)      ####
-            ###             Heterozygous Mutation             ####
-            ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
-            ######################################################
-            cnt_prothr_hetero_mut_2_3_aborts = 0
-            for in_prothr_hetero_aborts_2 in range(len(list_abort)):
-                if ((list_abort[in_prothr_hetero_aborts_2][0] == '2.0' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == '3.0' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == '4.0' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == '5.0' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == '6.0' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == '7.0' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == '-' or
-                     list_abort[in_prothr_hetero_aborts_2][0] == ''
-                ) and
-                        list_prothr_hetero[in_prothr_hetero_aborts_2][0] == '1.0'):
-                    cnt_prothr_hetero_mut_2_3_aborts = cnt_prothr_hetero_mut_2_3_aborts + 1
-            print('PROTHR Hetero Mutations 2 or more are:', cnt_prothr_hetero_mut_2_3_aborts)
-            ######################################################
-            ###       Start Count Factor II(Prothrombin)      ####
-            ###             Homozygous Mutation               ####
-            ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
-            ######################################################
-            cnt_prothr_homo_mut_2_3_aborts = 0
-            for in_prothr_homo_aborts_2 in range(len(list_abort)):
-                if ((list_abort[in_prothr_homo_aborts_2][0] == '2.0' or
-                     list_abort[in_prothr_homo_aborts_2][0] == '3.0' or
-                     list_abort[in_prothr_homo_aborts_2][0] == '4.0' or
-                     list_abort[in_prothr_homo_aborts_2][0] == '5.0' or
-                     list_abort[in_prothr_homo_aborts_2][0] == '6.0' or
-                     list_abort[in_prothr_homo_aborts_2][0] == '7.0' or
-                     list_abort[in_prothr_homo_aborts_2][0] == '-' or
-                     list_abort[in_prothr_homo_aborts_2][0] == ''
-                ) and
-                        list_prothr_homo[in_prothr_homo_aborts_2][0] == '1.0'):
-                    cnt_prothr_homo_mut_2_3_aborts = cnt_prothr_homo_mut_2_3_aborts + 1
-            print('PROTHR Homo Mutations 2 or more are:', cnt_prothr_homo_mut_2_3_aborts)
-            ######################################################
-            ### Start Count Factor PAI I Homozigous Mutation  ####
-            ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
-            ######################################################
-            cnt_pai_homo_mut_2_3_aborts = 0
-            for in_pai_homo_aborts_2 in range(len(list_abort)):
-                if ((list_abort[in_pai_homo_aborts_2][0] == '2.0' or
-                     list_abort[in_pai_homo_aborts_2][0] == '3.0' or
-                     list_abort[in_pai_homo_aborts_2][0] == '4.0' or
-                     list_abort[in_pai_homo_aborts_2][0] == '5.0' or
-                     list_abort[in_pai_homo_aborts_2][0] == '6.0' or
-                     list_abort[in_pai_homo_aborts_2][0] == '7.0' or
-                     list_abort[in_pai_homo_aborts_2][0] == '-' or
-                     list_abort[in_pai_homo_aborts_2][0] == ''
-                ) and
-                        list_pai_homo[in_pai_homo_aborts_2][0] == '1.0'):
-                    cnt_pai_homo_mut_2_3_aborts = cnt_pai_homo_mut_2_3_aborts + 1
-            print('PAI Homo Mutations 2 or more are:', cnt_pai_homo_mut_2_3_aborts)
-            ######################################################
-            ### Start Count Factor MTHFR Homozigous Mutation  ####
-            ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
-            ######################################################
-            cnt_mthfr_homo_mut_2_3_aborts = 0
-            for in_mthfr_homo_aborts_2 in range(len(list_abort)):
-                if ((list_abort[in_mthfr_homo_aborts_2][0] == '2.0' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == '3.0' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == '4.0' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == '5.0' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == '6.0' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == '7.0' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == '-' or
-                     list_abort[in_mthfr_homo_aborts_2][0] == ''
-                ) and
-                        list_mthfr_homo[in_mthfr_homo_aborts_2][0] == '1.0'):
-                    cnt_mthfr_homo_mut_2_3_aborts = cnt_mthfr_homo_mut_2_3_aborts + 1
-            print('MTHFR Homo Mutations 2 or more are:', cnt_mthfr_homo_mut_2_3_aborts)
-            ######################################################
-            ### Start Count Factor FVL Heterozigous Mutation  ####
-            ###                ALL PATIENTS                   ####
-            ######################################################
-            cnt_fvl_hetero_mutations = 0
-            for fvl_hetero_data in list_fvl_hetero:
-                if fvl_hetero_data[0] == '1.0':
-                    cnt_fvl_hetero_mutations = cnt_fvl_hetero_mutations + 1
-            print('FVL Hetero Mutations are:', cnt_fvl_hetero_mutations)
-            ######################################################
-            ### Start Count Factor FVL Homozygous Mutation    ####
-            ###                ALL PATIENTS                   ####
-            ######################################################
-            cnt_fvl_homo_mutations = 0
-            for fvl_homo_data in list_fvl_homo:
-                if fvl_homo_data[0] == '1.0':
-                    cnt_fvl_homo_mutations = cnt_fvl_homo_mutations + 1
-            print('FVL Homo Mutations are:', cnt_fvl_homo_mutations)
-            ######################################################
-            ###       Start Count Factor II(Prothrombin)      ####
-            ###             Heterozygous Mutation             ####
-            ###                ALL PATIENTS                   ####
-            ######################################################
-            cnt_prothr_hetero_mutations = 0
-            for prothr_hetero_data in list_prothr_hetero:
-                if prothr_hetero_data[0] == '1.0':
-                    cnt_prothr_hetero_mutations = cnt_prothr_hetero_mutations + 1
-            print('PROTHR Hetero Mutations are:', cnt_prothr_hetero_mutations)
-            ######################################################
-            ###       Start Count Factor II(Prothrombin)      ####
-            ###             Homozygous Mutation               ####
-            ###                ALL PATIENTS                   ####
-            ######################################################
-            cnt_prothr_homo_mutations = 0
-            for prothr_homo_data in list_prothr_homo:
-                if prothr_homo_data[0] == '1.0':
-                    cnt_prothr_homo_mutations = cnt_prothr_homo_mutations + 1
-            print('PROTHR Homo Mutations are:', cnt_prothr_homo_mutations)
-            ######################################################
-            ### Start Count Factor PAI I Homozygous Mutation  ####
-            ###                ALL PATIENTS                   ####
-            ######################################################
-            cnt_pai_homo_mutations = 0
-            for pai_homo_data in list_pai_homo:
-                if pai_homo_data[0] == '1.0':
-                    cnt_pai_homo_mutations = cnt_pai_homo_mutations + 1
-            print('PAI Homo Mutations are:', cnt_pai_homo_mutations)
-            ######################################################
-            ### Start Count Factor MTHFR Homozygous Mutation  ####
-            ###                ALL PATIENTS                   ####
-            ######################################################
-            cnt_mthfr_homo_mutations = 0
-            for mthfr_homo_data in list_mthfr_homo:
-                if mthfr_homo_data[0] == '1.0':
-                    cnt_mthfr_homo_mutations = cnt_mthfr_homo_mutations + 1
-            print('MTHFR Homo Mutations are:', cnt_mthfr_homo_mutations)
-
-            context3['fvl_hetero_mut_1_abort'] = cnt_fvl_hetero_mut_1_abort
-            context3['fvl_homo_mut_1_abort'] = cnt_fvl_homo_mut_1_abort
-            context3['prothr_hetero_mut_1_abort'] = cnt_prothr_hetero_mut_1_abort
-            context3['prothr_homo_mut_1_abort'] = cnt_prothr_homo_mut_1_abort
-            context3['pai_homo_mut_1_abort'] = cnt_pai_homo_mut_1_abort
-            context3['mthfr_homo_mut_1_abort'] = cnt_mthfr_homo_mut_1_abort
-
-            context3['cnt_fvl_hetero_prothr_hetero_mutations'] = cnt_fvl_hetero_prothr_hetero_mutations
-            context3['cnt_fvl_hetero_prothr_homo_mutations'] = cnt_fvl_hetero_prothr_homo_mutations
-            context3['cnt_fvl_hetero_pai_homo_mutations'] = cnt_fvl_hetero_pai_homo_mutations
-            context3['cnt_fvl_hetero_mthfr_homo_mutations'] = cnt_fvl_hetero_mthfr_homo_mutations
-            context3['cnt_fvl_homo_prothr_hetero_mutations'] = cnt_fvl_homo_prothr_hetero_mutations
-            context3['cnt_fvl_homo_prothr_homo_mutations'] = cnt_fvl_homo_prothr_homo_mutations
-            context3['cnt_fvl_homo_pai_homo_mutations'] = cnt_fvl_homo_pai_homo_mutations
-            context3['cnt_fvl_homo_mthfr_homo_mutations'] = cnt_fvl_homo_mthfr_homo_mutations
-            context3['cnt_prothr_hetero_pai_homo_mutations'] = cnt_prothr_hetero_pai_homo_mutations
-            context3['cnt_prothr_hetero_mthfr_homo_mutations'] = cnt_prothr_hetero_mthfr_homo_mutations
-            context3['cnt_pai_homo_mthfr_homo_mutations'] = cnt_pai_homo_mthfr_homo_mutations
-
-            context3['cnt_fvl_hetero_prothr_hetero_mut_abort1'] = cnt_fvl_hetero_prothr_hetero_mut_abort1
-            context3['cnt_fvl_hetero_prothr_homo_mut_abort1'] = cnt_fvl_hetero_prothr_homo_mut_abort1
-            context3['cnt_fvl_hetero_pai_homo_mut_abort1'] = cnt_fvl_hetero_pai_homo_mut_abort1
-            context3['cnt_fvl_hetero_mthfr_homo_mut_abort1'] = cnt_fvl_hetero_mthfr_homo_mut_abort1
-            context3['cnt_fvl_homo_prothr_hetero_mut_abort1'] = cnt_fvl_homo_prothr_hetero_mut_abort1
-            context3['cnt_fvl_homo_prothr_homo_mut_abort1'] = cnt_fvl_homo_prothr_homo_mut_abort1
-            context3['cnt_fvl_homo_pai_homo_mut_abort1'] = cnt_fvl_homo_pai_homo_mut_abort1
-            context3['cnt_fvl_homo_mthfr_homo_mut_abort1'] = cnt_fvl_homo_mthfr_homo_mut_abort1
-            context3['cnt_prothr_hetero_pai_homo_mut_abort1'] = cnt_prothr_hetero_pai_homo_mut_abort1
-            context3['cnt_prothr_hetero_mthfr_homo_mut_abort1'] = cnt_prothr_hetero_mthfr_homo_mut_abort1
-            context3['cnt_pai_homo_mthfr_homo_mut_abort1'] = cnt_pai_homo_mthfr_homo_mut_abort1
-
-            context3['cnt_fvl_hetero_prothr_hetero_mut_aborts'] = cnt_fvl_hetero_prothr_hetero_mut_aborts
-            context3['cnt_fvl_hetero_prothr_homo_mut_aborts'] = cnt_fvl_hetero_prothr_homo_mut_aborts
-            context3['cnt_fvl_hetero_pai_homo_mut_aborts'] = cnt_fvl_hetero_pai_homo_mut_aborts
-            context3['cnt_fvl_hetero_mthfr_homo_mut_aborts'] = cnt_fvl_hetero_mthfr_homo_mut_aborts
-            context3['cnt_fvl_homo_prothr_hetero_mut_aborts'] = cnt_fvl_homo_prothr_hetero_mut_aborts
-            context3['cnt_fvl_homo_prothr_homo_mut_aborts'] = cnt_fvl_homo_prothr_homo_mut_aborts
-            context3['cnt_fvl_homo_pai_homo_mut_aborts'] = cnt_fvl_homo_pai_homo_mut_aborts
-            context3['cnt_fvl_homo_mthfr_homo_mut_aborts'] = cnt_fvl_homo_mthfr_homo_mut_aborts
-            context3['cnt_prothr_hetero_pai_homo_mut_aborts'] = cnt_prothr_hetero_pai_homo_mut_aborts
-            context3['cnt_prothr_hetero_mthfr_homo_mut_aborts'] = cnt_prothr_hetero_mthfr_homo_mut_aborts
-            context3['cnt_pai_homo_mthfr_homo_mut_aborts'] = cnt_pai_homo_mthfr_homo_mut_aborts
-
-            ###        1 MUTATION FOR ALL PATIENTS           ####
-            context3['mthfr_homo_mut'] = cnt_mthfr_homo_mutations
-            context3['pai_homo_mut'] = cnt_pai_homo_mutations
-            context3['prothr_homo_mut'] = cnt_prothr_homo_mutations
-            context3['prothr_hetero_mut'] = cnt_prothr_hetero_mutations
-            context3['fvl_homo_mut'] = cnt_fvl_homo_mutations
-            context3['fvl_hetero_mut'] = cnt_fvl_hetero_mutations
-            ###        1 MUTATION FOR 2 OR MORE ABORTS        ####
-            context3['2_3_aborts_mthfr_homo_mut'] = cnt_mthfr_homo_mut_2_3_aborts
-            context3['2_3_aborts_pai_homo_mut'] = cnt_pai_homo_mut_2_3_aborts
-            context3['2_3_aborts_prothr_homo_mut'] = cnt_prothr_homo_mut_2_3_aborts
-            context3['2_3_aborts_prothr_hetero_mut'] = cnt_prothr_hetero_mut_2_3_aborts
-            context3['2_3_aborts_fvl_homo_mut'] = cnt_fvl_homo_mut_2_3_aborts
-            context3['2_3_aborts_fvl_hetero_mut'] = cnt_fvl_hetero_mut_2_3_aborts
-            # context3['7_abort_2_mut'] = count_abort7_mutations2
-            # context3['6_abort_2_mut'] = count_abort6_mutations2
-            # context3['5_abort_2_mut'] = count_abort5_mutations2
-            # context3['4_abort_2_mut'] = count_abort4_mutations2
-            # context3['3_abort_2_mut'] = count_abort3_mutations2
-            # context3['2_abort_2_mut'] = count_abort2_mutations2
-            # context3['1_abort_2_mut'] = count_abort1_mutations_2
-            # context3['4_aborts_3_mut'] = count_abort4_mutations3
-            # context3['3_aborts_3_mut'] = count_abort3_mutations3
-            # context3['2_aborts_3_mut'] = count_abort2_mutations3
-            # context3['1_abort_3_mut'] = count_abort1_mutations3
     return render(request, 'calc_patients_more_mut_p.html', context3)
-
 
 def register(request):
     if request.method == 'POST':
@@ -10459,6 +8951,868 @@ def preeclampsia_controli_eng(request):
 
 def conclusions(request):
     return render(request, 'conclusions.html')
+
+def pregnant_controls_mut_analysis_eng(request):
+    return render(request, 'pregnant_controls_mut_analysis_eng.html')
+
+def pregnant_mut_analysis_eng(request):
+    return render(request, 'pregnant_mut_analysis_eng.html')
+
+def mut_analysis_eng(request):
+    return render(request, 'mut_analysis_eng.html')
+
+def controli_mut_analysis_eng(request):
+    context3 = {}
+    prida_controli = PridaControli.objects.all()
+    prida_controli_form = PridaControliForm()
+
+    list_fvl_ng = PridaControli.objects.values_list('fvl_ng')
+    list_fvl_hetero = PridaControli.objects.values_list('fvl_hetero')
+    list_fvl_homo = PridaControli.objects.values_list('fvl_homo')
+
+    list_prothr_ng = PridaControli.objects.values_list('prothr_ng')
+    list_prothr_hetero = PridaControli.objects.values_list('prothr_hetero')
+    list_prothr_homo = PridaControli.objects.values_list('prothr_homo')
+
+    list_pai_ng = PridaControli.objects.values_list('pai_ng')
+    list_pai_hetero = PridaControli.objects.values_list('pai_hetero')
+    list_pai_homo = PridaControli.objects.values_list('pai_homo')
+
+    list_mthfr_ng = PridaControli.objects.values_list('mthfr_ng')
+    list_mthfr_hetero = PridaControli.objects.values_list('mthfr_hetero')
+    list_mthfr_homo = PridaControli.objects.values_list('mthfr_homo')
+
+    list_age_controli = PridaControli.objects.values_list('age')  ## Promenliva - spisak sas stoinostite na colona "age"
+
+    # print('LIST AGE CONTROLI', list_age_controli)
+    # print('Controli')
+    list_abort = PridaControli.objects.values_list('abort')
+    prida_age_list_controli = request.POST.getlist('age')  ## Spisak s izbrana ot usera vazrast
+
+    # print('LIST AGE', list_age_controli[0][0]+list_age_controli[0][0])
+    # from_age_controli = request.POST.get('from_age_controli')
+    # to_age_controli = request.POST.get('to_age_controli')
+    # if request.method == "GET":
+    #     pass
+    #     # context3['to_age_controli'] = to_age_controli
+    #     # print('Context', context3['to_age_controli'])
+    #
+    # elif request.method == "POST":
+    #     # print(context3['to_age_controli'])
+    #     pass
+
+    # for age in list_age_controli:
+    #     pass
+    # print(from_age_controli, to_age_controli)
+
+    prida_list_data_controli = request.POST.getlist('prida_list_data_controli')
+    print('PRIDA LIST MUTATIONS', prida_list_data_controli)
+
+    prida_abort_list_controli = request.POST.getlist('abort')
+    end_line_controli = request.POST.get('end_line_controli')
+    start_line_controli = request.POST.get('start_line_controli')
+    print(start_line_controli, end_line_controli)
+    # sublist = slice(int(start_line_controli), int(end_line_controli))
+    # print('SUBLIST Controli', sublist)
+
+    # sublist = slice(int(start_line_controli), int(end_line_controli))
+    # sublist_age_controli = list_age_controli[sublist]
+    #
+    # print(sublist_age_controli, 'SUBLIST')
+
+    count_age1 = 0
+    count_age2 = 0
+    count_age3 = 0
+
+    index_array_age1 = []
+    index_array_age2 = []
+    index_array_age3 = []
+
+    count_index_array_age = 0
+    sublist_fvl_ng_age1 = []
+    sublist_fvl_ng_age2 = []
+    sublist_fvl_ng_age3 = []
+
+    age_controli = ''
+    for data in prida_age_list_controli:
+        if data == 'age1' or data == 'age2' or data == 'age3':
+            age_controli = data  ## Priema stoinost na izbran checkbox v colona AGE
+    print(age_controli, 'AGE CONTROLI')
+
+    for data in prida_abort_list_controli:
+        if data == 'abort_1' or data == 'abort_2' or data == 'abort_3':
+            abort = data
+
+        if 'nbr_patients_selected_mutations' in request.POST:
+            print('Calculate Mutations Aborts')
+
+            # print(start_line_controli, end_line_controli)
+
+            context3['start_line_controli'] = int(start_line_controli)
+            context3['clients_list_controli'] = int(end_line_controli) - int(start_line_controli)
+            clients_list = context3['clients_list_controli']
+            sublist = slice(int(start_line_controli), int(end_line_controli))
+            context3['end_line_controli'] = int(end_line_controli)
+            print('SUBLIST Controli', sublist)
+
+            sublist_abort = list_abort[sublist]
+
+            sublist_fvl_ng = list_fvl_ng[sublist]
+            sublist_fvl_hetero = list_fvl_hetero[sublist]
+            sublist_fvl_homo = list_fvl_homo[sublist]
+
+            sublist_prothr_ng = list_prothr_ng[sublist]
+            sublist_prothr_hetero = list_prothr_hetero[sublist]
+            sublist_prothr_homo = list_prothr_homo[sublist]
+
+            sublist_pai_ng = list_pai_ng[sublist]
+            sublist_pai_hetero = list_pai_hetero[sublist]
+            sublist_pai_homo = list_pai_homo[sublist]
+
+            sublist_mthfr_ng = list_mthfr_ng[sublist]
+            sublist_mthfr_hetero = list_mthfr_hetero[sublist]
+            sublist_mthfr_homo = list_mthfr_homo[sublist]
+
+            res_func2 = func2(
+                prida_list_data_controli,
+                sublist_fvl_ng,
+                sublist_fvl_hetero,
+                sublist_fvl_homo,
+                sublist_prothr_ng,
+                sublist_prothr_hetero,
+                sublist_prothr_homo,
+                sublist_pai_ng,
+                sublist_pai_hetero,
+                sublist_pai_homo,
+                sublist_mthfr_ng,
+                sublist_mthfr_hetero,
+                sublist_mthfr_homo,
+                sublist_abort,
+                clients_list)
+            # context3['count_mutations_abort1'] = res_func2[0]
+            context3['count_mutations'] = res_func2[0]
+            # context3['percent_mutations_abort1'] = res_func2[1]
+            context3['percent_mutations'] = res_func2[1]
+            context3['factor_type'] = prida_list_data_controli
+    ######################
+    ##  Button Submit  ###
+    ######################
+    if request.method == 'POST':
+
+        if 'submit' in request.POST:
+            # context3['end_line_controli'] = int(end_line_controli)
+            # context3['start_line_controli'] = int(start_line_controli)
+            # context3['clients_list_controli'] = int(end_line_controli) - int(start_line_controli)
+            # clients_list = context3['clients_list_controli']
+            # print('START LINE', start_line_controli)
+
+            from_age_controli = request.POST.get('from_age_controli')
+            to_age_controli = request.POST.get('to_age_controli')
+            # sublist = slice(list_age_controli[23][0], len(list_age_controli))
+            # print('SUBLIST', sublist)
+
+            # context3['from_age_controli'] = int(from_age_controli)
+            # context3['to_age_controli'] = int(to_age_controli)
+            #
+            #
+            # print('FROM AGE', from_age_controli, to_age_controli, context3['from_age_controli']+
+            #       context3['to_age_controli'])
+            # print('LIST AGE CONTROLI', list_age_controli)
+            # age_list_no_none = []
+            # for age in list_age_controli:
+            #     if age[0] == 'None':
+            #         print('OK', age[0])
+            #     else:
+            #         age_list_no_none.append(age[0])
+            # print('AGE LIST NONE', age_list_no_none)
+            selected_age_array = []
+            count_age = 0
+            # for age in list_age_controli:
+            # print(age[0])
+            # if int(from_age_controli) <= age[0] <= int(to_age_controli):
+            #     selected_age_array.append(count_age)
+            # count_age = count_age + 1
+            # print('Selected New Age Array', selected_age_array)
+
+            sublist = slice(22, len(list_age_controli))
+            sublist_age = list_age_controli[sublist]
+            print('Sublist AGE', sublist_age)
+
+            sublist = slice(22, len(list_age_controli))
+            sublist_fvl_ng_controli = list_fvl_ng[sublist]
+            print('Sublist FVL_NG', sublist_fvl_ng_controli)
+
+            sublist = slice(22, len(list_age_controli))
+            sublist_fvl_hetero_controli = list_fvl_hetero[sublist]
+            print('Sublist FVL_HETERO', sublist_fvl_hetero_controli)
+
+            sublist = slice(22, len(list_age_controli))
+            sublist_fvl_homo_controli = list_fvl_homo[sublist]
+            print('Sublist FVL_HOMO', sublist_fvl_homo_controli)
+
+            sublist = slice(22, len(list_age_controli))
+            sublist_prothr_ng_controli = list_prothr_ng[sublist]
+            print('Sublist prothr_NG', sublist_prothr_ng_controli)
+
+            sublist = slice(22, len(list_age_controli))
+            sublist_prothr_hetero_controli = list_prothr_hetero[sublist]
+            print('Sublist prothr_HETERO', sublist_prothr_hetero_controli)
+
+            sublist = slice(22, len(list_age_controli))
+            sublist_prothr_homo_controli = list_prothr_homo[sublist]
+            print('Sublist prothr_HOMO', sublist_prothr_homo_controli)
+
+            sublist = slice(22, len(list_age_controli))
+            sublist_pai_ng_controli = list_pai_ng[sublist]
+            print('Sublist pai_NG', sublist_pai_ng_controli)
+
+            sublist = slice(22, len(list_age_controli))
+            sublist_pai_hetero_controli = list_pai_hetero[sublist]
+            print('Sublist pai_HETERO', sublist_pai_hetero_controli)
+
+            sublist = slice(22, len(list_age_controli))
+            sublist_pai_homo_controli = list_pai_homo[sublist]
+            print('Sublist pai_HOMO', sublist_pai_homo_controli)
+
+            sublist = slice(22, len(list_age_controli))
+            sublist_mthfr_ng_controli = list_mthfr_ng[sublist]
+            print('Sublist mthfr_NG', sublist_mthfr_ng_controli)
+
+            sublist = slice(22, len(list_age_controli))
+            sublist_mthfr_hetero_controli = list_mthfr_hetero[sublist]
+            # print('Sublist mthfr_HETERO', sublist_mthfr_hetero_controli)
+
+            sublist = slice(22, len(list_age_controli))
+            sublist_mthfr_homo_controli = list_mthfr_homo[sublist]
+            # print('Sublist mthfr_HOMO', sublist_mthfr_homo_controli)
+
+            fvl_ng = []
+            fvl_hetero = []
+            fvl_homo = []
+            prothr_ng = []
+            prothr_hetero = []
+            prothr_homo = []
+            pai_ng = []
+            pai_hetero = []
+            pai_homo = []
+            mthfr_ng = []
+            mthfr_hetero = []
+            mthfr_homo = []
+
+            for age in sublist_age:
+                print(age[0])
+                if int(from_age_controli) <= age[0] <= int(to_age_controli):
+                    selected_age_array.append(count_age)
+                count_age = count_age + 1
+            print('Selected New Age Array', selected_age_array)
+
+            for age in selected_age_array:
+                fvl_ng.append(sublist_fvl_ng_controli[age][0])
+                fvl_hetero.append(sublist_fvl_hetero_controli[age][0])
+                fvl_homo.append(sublist_fvl_homo_controli[age][0])
+
+                prothr_ng.append(sublist_prothr_ng_controli[age][0])
+                prothr_hetero.append(sublist_prothr_hetero_controli[age][0])
+                prothr_homo.append(sublist_prothr_homo_controli[age][0])
+
+                pai_ng.append(sublist_pai_ng_controli[age][0])
+                pai_hetero.append(sublist_pai_hetero_controli[age][0])
+                pai_homo.append(sublist_pai_homo_controli[age][0])
+
+            print('Selected FVL NG', fvl_ng)
+            print('Selected FVL HETERO', fvl_hetero)
+            print('Selected FVL HOMO', fvl_homo)
+
+            print('Selected prothr NG', prothr_ng)
+            print('Selected prothr HETERO', prothr_hetero)
+            print('Selected prothr HOMO', prothr_homo)
+
+            print('Selected pai NG', pai_ng)
+            print('Selected pai HETERO', pai_hetero)
+            print('Selected pai HOMO', pai_homo)
+
+            sublist_abort = list_abort[sublist]
+            # print('Sublist ABORTS', sublist_abort)
+
+            count_age1 = 0
+            count_age2 = 0
+            count_age3 = 0
+
+            index_array_age1 = []
+            index_array_age2 = []
+            index_array_age3 = []
+
+            count_index_array_age = 0
+
+            for age in sublist_age:
+                if 20 <= age[0] <= 30:
+                    count_age1 = count_age1 + 1
+                    index_array_age1.append(count_index_array_age)
+                elif 31 <= age[0] <= 40:
+                    count_age2 = count_age2 + 1
+                    index_array_age2.append(count_index_array_age)
+                elif 41 <= age[0] <= 50:
+                    count_age3 = count_age3 + 1
+                    index_array_age3.append(count_index_array_age)
+                count_index_array_age = count_index_array_age + 1
+
+            # print('AGE 1', index_array_age1)
+            # print('AGE 2', index_array_age2)
+            # print('AGE 3', index_array_age3)
+
+            for age in prida_age_list_controli:
+                if age == 'age1':
+                    context3['index_array_age'] = index_array_age1
+                    context3['age_interval'] = age
+                elif age == 'age2':
+                    context3['index_array_age'] = index_array_age2
+                    context3['age_interval'] = age
+                elif age == 'age3':
+                    context3['index_array_age'] = index_array_age3
+                    context3['age_interval'] = age
+
+            # print('INDEX AGE', context3['index_array_age'], context3['age_interval'])
+
+            count_abort1 = 0
+            count_abort2 = 0
+            count_abort3 = 0
+
+            index_array_abort1 = []
+            index_array_abort2 = []
+            index_array_abort3 = []
+
+            count_index_array_abort = 0
+
+            # for abort in context3['index_array_age']:
+            #
+            #     if sublist_abort[abort][0] == '0.0':
+            #         count_abort1 = count_abort1 + 1
+            #         index_array_abort1.append(abort)
+            #     elif sublist_abort[abort][0] == '2.0':
+            #         count_abort2 = count_abort2 + 1
+            #         index_array_abort2.append(abort)
+            #     elif sublist_abort[abort][0] != '?' or sublist_abort[abort][0] != '2.0' or sublist_abort[abort][
+            #         0] != '1.0':
+            #         count_abort3 = count_abort3 + 1
+            #         index_array_abort3.append(abort)
+            #
+            #     count_index_array_abort = count_index_array_abort + 1
+
+            sublist_fvl_ng = list_fvl_ng[sublist]
+            # print('Sub FVL NG', sublist_fvl_ng)
+            sublist_fvl_hetero = list_fvl_hetero[sublist]
+            # print('Sub FVL HETERO', sublist_fvl_hetero)
+
+            sublist_fvl_homo = list_fvl_homo[sublist]
+            # print('Sub FVL HOMO', sublist_fvl_homo)
+
+            sublist_prothr_ng = list_prothr_ng[sublist]
+            sublist_prothr_hetero = list_prothr_hetero[sublist]
+            sublist_prothr_homo = list_prothr_homo[sublist]
+
+            sublist_pai_ng = list_pai_ng[sublist]
+            sublist_pai_hetero = list_pai_hetero[sublist]
+            sublist_pai_homo = list_pai_homo[sublist]
+
+            sublist_mthfr_ng = list_mthfr_ng[sublist]
+            sublist_mthfr_hetero = list_mthfr_hetero[sublist]
+            sublist_mthfr_homo = list_mthfr_homo[sublist]
+
+            count_fvl_ng = 0
+            count_fvl_hetero = 0
+            count_fvl_homo = 0
+
+            count_prothr_ng = 0
+            count_prothr_hetero = 0
+            count_prothr_homo = 0
+
+            count_pai_ng = 0
+            count_pai_hetero = 0
+            count_pai_homo = 0
+
+            count_mthfr_ng = 0
+            count_mthfr_hetero = 0
+            count_mthfr_homo = 0
+            print('P LIST D', prida_list_data_controli)
+            for mutation in prida_list_data_controli:
+                if mutation == 'fvl_ng':
+                    for m in selected_age_array:
+                        # print('M', m)
+                        if sublist_fvl_ng_controli[m][0] == '1.0' or sublist_fvl_ng_controli[m][0] == '1':
+                            count_fvl_ng = count_fvl_ng + 1
+                    print('FVL NG NUMBER', count_fvl_ng)
+
+                elif mutation == 'fvl_hetero':
+                    for m in selected_age_array:
+                        print('M', m)
+                        if sublist_fvl_hetero_controli[m][0] == '1.0' or sublist_fvl_hetero_controli[m][0] == '1':
+                            count_fvl_hetero = count_fvl_hetero + 1
+                    print('FVL hetero NUMBER', count_fvl_hetero)
+                elif mutation == 'fvl_homo':
+                    for m in selected_age_array:
+                        print('M', m)
+                        if sublist_fvl_homo_controli[m][0] == '1.0' or sublist_fvl_homo_controli[m][0] == '1':
+                            count_fvl_homo = count_fvl_homo + 1
+                    print('FVL homo NUMBER', count_fvl_homo)
+
+                elif mutation == 'prothr_ng':
+                    for m in selected_age_array:
+                        print('M', m)
+                        if sublist_prothr_ng_controli[m][0] == '1.0' or sublist_prothr_ng_controli[m][0] == '1':
+                            count_prothr_ng = count_prothr_ng + 1
+                    print('prothr_ng NUMBER', count_prothr_ng)
+
+                elif mutation == 'prothr_hetero':
+                    for m in selected_age_array:
+                        print('M', m)
+                        if sublist_prothr_hetero_controli[m][0] == '1.0' or sublist_prothr_hetero_controli[m][0] == '1':
+                            count_prothr_hetero = count_prothr_hetero + 1
+                    print('prothr_hetero NUMBER', count_prothr_hetero)
+
+                elif mutation == 'prothr_homo':
+                    for m in selected_age_array:
+                        print('M', m)
+                        if sublist_prothr_homo_controli[m][0] == '1.0' or sublist_prothr_homo_controli[m][0] == '1':
+                            count_prothr_homo = count_prothr_homo + 1
+                    print('prothr_homo NUMBER', count_prothr_homo)
+
+                elif mutation == 'pai_ng':
+                    for m in selected_age_array:
+                        print('M', m)
+                        if sublist_pai_ng_controli[m][0] == '1.0' or sublist_pai_ng_controli[m][0] == '1':
+                            count_pai_ng = count_pai_ng + 1
+                    print('pai_ng NUMBER', count_pai_ng)
+
+                elif mutation == 'pai_hetero':
+                    for m in selected_age_array:
+                        print('M', m)
+                        if sublist_pai_hetero_controli[m][0] == '1.0' or sublist_pai_hetero_controli[m][0] == '1':
+                            count_pai_hetero = count_pai_hetero + 1
+                    print('pai_ng NUMBER', count_pai_hetero)
+
+                elif mutation == 'pai_homo':
+                    for m in selected_age_array:
+                        print('M', m)
+                        if sublist_pai_homo_controli[m][0] == '1.0' or sublist_pai_homo_controli[m][0] == '1':
+                            count_pai_homo = count_pai_homo + 1
+                    print('pai_homo NUMBER', count_pai_homo)
+                elif mutation == 'mthfr_ng':
+                    for m in selected_age_array:
+                        print('M', m)
+                        if sublist_mthfr_ng_controli[m][0] == '1.0' or sublist_mthfr_ng_controli[m][0] == '1':
+                            count_mthfr_ng = count_mthfr_ng + 1
+                    print('mthfr_ng NUMBER', count_mthfr_ng)
+
+                elif mutation == 'mthfr_hetero':
+                    for m in selected_age_array:
+                        print('M', m)
+                        if sublist_mthfr_hetero_controli[m][0] == '1.0' or sublist_mthfr_hetero_controli[m][0] == '1':
+                            count_mthfr_hetero = count_mthfr_hetero + 1
+                    print('mthfr_ng NUMBER', count_mthfr_hetero)
+
+                elif mutation == 'mthfr_homo':
+                    for m in selected_age_array:
+                        print('M', m)
+                        if sublist_mthfr_homo_controli[m][0] == '1.0' or sublist_mthfr_homo_controli[m][0] == '1':
+                            count_mthfr_homo = count_mthfr_homo + 1
+                    print('mthfr_homo NUMBER', count_mthfr_homo)
+
+            # print('FVL NG NUMBER', count_fvl_ng, count_fvl_ng / len(selected_age_array) * 100)
+            # print('FVL HETERO NUMBER', count_fvl_hetero, count_fvl_hetero / len(selected_age_array) * 100)
+            # print('FVL HOMO NUMBER', count_fvl_homo, count_fvl_homo / len(selected_age_array) * 100)
+            # print('PROTHR NG NUMBER', count_prothr_ng, count_prothr_ng / len(selected_age_array) * 100)
+            # print('PROTHR HETERO NUMBER', count_prothr_hetero, count_prothr_hetero / len(selected_age_array) * 100)
+            # print('PROTHR HOMO NUMBER', count_prothr_homo, count_prothr_homo / len(selected_age_array) * 100)
+            # print('PAI NG NUMBER', count_pai_ng, count_pai_ng / len(selected_age_array) * 100)
+            # print('PAI HETERO NUMBER', count_pai_hetero, count_pai_hetero / len(selected_age_array) * 100)
+            # print('PAI HOMO NUMBER', count_pai_homo, count_pai_homo / len(selected_age_array) * 100)
+            # print('MTHFR NG NUMBER', count_mthfr_ng, count_mthfr_ng / len(selected_age_array) * 100)
+            # print('MTHFR HETERO NUMBER', count_mthfr_hetero, count_mthfr_hetero / len(selected_age_array) * 100)
+            # print('MTHFR HOMO NUMBER', count_mthfr_homo, count_mthfr_homo / len(selected_age_array) * 100)
+
+            context3['mutations_fvl_ng'] = count_fvl_ng
+            context3['mutations_fvl_hetero'] = count_fvl_hetero
+            context3['mutations_fvl_homo'] = count_fvl_homo
+            context3['mutations_prothr_ng'] = count_prothr_ng
+            context3['mutations_prothr_hetero'] = count_prothr_hetero
+            context3['mutations_prothr_homo'] = count_prothr_homo
+            context3['mutations_pai_ng'] = count_pai_ng
+            context3['mutations_pai_hetero'] = count_pai_hetero
+            context3['mutations_pai_homo'] = count_pai_homo
+            context3['mutations_mthfr_ng'] = count_mthfr_ng
+            context3['mutations_mthfr_hetero'] = count_mthfr_hetero
+            context3['mutations_mthfr_homo'] = count_mthfr_homo
+
+            if len(selected_age_array) != 0:
+                context3['mutations_fvl_ng_percent'] = count_fvl_ng / len(selected_age_array) * 100
+                context3['mutations_fvl_hetero_percent'] = count_fvl_hetero / len(selected_age_array) * 100
+                context3['mutations_fvl_homo_percent'] = count_fvl_homo / len(selected_age_array) * 100
+                context3['mutations_prothr_ng_percent'] = count_prothr_ng / len(selected_age_array) * 100
+                context3['mutations_prothr_hetero_percent'] = count_prothr_hetero / len(selected_age_array) * 100
+                context3['mutations_prothr_homo_percent'] = count_prothr_homo / len(selected_age_array) * 100
+                context3['mutations_pai_ng_percent'] = count_pai_ng / len(selected_age_array) * 100
+                context3['mutations_pai_hetero_percent'] = count_pai_hetero / len(selected_age_array) * 100
+                context3['mutations_pai_homo_percent'] = count_pai_homo / len(selected_age_array) * 100
+                context3['mutations_mthfr_ng_percent'] = count_mthfr_ng / len(selected_age_array) * 100
+                context3['mutations_mthfr_hetero_percent'] = count_mthfr_hetero / len(selected_age_array) * 100
+                context3['mutations_mthfr_homo_percent'] = count_mthfr_homo / len(selected_age_array) * 100
+
+            # print(context3['age_interval'], 'New')
+            # print(context3['index_array_age'], 'New', sublist_age)
+            # print(prida_list_data_controli, 'Prida List Data')
+            #
+            # print(sublist_fvl_hetero)
+            context3['sublist_abort'] = sublist_abort
+
+            ####################################################
+            ############## Start Count Age #####################
+            ####################################################
+
+            # context3['count_age1'] = count_age1
+            # # print(sublist_age)
+            # sublist_fvl_ng = list_fvl_ng[sublist]
+            # sublist_age = list_age_controli[sublist]
+            # context3['sublist_age'] = sublist_age
+            # # print(sublist_age)
+            # sublist_fvl_hetero = list_fvl_hetero[sublist]
+            # sublist_fvl_homo = list_fvl_homo[sublist]
+            #
+            # sublist_prothr_ng = list_prothr_ng[sublist]
+            # sublist_prothr_hetero = list_prothr_hetero[sublist]
+            # sublist_prothr_homo = list_prothr_homo[sublist]
+            #
+            # sublist_pai_ng = list_pai_ng[sublist]
+            # sublist_pai_hetero = list_pai_hetero[sublist]
+            # sublist_pai_homo = list_pai_homo[sublist]
+            #
+            # sublist_mthfr_ng = list_mthfr_ng[sublist]
+            # sublist_mthfr_hetero = list_mthfr_hetero[sublist]
+            # sublist_mthfr_homo = list_mthfr_homo[sublist]
+            #
+            # ####################################################
+            # ####################### FVL_NG #####################
+            # ####################################################
+            #
+            # f_fvl_ng = factor(sublist_fvl_ng)
+            #
+            # context3['count_fvl_ng'] = f_fvl_ng[0]
+            # context3['count_fvl_ng_0'] = f_fvl_ng[1]
+            # context3['fvl_1_ng_percent'] = f_fvl_ng[2]
+            # context3['count_all_fvl_ng_data'] = f_fvl_ng[3]
+            #
+            # # print(sublist_fvl_ng)
+            # ####################################################
+            # ####################################################
+            #
+            # ####################################################
+            # ####################### FVL_NG_HETERO ##############
+            # ####################################################
+            #
+            # f_fvl_hetero = factor(sublist_fvl_hetero)
+            #
+            # context3['count_fvl_hetero'] = f_fvl_hetero[0]
+            # context3['count_fvl_hetero_0'] = f_fvl_hetero[1]
+            # context3['fvl_1_hetero_percent'] = f_fvl_hetero[2]
+            # context3['count_all_fvl_hetero_data'] = f_fvl_hetero[3]
+            #
+            # ####################################################
+            # ####################################################
+            #
+            # ####################################################
+            # ####################### FVL_HOMO ################
+            # ####################################################
+            #
+            # f_fvl_homo = factor(sublist_fvl_homo)
+            #
+            # context3['count_fvl_homo'] = f_fvl_homo[0]
+            # context3['count_fvl_homo_0'] = f_fvl_homo[1]
+            # context3['fvl_1_homo_percent'] = f_fvl_homo[2]
+            # context3['count_all_fvl_homo_data'] = f_fvl_homo[3]
+            #
+            # ####################################################
+            # ####################################################
+            #
+            # ####################################################
+            # ####################### PROTHR_NG ##################
+            # ####################################################
+            #
+            # f_prothr_ng = factor(sublist_prothr_ng)
+            #
+            # context3['count_prothr_ng'] = f_prothr_ng[0]
+            # context3['count_prothr_ng_0'] = f_prothr_ng[1]
+            # context3['prothr_1_ng_percent'] = f_prothr_ng[2]
+            # context3['count_all_prothr_ng_data'] = f_prothr_ng[3]
+            #
+            # ####################################################
+            # ####################################################
+            #
+            # ####################################################
+            # ####################### PROTHR_HETERO ##############
+            # ####################################################
+            #
+            # f_prothr_hetero = factor(sublist_prothr_hetero)
+            #
+            # context3['count_prothr_hetero'] = f_prothr_hetero[0]
+            # context3['count_prothr_hetero_0'] = f_prothr_hetero[1]
+            # context3['prothr_1_hetero_percent'] = f_prothr_hetero[2]
+            # context3['count_all_prothr_hetero_data'] = f_prothr_hetero[3]
+            #
+            # ####################################################
+            # ####################################################
+            #
+            # ####################################################
+            # ####################### PROTHR_HOMO ################
+            # ####################################################
+            #
+            # f_prothr_homo = factor(sublist_prothr_homo)
+            #
+            # context3['count_prothr_homo'] = f_prothr_homo[0]
+            # context3['count_prothr_homo_0'] = f_prothr_homo[1]
+            # context3['prothr_1_homo_percent'] = f_prothr_homo[2]
+            # context3['count_all_prothr_homo_data'] = f_prothr_homo[3]
+            #
+            # ####################################################
+            # ####################################################
+            #
+            # ####################################################
+            # ####################### PAI_NG #####################
+            # ####################################################
+            #
+            # f_pai_ng = factor(sublist_pai_ng)
+            #
+            # context3['count_pai_ng'] = f_pai_ng[0]
+            # context3['count_pai_ng_0'] = f_pai_ng[1]
+            # context3['pai_1_ng_percent'] = f_pai_ng[2]
+            # context3['count_all_pai_ng_data'] = f_pai_ng[3]
+            #
+            # ####################################################
+            # ####################################################
+            #
+            # ####################################################
+            # ####################### PAI_HETERO #################
+            # ####################################################
+            #
+            # f_pai_hetero = factor(sublist_pai_hetero)
+            #
+            # context3['count_pai_hetero'] = f_pai_hetero[0]
+            # context3['count_pai_hetero_0'] = f_pai_hetero[1]
+            # context3['pai_1_hetero_percent'] = f_pai_hetero[2]
+            # context3['count_all_pai_hetero_data'] = f_pai_hetero[3]
+            #
+            # ####################################################
+            # ####################################################
+            #
+            # ####################################################
+            # ####################### PAI_HOMO ###################
+            # ####################################################
+            #
+            # f_pai_homo = factor(sublist_pai_homo)
+            #
+            # context3['count_pai_homo'] = f_pai_homo[0]
+            # context3['count_pai_homo_0'] = f_pai_homo[1]
+            # context3['pai_1_homo_percent'] = f_pai_homo[2]
+            # context3['count_all_pai_homo_data'] = f_pai_homo[3]
+            #
+            # ####################################################
+            # ####################################################
+            #
+            # ####################################################
+            # ####################### MTHFR_NG ###################
+            # ####################################################
+            #
+            # f_mthfr_ng = factor(sublist_mthfr_ng)
+            #
+            # context3['count_mthfr_ng'] = f_mthfr_ng[0]
+            # context3['count_mthfr_ng_0'] = f_mthfr_ng[1]
+            # context3['mthfr_1_ng_percent'] = f_mthfr_ng[2]
+            # context3['count_all_mthfr_ng_data'] = f_mthfr_ng[3]
+            #
+            # ####################################################
+            # ####################################################
+            #
+            # ####################################################
+            # ####################### MTHFR_HETERO ###############
+            # ####################################################
+            #
+            # f_mthfr_hetero = factor(sublist_mthfr_hetero)
+            #
+            # context3['count_mthfr_hetero'] = f_mthfr_hetero[0]
+            # context3['count_mthfr_hetero_0'] = f_mthfr_hetero[1]
+            # context3['mthfr_1_hetero_percent'] = f_mthfr_hetero[2]
+            # context3['count_all_mthfr_hetero_data'] = f_mthfr_hetero[3]
+            #
+            # ####################################################
+            # ####################################################
+            #
+            # ####################################################
+            # ####################### MTHFR_HOMO #################
+            # ####################################################
+            #
+            # f_mthfr_homo = factor(sublist_mthfr_homo)
+            #
+            # context3['count_mthfr_homo'] = f_mthfr_homo[0]
+            # context3['count_mthfr_homo_0'] = f_mthfr_homo[1]
+            # context3['mthfr_1_homo_percent'] = f_mthfr_homo[2]
+            # context3['count_all_mthfr_homo_data'] = f_mthfr_homo[3]
+        ####################################################
+        ####################################################
+
+    #########################
+    ##  End Button Submit  ##
+    #########################
+
+    if request.method == 'POST':
+        if 'btn_patients_more_mutations' in request.POST:
+            print('Controli')
+
+            count_pai_homo_mutations = 0
+            for pai_homo_data in list_pai_homo:
+                if pai_homo_data[0] == '1.0':
+                    count_pai_homo_mutations = count_pai_homo_mutations + 1
+            # print('PAI Homo Mutations are:', count_pai_homo_mutations)
+
+            count_mthfr_homo_mutations = 0
+            for mthfr_homo_data in list_mthfr_homo:
+                if mthfr_homo_data[0] == '1.0':
+                    count_mthfr_homo_mutations = count_mthfr_homo_mutations + 1
+            # print('MTHFR Homo Mutations are:', count_mthfr_homo_mutations)
+            #
+            # print('######################################')
+            # print('\n')
+
+            # print('More Mutations!@!!', prida_list_data_controli, len(prida_list_data_controli))
+            factor_1 = []
+            # list_factors = []
+
+            for prida_list in prida_list_data_controli:
+                if prida_list == 'fvl_hetero':
+                    factor_1.append(list_fvl_hetero)
+                elif prida_list == 'fvl_homo':
+                    factor_1.append(list_fvl_homo)
+                elif prida_list == 'prothr_hetero':
+                    factor_1.append(list_prothr_hetero)
+                elif prida_list == 'prothr_homo':
+                    factor_1.append(list_prothr_homo)
+                elif prida_list == 'pai_hetero':
+                    factor_1.append(list_pai_hetero)
+                elif prida_list == 'pai_homo':
+                    factor_1.append(list_pai_homo)
+                elif prida_list == 'mthfr_hetero':
+                    factor_1.append(list_mthfr_hetero)
+                elif prida_list == 'mthfr_homo':
+                    factor_1.append(list_mthfr_homo)
+                # list_factors.append(factor_1)
+
+            # print('List Factor_1')
+            # print(factor_1, len(factor_1), len(list_fvl_ng))
+            rows_number = len(list_fvl_ng)
+
+            count_factor_mutations = 0
+            count_rows_num = 0
+            list_index_mutations = []
+            dict_patients_data_mutations = {}
+            list_age_mutations = []
+            list_aborts_mutations = []
+
+            if len(prida_list_data_controli) == 2:
+                for i in range(rows_number):
+                    if factor_1[0][i][0] == factor_1[1][i][0] == '1.0':
+                        list_index_mutations.append(count_rows_num)
+                        # list_age_mutations.append(list_age[count_rows_num][0])
+                        list_aborts_mutations.append(list_abort[count_rows_num][0])
+                        count_factor_mutations = count_factor_mutations + 1
+                    count_rows_num = count_rows_num + 1
+
+            elif len(prida_list_data_controli) == 3:
+                for i in range(rows_number):
+                    if factor_1[0][i][0] == factor_1[1][i][0] == factor_1[2][i][0] == '1.0':
+                        list_index_mutations.append(count_rows_num)
+                        # list_age_mutations.append(list_age[count_rows_num][0])
+                        list_aborts_mutations.append(list_abort[count_rows_num][0])
+                        count_factor_mutations = count_factor_mutations + 1
+                    count_rows_num = count_rows_num + 1
+
+            elif len(prida_list_data_controli) == 4:
+                for i in range(rows_number):
+                    if factor_1[0][i][0] == factor_1[1][i][0] == factor_1[2][i][0] == factor_1[3][i][0] == '1.0':
+                        list_index_mutations.append(count_rows_num)
+                        # list_age_mutations.append(list_age[count_rows_num][0])
+                        list_aborts_mutations.append(list_abort[count_rows_num][0])
+                        count_factor_mutations = count_factor_mutations + 1
+                    count_rows_num = count_rows_num + 1
+
+            dict_patients_data_mutations['mutations_number'] = len(prida_list_data_controli)
+            dict_patients_data_mutations['age'] = list_age_mutations
+            dict_patients_data_mutations['aborts'] = list_aborts_mutations
+            # print('List of Mutations')
+            print(list_index_mutations, count_factor_mutations, count_rows_num)
+            # print('List Patients with Mutations')
+            print(dict_patients_data_mutations)
+
+            print('OHO', factor_1)
+            print(list_prothr_ng)
+            data_fvl_hetero = []
+            data_index_fvl_hetero = []
+
+            count_fvl_hetero = 0
+            index_fvl_hetero = 0
+            for fvl_hetero in list_fvl_hetero:
+
+                if fvl_hetero[0] == '1.0':
+                    data_fvl_hetero.append(fvl_hetero)
+                    data_index_fvl_hetero.append(index_fvl_hetero)
+
+                    count_fvl_hetero = count_fvl_hetero + 1
+                index_fvl_hetero = index_fvl_hetero + 1
+
+            index_mutation = []
+            for mutation in data_index_fvl_hetero:
+                if list_pai_hetero[mutation][0] == '1.0':
+                    index_mutation.append(mutation)
+            # print(index_mutation, len(index_mutation))
+
+    ##  Vizualization of the data ###
+    if request.method == "POST":
+        if 'save_controli' in request.POST:
+            pk = request.POST.get('save')
+            if not pk:
+                prida_controli_form = PridaControliForm(request.POST)
+            else:
+                p_controli = PridaControli.objects.get(id=pk)
+                prida_controli_form = PridaControliForm(request.POST, instance=p_controli)
+
+            prida_controli_form.save()
+            prida_controli_form = PridaControliForm()
+
+        elif 'delete' in request.POST:
+            pk = request.POST.get('delete')
+            p_controli = PridaControli.objects.get(id=pk)
+            p_controli.delete()
+        elif 'edit' in request.POST:
+            pk = request.POST.get('edit')
+            p_controli = PridaControli.objects.get(id=pk)
+            prida_controli_form = PridaControliForm(instance=p_controli)
+            print('Hello')
+    # print(prida_list_data_controli, len(prida_list_data_controli))
+    for select_factor in prida_list_data_controli:
+        if select_factor == 'fvl_ng':
+            context3['factor_fvl_ng'] = select_factor
+        elif select_factor == 'fvl_hetero':
+            context3['factor_fvl_hetero'] = select_factor
+        print(select_factor)
+
+    if prida_list_data_controli:
+        print(prida_list_data_controli[0])
+
+        context3['prida_list_data_controli'] = prida_list_data_controli
+        # print(context3['prida_list_data_controli'])
+
+    # context3['prida_list_data'] = prida_list_data
+    context3['prida_controli'] = prida_controli
+    context3['prida_controli_form'] = prida_controli_form
+    context3['st_line'] = start_line_controli
+
+    return render(request, 'controli_mut_analysis_eng.html', context3)
 
 
 def new_patient(request):

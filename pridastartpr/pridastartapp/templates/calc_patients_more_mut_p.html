@@ -7,23 +7,42 @@
     <title>CalculateMoreMutations</title>
 </head>
 <body>
+<!--<div class="container">-->
+<!--    <div class="row mt-4">-->
+<!--        <div class="col">-->
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <h1>PRIDA</h1>-->
+<!--                        <h2>Patients with Spontaneous  Miscarriages</h2>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <form method="post" action="{% url 'pregnant_mut_analysis_eng' %}">-->
+<!--                            {% csrf_token %}-->
+<!--                            <button class="btn btn-primary btn-lg">Back</button>-->
+<!--                        </form>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <div class="container">
-    <div class="row mt-4">
-        <div class="col">
-            <table>
-                <tr>
-                    <td>
-                        <h1>PRIDA</h1>
-                        <h2>Patients with Spontaneous  Miscarriages</h2>
-                    </td>
-                    <td>
-                        <form method="post" action="{% url 'database_eng' %}">
-                            {% csrf_token %}
-                            <button class="btn btn-primary btn-lg">Back</button>
-                        </form>
-                    </td>
-                </tr>
-            </table>
+    <div class="d-grid gap-2 d-md-block">
+        <div class="row mt-4">
+            {% if user.is_authenticated %}
+            <div class="user-info">
+                <a href="{% url 'pregnant_mut_analysis_eng' %}" class="btn btn-primary">BACK</a>
+            </div>
+            <div class="user-info">
+                <span class="navbar-text">user name: {{ user.username }}</span>
+                <a href="{% url 'logout_eng' %}" class="btn btn-primary btn-lg">Logout</a>
+            </div>
+            {% else %}
+            <div class="auth-buttons">
+                <a href="{% url 'login_eng' %}" class="btn btn-primary btn-lg">Login</a>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -102,46 +121,46 @@
                 <tr>
                     <td bgcolor="gray"><b>Factor Type</b></td>
                     <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For all Patients</b></td>
-                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 1 Miscarriage</b></td>
-                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 2 or more Miscarriages</b></td>
+<!--                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 1 Miscarriage</b></td>-->
+<!--                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>For Patients with 2 or more Miscarriages</b></td>-->
 
 
                 </tr>
                 <tr>
                     <td >Heterozygous Factor V Leiden Mutation</td>
-                    <td >{{ fvl_hetero_mut }}</td>
-                    <td >{{ fvl_hetero_mut_1_abort }}</td>
-                    <td >{{ 2_3_aborts_fvl_hetero_mut }}</td>
+                    <td >{{ count_fvl_hetero }}</td>
+<!--                    <td >{{ fvl_hetero_mut_1_abort }}</td>-->
+<!--                    <td >{{ 2_3_aborts_fvl_hetero_mut }}</td>-->
                 </tr>
                 <tr>
                     <td >Homozygous Factor V Leiden Mutation</td>
-                    <td >{{ fvl_homo_mut }}</td>
-                    <td >{{ fvl_homo_mut_1_abort }}</td>
-                    <td >{{ 2_3_aborts_fvl_homo_mut }}</td>
+                    <td >{{ count_fvl_homo }}</td>
+<!--                    <td >{{ fvl_homo_mut_1_abort }}</td>-->
+<!--                    <td >{{ 2_3_aborts_fvl_homo_mut }}</td>-->
                 </tr>
                 <tr>
                     <td >Factor II (Prothrombin) Heterozygous Mutation</td>
-                    <td >{{ prothr_hetero_mut }}</td>
-                    <td >{{ prothr_hetero_mut_1_abort }}</td>
-                    <td >{{ 2_3_aborts_prothr_hetero_mut }}</td>
+                    <td >{{ count_prothr_hetero }}</td>
+<!--                    <td >{{ prothr_hetero_mut_1_abort }}</td>-->
+<!--                    <td >{{ 2_3_aborts_prothr_hetero_mut }}</td>-->
                 </tr>
                 <tr>
                     <td >Factor II (Prothrombin) Homozygous Mutation</td>
-                    <td >{{ prothr_homo_mut }}</td>
-                    <td >{{ prothr_homo_mut_1_abort }}</td>
-                    <td >{{ 2_3_aborts_prothr_homo_mut }}</td>
+                    <td >{{ count_prothr_homo }}</td>
+<!--                    <td >{{ prothr_homo_mut_1_abort }}</td>-->
+<!--                    <td >{{ 2_3_aborts_prothr_homo_mut }}</td>-->
                 </tr>
                 <tr>
                     <td >Factor PAI I Homozygous Mutation</td>
-                    <td >{{ pai_homo_mut }}</td>
-                    <td >{{ pai_homo_mut_1_abort }}</td>
-                    <td >{{ 2_3_aborts_pai_homo_mut }}</td>
+                    <td >{{ count_pai_homo }}</td>
+<!--                    <td >{{ pai_homo_mut_1_abort }}</td>-->
+<!--                    <td >{{ 2_3_aborts_pai_homo_mut }}</td>-->
                 </tr>
                 <tr>
                     <td >Factor MTHFR Homozygous Mutation</td>
-                    <td >{{ mthfr_homo_mut }}</td>
-                    <td >{{ mthfr_homo_mut_1_abort }}</td>
-                    <td >{{ 2_3_aborts_mthfr_homo_mut }}</td>
+                    <td >{{ count_mthfr_homo }}</td>
+<!--                    <td >{{ mthfr_homo_mut_1_abort }}</td>-->
+<!--                    <td >{{ 2_3_aborts_mthfr_homo_mut }}</td>-->
                 </tr>
 
                 </thead>
@@ -167,1291 +186,1291 @@
                         Factor II (Prothrombin) Heterozygous Mutation</td>
 <!--                    <td >{{ cnt_fvl_hetero_prothr_hetero_mutations }}</td>-->
 <!--                    <td >{{ cnt_fvl_hetero_prothr_hetero_mut_abort1 }}</td>-->
-                    <td >{{ cnt_fvl_hetero_prothr_hetero_mut_aborts }}</td>
+                    <td >{{ count_fvl_prothr_hetero }}</td>
                 </tr>
                 <tr>
                     <td >Heterozygous Factor V Leiden Mutation <br>
                         Factor II (Prothrombin) Homozygous Mutation</td>
 <!--                    <td >{{ cnt_fvl_hetero_prothr_homo_mutations }}</td>-->
 <!--                    <td >{{ cnt_fvl_hetero_prothr_homo_mut_abort1 }}</td>-->
-                    <td >{{ cnt_fvl_hetero_prothr_homo_mut_aborts }}</td>
+                    <td >{{ count_fvl_hetero_prothr_homo }}</td>
                 </tr>
                 <tr>
                     <td >Heterozygous Factor V Leiden Mutation <br>
                         Factor PAI I Homozygous Mutation</td>
 <!--                    <td >{{ cnt_fvl_hetero_pai_homo_mutations }}</td>-->
 <!--                    <td >{{ cnt_fvl_hetero_pai_homo_mut_abort1 }}</td>-->
-                    <td >{{ cnt_fvl_hetero_pai_homo_mut_aborts }}</td>
+                    <td >{{ count_fvl_hetero_pai_homo }}</td>
                 </tr>
                 <tr>
                     <td >Heterozygous Factor V Leiden Mutation <br>
                         Factor MTHFR Homozygous Mutation</td>
 <!--                    <td >{{ cnt_fvl_hetero_mthfr_homo_mutations }}</td>-->
 <!--                    <td >{{ cnt_fvl_hetero_mthfr_homo_mut_abort1 }}</td>-->
-                    <td >{{ cnt_fvl_hetero_mthfr_homo_mut_aborts }}</td>
+                    <td >{{ count_fvl_hetero_mthfr_homo }}</td>
                 </tr>
                 <tr>
                     <td >Homozygous Factor V Leiden Mutation <br>
                         Factor II (Prothrombin) Heterozygous Mutation</td>
 <!--                    <td >{{ cnt_fvl_homo_prothr_hetero_mutations }}</td>-->
 <!--                    <td >{{ cnt_fvl_homo_prothr_hetero_mut_abort1 }}</td>-->
-                    <td >{{ cnt_fvl_homo_prothr_hetero_mut_aborts }}</td>
+                    <td >{{ count_fvl_homo_prothr_hetero }}</td>
                 </tr>
                 <tr>
                     <td >Homozygous Factor V Leiden Mutation <br>
                         Factor II (Prothrombin) Homozygous Mutation</td>
 <!--                    <td >{{ cnt_fvl_homo_prothr_homo_mutations }}</td>-->
 <!--                    <td >{{ cnt_fvl_homo_prothr_homo_mut_abort1 }}</td>-->
-                    <td >{{ cnt_fvl_homo_prothr_homo_mut_aborts }}</td>
+                    <td >{{ count_fvl_homo_prothr_homo }}</td>
                 </tr>
                 <tr>
                     <td >Homozygous Factor V Leiden Mutation <br>
                         Factor PAI I Homozygous Mutation</td>
 <!--                    <td >{{ cnt_fvl_homo_pai_homo_mutations }}</td>-->
 <!--                    <td >{{ cnt_fvl_homo_pai_homo_mut_abort1 }}</td>-->
-                    <td >{{ cnt_fvl_homo_pai_homo_mut_aborts }}</td>
+                    <td >{{ count_fvl_homo_pai_homo }}</td>
                 </tr>
                 <tr>
                     <td >Homozygous Factor V Leiden Mutation <br>
                         Factor MTHFR Homozygous Mutation</td>
 <!--                    <td >{{ cnt_fvl_homo_mthfr_homo_mutations }}</td>-->
 <!--                    <td >{{ cnt_fvl_homo_mthfr_homo_mut_abort1 }}</td>-->
-                    <td >{{ cnt_fvl_homo_mthfr_homo_mut_aborts }}</td>
+                    <td >{{ count_fvl_homo_mthfr_homo }}</td>
                 </tr>
                 <tr>
                     <td >Factor II (Prothrombin) Heterozygous Mutation <br>
                         Factor PAI I Homozygous Mutation</td>
 <!--                    <td >{{ cnt_prothr_hetero_pai_homo_mutations }}</td>-->
 <!--                    <td >{{ cnt_prothr_hetero_pai_homo_mut_abort1 }}</td>-->
-                    <td >{{ cnt_prothr_hetero_pai_homo_mut_aborts }}</td>
+                    <td >{{ count_prothr_hetero_pai_homo }}</td>
                 </tr>
                 <tr>
                     <td >Factor II (Prothrombin) Heterozygous Mutation <br>
                         Factor MTHFR Homozygous Mutation</td>
 <!--                    <td >{{ cnt_prothr_hetero_mthfr_homo_mutations }}</td>-->
 <!--                    <td >{{ cnt_prothr_hetero_mthfr_homo_mut_abort1 }}</td>-->
-                    <td >{{ cnt_prothr_hetero_mthfr_homo_mut_aborts }}</td>
+                    <td >{{ count_prothr_hetero_mthfr_homo }}</td>
                 </tr>
                 <tr>
                     <td >Factor PAI I Homozygous Mutation <br>
                         Factor MTHFR Homozygous Mutation</td>
 <!--                    <td >{{ cnt_pai_homo_mthfr_homo_mutations }}</td>-->
 <!--                    <td >{{ cnt_pai_homo_mthfr_homo_mut_abort1 }}</td>-->
-                    <td >{{ cnt_pai_homo_mthfr_homo_mut_aborts }}</td>
+                    <td >{{ count_pai_homo_mthfr_homo }}</td>
                 </tr>
             </table>
-            <table>
-                {% csrf_token %}
-                <caption>
-                    <b>Table: 2 Mutations Patients </b>
-                </caption>
-                <thead>
-                <tr>
-                    <td bgcolor="gray"><b>Factor Type</b></td>
-                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>Age</b></td>
-                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;">
-                        <b>Early Pregnancy Losses (Nbr)</b></td>
-                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>Patients (Nbr)</b></td>
-                </tr>
-                </thead>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts1_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts2_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts1_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts2_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts3_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts1_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts2_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts3_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Heterozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts1_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts2_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts3_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts1_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts2_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts3_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts1_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts2_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts3_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts1_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts2_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts3_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts1_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts2_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts3_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts1_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts2_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts3_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts1_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts2_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts3_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts1_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts2_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts3_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts1_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts2_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts3_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts1_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts2_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        20 - 30
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts3_2030 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts1_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts2_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        31 - 40
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts3_3140 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">1
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts1_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts2_4150 }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center; vertical-align: middle;">
-                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        41 - 50
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">>2
-                    </td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts3_4150 }}
-                    </td>
-                </tr>
+<!--            <table>-->
+<!--                {% csrf_token %}-->
+<!--                <caption>-->
+<!--                    <b>Table: 2 Mutations Patients </b>-->
+<!--                </caption>-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <td bgcolor="gray"><b>Factor Type</b></td>-->
+<!--                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>Age</b></td>-->
+<!--                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;">-->
+<!--                        <b>Early Pregnancy Losses (Nbr)</b></td>-->
+<!--                    <td bgcolor="gray" style="text-align: center; vertical-align: middle;"><b>Patients (Nbr)</b></td>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_hetero_mut_aborts1_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_hetero_mut_aborts2_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_hetero_mut_aborts3_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts1_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts2_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_prothr_homo_mut_aborts3_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts1_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts2_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts1_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts2_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts3_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts1_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts2_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_pai_homo_mut_aborts3_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_mthfr_homo_mut_aborts1_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_mthfr_homo_mut_aborts2_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Heterozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_hetero_mthfr_homo_mut_aborts3_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts1_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts2_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Heterozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_hetero_mut_aborts3_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts1_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts2_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts3_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts1_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts2_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts3_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts1_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts2_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor II (Prothrombin) Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_prothr_homo_mut_aborts3_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts1_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts2_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts3_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts1_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts2_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts3_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts1_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts2_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_pai_homo_mut_aborts3_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts1_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts2_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Homozygous Factor V Leiden Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_fvl_homo_mthfr_homo_mut_aborts3_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts1_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts2_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts3_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts1_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts2_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts3_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts1_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts2_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor PAI I Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_pai_homo_mut_aborts3_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts1_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts2_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor II (Prothrombin) Heterozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_prothr_hetero_mthfr_homo_mut_aborts3_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts1_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts2_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        20 - 30-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts3_2030 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts1_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts2_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        31 - 40-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts3_3140 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts1_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts2_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        Factor PAI I Homozygous Mutation Factor MTHFR Homozygous Mutation-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        41 - 50-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">>2-->
+<!--                    </td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">-->
+<!--                        {{ cnt_age1_pai_homo_mthfr_homo_mut_aborts3_4150 }}-->
+<!--                    </td>-->
+<!--                </tr>-->
 
-            </table>
+<!--            </table>-->
 
 
 

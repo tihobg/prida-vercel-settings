@@ -11,6 +11,11 @@ urlpatterns = [
     path('services_emi/', viewsemi.services_emi, name='services_emi'),
     path('database_emi/', viewsemi.database_emi, name='database_emi'),
     path('mutations_eng/', viewsemi.mutations_eng, name='mutations_eng'),
+    path('pregnant_controls_mut_analysis_eng/', viewsemi.pregnant_controls_mut_analysis_eng,
+         name='pregnant_controls_mut_analysis_eng'),
+    path('pregnant_mut_analysis_eng/', viewsemi.pregnant_mut_analysis_eng, name='pregnant_mut_analysis_eng'),
+    path('controli_mut_analysis_eng/', viewsemi.controli_mut_analysis_eng, name='controli_mut_analysis_eng'),
+    path('mut_analysis_eng/', viewsemi.mut_analysis_eng, name='mut_analysis_eng'),
 
     path('news_emi/', viewsemi.news_emi, name='news_emi'),
     path('contact_us_emi/', viewsemi.contact_us_emi, name='contact_us_emi'),
