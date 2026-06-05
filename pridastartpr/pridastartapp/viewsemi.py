@@ -9673,6 +9673,9 @@ def mut_analysis_eng(request):
             print('PRIDA LIST MUTATIONS', prida_list_data)
             print('PRIDA LIST ABORTS', prida_abort_list)
 
+            context3['from_age'] = from_age
+            context3['to_age'] = to_age
+
             for age in list_age:
                 if int(from_age) <= age[0] <= int(to_age):
                     selected_age_array.append(count_age)
