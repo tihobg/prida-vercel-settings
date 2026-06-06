@@ -54,20 +54,15 @@
 <!--                        Age between 20 and 30 years-->
 <!--                    </td>-->
                     <td>
-                        <input type="radio" name="abort" value="abort_1" style="height:20px; width:20px;"
-                               {% for prida_abort in abort %}
-                               {% if prida_abort == 'abort_1' %}checked
+                        <input type="radio" name="prida_abort_list" value="abort_1" style="height:20px; width:20px;"
+                               {% if 'abort_1' in prida_abort_list %}checked
                         {% endif %}
-<!--                        {% endfor %}-->
-
                         >1 Miscarriage
                     </td>
                     <td>
                         <input type="checkbox" name="prida_list_data" value="fvl_ng" style="height:20px; width:20px;"
-                               {% for prida_list in prida_list_data %}
-                               {% if prida_list == 'fvl_ng' %}checked
+                               {% if 'fvl_ng' in prida_list_data %}checked
                         {% endif %}
-                        {% endfor %}
 >&nbsp;Normal Genotype
                     </td>
                     <td>
@@ -97,7 +92,10 @@
 <!--                        <input type="radio" name="age" value="age2" style="height:20px; width:20px;">&nbsp;Age between 31 and 40 years-->
 <!--                    </td>-->
                     <td>
-                        <input type="radio" name="abort" value="abort_2" style="height:20px; width:20px;">&nbsp;2 Miscarriages
+                        <input type="radio" name="prida_abort_list" value="abort_2" style="height:20px; width:20px;"
+                        {% if 'abort_2' in prida_abort_list %}checked
+                        {% endif %}
+                        >&nbsp;2 Miscarriages
                     </td>
                     <td>
                         <input type="checkbox" name="prida_list_data" value="fvl_hetero" style="height:20px; width:20px;"
@@ -133,7 +131,10 @@
 <!--                        <input type="radio" name="age" value="age3" style="height:20px; width:20px;">&nbsp;Age between 41 and 50 years-->
 <!--                    </td>-->
                     <td>
-                        <input type="radio" name="abort" value="abort_3" style="height:20px; width:20px;">&nbsp;More than 2 Miscarriages
+                        <input type="radio" name="prida_abort_list" value="abort_3" style="height:20px; width:20px;"
+                        {% if 'abort_3' in prida_abort_list %}checked
+                        {% endif %}
+                        >&nbsp;More than 2 Miscarriages
                     </td>
                     <td>
                         <input type="checkbox" name="prida_list_data" value="fvl_homo" style="height:20px; width:20px;"

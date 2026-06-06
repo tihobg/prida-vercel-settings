@@ -9059,8 +9059,10 @@ def mut_analysis_eng(request):
 
     prida_list_data = request.POST.getlist('prida_list_data')  ## Spisak s izbrani ot usera checkboxes s factori
     prida_age_list = request.POST.getlist('age')  ## Spisak s izbrana ot usera vazrast
-    prida_abort_list = request.POST.getlist('abort')  ## Spisak s izbrani ot usera aborti
-    print('prida_abort_list', prida_abort_list)
+    prida_abort_list = request.POST.getlist('prida_abort_list')  ## Spisak s izbrani ot usera aborti
+    context3['prida_abort_list'] = prida_abort_list
+    print('prida_abort_list', prida_abort_list, context3['prida_abort_list'])
+
 
 
 
@@ -9726,8 +9728,11 @@ def mut_analysis_eng(request):
             selected_age = []
             count_abort = 0
             selected_abort_array = []
+            # prida_abort_list = request.POST.getlist('prida_abort_list')  ## Spisak s izbrani ot usera aborti
+
             print('PRIDA LIST MUTATIONS', prida_list_data)
             print('PRIDA LIST ABORTS', prida_abort_list)
+            print('request post', request.POST)
 
             context3['from_age'] = from_age
             context3['to_age'] = to_age
