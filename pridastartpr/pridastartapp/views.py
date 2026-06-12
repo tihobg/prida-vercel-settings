@@ -60,7 +60,7 @@ def services(request):
 
 
 def news(request):
-    return render(request, 'news.html')
+    return render(request, 'news_eng.html')
 
 
 def gallery(request):
@@ -68,7 +68,7 @@ def gallery(request):
 
 
 def contact_us(request):
-    return render(request, 'contact_us.html')
+    return render(request, 'contact_us_eng.html')
 
 
 def logout_view(request):
@@ -77,7 +77,7 @@ def logout_view(request):
 
 
 def about_us(request):
-    return render(request, 'about_us.html')
+    return render(request, 'about_us_eng.html')
 
 
 def add_edit_patient(request):

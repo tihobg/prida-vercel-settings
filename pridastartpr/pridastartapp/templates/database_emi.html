@@ -28,7 +28,7 @@
 <div class="page-nav no-margin row">
     <div class="container">
         <div class="row">
-            <h1>Таблици</h1>
+            <h1>Интегрираната база данни съдържа информация за:</h1>
             <ul>
 <!--                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>-->
 <!--                <li><i class="fas fa-angle-double-right"></i> Tables</li>-->
@@ -42,14 +42,15 @@
 <div class="db container">
     <div class="btn-group my-4">
          <button class="btn btn-info">
-            <a href="{% url 'controli' %}">Бременни контроли</a>
+            <a href="{% url 'controli' %}">Здрави Бременни контроли</a>
         </button>
         <button class="btn btn-info">
-            <a href="{% url 'proba1' %}">Спонтанни аборти</a>
+            <a href="{% url 'preeclampsia' %}">Пациенти с Прееклампсия</a>
         </button>
         <button class="btn btn-info">
-            <a href="{% url 'preeclampsia' %}">Прееклампсия</a>
+            <a href="{% url 'proba1' %}">Пациенти със Спонтанни аборти</a>
         </button>
+
     </div>
    
     <div class="database-image-container text-center">

@@ -51,6 +51,8 @@
     <div class="row mt-5">
         {% csrf_token %}
         <h1>Select Data</h1>
+        <form method="post" action="{% url 'preeclampsia' %}">
+
         <table>
             <tr>
                 <th>
@@ -200,7 +202,7 @@
 </div>
 <div class="container">
     <div class="row mt-5">
-<!--        <form method="post" action="{% url 'proba1' %}">-->
+<!--        <form method="post" action="{% url 'preeclampsia' %}">-->
             {% csrf_token %}
 
             <div style="height: 500px; overflow-x:auto;width: 1200px; overflow-y:auto;">
@@ -548,12 +550,15 @@
 <div class="container">
     <div class="row mt-4">
         <div class="col">
-            <form method="post" action="{% url 'database_emi' %}">
+<!--            <form method="post" action="{% url 'preeclampsia' %}">-->
                 {% csrf_token %}
                 <button class="btn btn-primary btn-lg">Корелационен Анализ</button>
             </form>
         </div>
     </div>
+</div>
+<div class="container">
+            <img src="data:image/png;base64,{{ key6 }}" height="400" width="750">
 </div>
 <!-- ######## Page Title ######## -->
 <!--<div class="page-nav no-margin row">-->

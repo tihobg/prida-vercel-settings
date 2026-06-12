@@ -9,6 +9,8 @@ urlpatterns = [
 
     path('about_us_emi/', viewsemi.about_us_emi, name='about_us_emi'),
     path('services_emi/', viewsemi.services_emi, name='services_emi'),
+    path('services_eng/', viewsemi.services_eng, name='services_eng'),
+
     path('database_emi/', viewsemi.database_emi, name='database_emi'),
     path('mutations_eng/', viewsemi.mutations_eng, name='mutations_eng'),
     path('pregnant_controls_mut_analysis_eng/', viewsemi.pregnant_controls_mut_analysis_eng,
@@ -21,7 +23,7 @@ urlpatterns = [
     path('contact_us_emi/', viewsemi.contact_us_emi, name='contact_us_emi'),
     path('spontaneous_aborts/', viewsemi.spontaneous_aborts, name='spontaneous_aborts'),
 
-    path('preeclampsia/', viewsemi.preeclampsia, name='preeclampsia'),
+    # path('preeclampsia/', viewsemi.preeclampsia, name='preeclampsia'),
     path('preeclampsia_eng/', viewsemi.preeclampsia_eng, name='preeclampsia_eng'),
     path('preeclampsia_eng_new/', viewsemi.preeclampsia_eng_new, name='preeclampsia_eng_new'),
     path('preeclampsia_controli_eng/', viewsemi.preeclampsia_controli_eng, name='preeclampsia_controli_eng'),
@@ -41,14 +43,14 @@ urlpatterns = [
     path('new_patient/', viewsemi.new_patient, name='new_patient'),
 
     # path('', views.home, name='home'),
-    path('preeclampsia1/', viewsemi.preeclampsia, name='preeclampsia1'),
+    path('preeclampsia/', viewsemi.preeclampsia, name='preeclampsia'),
     # path('base/', views.base, name='base'),
     # # path('home/', views.home, name='home'),
-    # path('about_us/', views.about_us, name='about_us'),
+    path('about_us_eng/', viewsemi.about_us_eng, name='about_us_eng'),
     # path('services/', views.services, name='services'),
-    # path('news/', views.news, name='news'),
+    path('news_eng/', viewsemi.news_eng, name='news_eng'),
     # path('gallery/', views.gallery, name='gallery'),
-    # path('contact_us/', views.contact_us, name='contact_us'),
+    path('contact_us_eng/', viewsemi.contact_us_eng, name='contact_us_eng'),
     path('logout/', viewsemi.logout_view, name='logout'),
     path('logout1/', viewsemi.logout1, name='logout1'),
     path('logout_eng/', viewsemi.logout_view_eng, name='logout_eng'),

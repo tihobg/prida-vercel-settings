@@ -256,13 +256,13 @@ def home(request):
     return render(request, 'home.html')
 
 def about_us(request):
-    return render(request, 'about_us.html')
+    return render(request, 'about_us_eng.html')
 
 def services(request):
     return render(request, 'services.html')
 
 def news(request):
-    return render(request, 'news.html')
+    return render(request, 'news_eng.html')
 
 def biolic(request):
     return render(request, 'biolic.html')
@@ -281,7 +281,7 @@ def gallery(request):
     return render(request, 'gallery.html')
 
 def contact_us(request):
-    return render(request, 'contact_us.html')
+    return render(request, 'contact_us_eng.html')
 
 def database(request):
     return render(request, 'database.html')

@@ -23,72 +23,72 @@
 {% csrf_token %}
 
     <!-- ################# Header Starts Here#######################--->
-    <header>
-        <div class="header-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7 col-md-12 left-item">
-                        <ul>
-                            <li><i class="fas fa-envelope-square"></i> office@biomed.bas.bg</li>
-                            <li><i class="fas fa-phone-square"></i>  +3592 979 36 07</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="nav-head" class="header-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
-                        <img src="{% static 'images/logo.jpg' %}" alt="">
-                        <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
-                    </div>
-                    <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
-                        <ul>
-                            <li><a href="{% url 'home' %}">Home Tihomir</a></li>
-                            <li><a href="{% url 'about_us_emi' %}">About Us</a></li>
-                            <li><a href="{% url 'services_emi' %}">Services</a></li>
-                            <li><a href="{% url 'news_emi' %}">News</a></li>
-                            <li><a href="{% url 'contact_us_emi' %}">Contact Us</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-2 d-none d-lg-block appoint">
-                        <button class="btn btn-info"><a href="{% url 'logout' %}">Logout</a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+<!--    <header>-->
+<!--        <div class="header-top">-->
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-lg-7 col-md-12 left-item">-->
+<!--                        <ul>-->
+<!--                            <li><i class="fas fa-envelope-square"></i> office@biomed.bas.bg</li>-->
+<!--                            <li><i class="fas fa-phone-square"></i>  +3592 979 36 07</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div id="nav-head" class="header-nav">-->
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">-->
+<!--                        <img src="{% static 'images/logo.jpg' %}" alt="">-->
+<!--                        <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>-->
+<!--                    </div>-->
+<!--                    <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">-->
+<!--                        <ul>-->
+<!--                            <li><a href="{% url 'home' %}">Home Tihomir</a></li>-->
+<!--                            <li><a href="{% url 'about_us_emi' %}">About Us</a></li>-->
+<!--                            <li><a href="{% url 'services_emi' %}">Services</a></li>-->
+<!--                            <li><a href="{% url 'news_emi' %}">News</a></li>-->
+<!--                            <li><a href="{% url 'contact_us_emi' %}">Contact Us</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    <div class="col-sm-2 d-none d-lg-block appoint">-->
+<!--                        <button class="btn btn-info"><a href="{% url 'logout' %}">Logout</a></button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </header>-->
 
     <!-- Preeclampsia Database starts Here -->
     <!--  ************************* Page Title Starts Here ************************** -->
-<div class="page-nav no-margin row">
-    <div class="container">
-        <div class="row">
-            <h2>Preeclampsia</h2>
-            <ul>
-                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
-                <li><i class="fas fa-angle-double-right"></i> Preeclampsia Database</li>
-            </ul>
-        </div>
-    </div>
-</div>
+<!--<div class="page-nav no-margin row">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <h2>Preeclampsia</h2>-->
+<!--            <ul>-->
+<!--                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>-->
+<!--                <li><i class="fas fa-angle-double-right"></i> Preeclampsia Database</li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <!-- ######## Page Title End ####### -->
 
 <!-- Patient Information Table -->
 <!--<div class="container table-container">-->
-<div class="container">
-    <div class="row mt-4">
-        <div class="col">
-            <h1>PRIDA</h1>
-            <form method="post" action="{% url 'proba1' %}">
-                {% csrf_token %}
-                <button class="btn btn-primary btn-lg">BACK</button>
-            </form>
-        </div>
-    </div>
-</div>
+<!--<div class="container">-->
+<!--    <div class="row mt-4">-->
+<!--        <div class="col">-->
+<!--            <h1>PRIDA</h1>-->
+<!--            <form method="post" action="{% url 'proba1' %}">-->
+<!--                {% csrf_token %}-->
+<!--                <button class="btn btn-primary btn-lg">BACK</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <div class="container">
 <!--    <h2>Patient Information Table</h2>-->
 <!--    <div class="table-responsive">-->
@@ -575,36 +575,36 @@
 <!--        <form>-->
 <!--            {{ key7 }}-->
 <!--        </form>-->
-            <div class="container">
+<!--    <div class="container">-->
 
-            <table>
-            <tr>
-                <th>Name</th>
-                <th>Years</th>
-                <th>Action</th>
-            </tr>
-            <tr>
-                {% for field in key7 %}
-                <td>{{ field }}</td>
-                {% endfor %}
-                <td><button name="Pave">Save</button></td>
-            </tr>
-            </table>
-            </div>
+<!--            <table>-->
+<!--            <tr>-->
+<!--                <th>Name</th>-->
+<!--                <th>Years</th>-->
+<!--                <th>Action</th>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                {% for field in key7 %}-->
+<!--                <td>{{ field }}</td>-->
+<!--                {% endfor %}-->
+<!--                <td><button name="Pave">Save</button></td>-->
+<!--            </tr>-->
+<!--            </table>-->
+<!--            </div>-->
 
 
     </div>
 
     <!-- Button container placed below the table and above the footer -->
-<div class="container button-container">
-    <div class="register_add">
-        <button class="btn btn-info-register"><a href="{% url 'add_edit_patient' %}">Add New Patient</a></button>
-        <button class="btn btn-info-login"><a href="{% url 'add_edit_patient' %}">Edit Patient</a></button>
-        <button class="btn btn-info"><a href="{% url 'correlation' %}">Correlation Information</a></button>
-    </div>
-</div>
+<!--<div class="container button-container">-->
+<!--    <div class="register_add">-->
+<!--        <button class="btn btn-info-register"><a href="{% url 'add_edit_patient' %}">Add New Patient</a></button>-->
+<!--        <button class="btn btn-info-login"><a href="{% url 'add_edit_patient' %}">Edit Patient</a></button>-->
+<!--        <button class="btn btn-info"><a href="{% url 'correlation' %}">Correlation Information</a></button>-->
+<!--    </div>-->
+<!--</div>-->
   
-  </div>
+<!--  </div>-->
 
 
 
@@ -786,42 +786,42 @@
 </div>
  -->
     <!-- ################# Footer Starts Here #######################--->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-12">
-                    <h2>About Us</h2>
-                    <p>The Institute of Biophysics and Biomedical Engineering (IBPhBME) is a leading research institute in Bulgaria in the field of biophysics, biochemistry, biomedicine, chemoinformatics, and bioinformatics, biomedical engineering.</p>
-                    <p>IBPhBME conducts scientific and scientific-applied research in the field of biomedicine and quality of life for the benefit of society and science.</p>
-                </div>
-            
-                <div class="col-md-4 col-sm-12">
-                    <h2>Useful Links</h2>
-                    <ul class="list-unstyled link-list">
-                        <li><a ui-sref="about" href="{% url 'about_us_emi' %}">About us</a><i class="fa fa-angle-right"></i> </li>
-                        <li><a ui-sref="portfolio" href="{% url 'services_emi' %}">Services</a><i class="fa fa-angle-right"></i></li>
-                        <li><a ui-sref="contact" href="{% url 'contact_us_emi' %}">Contact us</a><i class="fa fa-angle-right"></i></li>
+<!--    <footer class="footer">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-md-4 col-sm-12">-->
+<!--                    <h2>About Us</h2>-->
+<!--                    <p>The Institute of Biophysics and Biomedical Engineering (IBPhBME) is a leading research institute in Bulgaria in the field of biophysics, biochemistry, biomedicine, chemoinformatics, and bioinformatics, biomedical engineering.</p>-->
+<!--                    <p>IBPhBME conducts scientific and scientific-applied research in the field of biomedicine and quality of life for the benefit of society and science.</p>-->
+<!--                </div>-->
+<!--            -->
+<!--                <div class="col-md-4 col-sm-12">-->
+<!--                    <h2>Useful Links</h2>-->
+<!--                    <ul class="list-unstyled link-list">-->
+<!--                        <li><a ui-sref="about" href="{% url 'about_us_emi' %}">About us</a><i class="fa fa-angle-right"></i> </li>-->
+<!--                        <li><a ui-sref="portfolio" href="{% url 'services_emi' %}">Services</a><i class="fa fa-angle-right"></i></li>-->
+<!--                        <li><a ui-sref="contact" href="{% url 'contact_us_emi' %}">Contact us</a><i class="fa fa-angle-right"></i></li>-->
                        <!--  <li><a ui-sref="about" href="#/about">About us</a><i class="fa fa-angle-right"></i></li>
                         <li><a ui-sref="portfolio" href="#/portfolio">Portfolio</a><i class="fa fa-angle-right"></i></li>
                         <li><a ui-sref="gallery" href="#/gallery">Gallery</a><i class="fa fa-angle-right"></i></li>
                         <li><a ui-sref="contact" href="#/contact">Contact us</a><i class="fa fa-angle-right"></i></li> -->
-                    </ul>
-                </div>
-            
-                <div class="col-md-4 col-sm-12 map-img">
-                    <h2>Contact Us</h2>
-                    <address class="md-margin-bottom-40">
-                        Institute of Biophysics and Biomedical Engineering
-                        Bulgarian Academy of Sciences
-                        Acad. Georgi Bonchev Str., Block 21, Sofia 1113, Bulgaria
-                        Phone: +3592 979 36 07 <br>
-                        Email: <a href="mailto:office@biomed.bas.bg">office@biomed.bas.bg</a><br>
-                        Web: <a href="https://biomed.bas.bg/en/" target="_blank">https://biomed.bas.bg/en/</a>
-                    </address>
-                </div>
-            </div>
-        </div>
-    </footer>
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            -->
+<!--                <div class="col-md-4 col-sm-12 map-img">-->
+<!--                    <h2>Contact Us</h2>-->
+<!--                    <address class="md-margin-bottom-40">-->
+<!--                        Institute of Biophysics and Biomedical Engineering-->
+<!--                        Bulgarian Academy of Sciences-->
+<!--                        Acad. Georgi Bonchev Str., Block 21, Sofia 1113, Bulgaria-->
+<!--                        Phone: +3592 979 36 07 <br>-->
+<!--                        Email: <a href="mailto:office@biomed.bas.bg">office@biomed.bas.bg</a><br>-->
+<!--                        Web: <a href="https://biomed.bas.bg/en/" target="_blank">https://biomed.bas.bg/en/</a>-->
+<!--                    </address>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </footer>-->
 
     <!-- Bootstrap JS and dependencies (Popper.js and jQuery) -->
    <!-- Bootstrap CSS CDN -->

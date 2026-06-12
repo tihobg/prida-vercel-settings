@@ -5,17 +5,39 @@
 
 {% block content %}
 <!-- ######## Page Title ######## -->
-<div class="page-nav no-margin row">
+<div id="nav-head" class="header-nav">
     <div class="container">
         <div class="row">
-            <h2>Дейности</h2>
-            <ul>
-                <li><a href="{% url 'home' %}">Начало</a></li>
-                <li><i class="fas fa-angle-double-right"></i>Работа</li>
-            </ul>
+            <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
+                <img src="{% static 'images/logo.jpg' %}" alt="Logo">
+                <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
+            </div>
+            <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
+                <ul>
+                    <li><a href="{% url 'home' %}">Начало</a></li>
+                    <li><a href="{% url 'about_us_emi' %}">За нас</a></li>
+                    <li><a href="{% url 'services_emi' %}">Дейности</a></li>
+                    <li><a href="{% url 'news_emi' %}">Новини</a></li>
+                    <li><a href="{% url 'contact_us_emi' %}">Контакти</a></li>
+                    <li><a href="{% url 'services_eng' %}">Английски</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-2 d-none d-lg-block appoint">
+                {% if user.is_authenticated %}
+                <div class="user-info">
+                    <span class="navbar-text">{{ user.username }}</span>
+                    <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Изход</a>
+                </div>
+                {% else %}
+                <div class="auth-buttons">
+                    <a href="{% url 'login1' %}" class="btn btn-primary btn-sm">Вход</a>
+                </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
+
 <!-- ######## Page Title End ######## -->
 
 <!-- ######## Services Section ######## -->
