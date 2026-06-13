@@ -6235,8 +6235,57 @@ def preeclampsia(request):
     # form = ScoreForm()
     form_pre = PreeclampsiaForm()
     form_pre1 = PatientProbaForm()
+    res_mat_preecl = []
 
     if request.method == "POST":
+        if 'corr_analysis' in request.POST:
+            print('prida_list_preeclampsia', prida_list_preeclampsia, len(prida_list_preeclampsia))
+            if (len(prida_list_preeclampsia) >= 2):
+                for selected_param in prida_list_preeclampsia:
+                    if selected_param == 'age':
+                        prida_x1 = np.array(age_controli)
+                        res_mat_preecl.append(prida_x1)
+                        print('AGE', selected_param)
+
+                    elif selected_param == 'sist_pressure':
+                        prida_y1 = np.array(sist_pressure_controli)
+                        res_mat_preecl.append(prida_y1)
+                        print('SIST PR', selected_param)
+
+                    elif selected_param == 'diasist_pressure':
+                        prida_z1 = np.array(diasist_pressure_controli)
+                        res_mat_preecl.append(prida_z1)
+                        print('DIASIST PR', selected_param)
+
+                prida_xyz1 = np.array(res_mat_preecl)
+                print('RES MAT', res_mat_preecl, prida_xyz1)
+                print('prida_xyz1', prida_xyz1)
+
+                prida_corr_matrix = np.corrcoef(prida_xyz1).round(decimals=3)
+                print('prida_corr_matrix', prida_corr_matrix)
+
+                fig, ax = plt.subplots()
+                im = ax.imshow(prida_corr_matrix)
+                im.set_clim(-1, 1)
+                ax.grid(False)
+                ax.xaxis.set(ticks=(0, 1, 2), ticklabels=('x', 'y', 'z'))
+                ax.yaxis.set(ticks=(0, 1, 2), ticklabels=('x', 'y', 'z'))
+                ax.set_ylim(2.5, -0.5)
+
+                for i in range(len(prida_list_preeclampsia)):
+                    for j in range(len(prida_list_preeclampsia)):
+                        ax.text(j, i, prida_corr_matrix[i, j], ha='center', va='center',
+                                color='r')
+                cbar = ax.figure.colorbar(im, ax=ax, format='% .2f')
+
+                fig = plt.gcf()
+                buf = io.BytesIO()
+                fig.savefig(buf, format='png')
+                buf.seek(0)
+                string = base64.b64encode(buf.read())
+                url = urllib.parse.quote(string)
+                context3['key6'] = url
+
         if 'save' in request.POST:
             pk = request.POST.get('save')
             if not pk:
