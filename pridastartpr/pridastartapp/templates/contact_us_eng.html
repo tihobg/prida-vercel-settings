@@ -25,11 +25,11 @@
                 {% if user.is_authenticated %}
                 <div class="user-info">
                     <span class="navbar-text">{{ user.username }}</span>
-                    <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Изход</a>
+                    <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Logout</a>
                 </div>
                 {% else %}
                 <div class="auth-buttons">
-                    <a href="{% url 'login1' %}" class="btn btn-primary btn-sm">Вход</a>
+                    <a href="{% url 'login_eng' %}" class="btn btn-primary btn-sm">Login</a>
                 </div>
                 {% endif %}
             </div>
