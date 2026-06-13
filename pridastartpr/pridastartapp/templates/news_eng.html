@@ -1,4 +1,4 @@
-{% extends "base-emi.html" %}
+{% extends "base_eng.html" %}
 {% load static %}
 
 {% block title %}Our Blog{% endblock %}
@@ -18,7 +18,7 @@
                     <li><a href="{% url 'about_us_eng' %}">About Us</a></li>
                     <li><a href="{% url 'services_eng' %}">Activities</a></li>
                     <li><a href="{% url 'news_eng' %}">News</a></li>
-                    <li><a href="{% url 'contact_us_emi' %}">Contacts</a></li>
+                    <li><a href="{% url 'contact_us_eng' %}">Contacts</a></li>
                     <li><a href="{% url 'news_emi' %}">Bulgarian</a></li>
                 </ul>
             </div>
@@ -26,11 +26,11 @@
                 {% if user.is_authenticated %}
                 <div class="user-info">
                     <span class="navbar-text">{{ user.username }}</span>
-                    <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Изход</a>
+                    <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Logout</a>
                 </div>
                 {% else %}
                 <div class="auth-buttons">
-                    <a href="{% url 'login1' %}" class="btn btn-primary btn-sm">Вход</a>
+                    <a href="{% url 'login1' %}" class="btn btn-primary btn-sm">Login</a>
                 </div>
                 {% endif %}
             </div>
@@ -43,7 +43,7 @@
 <section class="our-blog">
     <div class="container">
         <div class="row session-title">
-            <h2>Новини</h2>
+            <h2>News</h2>
         </div>
         <div class="blog-row row">
 
@@ -55,16 +55,37 @@
                         <img src="{% static 'images/blog/paper-publication.png' %}" alt="Blog Image">
                     </figure>
                     <div class="blog-detail">
-                        <h4>Публикувана статия на тема „Severity-Dependent Modulation of Red Blood Cell Aging Patterns
+                        <h4>Published paper „Severity-Dependent Modulation of Red Blood Cell Aging Patterns
                             in Preeclampsia: Insights from Calorimetry and Atomic Force Microscopy“</h4>
-                        <p style="text-align: justify; text-indent: 0;">На 18.04.2026 г. в списание International Journal of Molecular Sciences беше
-                            публикувана статия на тема „Severity-Dependent Modulation of Red Blood Cell Aging Patterns
-                            in Preeclampsia: Insights from Calorimetry and Atomic Force Microscopy“. </p>
+                        <p style="text-align: justify; text-indent: 0;">On 18.04.2026 the International Journal of Molecular Sciences published the
+                            research article „Severity-Dependent Modulation of Red Blood Cell Aging Patterns in
+                            Preeclampsia: Insights from Calorimetry and Atomic Force Microscopy“. </p>
+
                         <div class="link">
-                            <a href="{% url 'prida_publication_bg' %}"
-                               target="_blank"
+                            <a href="{% url 'prida_publication_eng' %}"
                                class="btn btn-info">
-                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                               Learn more <i class="fas fa-long-arrow-alt-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6">
+                <div class="single-blog germany-card">
+                    <figure>
+                        <img src="{% static 'images/blog/news-2.png' %}" alt="Blog Image">
+                    </figure>
+                    <div class="blog-detail">
+                        <h4>Participation in “XVI National Congress of Obstetrics and Gynecology with International
+                            Participation”</h4>
+                        <p style="text-align: justify; text-indent: 0;">In the period April 02-05, 2026 the "XVI National Congress of Obstetrics and
+                            Gynecology with International Participation" was held
+                            </p>
+                        <div class="link">
+                            <a href="{% url 'prida_publication2_eng' %}"
+                               class="btn btn-info">
+                               Learn more <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
                         </div>
                     </div>
@@ -76,16 +97,20 @@
             <div class="col-md-4 col-sm-6">
                 <div class="single-blog germany-card">
                     <figure>
-                        <img src="{% static 'images/blog/bmql.jpg' %}" alt="Blog Image">
+                        <img src="{% static 'images/blog/bmql1.png' %}" alt="Blog Image">
                     </figure>
                     <div class="blog-detail">
-                        <h4>Пета младежка научна сесия „Биомедицина и качество на живот“  2025</h4>
-                        <p style="text-align: justify; text-indent: 0;">Гл. ас. Ариана Лангари участва в Пета младежка научна сесия „Биомедицина и качество на живот“, 4–5 декември 2025, в София, където изнесе доклад. </p>
+                        <h4>Participation in the Fifth Youth Scientific Session "Biomedicine and Quality of Life" 2025</h4>
+                        <p style="text-align: justify; text-indent: 0;">Sen. Assist. Prof. Ariana Langari presented a talk on the
+                            topic "Albumin Thermal Stabilization and Plasma Proteins Aggregation as Diagnostic Markers
+                            for Preeclampsia: Impact of Disease Severity" at the Fifth Youth Scientific Session
+                            "Biomedicine and Quality of Life", held on December 4-5, 2025 at the Institute of
+                            Biophysics and Biomedical Engineering at the
+                            Bulgarian Academy of Sciences, </p>
                         <div class="link">
-                            <a href="{% url 'bmql_emi' %}"
-                               target="_blank"
+                            <a href="{% url 'prida_publication3_eng' %}"
                                class="btn btn-info">
-                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                               Learn more <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
                         </div>
                     </div>
@@ -100,13 +125,15 @@
                         <img src="{% static 'images/blog/cellphys.jpg' %}" alt="Blog Image">
                     </figure>
                     <div class="blog-detail">
-                        <h4>Cell Physics 2025</h4>
-                        <p>Гл. ас. Ариана Лангари участва в международната конференция Cell Physics 2025, проведена  7-9 Октомври 2025 в Саарбрюкен, Германия, където представи постерна презентация. </p>
+                        <h4>Participation in Cell Physics 2025, Saarbrücken, Germany</h4>
+                        <p>Presentation of PRIDA project at CELL PHYSICS, 7-9.10.2025, Saarbrücken, Germany
+                            from Sen. Assist. Prof. Ariana Langari, a member of the scientific team of the project
+                            "Development of a Pathologic Pregnancy Database for Retrieval of New Knowledge for
+                            Diagnostic Markers Identification"</p>
                         <div class="link">
-                            <a href="{% url 'cellphysics_emi' %}"
-                               target="_blank"
+                            <a href="{% url 'prida_publication4_eng' %}"
                                class="btn btn-info">
-                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                               Learn more <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
                         </div>
                     </div>
@@ -119,14 +146,15 @@
                         <img src="{% static 'images/blog/techpark_1.jpg' %}" alt="Blog Image">
                     </figure>
                     <div class="blog-detail">
-                        <h4>София Тех Парк 2025</h4>
-                        <p style="text-align: justify; text-indent: 0;">Гл. ас. Аника Александрова и доц. Т. Тянков  участваха в Scientific and Innovation Forum "International Forum on Advanced ICT Research and Innovation", проведена в периода 29.09 - 01.10.2025 в София Тех Парк.
-</p>
+                        <h4>Participation in the Scientific and Innovation Forum "International Forum on Advanced ICT
+                            Research and Innovation"</h4>
+                        <p style="text-align: justify; text-indent: 0;">Presentation of PRIDA project at the International Forum on Advanced ICT
+                            Research and Innovation, 29.09.2025 -01.10. 2025, Sofia, Bulgaria
+                        </p>
                         <div class="link">
-                            <a href="{% url 'techpark_emi' %}"
-                               target="_blank"
+                            <a href="{% url 'prida_publication5_eng' %}"
                                class="btn btn-info">
-                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                               Learn more <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
                         </div>
                     </div>
@@ -143,13 +171,14 @@
                         <img src="{% static 'images/blog/bioflux.jpg' %}" alt="Blog Image">
                     </figure>
                     <div class="blog-detail">
-                        <h4>Микрофлуидна система  с приложение в биомедицинaта  - BioFlux 2025</h4>
-                        <p style="text-align: justify; text-indent: 0;">През месец август 2025 г. в Института по биофизика и биомедицинско инженерство към Българска академия на науките беше доставена микрофлуидна система с приложения в биомедицината, състояща се от проточна помпа BioFlux 1000HT и инвертен микроскоп Zeiss Axiovert 5.</p>
+                        <h4>Microfluidic system</h4>
+                        <p style="text-align: justify; text-indent: 0;">Delivery of a microfluidic system with biomedical applications</p>
                         <div class="link">
-                            <a href="{% url 'msystema_emi' %}"
-                               target="_blank"
+<!--                            <a href="{% url 'msystema_emi' %}"-->
+                            <a href="{% url 'prida_publication6_eng' %}"
+
                                class="btn btn-info">
-                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                               Learn more <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
                         </div>
                     </div>
@@ -164,13 +193,12 @@
                         <img src="{% static 'images/blog/biolic.jpg' %}" alt="Blog Image">
                     </figure>
                     <div class="blog-detail">
-                        <h4>BIOLIC 2024</h4>
-                        <p style="text-align: justify; text-indent: 0;">Гл.ас. Аника Александрова и доц. Тихомир Тянков взеха участие с постерни презентации във II International Biological and Life Sciences Congress, 30 October - 1 November, 2024, Antalya, Turkey</p>
+                        <h4>Participation in BIOLIC 2024, Antalya, Turkey</h4>
+                        <p style="text-align: justify; text-indent: 0;">Presentation of PRIDA project at BIOLIC, October 30 - November 1, 2024, Antalya, Turkey</p>
                         <div class="link">
-                            <a href="{% url 'biolic_emi' %}"
-                               target="_blank"
+                            <a href="{% url 'biolic_eng' %}"
                                class="btn btn-info">
-                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                               Learn more <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
                         </div>
                     </div>
@@ -185,12 +213,12 @@
                     </figure>
                     <div class="blog-detail">
                         <h4>Начало на проекта 2024</h4>
-                        <p style="text-align: justify; text-indent: 0;">На 29.05.2024 г. ИБФБМИ стартира изпълнението на Проект BG-RRP-2.011-0025 "Създаване на база данни за патологична бременност и извличане на нови знания с цел идентифициране на диагностични маркери".</p>
+                        <p style="text-align: justify; text-indent: 0;">The Institute of Biophysics and Biomedical Engineering launched the Project BG-RRP-2.011-0025 “Development of a Pathologic Pregnancy Database for Retrieval of New Knowledge for Diagnostic Markers Identification”
+- 29.05.2024 г.</p>
                         <div class="link">
                             <a href="https://biomed.bas.bg/bg/2024/09/ibphbme-implements-project-bg-rpr-2-011-0025/"
-                               target="_blank"
                                class="btn btn-info">
-                               Виж повече <i class="fas fa-long-arrow-alt-right"></i>
+                               Learn more <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
                         </div>
                     </div>

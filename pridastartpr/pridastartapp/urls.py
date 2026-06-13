@@ -35,10 +35,28 @@ urlpatterns = [
     path('bmql_emi/', viewsemi.bmql_emi, name='bmql_emi'),
     path('cellphysics_emi/', viewsemi.cellphysics_emi, name='cellphysics_emi'),
     path('prida_publication_bg/', viewsemi.prida_publication_bg, name='prida_publication_bg'),
+    path('prida_publication_eng/', viewsemi.prida_publication_eng, name='prida_publication_eng'),
+
+    path('prida_publication2_bg/', viewsemi.prida_publication2_bg, name='prida_publication2_bg'),
+    path('prida_publication2_eng/', viewsemi.prida_publication2_eng, name='prida_publication2_eng'),
+
+    path('prida_publication3_bg/', viewsemi.prida_publication3_bg, name='prida_publication3_bg'),
+    path('prida_publication3_eng/', viewsemi.prida_publication3_eng, name='prida_publication3_eng'),
+
+    path('prida_publication4_bg/', viewsemi.prida_publication4_bg, name='prida_publication4_bg'),
+    path('prida_publication4_eng/', viewsemi.prida_publication4_eng, name='prida_publication4_eng'),
+
+    path('prida_publication5_bg/', viewsemi.prida_publication5_bg, name='prida_publication5_bg'),
+    path('prida_publication5_eng/', viewsemi.prida_publication5_eng, name='prida_publication5_eng'),
+
+    path('prida_publication6_bg/', viewsemi.prida_publication6_bg, name='prida_publication6_bg'),
+    path('prida_publication6_eng/', viewsemi.prida_publication6_eng, name='prida_publication6_eng'),
 
     path('techpark_emi/', viewsemi.techpark_emi, name='techpark_emi'),
     path('msystema_emi/', viewsemi.msystema_emi, name='msystema_emi'),
     path('biolic_emi/', viewsemi.biolic_emi, name='biolic_emi'),
+    path('biolic_eng/', viewsemi.biolic_eng, name='biolic_eng'),
+
     path('contact_us_emi/', viewsemi.contact_us_emi, name='contact_us_emi'),
     path('new_patient/', viewsemi.new_patient, name='new_patient'),
 

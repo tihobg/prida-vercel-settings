@@ -1,0 +1,61 @@
+{% extends "base-emi.html" %}
+{% load static %}
+
+{% block title %}Научна презентация{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div class="container">
+    <div class="d-grid gap-2 d-md-block">
+        <div class="row mt-4">
+            <div class="user-info">
+                <a href="{% url 'news_eng' %}" class="btn btn-primary">BACK</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Posters Section ######## -->
+<section class="posters-section">
+    <div class="container">
+        <!-- Poster 1: Текст ВЛЯВО, Снимка ВДЯСНО -->
+        <div class="poster-item poster-reverse">
+              <div class="poster-image">
+                <a href="{% static 'images/blog/paper-publication.png' %}" target="_blank">
+                    <img src="{% static 'images/blog/paper-publication.png' %}" alt="Cell Physics Poster">
+                </a>
+            </div>
+            <div class="poster-text">
+                <h4>„Severity-Dependent Modulation of Red Blood Cell Aging Patterns in Preeclampsia:
+                Insights from Calorimetry and Atomic Force Microscopy“ (18.04.2026 г.)</h4>
+                <p>On 18.04.2026 the International Journal of Molecular Sciences published the research article
+                    „Severity-Dependent Modulation of Red Blood Cell Aging Patterns in Preeclampsia: Insights from
+                    Calorimetry and Atomic Force Microscopy“ by Svetla Todinova, Velichka Strijkova, Ariana Langari,
+                    Ina Giosheva, Emil Gartchev, Vesela Katrova, Alexey Savov, Sashka Krumova, Tania Pencheva. The
+                    study was conducted in connection with the implementation of the project "Development of a
+                    Pathologic Pregnancy Database for Retrieval of New Knowledge for Diagnostic Markers
+                    Identification", funded by the European Union through the NextGenerationEU instrument under the
+                    Recovery and Resilience Mechanism in the implementation of investment C2I2 “Increasing the
+                    Innovation Capacity of the Bulgarian Academy of Sciences in the Field of Green and Digital
+                    Technologies”, part of the National Recovery and Resilience Plan. The presented results reveal
+                    important details regarding the structural and nanomechanical changes in red blood cells in
+                    patients with mild and severe preeclampsia. The application of biophysical methods atomic force
+                    microscopy and differential scanning calorimetry, as well as the statistical approach of linear
+                    mixed models demonstrated a significant destabilization of the hemoglobin - band 3 protein
+                    macrocomplex, which was most pronounced in the cases of severe preeclampsia. The presented
+                    approach allows the identification of early subclinical damage to red blood cells during
+                    pregnancy, which could not be detected by routine hematological tests.</p>
+                <p>Publication: Int. J. Mol. Sci. 2026, 27(8), 3633; https://doi.org/10.3390/ijms27083633</p>
+            </div>
+          
+        </div>
+
+        <!-- Poster 2: Снимка ВЛЯВО, Текст ВДЯСНО -->
+
+    </div>
+</section>
+<!-- ######## Posters Section End ######## -->
+{% endblock %}

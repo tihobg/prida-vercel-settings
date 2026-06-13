@@ -1,0 +1,101 @@
+{% extends "base-emi.html" %}
+{% load static %}
+
+<!--{% block title %}Научна презентация{% endblock %}-->
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<body>
+<div class="container">
+    <div class="d-grid gap-2 d-md-block">
+        <div class="row mt-4">
+            <div class="user-info">
+                <a href="{% url 'news_eng' %}" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ######## Posters Section ######## -->
+<!--<section class="posters-section">-->
+<!--    <div class="container">-->
+<!--        &lt;!&ndash; Poster 1: Текст ВЛЯВО, Снимка ВДЯСНО &ndash;&gt;-->
+<!--        <div class="poster-item poster-reverse">-->
+<!--              <div class="poster-image">-->
+<!--&lt;!&ndash;                <a href="{% static 'images/blog/bmql1.png' %}" target="_blank">&ndash;&gt;-->
+<!--                    <img src="{% static 'images/blog/cellphys.jpg' %}" alt="Cell Physics Poster">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="poster-text">-->
+<!--                <h4>Participation in Cell Physics 2025, Saarbrücken, Germany </h4>-->
+<!--                <p>Presentation of PRIDA project at CELL PHYSICS, 7-9.10.2025, Saarbrücken, Germany-->
+<!--                            Sen. Assist. Prof. Ariana Langari, a member of the scientific team of the project-->
+<!--                            "Development of a Pathologic Pregnancy Database for Retrieval of New Knowledge for-->
+<!--                            Diagnostic Markers Identification" (Pregnancy Related Integrated Database Analytics, PRIDA),-->
+<!--                            presented a poster at the scientific forum CELL PHYSICS 2025 International Meeting, held-->
+<!--                            from 7 to 9 October 2025 in Saarbrücken, Germany. The poster was entitled "Nanomechanical-->
+<!--                            and Rheological Characteristics of Red Blood Cells in Preeclampsia" and was co-authored by-->
+<!--                            Velichka Strijkova, Miroslava Ivanova, Vesela Katrova, Anika Alexandrova - Watanabe,-->
+<!--                            Emilia Abadjieva, Tihomir Tiankov, Ina Giosheva, Sashka Krumova, Tania Pencheva, and-->
+<!--                            Svetla Todinova.-->
+<!--                            The team's participation in the international forum attracted interest from the scientific-->
+<!--                            community and highlighted the importance of research aimed at finding indicators for risk-->
+<!--                            assessment in patients with preeclampsia in order to improve the diagnosis of complications-->
+<!--                            during pregnancy</p>-->
+<!--                <p></p>-->
+<!--            </div>-->
+<!--          -->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Poster 2: Снимка ВЛЯВО, Текст ВДЯСНО &ndash;&gt;-->
+
+<!--    </div>-->
+<!--</section>-->
+
+<section class="posters-section">
+    <div class="container">
+        <!-- Poster 1: Текст ВЛЯВО, Снимка ВДЯСНО -->
+        <div class="poster-item poster-reverse">
+              <div class="poster-image">
+                <a href="{% static 'images/blog/pamflet.jpg' %}" target="_blank">
+                    <img src="{% static 'images/blog/pamflet.jpg' %}" alt="Cell Physics Poster">
+                </a>
+            </div>
+            <div class="poster-text">
+                <h4>Participation in Cell Physics 2025, Saarbrücken, Germany</h4>
+                <p>Presentation of PRIDA project at CELL PHYSICS, 7-9.10.2025, Saarbrücken, Germany
+                    Sen. Assist. Prof. Ariana Langari, a member of the scientific team of the project
+                    "Development of a Pathologic Pregnancy Database for Retrieval of New Knowledge for
+                            Diagnostic Markers Identification" (Pregnancy Related Integrated Database Analytics, PRIDA),
+                            presented a poster at the scientific forum CELL PHYSICS 2025 International Meeting, held
+                            from 7 to 9 October 2025 in Saarbrücken, Germany. The poster was entitled "Nanomechanical
+                            and Rheological Characteristics of Red Blood Cells in Preeclampsia" and was co-authored by
+                            Velichka Strijkova, Miroslava Ivanova, Vesela Katrova, Anika Alexandrova - Watanabe,
+                            Emilia Abadjieva, Tihomir Tiankov, Ina Giosheva, Sashka Krumova, Tania Pencheva, and
+                            Svetla Todinova.
+                            The team's participation in the international forum attracted interest from the scientific
+                            community and highlighted the importance of research aimed at finding indicators for risk
+                            assessment in patients with preeclampsia in order to improve the diagnosis of complications
+                            during pregnancy</p>
+            </div>
+
+        </div>
+
+        <!-- Poster 2: Снимка ВЛЯВО, Текст ВДЯСНО -->
+        <div class="poster-item">
+            <div class="poster-image">
+                <a href="{% static 'images/blog/arianap.jpg' %}" target="_blank">
+                    <img src="{% static 'images/blog/arianap.jpg' %}" alt="Ariana Poster">
+                </a>
+            </div>
+            <div class="poster-text">
+                <h4>Nanomechanical and rheological characteristics of red blood cells in preeclampsia</h4>
+                <p><span>Ariana Langari</span>, Velichka Strijkova, Miroslava Ivanova, Vesela Lozanova, Anika Alexandrova-Watanabe, Emilia Abadjieva, Tihomir Tiankov, Ina Giosheva, Sashka Krumova, Tania Pencheva, Svetla Todinova</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ######## Posters Section End ######## -->
+{% endblock %}
+</body>

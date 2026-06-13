@@ -1,0 +1,55 @@
+{% extends "base-emi.html" %}
+{% load static %}
+
+<!--{% block title %}Научна презентация{% endblock %}-->
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<body>
+<div class="container">
+    <div class="d-grid gap-2 d-md-block">
+        <div class="row mt-4">
+            <div class="user-info">
+                <a href="{% url 'news_eng' %}" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ######## Posters Section ######## -->
+<section class="posters-section">
+    <div class="container">
+        <!-- Poster 1: Текст ВЛЯВО, Снимка ВДЯСНО -->
+        <div class="poster-item poster-reverse">
+              <div class="poster-image">
+<!--                <a href="{% static 'images/blog/bmql1.png' %}" target="_blank">-->
+                    <img src="{% static 'images/blog/bmql1.png' %}" alt="Cell Physics Poster">
+                </a>
+            </div>
+            <div class="poster-text">
+                <h4>Participation in the Fifth Youth Scientific Session "Biomedicine and Quality of Life" 2025</h4>
+                <p>At the Fifth Youth Scientific Session "Biomedicine and Quality of Life", held on
+                            December 4-5, 2025 at the Institute of Biophysics and Biomedical Engineering at the
+                            Bulgarian Academy of Sciences, Sen. Assist. Prof. Ariana Langari presented a talk on the
+                            topic "Albumin Thermal Stabilization and Plasma Proteins Aggregation as Diagnostic Markers
+                            for Preeclampsia: Impact of Disease Severity" with co-authors Velichka Strijkova, Vesela
+                            Katrova, Ina Giosheva, Miroslava Ivanova, Svetla Todinova, Sashka Krumova, and Tania
+                            Pencheva. The talk demonstrated deviations in the temperature stability and aggregation of
+                            plasma proteins from patients with preeclampsia compared to healthy pregnant controls,
+                            which were more pronounced in the cases of severe preeclampsia. The following potential
+                            markers of the disease were identified: temperature stabilization of albumin, modification
+                            of the main plasma proteins as a result of oxidative stress and an increase in the size and
+                            number of plasma aggregates.</p>
+                <p></p>
+            </div>
+          
+        </div>
+
+        <!-- Poster 2: Снимка ВЛЯВО, Текст ВДЯСНО -->
+
+    </div>
+</section>
+<!-- ######## Posters Section End ######## -->
+{% endblock %}
+</body>

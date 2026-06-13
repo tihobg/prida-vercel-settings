@@ -1,4 +1,4 @@
-{% extends "base-emi.html" %}
+{% extends "base_bg.html" %}
 {% load static %}
 
 {% block title %}Our Blog{% endblock %}
@@ -62,7 +62,34 @@
                             in Preeclampsia: Insights from Calorimetry and Atomic Force Microscopy“. </p>
                         <div class="link">
                             <a href="{% url 'prida_publication_bg' %}"
-                               target="_blank"
+                               class="btn btn-info">
+                               Научете повече <i class="fas fa-long-arrow-alt-right"></i>
+                            </a>
+<!--                            <button class="btn btn-primary" onclick="goToPage()">-->
+<!--                                Научете повечe <i class="fas fa-long-arrow-alt-right"></i>-->
+<!--    </button>-->
+
+<!--    <script>-->
+<!--        function goToPage() {-->
+<!--            window.location.href = "{% url 'prida_publication_bg' %}";-->
+<!--        }-->
+<!--    </script>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6">
+                <div class="single-blog germany-card">
+                    <figure>
+                        <img src="{% static 'images/blog/news-2.png' %}" alt="Blog Image">
+                    </figure>
+                    <div class="blog-detail">
+                        <h4>Участие в ХVІ “Национален Конгрес по акушерство и гинекология с международно участие“</h4>
+                        <p style="text-align: justify; text-indent: 0;">В периода 02-05 април 2026 г. в хотел „Рила“, к.к. Боровец, се проведе
+                            „ХVІ Национален Конгрес по акушерство и гинекология с международно участие“</p>
+                        <div class="link">
+                            <a href="{% url 'prida_publication2_bg' %}"
                                class="btn btn-info">
                                Научете повече <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
@@ -82,8 +109,7 @@
                         <h4>Пета младежка научна сесия „Биомедицина и качество на живот“  2025</h4>
                         <p style="text-align: justify; text-indent: 0;">Гл. ас. Ариана Лангари участва в Пета младежка научна сесия „Биомедицина и качество на живот“, 4–5 декември 2025, в София, където изнесе доклад. </p>
                         <div class="link">
-                            <a href="{% url 'bmql_emi' %}"
-                               target="_blank" 
+                            <a href="{% url 'prida_publication3_bg' %}"
                                class="btn btn-info">
                                Научете повече <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
@@ -101,12 +127,15 @@
                     </figure>
                     <div class="blog-detail">
                         <h4>Cell Physics 2025</h4>
-                        <p>Гл. ас. Ариана Лангари участва в международната конференция Cell Physics 2025, проведена  7-9 Октомври 2025 в Саарбрюкен, Германия, където представи постерна презентация. </p>
+                        <p>Представяне на проект PRIDA на CELL PHYSICS, 7-9.10.2025, Саарбрюкен, Германия На научния
+                            форум CELL PHYSICS 2025 International Meeting, провел се в периода 7-9 октомври 2025 г. в
+                            Саарбрюкен, Германия, гл. ас. д-р Ариана Лангари, член на научния колектив по проект
+                            "Създаване на база данни за патологична бременност и извличане на нови знания с цел
+                            идентифициране на диагностични маркери" </p>
                         <div class="link">
-                            <a href="{% url 'cellphysics_emi' %}"
-                               target="_blank" 
+                            <a href="{% url 'prida_publication4_bg' %}"
                                class="btn btn-info">
-                               Научете повече <i class="fas fa-long-arrow-alt-right"></i>
+                               Научете повече4 <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
                         </div>
                     </div>
@@ -119,12 +148,12 @@
                         <img src="{% static 'images/blog/techpark_1.jpg' %}" alt="Blog Image">
                     </figure>
                     <div class="blog-detail">
-                        <h4>София Тех Парк 2025</h4>
-                        <p style="text-align: justify; text-indent: 0;">Гл. ас. Аника Александрова и доц. Т. Тянков  участваха в Scientific and Innovation Forum "International Forum on Advanced ICT Research and Innovation", проведена в периода 29.09 - 01.10.2025 в София Тех Парк.
-</p>
+                        <h4>Участие в Scientific and Innovation Forum "International Forum on Advanced ICT Research and
+                            Innovation"</h4>
+                        <p style="text-align: justify; text-indent: 0;">Представяне на проект PRIDA на International Forum on Advanced ICT Research and
+                            Innovation, 29.09.2025 -01.10. 2025, София, България</p>
                         <div class="link">
-                            <a href="{% url 'techpark_emi' %}"
-                               target="_blank" 
+                            <a href="{% url 'prida_publication5_bg' %}"
                                class="btn btn-info">
                                Научете повече <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
@@ -143,11 +172,10 @@
                         <img src="{% static 'images/blog/bioflux.jpg' %}" alt="Blog Image">
                     </figure>
                     <div class="blog-detail">
-                        <h4>Микрофлуидна система  с приложение в биомедицинaта  - BioFlux 2025</h4>
-                        <p style="text-align: justify; text-indent: 0;">През месец август 2025 г. в Института по биофизика и биомедицинско инженерство към Българска академия на науките беше доставена микрофлуидна система с приложения в биомедицината, състояща се от проточна помпа BioFlux 1000HT и инвертен микроскоп Zeiss Axiovert 5.</p>
+                        <h4>Микрофлуидна система</h4>
+                        <p style="text-align: justify; text-indent: 0;">Доставка на микрофлуидна система с приложения в биомедицината</p>
                         <div class="link">
-                            <a href="{% url 'msystema_emi' %}"
-                               target="_blank" 
+                            <a href="{% url 'prida_publication6_bg' %}"
                                class="btn btn-info">
                                Научете повече <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
@@ -164,11 +192,11 @@
                         <img src="{% static 'images/blog/biolic.jpg' %}" alt="Blog Image">
                     </figure>
                     <div class="blog-detail">
-                        <h4>BIOLIC 2024</h4>
-                        <p style="text-align: justify; text-indent: 0;">Гл.ас. Аника Александрова и доц. Тихомир Тянков взеха участие с постерни презентации във II International Biological and Life Sciences Congress, 30 October - 1 November, 2024, Antalya, Turkey</p>
+                        <h4>Участие в BIOLIC 2024, Antalya, Turkey</h4>
+                        <p style="text-align: justify; text-indent: 0;">Представяне на проект PRIDA на BIOLIC, 30 октомври 2024 - 1 ноември 2024,
+                            Анталия, Турция</p>
                         <div class="link">
                             <a href="{% url 'biolic_emi' %}"
-                               target="_blank" 
                                class="btn btn-info">
                                Научете повече <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
@@ -185,10 +213,11 @@
                     </figure>
                     <div class="blog-detail">
                         <h4>Начало на проекта 2024</h4>
-                        <p style="text-align: justify; text-indent: 0;">На 29.05.2024 г. ИБФБМИ стартира изпълнението на Проект BG-RRP-2.011-0025 "Създаване на база данни за патологична бременност и извличане на нови знания с цел идентифициране на диагностични маркери".</p>
+                        <p style="text-align: justify; text-indent: 0;">ИБФБМИ изпълнява Проект BG-RRP-2.011-0025 “Създаване на база данни за патологична бременност и извличане на нови знания с цел идентифициране на диагностични маркери“
+                            - 29.05.2024 г. </p>
+<!--                            ИБФБМИ стартира изпълнението на Проект BG-RRP-2.011-0025 "Създаване на база данни за патологична бременност и извличане на нови знания с цел идентифициране на диагностични маркери".</p>-->
                         <div class="link">
-                            <a href="https://biomed.bas.bg/bg/2024/09/ibphbme-implements-project-bg-rpr-2-011-0025/" 
-                               target="_blank" 
+                            <a href="https://biomed.bas.bg/bg/2024/09/ibphbme-implements-project-bg-rpr-2-011-0025/"
                                class="btn btn-info">
                                Научете повече <i class="fas fa-long-arrow-alt-right"></i>
                             </a>

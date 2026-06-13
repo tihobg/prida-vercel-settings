@@ -1,0 +1,56 @@
+{% extends "base-emi.html" %}
+{% load static %}
+
+<!--{% block title %}Научна презентация{% endblock %}-->
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<body>
+<div class="container">
+    <div class="d-grid gap-2 d-md-block">
+        <div class="row mt-4">
+            <div class="user-info">
+                <a href="{% url 'news_eng' %}" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ######## Posters Section ######## -->
+<section class="posters-section">
+    <div class="container">
+        <!-- Poster 1: Текст ВЛЯВО, Снимка ВДЯСНО -->
+        <div class="poster-item poster-reverse">
+              <div class="poster-image">
+                <a href="{% static 'images/blog/news-2.png' %}" target="_blank">
+                    <img src="{% static 'images/blog/news-2.png' %}" alt="Cell Physics Poster">
+                </a>
+            </div>
+            <div class="poster-text">
+                <h4>Participation in “XVI National Congress of Obstetrics and Gynecology with International Participation”</h4>
+                <p>In the period April 02-05, 2026 the "XVI National Congress of Obstetrics and Gynecology with
+                    International Participation" was held (https://wasteels.bg/bg/congresno-subitie/khvi-nacionalen-
+                    kongres-po-akusherstvo-i-ginekologiya-s-mezhdunarodno-uchastie) at the Rila Hotel, Borovets,
+                    Bulgaria. At the congress, Ina Gyosheva, MD, presented a poster on the topic "Thermodynamic and
+                    Nanomechanical Alterations of Red Blood Cells in Preeclampsia: Cell Aging Effect" with co-
+                    authors Sashka Krumova, Velichka Strijkova, Ariana Langari, Alexey Savov, Vesela Katrova,
+                    Svetla Todinova, and Tania Pencheva. Combining differential scanning calorimetry and atomic force
+                    microscopy, the authors demonstrated that severe preeclampsia induces selective destabilization of
+                    the band 3 protein-hemoglobin macrocomplex in red blood cells, linking protein instability to
+                    impaired mechanical integrity of cells. From a translational perspective, the combined
+                    thermodynamic-nanomechanical approach to red blood characterization reveals new sensitive
+                    biophysical markers for identification of early red blood cells damage in patients with high-risk
+                    pregnancies that cannot be detected by routine hematological tests. </p>
+                <p></p>
+            </div>
+          
+        </div>
+
+        <!-- Poster 2: Снимка ВЛЯВО, Текст ВДЯСНО -->
+
+    </div>
+</section>
+<!-- ######## Posters Section End ######## -->
+{% endblock %}
+</body>

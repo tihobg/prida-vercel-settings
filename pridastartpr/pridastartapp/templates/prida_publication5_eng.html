@@ -1,0 +1,150 @@
+{% extends "base-emi.html" %}
+{% load static %}
+
+<!--{% block title %}Научна презентация{% endblock %}-->
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<body>
+<div class="container">
+    <div class="d-grid gap-2 d-md-block">
+        <div class="row mt-4">
+            <div class="user-info">
+                <a href="{% url 'news_eng' %}" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ######## Posters Section ######## -->
+<!--<section class="posters-section">-->
+<!--    <div class="container">-->
+<!--        &lt;!&ndash; Poster 1: Текст ВЛЯВО, Снимка ВДЯСНО &ndash;&gt;-->
+<!--        <div class="poster-item poster-reverse">-->
+<!--              <div class="poster-image">-->
+<!--&lt;!&ndash;                <a href="{% static 'images/blog/bmql1.png' %}" target="_blank">&ndash;&gt;-->
+<!--                    <img src="{% static 'images/blog/techpark_1.jpg' %}" alt="Cell Physics Poster">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="poster-text">-->
+<!--                <h4>Participation in the Scientific and Innovation Forum "International Forum on Advanced ICT-->
+<!--                    Research and Innovation"</h4>-->
+<!--                <p>The “International Forum on Advanced ICT Research and Innovation” was held at Sofia Tech Park from-->
+<!--                    September 29 to October 1, 2025. The forum was jointly organized by the Council for Science and-->
+<!--                    Innovation in the Field of Information and Communication Technologies and the Bulgarian Academy of-->
+<!--                    Sciences under investment C2.I2 "Increasing the Innovation Capacity of the Bulgarian Academy of-->
+<!--                    Sciences in the Field of Green and Digital Technologies", part of the National Recovery and-->
+<!--                    Resilience Plan.-->
+<!--                    At the invitation of the organizers, the project BG-RRP-2.011-0025 “Development of a Pathologic-->
+<!--                    Pregnancy Database for Retrieval of New Knowledge for Diagnostic Markers Identification” (Pregnancy-->
+<!--                    Related Integrated Database Analytics, PRIDA), funded by the European Union through the-->
+<!--                    aforementioned mechanism, was also presented within the forum.-->
+<!--                    The members of the scientific team of PRIDA project Sen. Assits. Prof. Anika Alexandrova-Watanabe-->
+<!--                    and Assoc. Prof. Tihomir Tiankov presented the recent achievements of the project, including-->
+<!--                    results related to the collection, selection, and systematization of retrospective and new data on-->
+<!--                    clinical indicators and genetic mutations and their inclusion in an integrated database, along-->
+<!--                    with experimentally studied biophysical and rheological parameters of blood cells in risk p-->
+<!--                    regnancies. The design development of the PRIDA database and the creation of a web-based-->
+<!--                    application for accessing the database were also presented, along with a demonstration of the-->
+<!--                    capabilities for analysis of the relationships between individual factors, for risk assessment, etc.</p>-->
+<!--                <p></p>-->
+<!--            </div>-->
+<!--          -->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Poster 2: Снимка ВЛЯВО, Текст ВДЯСНО &ndash;&gt;-->
+
+<!--    </div>-->
+<!--</section>-->
+
+<section class="our-blog techpark-section">
+    <div class="container">
+        <div class="row">
+                <h2>Participation in the Scientific and Innovation Forum "International Forum on Advanced ICT
+                    Research and Innovation"</h2>
+
+            <!-- Лява колона - Текст -->
+            <div class="col-md-5">
+                <div class="techpark-text">
+
+                    <p>The “International Forum on Advanced ICT Research and Innovation” was held at Sofia Tech Park from
+                    September 29 to October 1, 2025. The forum was jointly organized by the Council for Science and
+                    Innovation in the Field of Information and Communication Technologies and the Bulgarian Academy of
+                    Sciences under investment C2.I2 "Increasing the Innovation Capacity of the Bulgarian Academy of
+                    Sciences in the Field of Green and Digital Technologies", part of the National Recovery and
+                    Resilience Plan.
+                    At the invitation of the organizers, the project BG-RRP-2.011-0025 “Development of a Pathologic
+                    Pregnancy Database for Retrieval of New Knowledge for Diagnostic Markers Identification” (Pregnancy
+                    Related Integrated Database Analytics, PRIDA), funded by the European Union through the
+                    aforementioned mechanism, was also presented within the forum.
+                    The members of the scientific team of PRIDA project Sen. Assits. Prof. Anika Alexandrova-Watanabe
+                    and Assoc. Prof. Tihomir Tiankov presented the recent achievements of the project, including
+                    results related to the collection, selection, and systematization of retrospective and new data on
+                    clinical indicators and genetic mutations and their inclusion in an integrated database, along
+                    with experimentally studied biophysical and rheological parameters of blood cells in risk p
+                    regnancies. The design development of the PRIDA database and the creation of a web-based
+                    application for accessing the database were also presented, along with a demonstration of the
+                    capabilities for analysis of the relationships between individual factors, for risk assessment, etc.</p>
+                </div>
+            </div>
+
+            <!-- Дясна колона - Картинки -->
+            <div class="col-md-7">
+                <div class="techpark-gallery">
+                    <a href="{% static 'images/blog/img1.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img1.jpg' %}" alt="София Тех Парк 1">
+                    </a>
+                    <a href="{% static 'images/blog/img2.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img2.jpg' %}" alt="София Тех Парк 2">
+                    </a>
+                    <a href="{% static 'images/blog/img3.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img3.jpg' %}" alt="София Тех Парк 3">
+                    </a>
+                    <a href="{% static 'images/blog/img4.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img4.jpg' %}" alt="София Тех Парк 4">
+                    </a>
+                    <a href="{% static 'images/blog/img5.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img5.jpg' %}" alt="София Тех Парк 5">
+                    </a>
+                    <a href="{% static 'images/blog/img6.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img6.jpg' %}" alt="София Тех Парк 6">
+                    </a>
+                    <a href="{% static 'images/blog/img7.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img7.jpg' %}" alt="София Тех Парк 7">
+                    </a>
+                    <a href="{% static 'images/blog/img8.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img8.jpg' %}" alt="София Тех Парк 8">
+                    </a>
+                    <a href="{% static 'images/blog/img9.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img9.jpg' %}" alt="София Тех Парк 9">
+                    </a>
+                    <a href="{% static 'images/blog/img10.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img10.jpg' %}" alt="София Тех Парк 10">
+                    </a>
+                    <a href="{% static 'images/blog/img11.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img11.jpg' %}" alt="София Тех Парк 11">
+                    </a>
+                    <a href="{% static 'images/blog/img12.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img12.jpg' %}" alt="София Тех Парк 12">
+                    </a>
+                    <a href="{% static 'images/blog/img13.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img13.jpg' %}" alt="София Тех Парк 13">
+                    </a>
+                    <a href="{% static 'images/blog/img14.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img14.jpg' %}" alt="София Тех Парк 14">
+                    </a>
+                    <a href="{% static 'images/blog/img15.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img15.jpg' %}" alt="София Тех Парк 15">
+                    </a>
+                    <a href="{% static 'images/blog/img16.jpg' %}" target="_blank" class="gallery-item">
+                        <img src="{% static 'images/blog/img16.jpg' %}" alt="София Тех Парк 16">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ######## Posters Section End ######## -->
+{% endblock %}
+</body>

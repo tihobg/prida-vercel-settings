@@ -1,0 +1,63 @@
+{% extends "base-emi.html" %}
+{% load static %}
+
+<!--{% block title %}Научна презентация{% endblock %}-->
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<body>
+<div class="container">
+    <div class="d-grid gap-2 d-md-block">
+        <div class="row mt-4">
+            <div class="user-info">
+                <a href="{% url 'news_eng' %}" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ######## Posters Section ######## -->
+<div class="container-fluid bioflux-container">
+    <div class="container">
+        <div class="bioflux-row">
+            <div class="bioflux-content">
+                <h4>Microfluidic system</h4>
+                <p>In August 2025, a microfluidic system with biomedical applications was delivered to the Institute of
+                    Biophysics and Biomedical Engineering at the Bulgarian Academy of Sciences, in relation to the
+                    implementation of the project BG-RRP-2.011-0025 "Development of a Pathologic Pregnancy Database
+                    for Retrieval of New Knowledge for Diagnostic Markers Identification" (Pregnancy Related
+                    Integrated Database Analytics, PRIDA), funded by the European Union through the NextGenerationEU
+                    instrument under the Recovery and Resilience Mechanism in the implementation of investment C2I2
+                    “Increasing the Innovation Capacity of the Bulgarian Academy of Sciences in the Field of Green and
+                    Digital Technologies”, part of the National Recovery and Resilience Plan.
+                    The microfluidic system is a high-quality imaging platform for conducting physiological analyses
+                    in flows up to 200 dyn/cm². The system consists of a BioFlux 1000HT electropneumatic pump for flow
+                    control, combined with a Zeiss Axiovert 5 inverted microscope.
+                    The selected configuration of the microfluidic system can find application in fields such as
+                    hematology, immunology, vascular biology, and microbiology, and provides opportunities for
+                    studying rheological properties of cells, biofilm formation, host-pathogen interactions, cell
+                    differentiation, chemotaxis, etc.
+                    According to the PRIDA project objectives, the microfluidic system will be applied to generate new
+                    data on the rheological properties of erythrocytes (deformability, aggregation) as indicators of
+                    microvascular disorders in pathological pregnancy, which will allow expanding the analysis of the
+                    relationships between clinical and biophysical characteristics in pathological pregnancy.
+                    Subsequently, these biophysical parameters will be entered into an integrated database with the aim
+                    of defining new prognostic markers/indicators.</p>
+                <p></p>
+            </div>
+            <div class="bioflux-image-wrapper">
+                <div class="bioflux-single-image">
+                    <img src="{% static 'images/blog/msystema.jpg' %}" alt="Cell Physics Poster">
+                </div>
+                <div class="bioflux-single-image">
+                    <img src="{% static 'images/blog/bioflux2.jpg' %}"
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--</section>-->
+<!-- ######## Posters Section End ######## -->
+{% endblock %}
+</body>

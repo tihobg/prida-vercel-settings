@@ -2043,6 +2043,9 @@ def news_eng(request):
 def biolic_emi(request):
     return render(request, 'biolic_emi.html')
 
+def biolic_eng(request):
+    return render(request, 'biolic_eng.html')
+
 
 def cellphysics_emi(request):
     return render(request, "cellphysics_emi.html")
@@ -2050,6 +2053,39 @@ def cellphysics_emi(request):
 
 def prida_publication_bg(request):
     return render(request, "prida_publication_bg.html")
+
+def prida_publication_eng(request):
+    return render(request, "prida_publication_eng.html")
+
+def prida_publication2_bg(request):
+    return render(request, "prida_publication2_bg.html")
+
+def prida_publication2_eng(request):
+    return render(request, "prida_publication2_eng.html")
+
+def prida_publication3_bg(request):
+    return render(request, "prida_publication3_bg.html")
+
+def prida_publication3_eng(request):
+    return render(request, "prida_publication3_eng.html")
+
+def prida_publication4_bg(request):
+    return render(request, "prida_publication4_bg.html")
+
+def prida_publication4_eng(request):
+    return render(request, "prida_publication4_eng.html")
+
+def prida_publication5_bg(request):
+    return render(request, "prida_publication5_bg.html")
+
+def prida_publication5_eng(request):
+    return render(request, "prida_publication5_eng.html")
+
+def prida_publication6_bg(request):
+    return render(request, "prida_publication6_bg.html")
+
+def prida_publication6_eng(request):
+    return render(request, "prida_publication6_eng.html")
 
 
 def bmql_emi(request):
@@ -6059,20 +6095,21 @@ def preeclampsia(request):
     # sub = slice(preeclampsia_sist_pressure_controli(0, 2))
     sist_pressure_controli = []
     diasist_pressure_controli = []
+    slice_res_diasist_pr = []
+
     for sist_pr in range(len(preeclampsia_sist_pressure_controli)):
         res_sist_pr = preeclampsia_sist_pressure_controli[sist_pr]
         slice_res_sist_pr = res_sist_pr[0][slice(0, 3)]
         sist_pressure_controli.append(int(slice_res_sist_pr))
     print('S', sist_pressure_controli)
-    # for diasist_pr in range(len(preeclampsia_diasist_pressure_controli)):
-    #     res_diasist_pr = preeclampsia_diasist_pressure_controli[diasist_pr]
-    #     slice_res_diasist_pr = res_diasist_pr[0][slice(0, 3)]
-    #     print('S1', slice_res_diasist_pr)
-    #     if slice_res_diasist_pr[2] == '0':
-    #         slice_res_diasist_pr = res_diasist_pr[0][slice(0, 2)]
-    #
-    #     diasist_pressure_controli.append(int(slice_res_diasist_pr))
-    # print('S', diasist_pressure_controli)
+    for diasist_pr in range(len(preeclampsia_diasist_pressure_controli)):
+        res_diasist_pr = preeclampsia_diasist_pressure_controli[diasist_pr]
+        num = res_diasist_pr[0][slice(0, 4)].find('.')
+        slice_res_diasist_pr = res_diasist_pr[0][slice(0, num)]
+        print('SLICE', num)
+
+        diasist_pressure_controli.append(int(slice_res_diasist_pr))
+    print('S', diasist_pressure_controli)
 
 
 
@@ -6092,19 +6129,19 @@ def preeclampsia(request):
     print('preeclampsia_diasist_pressure_controli', preeclampsia_diasist_pressure_controli)
 
     age_controli = []
-    sist_pressure_controli = []
-    diasist_pressure_controli = []
+    # sist_pressure_controli = []
+    # diasist_pressure_controli = []
     for age in preeclampsia_age_controli:
         age_controli.append(int(age[0]))
     print('age_controli', age_controli)
-    for sist_pressure in preeclampsia_sist_pressure_controli:
-        sist_pressure_controli.append(float(sist_pressure[0]))
-    print('sist_pressure_controli', sist_pressure_controli[0])
-    for diasist_pressure in preeclampsia_sist_pressure_controli:
-        diasist_pressure_controli.append(float(diasist_pressure[0]))
-    print('diasist_pressure_controli', diasist_pressure_controli)
+    # for sist_pressure in preeclampsia_sist_pressure_controli:
+    #     sist_pressure_controli.append(float(sist_pressure[0]))
+    # print('sist_pressure_controli', sist_pressure_controli[0])
+    # for diasist_pressure in preeclampsia_sist_pressure_controli:
+    #     diasist_pressure_controli.append(float(diasist_pressure[0]))
+    # print('diasist_pressure_controli', diasist_pressure_controli)
 
-    print('int_age_controli', type(age_controli))
+    # print('int_age_controli', type(age_controli))
 
     for column_name_controli in prida_list_preeclampsia:
         for row_controli in range(len(prida_list_preeclampsia)):
@@ -6136,22 +6173,36 @@ def preeclampsia(request):
     matplotlib.use('agg')
     # plt.style.use('ggplot')
     nx = np.arange(10, 20)
+
     ny = np.array([2, 1, 4, 5, 8, 12, 18, 25, 96, 48])
     xyz = np.array([[10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
                     [2, 1, 4, 5, 8, 12, 18, 25, 96, 48],
                     [5, 3, 2, 1, 0, -2, -8, -11, -15, -16]])
     print('XYZ', xyz)
 
-    prida_xyz = np.array([
-        age_controli,
-        sist_pressure_controli,
-        diasist_pressure_controli
-    ])
+    prida_x = np.array(age_controli)
+    prida_y = np.array(sist_pressure_controli)
+    prida_z = np.array(diasist_pressure_controli)
+    print('prida X', prida_x)
+    print('prida Y', prida_y)
+    print('prida Z', prida_z)
+
+
+    print('prida X', nx)
+
+    prida_xyz = np.array(
+        [
+            prida_x,
+            prida_y,
+            prida_z
+        ]
+    )
 
     print('prida_xyz', prida_xyz)
+    print('xyz', xyz)
     print('prida_xyz', type(prida_xyz), type(xyz))
 
-    prida_corr_matrix = np.corrcoef(prida_xyz).round(decimals=2)
+    prida_corr_matrix = np.corrcoef(prida_xyz).round(decimals=3)
     print('prida_corr_matrix', prida_corr_matrix)
 
     corr_matrix = np.corrcoef(xyz).round(decimals=2)
