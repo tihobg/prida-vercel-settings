@@ -55,10 +55,10 @@
 
         <table>
             <tr>
-                <th>
-                    <input type="checkbox" name="prida_list_preeclampsia" value="patient"
-                           style="height:20px; width:20px;">Patient
-                </th>
+<!--                <th>-->
+<!--                    <input type="checkbox" name="prida_list_preeclampsia" value="patient"-->
+<!--                           style="height:20px; width:20px;">Patient-->
+<!--                </th>-->
                 <th>
                     <input type="checkbox" name="prida_list_preeclampsia" value="age"
                            style="height:20px; width:20px;">Age
@@ -87,12 +87,13 @@
                     <input type="checkbox" name="prida_list_preeclampsia" value="nea1"
                            style="height:20px; width:20px;">NEA1
                 </th>
-            </tr>
-            <tr>
                 <th>
                     <input type="checkbox" name="prida_list_preeclampsia" value="eai2"
                            style="height:20px; width:20px;">EAI2
                 </th>
+            </tr>
+            <tr>
+
                 <th>
                     <input type="checkbox" name="prida_list_preeclampsia" value="nea2"
                            style="height:20px; width:20px;">NEA2
@@ -121,12 +122,13 @@
                     <input type="checkbox" name="prida_list_preeclampsia" value="mchc"
                            style="height:20px; width:20px;">MCHC
                 </th>
-            </tr>
-            <tr>
                 <th>
                     <input type="checkbox" name="prida_list_preeclampsia" value="rdw"
                            style="height:20px; width:20px;">RDW
                 </th>
+            </tr>
+            <tr>
+
                 <th>
                     <input type="checkbox" name="prida_list_preeclampsia" value="prothrombin_time"
                            style="height:20px; width:20px;">Prothrombin Time
@@ -155,12 +157,13 @@
                     <input type="checkbox" name="prida_list_preeclampsia" value="pdw_percent"
                            style="height:20px; width:20px;">PDW %
                 </th>
-            </tr>
-            <tr>
                 <th>
                     <input type="checkbox" name="prida_list_preeclampsia" value="creatine_serum"
                            style="height:20px; width:20px;">Creatine Serum
                 </th>
+            </tr>
+            <tr>
+
                 <th>
                     <input type="checkbox" name="prida_list_preeclampsia" value="total_protein_serum"
                            style="height:20px; width:20px;">Total Protein Serum
@@ -189,12 +192,13 @@
                     <input type="checkbox" name="prida_list_preeclampsia" value="alat"
                            style="height:20px; width:20px;">ALAT
                 </th>
-            </tr>
-            <tr>
                 <th>
                     <input type="checkbox" name="prida_list_preeclampsia" value="mcv"
                            style="height:20px; width:20px;">MCV
                 </th>
+            </tr>
+            <tr>
+
             </tr>
 
         </table>
@@ -557,8 +561,12 @@
         </div>
     </div>
 </div>
+<br>
+
 <div class="container">
+    {% if key6 %}
             <img src="data:image/png;base64,{{ key6 }}" height="400" width="750">
+    {% endif %}
 </div>
 <!-- ######## Page Title ######## -->
 <!--<div class="page-nav no-margin row">-->
