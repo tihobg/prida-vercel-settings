@@ -6085,8 +6085,9 @@ def preeclampsia(request):
     preeclampsia_sist_pressure_controli = PridaPreeclampsia.objects.values_list('sist_pressure')
     preeclampsia_diasist_pressure_controli = PridaPreeclampsia.objects.values_list('diasist_pressure')
     preeclampsia_gw_controli = PridaPreeclampsia.objects.values_list('gw')
+    print('preeclampsia_gw_controli', preeclampsia_gw_controli)
     prida_list_preeclampsia = request.POST.getlist('prida_list_preeclampsia')
-    print('prida_list_preeclampsia', prida_list_preeclampsia, len(prida_list_preeclampsia), len(preeclampsia_patient_controli))
+    # print('prida_list_preeclampsia', prida_list_preeclampsia, len(prida_list_preeclampsia), len(preeclampsia_patient_controli))
     initial_matrix_controli = np.zeros((len(prida_list_preeclampsia), len(preeclampsia_patient_controli)), dtype=object)
     # s_pressure_c [] = int(preeclampsia_sist_pressure_controli)
     # print(s_pressure_c)
@@ -6095,21 +6096,28 @@ def preeclampsia(request):
     # sub = slice(preeclampsia_sist_pressure_controli(0, 2))
     sist_pressure_controli = []
     diasist_pressure_controli = []
+    gw_controli = []
+
     slice_res_diasist_pr = []
 
     for sist_pr in range(len(preeclampsia_sist_pressure_controli)):
         res_sist_pr = preeclampsia_sist_pressure_controli[sist_pr]
         slice_res_sist_pr = res_sist_pr[0][slice(0, 3)]
         sist_pressure_controli.append(int(slice_res_sist_pr))
-    print('S', sist_pressure_controli)
+    # print('S', sist_pressure_controli)
     for diasist_pr in range(len(preeclampsia_diasist_pressure_controli)):
         res_diasist_pr = preeclampsia_diasist_pressure_controli[diasist_pr]
         num = res_diasist_pr[0][slice(0, 4)].find('.')
         slice_res_diasist_pr = res_diasist_pr[0][slice(0, num)]
-        print('SLICE', num)
+        # print('SLICE', num)
 
         diasist_pressure_controli.append(int(slice_res_diasist_pr))
-    print('S', diasist_pressure_controli)
+    # print('S', diasist_pressure_controli)
+    for gw in range(len(preeclampsia_gw_controli)):
+        res_gw_controli = preeclampsia_gw_controli[gw]
+        slice_res_gw_controli = res_gw_controli[0][slice(0, 2)]
+        gw_controli.append(int(slice_res_gw_controli))
+    print('S', gw_controli)
 
 
 
@@ -6257,8 +6265,13 @@ def preeclampsia(request):
                         res_mat_preecl.append(prida_z1)
                         print('DIASIST PR', selected_param)
 
+                    elif selected_param == 'gw':
+                        prida_gw = np.array(gw_controli)
+                        res_mat_preecl.append(prida_gw)
+                        print('GW', selected_param)
+
                 prida_xyz1 = np.array(res_mat_preecl)
-                print('RES MAT', res_mat_preecl, prida_xyz1)
+                print('RES MAT', prida_xyz1)
                 print('prida_xyz1', prida_xyz1)
 
                 prida_corr_matrix = np.corrcoef(prida_xyz1).round(decimals=3)
@@ -6268,9 +6281,9 @@ def preeclampsia(request):
                 im = ax.imshow(prida_corr_matrix)
                 im.set_clim(-1, 1)
                 ax.grid(False)
-                ax.xaxis.set(ticks=(0, 1, 2), ticklabels=('x', 'y', 'z'))
-                ax.yaxis.set(ticks=(0, 1, 2), ticklabels=('x', 'y', 'z'))
-                ax.set_ylim(2.5, -0.5)
+                ax.xaxis.set(ticks=(0, 1, 2, 3), ticklabels=('x1', 'y1', 'z1', 'gw'))
+                ax.yaxis.set(ticks=(0, 1, 2, 3), ticklabels=('x2', 'y', 'z', 'gw'))
+                ax.set_ylim(3.5, -0.5)
 
                 for i in range(len(prida_list_preeclampsia)):
                     for j in range(len(prida_list_preeclampsia)):
