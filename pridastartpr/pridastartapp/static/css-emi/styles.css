@@ -1115,8 +1115,8 @@ th {
 .sub-list > li {
   position: relative;
   padding-left: 20px;
-  margin-bottom: 15px;
-  line-height: 1.6;
+  margin-bottom: 18px;
+  line-height: 1.8;
   color: #34495e;
 }
 
@@ -1126,7 +1126,7 @@ th {
   left: 0;
   top: 2px;
   color: #3498db;
-  font-size: 16px;
+  font-size: 24px;
   display: block !important;
 }
 

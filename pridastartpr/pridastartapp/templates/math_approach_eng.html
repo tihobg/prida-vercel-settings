@@ -1,0 +1,34 @@
+{% extends "base-emi.html" %}
+{% load static %}
+
+{% block title %}Нашите Дейности{% endblock %}
+
+{% block content %}
+
+
+<!-- ######## Services Section ######## -->
+<section class="project-activities">
+    <div class="container">
+        <h2 class="section-title">Mathematical approaches for database analysis</h2>
+        <h3 class="mt-4">Multivariate statistical analysis:</h3>
+        <ul class="sub-list">
+            <li>-classical correlation analysis</li>
+            <li>-principal component analysis</li>
+        </ul>
+        <h3 class="mt-4">Intercriteria analysis:</h3>
+        <ul class="sub-list">
+            <li>-classical intercriteria analysis</li>
+            <li>-modifications of intercriteria analysis</li>
+        </ul>
+        <div class="math-image my-4 text-center">
+            <img src="{% static 'images/icra2_1.jpg' %}" alt="Mathematical formula" class="img-fluid founded">
+        </div>
+        <div class="math-image my-4 text-center">
+            <img src="{% static 'images/icra2_2.jpg' %}" alt="Database icon" class="img-fluid rounded">
+        </div>
+    </div>
+
+</section>
+
+<!-- ######## Services Section End ######## -->
+{% endblock %}

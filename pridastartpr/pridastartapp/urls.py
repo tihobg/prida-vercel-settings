@@ -10,6 +10,8 @@ urlpatterns = [
     path('about_us_emi/', viewsemi.about_us_emi, name='about_us_emi'),
     path('services_emi/', viewsemi.services_emi, name='services_emi'),
     path('services_eng/', viewsemi.services_eng, name='services_eng'),
+    path('experimental_methods_eng/', viewsemi.experimental_methods_eng, name='experimental_methods_eng'),
+    path('math_approach_eng/', viewsemi.math_approach_eng, name='math_approach_eng'),
 
     path('database_emi/', viewsemi.database_emi, name='database_emi'),
     path('mutations_eng/', viewsemi.mutations_eng, name='mutations_eng'),
