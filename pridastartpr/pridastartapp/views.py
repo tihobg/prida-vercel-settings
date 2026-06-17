@@ -56,7 +56,7 @@ def base(request):
 
 
 def services(request):
-    return render(request, 'services.html')
+    return render(request, 'services_menu_eng.html')
 
 
 def news(request):

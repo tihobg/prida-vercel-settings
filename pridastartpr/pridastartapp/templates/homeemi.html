@@ -1,6 +1,6 @@
 <!-- web/templates/home.html -->
 
-{% extends 'base-emi.html' %}
+{% extends 'base_bg.html' %}
 {% load static %}
 
 {% block title %}
@@ -43,7 +43,7 @@
                        </div>
                        {% else %}
                        <div class="auth-buttons">
-                           <a href="{% url 'login_eng' %}" class="btn btn-primary btn-sm">Вход</a>
+                           <a href="{% url 'login_eng' %}" class="btn btn-primary btn-sm">Вход в база данни</a>
 <!--                           <a href="{% url 'register' %}" class="btn btn-success btn-sm">Регистрация</a>-->
                        </div>
                        {% endif %}
@@ -219,73 +219,73 @@
     </section>
 
     <!-- ################# Our Blog Starts Here #######################--->
-    <section class="our-blog">
-        <div class="container">
-            <div class="row session-title">
-                <h2> Новини</h2>
-             
-            </div>
-            <div class="blog-row row">
-                <div class="col-lg-12">
-                    <div class="single-blog">
-                        <div class="row">
-                            <!-- Image on the left -->
-                            <div class="col-md-6">
-                                <figure>
-                                    <img src="{% static 'images/blog/blog_011.jpg' %}" alt="">
-                                </figure>
-                            </div>
-                            
-                            <!-- Content on the right -->
-                            <div class="col-md-6">
-                                <div class="blog-detail">
-                                    <h4>Начало</h4>
-                                    <p>На 29.05.2024 г. Институт по биофизика и биомедицинско инженерство (ИБФБМИ) стартира изпълнението на Проект BG-RRP-2.011-0025 “Създаване на база данни за патологична бременност и извличане на нови знания с цел идентифициране на диагностични маркери“ .</p> <br>
-                                    
-                                    <button class="btn btn-info">
-                                        <a href="{% url 'news_emi' %}">Научете повече</a>
-                                    </button>
-                                </div>
-                            </div>
-                      
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!--    <section class="our-blog">-->
+<!--        <div class="container">-->
+<!--            <div class="row session-title">-->
+<!--                <h2> Новини</h2>-->
+<!--             -->
+<!--            </div>-->
+<!--            <div class="blog-row row">-->
+<!--                <div class="col-lg-12">-->
+<!--                    <div class="single-blog">-->
+<!--                        <div class="row">-->
+<!--                            &lt;!&ndash; Image on the left &ndash;&gt;-->
+<!--                            <div class="col-md-6">-->
+<!--                                <figure>-->
+<!--                                    <img src="{% static 'images/blog/blog_011.jpg' %}" alt="">-->
+<!--                                </figure>-->
+<!--                            </div>-->
+<!--                            -->
+<!--                            &lt;!&ndash; Content on the right &ndash;&gt;-->
+<!--                            <div class="col-md-6">-->
+<!--                                <div class="blog-detail">-->
+<!--                                    <h4>Начало</h4>-->
+<!--                                    <p>На 29.05.2024 г. Институт по биофизика и биомедицинско инженерство (ИБФБМИ) стартира изпълнението на Проект BG-RRP-2.011-0025 “Създаване на база данни за патологична бременност и извличане на нови знания с цел идентифициране на диагностични маркери“ .</p> <br>-->
+<!--                                    -->
+<!--                                    <button class="btn btn-info">-->
+<!--                                        <a href="{% url 'news_emi' %}">Научете повече</a>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                      -->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
 
 
-<section class="dynamic-data department">
-    <div class="container">
-        <div class="row session-title">
-            <h2>Интегрирана база данни за патологична бременност</h2>
-            
-        </div>
-        <div class="row">
-            <!-- Left Column: Button -->
-           <div class="col-lg-6 prida-info-section">
-    <p class="info-intro">Интегрираната база данни съдържа информация за:</p>
-    
-    <ul class="prida-list">
-        <li>здрави бременни контроли;</li>
-        <li>пациенти с прееклампсия;</li>
-        <li>пациенти със спонтанни аборти.</li>
-    </ul>
-    
-    <button class="btn btn-info">
-        <a href="{% url 'database_emi' %}" style="color: white; text-decoration: none;">Научете повече</a>
-    </button>
-</div>    
-            
-            <!-- Right Column: Image -->
-            <div class="col-lg-6">
-                <img src="{% static 'images/prida.png' %}" alt="PRIDA Overview" class="img-fluid" style="max-width: 350px; height: 350px; display: block; margin: -50px auto 0;">
-            </div>
-        </div>
-    </div>
-    <br>
-</section>
+<!--<section class="dynamic-data department">-->
+<!--    <div class="container">-->
+<!--        <div class="row session-title">-->
+<!--            <h2>Интегрирана база данни за патологична бременност</h2>-->
+<!--            -->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            &lt;!&ndash; Left Column: Button &ndash;&gt;-->
+<!--           <div class="col-lg-6 prida-info-section">-->
+<!--    <p class="info-intro">Интегрираната база данни съдържа информация за:</p>-->
+<!--    -->
+<!--    <ul class="prida-list">-->
+<!--        <li>здрави бременни контроли;</li>-->
+<!--        <li>пациенти с прееклампсия;</li>-->
+<!--        <li>пациенти със спонтанни аборти.</li>-->
+<!--    </ul>-->
+<!--    -->
+<!--    <button class="btn btn-info">-->
+<!--        <a href="{% url 'database_emi' %}" style="color: white; text-decoration: none;">Научете повече</a>-->
+<!--    </button>-->
+<!--</div>    -->
+<!--            -->
+<!--            &lt;!&ndash; Right Column: Image &ndash;&gt;-->
+<!--            <div class="col-lg-6">-->
+<!--                <img src="{% static 'images/prida.png' %}" alt="PRIDA Overview" class="img-fluid" style="max-width: 350px; height: 350px; display: block; margin: -50px auto 0;">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <br>-->
+<!--</section>-->
     
 
     <!-- ################# Footer Starts Here #######################--->

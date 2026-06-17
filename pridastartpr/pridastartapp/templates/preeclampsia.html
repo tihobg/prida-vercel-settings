@@ -548,7 +548,7 @@
     <div class="row mt-5">
 <!--        <form method="post" action="{% url 'proba1' %}">-->
             {% csrf_token %}
-                <h1>Моля изберете колони (най-малко 2 колони) за корелационен анализ!</h1>
+                <h1>Please select (at least 2) parameters to be analyzed </h1>
     </div>
 </div>
 <div class="container">
@@ -556,7 +556,7 @@
         <div class="col">
 <!--            <form method="post" action="{% url 'preeclampsia' %}">-->
                 {% csrf_token %}
-                <button name="corr_analysis" class="btn btn-primary btn-lg">Корелационен Анализ</button>
+                <button name="corr_analysis" class="btn btn-primary btn-lg">Correlation Analysis</button>
             </form>
         </div>
     </div>

@@ -19,7 +19,7 @@
                         <ul>
                             <li><a href="{% url 'home_eng' %}">Home</a></li>
                             <li><a href="{% url 'about_us_eng' %}">About Us</a></li>
-                            <li><a href="{% url 'services_eng' %}">Activities</a></li>
+                            <li><a href="{% url 'services_menu_eng' %}">Activities</a></li>
 <!--                            <li><a href="{% url 'database_emi' %}">База данни</a></li>-->
                             <li><a href="{% url 'news_eng' %}">News</a></li>
                             <li><a href="{% url 'contact_us_eng' %}">Contacts</a></li>
@@ -43,7 +43,7 @@
                        </div>
                        {% else %}
                        <div class="auth-buttons">
-                           <a href="{% url 'login_eng' %}" class="btn btn-primary btn-sm">Login</a>
+                           <a href="{% url 'login_eng' %}" class="btn btn-primary btn-sm">Login to database</a>
 <!--                           <a href="{% url 'register' %}" class="btn btn-success btn-sm">Registration</a>-->
                        </div>
                        {% endif %}
@@ -213,76 +213,76 @@
     </section>
 
     <!-- ################# Our Blog Starts Here #######################--->
-    <section class="our-blog">
-        <div class="container">
-            <div class="row session-title">
-                <h2> News</h2>
-             
-            </div>
-            <div class="blog-row row">
-                <div class="col-lg-12">
-                    <div class="single-blog">
-                        <div class="row">
-                            <!-- Image on the left -->
-                            <div class="col-md-6">
-                                <figure>
-                                    <img src="{% static 'images/blog/blog_011.jpg' %}" alt="">
-                                </figure>
-                            </div>
-                            
-                            <!-- Content on the right -->
-                            <div class="col-md-6">
-                                <div class="blog-detail">
-                                    <h4>Home</h4>
-                                    <p>On 29.05.2024, the Institute of Biophysics and Biomedical Engineering (IBfhBME)
-                                        launched the implementation of the Project BG-RRP-2.011-0025 “Creating a
-                                        database of pathological pregnancies and extracting new knowledge to identify
-                                        diagnostic markers“ .</p> <br>
-                                    
-                                    <button class="btn btn-info">
-                                        <a href="{% url 'news_emi' %}">Learn more</a>
-                                    </button>
-                                </div>
-                            </div>
-                      
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!--    <section class="our-blog">-->
+<!--        <div class="container">-->
+<!--            <div class="row session-title">-->
+<!--                <h2> News</h2>-->
+<!--             -->
+<!--            </div>-->
+<!--            <div class="blog-row row">-->
+<!--                <div class="col-lg-12">-->
+<!--                    <div class="single-blog">-->
+<!--                        <div class="row">-->
+<!--                            &lt;!&ndash; Image on the left &ndash;&gt;-->
+<!--                            <div class="col-md-6">-->
+<!--                                <figure>-->
+<!--                                    <img src="{% static 'images/blog/blog_011.jpg' %}" alt="">-->
+<!--                                </figure>-->
+<!--                            </div>-->
+<!--                            -->
+<!--                            &lt;!&ndash; Content on the right &ndash;&gt;-->
+<!--                            <div class="col-md-6">-->
+<!--                                <div class="blog-detail">-->
+<!--                                    <h4>Home</h4>-->
+<!--                                    <p>On 29.05.2024, the Institute of Biophysics and Biomedical Engineering (IBfhBME)-->
+<!--                                        launched the implementation of the Project BG-RRP-2.011-0025 “Creating a-->
+<!--                                        database of pathological pregnancies and extracting new knowledge to identify-->
+<!--                                        diagnostic markers“ .</p> <br>-->
+<!--                                    -->
+<!--                                    <button class="btn btn-info">-->
+<!--                                        <a href="{% url 'news_emi' %}">Learn more</a>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                      -->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
 
 
-<section class="dynamic-data department">
-    <div class="container">
-        <div class="row session-title">
-            <h2>Integrated database for pathological pregnancy</h2>
-            
-        </div>
-        <div class="row">
-            <!-- Left Column: Button -->
-           <div class="col-lg-6 prida-info-section">
-    <p class="info-intro">The integrated database contains information about:</p>
-    
-    <ul class="prida-list">
-        <li>healthy pregnant controls;</li>
-        <li>patients with preeclampsia;</li>
-        <li>patients with spontaneous abortions.</li>
-    </ul>
-    
-    <button class="btn btn-info">
-        <a href="{% url 'login1' %}" style="color: white; text-decoration: none;">Learn more</a>
-    </button>
-</div>    
-            
-            <!-- Right Column: Image -->
-            <div class="col-lg-6">
-                <img src="{% static 'images/prida.png' %}" alt="PRIDA Overview" class="img-fluid" style="max-width: 350px; height: 350px; display: block; margin: -50px auto 0;">
-            </div>
-        </div>
-    </div>
-    <br>
-</section>
+<!--<section class="dynamic-data department">-->
+<!--    <div class="container">-->
+<!--        <div class="row session-title">-->
+<!--            <h2>Integrated database for pathological pregnancy</h2>-->
+<!--            -->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            &lt;!&ndash; Left Column: Button &ndash;&gt;-->
+<!--           <div class="col-lg-6 prida-info-section">-->
+<!--    <p class="info-intro">The integrated database contains information about:</p>-->
+<!--    -->
+<!--    <ul class="prida-list">-->
+<!--        <li>healthy pregnant controls;</li>-->
+<!--        <li>patients with preeclampsia;</li>-->
+<!--        <li>patients with spontaneous abortions.</li>-->
+<!--    </ul>-->
+<!--    -->
+<!--    <button class="btn btn-info">-->
+<!--        <a href="{% url 'login1' %}" style="color: white; text-decoration: none;">Learn more</a>-->
+<!--    </button>-->
+<!--</div>    -->
+<!--            -->
+<!--            &lt;!&ndash; Right Column: Image &ndash;&gt;-->
+<!--            <div class="col-lg-6">-->
+<!--                <img src="{% static 'images/prida.png' %}" alt="PRIDA Overview" class="img-fluid" style="max-width: 350px; height: 350px; display: block; margin: -50px auto 0;">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <br>-->
+<!--</section>-->
     
 
     <!-- ################# Footer Starts Here #######################--->

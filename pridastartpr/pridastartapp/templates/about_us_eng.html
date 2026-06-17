@@ -16,7 +16,7 @@
                 <ul>
                     <li><a href="{% url 'home_eng' %}">Home</a></li>
                     <li><a href="{% url 'about_us_eng' %}">About Us</a></li>
-                    <li><a href="{% url 'services_eng' %}">Activities</a></li>
+                    <li><a href="{% url 'services_menu_eng' %}">Activities</a></li>
                     <li><a href="{% url 'news_eng' %}">News</a></li>
                     <li><a href="{% url 'contact_us_eng' %}">Contacts</a></li>
                     <li><a href="{% url 'about_us_emi' %}">Bulgarian</a></li>
@@ -30,7 +30,7 @@
                 </div>
                 {% else %}
                 <div class="auth-buttons">
-                    <a href="{% url 'login_eng' %}" class="btn btn-primary btn-sm">Login</a>
+                    <a href="{% url 'login_eng' %}" class="btn btn-primary btn-sm">Login to database</a>
                 </div>
                 {% endif %}
             </div>

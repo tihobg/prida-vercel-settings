@@ -2032,6 +2032,9 @@ def services_emi(request):
 def services_eng(request):
     return render(request, 'services_eng.html')
 
+def services_menu_eng(request):
+    return render(request, 'services_menu_eng.html')
+
 def experimental_methods_eng(request):
     return render(request, 'experimental_methods_eng.html')
 
@@ -6103,6 +6106,10 @@ def preeclampsia(request):
     preeclampsia_mchc_controli = PridaPreeclampsia.objects.values_list('mchc')
     preeclampsia_rdw_controli = PridaPreeclampsia.objects.values_list('rdw')
     preeclampsia_prothrombin_time_controli = PridaPreeclampsia.objects.values_list('prothrombin_time')
+    preeclampsia_prothrombin_time_percent_controli = PridaPreeclampsia.objects.values_list('prothrombin_time_percent')
+    preeclampsia_prothrombin_time_inr_controli = PridaPreeclampsia.objects.values_list('prothrombin_time_inr')
+
+
 
 
 
@@ -6115,7 +6122,7 @@ def preeclampsia(request):
 
     # preeclampsia_hgb_controli_rounded = np.round(preeclampsia_hgb_controli, 2)
 
-    print('prothrombin_time', preeclampsia_prothrombin_time_controli)
+    print('prothrombin_time_inr', preeclampsia_prothrombin_time_inr_controli)
 
 
 
@@ -6140,6 +6147,8 @@ def preeclampsia(request):
     mchc_controli = []
     rdw_controli = []
     prothrombin_time_controli = []
+    prothrombin_time_percent_controli = []
+    prothrombin_time_inr_controli =[]
 
 
 
@@ -6242,7 +6251,23 @@ def preeclampsia(request):
         # print('num', num)
         prothrombin_time_controli.append(float(slice_res_prothrombin_time))
         # print('mchc_controli', mchc_controli)
-    print('S', prothrombin_time_controli)
+    # print('S', prothrombin_time_controli)
+    for prothrombin_time_percent in range(len(preeclampsia_prothrombin_time_percent_controli)):
+        res_prothrombin_time_percent = preeclampsia_prothrombin_time_percent_controli[prothrombin_time_percent]
+        num = res_prothrombin_time_percent[0][slice(0, 6)].find('.')
+        slice_res_prothrombin_time_percent = res_prothrombin_time_percent[0][slice(0, num + 4)]
+        # print('num', num)
+        prothrombin_time_percent_controli.append(float(slice_res_prothrombin_time_percent))
+    # print('S', prothrombin_time_percent_controli)
+    for prothrombin_time_inr in range(len(preeclampsia_prothrombin_time_inr_controli)):
+        res_prothrombin_time_inr = preeclampsia_prothrombin_time_inr_controli[prothrombin_time_inr]
+        num = res_prothrombin_time_inr[0][slice(0, 9)].find('.')
+        slice_res_prothrombin_time_inr = res_prothrombin_time_inr[0][slice(0, num + 4)]
+        # print('num', num)
+        prothrombin_time_inr_controli.append(float(slice_res_prothrombin_time_inr))
+        # print('mchc_controli', mchc_controli)
+    print('S', prothrombin_time_inr_controli)
+
 
 
 
@@ -6308,10 +6333,6 @@ def preeclampsia(request):
     #         prida_z
     #     ]
     # )
-
-    # print('prida_xyz', prida_xyz)
-    # print('xyz', xyz)
-    # print('prida_xyz', type(prida_xyz), type(xyz))
 
 
 
@@ -6409,6 +6430,18 @@ def preeclampsia(request):
                         res_mat_preecl.append(prida_prothrombin_time)
                         print('prothrombin_time', selected_param)
 
+                    elif selected_param == 'prothrombin_time_percent':
+                        prida_prothrombin_time_percent = np.array(prothrombin_time_percent_controli)
+                        res_mat_preecl.append(prida_prothrombin_time_percent)
+                        print('prothrombin_time_percent', selected_param)
+
+                    elif selected_param == 'prothrombin_time_inr':
+                        prida_prothrombin_time_inr = np.array(prothrombin_time_inr_controli)
+                        res_mat_preecl.append(prida_prothrombin_time_inr)
+                        print('prothrombin_time_inr', selected_param)
+
+
+
                 prida_xyz1 = np.array(res_mat_preecl)
                 # print('RES MAT', prida_xyz1)
                 # print('prida_xyz1', prida_xyz1)
@@ -6461,6 +6494,10 @@ def preeclampsia(request):
                     nbr_squares = 15.5
                 elif len(prida_list_preeclampsia) == 15:
                     nbr_squares = 16.5
+                elif len(prida_list_preeclampsia) == 16:
+                    nbr_squares = 17.5
+                elif len(prida_list_preeclampsia) == 17:
+                    nbr_squares = 18.5
                 ax.set_ylim(nbr_squares, -0.5)
 
 

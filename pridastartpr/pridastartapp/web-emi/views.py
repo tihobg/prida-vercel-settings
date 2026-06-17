@@ -258,8 +258,8 @@ def home(request):
 def about_us(request):
     return render(request, 'about_us_eng.html')
 
-def services(request):
-    return render(request, 'services.html')
+def services_menu_eng(request):
+    return render(request, 'services_menu_eng.html')
 
 def news(request):
     return render(request, 'news_eng.html')

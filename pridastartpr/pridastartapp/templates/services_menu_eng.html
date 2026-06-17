@@ -1,0 +1,118 @@
+{% extends "base-emi.html" %}
+{% load static %}
+
+{% block title %}Нашите Дейности{% endblock %}
+
+{% block content %}
+<!-- ######## Page Title ######## -->
+<div id="nav-head" class="header-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
+                <img src="{% static 'images/logo.jpg' %}" alt="Logo">
+                <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
+            </div>
+            <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
+                <ul>
+                    <li><a href="{% url 'home_eng' %}">Home</a></li>
+                    <li><a href="{% url 'about_us_eng' %}">About Us</a></li>
+                    <li><a href="{% url 'services_eng' %}">Activities</a></li>
+                    <li><a href="{% url 'news_eng' %}">News</a></li>
+                    <li><a href="{% url 'contact_us_eng' %}">Contacts</a></li>
+                    <li><a href="{% url 'services_emi' %}">Bulgarian</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-2 d-none d-lg-block appoint">
+                {% if user.is_authenticated %}
+                <div class="user-info">
+                    <span class="navbar-text">{{ user.username }}</span>
+                    <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Logout</a>
+                </div>
+                {% else %}
+                <div class="auth-buttons">
+                    <a href="{% url 'login_eng' %}" class="btn btn-primary btn-sm">Login to database</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ######## Page Title End ######## -->
+
+<!-- ######## Services Section ######## -->
+<section class="project-activities">
+    <div class="container">
+        <div class="row mt-5">
+            <!-- Column 1: Project Activities -->
+            <div id="project-activities" class="col-md-4">
+                <h2 class="section-title">
+                  Work tasks</h2>
+                <div class="title-underline"></div>
+
+                <ul class="activity-list">
+                    <li>Selection of controls and patients and extraction of information on relevant clinical characteristics</li>
+                    <li>Evaluation of the biophysical parameters of the blood in the studied pathologies</li>
+                    <li>Development of an integrated database for patients with the studied pathologies</li>
+                    <li>Analysis of possible correlations between the studied parameters through the application of various mathematical approaches</li>
+                    <li>Development of а web-based application for accessing the database and analysing
+                        interrelationships between the individual factors included in it, in order to assess risk
+                        factors for the pathologies studied</li>
+                    <li>Acquisition of unique scientific equipment</li>
+                    <li>Dissemination activities informing the scientific community and the public about the achievements of the project</li>
+                </ul>
+            </div>
+
+            <!-- Column 2: Experimental Methods -->
+            <div id="experimental-methods" class="col-md-4">
+                <h2 class="section-title">Experimental methods</h2>
+                <div class="title-underline"></div>
+
+                <ul class="activity-list">
+                    <li>Isolation of red blood cells and blood plasma from peripheral blood</li>
+                    <li>Study of the rheological characteristics of red blood cells (degree of aggregation and deformability)</li>
+                    <li>Study of the morphometric characteristics of red blood cells (shape, size, volume, roughness)</li>
+                    <li>Study of the mechanical characteristics of erythrocytes (elastic modulus)</li>
+                    <li>Assessment of the oxidative stress degree in blood plasma</li>
+                </ul>
+                <div class="math-image">
+                    <img src="{% static 'images/afmer.jpg' %}" alt="Mathematical formula" class="img-fluid">
+                </div>
+            </div>
+
+            <!-- Column 3: Mathematical Approaches -->
+            <div id="mathematical-approaches" class="col-md-4">
+                <h2 class="section-title">
+                    Mathematical approaches for database analysis
+                </h2>
+                <div class="title-underline"></div>
+                <ul class="activity-list">
+                    <li>Multivariate statistical analysis:
+                        <ul class="sub-list">
+                            <li>-classical correlation analysis</li>
+                            <li>-principal component analysis</li>
+                        </ul>
+                    </li>
+                    <li>Intercriteria analysis:
+                        <ul class="sub-list">
+                            <li>-classical intercriteria analysis</li>
+                            <li>-modifications of intercriteria analysis</li>
+                        </ul>
+                    </li>
+                </ul>
+
+    <!-- Images now included within the mathematical approaches div -->
+                <div class="math-image">
+                    <img src="{% static 'images/icra2_1.jpg' %}" alt="Mathematical formula" class="img-fluid">
+                </div>
+                <br>
+                <div class="database-icon">
+                    <img src="{% static 'images/icra2_2.jpg' %}" alt="Database icon" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ######## Services Section End ######## -->
+{% endblock %}
