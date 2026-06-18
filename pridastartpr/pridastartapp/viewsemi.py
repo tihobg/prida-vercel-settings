@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import PridaPreeclampsiaForm, PreeclampsiaForm, PatientProbaForm, PridaMutationsForm, PridaControliForm, \
+from .forms import PridaPreeclampsiaForm, PreeclampsiaForm, PridaPreeclampsiaCorrelation, PatientProbaForm, PridaMutationsForm, PridaControliForm, \
     PridaControliForm2
-from .models import Patients, Person, PridaMutations, PridaControli, PridaPreeclampsia
+from .models import Patients, Person, PridaMutations, PridaControli, PridaPreeclampsia, PridaPreeclampsiaCorrelation
 from .forms import RegisterForm, LoginForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -6108,6 +6108,10 @@ def preeclampsia(request):
     preeclampsia_prothrombin_time_controli = PridaPreeclampsia.objects.values_list('prothrombin_time')
     preeclampsia_prothrombin_time_percent_controli = PridaPreeclampsia.objects.values_list('prothrombin_time_percent')
     preeclampsia_prothrombin_time_inr_controli = PridaPreeclampsia.objects.values_list('prothrombin_time_inr')
+    preeclampsia_plt_controli = PridaPreeclampsia.objects.values_list('plt')
+    preeclampsia_mpv_controli = PridaPreeclampsia.objects.values_list('mpv')
+
+
 
 
 
@@ -6122,7 +6126,7 @@ def preeclampsia(request):
 
     # preeclampsia_hgb_controli_rounded = np.round(preeclampsia_hgb_controli, 2)
 
-    print('prothrombin_time_inr', preeclampsia_prothrombin_time_inr_controli)
+    print('mpv', preeclampsia_mpv_controli)
 
 
 
@@ -6149,6 +6153,8 @@ def preeclampsia(request):
     prothrombin_time_controli = []
     prothrombin_time_percent_controli = []
     prothrombin_time_inr_controli =[]
+    plt_controli = []
+    mpv_controli = []
 
 
 
@@ -6266,7 +6272,23 @@ def preeclampsia(request):
         # print('num', num)
         prothrombin_time_inr_controli.append(float(slice_res_prothrombin_time_inr))
         # print('mchc_controli', mchc_controli)
-    print('S', prothrombin_time_inr_controli)
+    # print('S', prothrombin_time_inr_controli)
+    for plt_param in range(len(preeclampsia_plt_controli)):
+        res_plt = preeclampsia_plt_controli[plt_param]
+        num = res_plt[0][slice(0, 6)].find('.')
+        slice_res_plt = res_plt[0][slice(0, num + 4)]
+        # print('num', num)
+        plt_controli.append(float(slice_res_plt))
+        # print('mchc_controli', mchc_controli)
+    # print('S', plt_controli)
+    for mpv in range(len(preeclampsia_mpv_controli)):
+        res_mpv = preeclampsia_mpv_controli[mpv]
+        num = res_mpv[0][slice(0, 6)].find('.')
+        slice_res_mpv = res_mpv[0][slice(0, num + 4)]
+        # print('num', num)
+        mpv_controli.append(float(slice_res_mpv))
+        # print('mchc_controli', mchc_controli)
+    print('S', mpv_controli)
 
 
 
@@ -6315,24 +6337,6 @@ def preeclampsia(request):
     #                 [2, 1, 4, 5, 8, 12, 18, 25, 96, 48],
     #                 [5, 3, 2, 1, 0, -2, -8, -11, -15, -16]])
     # print('XYZ', xyz)
-    #
-    # prida_x = np.array(age_controli)
-    # prida_y = np.array(sist_pressure_controli)
-    # prida_z = np.array(diasist_pressure_controli)
-    # print('prida X', prida_x)
-    # print('prida Y', prida_y)
-    # print('prida Z', prida_z)
-    #
-    #
-    # print('prida X', nx)
-
-    # prida_xyz = np.array(
-    #     [
-    #         prida_x,
-    #         prida_y,
-    #         prida_z
-    #     ]
-    # )
 
 
 
@@ -6393,52 +6397,62 @@ def preeclampsia(request):
                     elif selected_param == 'erythrocytes':
                         prida_erythrocytes = np.array(erythrocytes_controli)
                         res_mat_preecl.append(prida_erythrocytes)
-                        print('erythrocytes', selected_param)
+                        # print('erythrocytes', selected_param)
 
                     elif selected_param == 'hgb':
                         prida_hgb = np.array(hgb_controli)
                         res_mat_preecl.append(prida_hgb)
-                        print('erythrocytes', selected_param)
+                        # print('erythrocytes', selected_param)
 
                     elif selected_param == 'hct':
                         prida_hct = np.array(hct_controli)
                         res_mat_preecl.append(prida_hct)
-                        print('hct', selected_param)
+                        # print('hct', selected_param)
 
                     elif selected_param == 'mcv':
                         prida_mcv = np.array(mcv_controli)
                         res_mat_preecl.append(prida_mcv)
-                        print('mcv', selected_param)
+                        # print('mcv', selected_param)
 
                     elif selected_param == 'mch':
                         prida_mch = np.array(mch_controli)
                         res_mat_preecl.append(prida_mch)
-                        print('mch', selected_param)
+                        # print('mch', selected_param)
 
                     elif selected_param == 'mchc':
                         prida_mchc = np.array(mchc_controli)
                         res_mat_preecl.append(prida_mchc)
-                        print('mchc', selected_param)
+                        # print('mchc', selected_param)
 
                     elif selected_param == 'rdw':
                         prida_rdw = np.array(rdw_controli)
                         res_mat_preecl.append(prida_rdw)
-                        print('rdw', selected_param)
+                        # print('rdw', selected_param)
 
                     elif selected_param == 'prothrombin_time':
                         prida_prothrombin_time = np.array(prothrombin_time_controli)
                         res_mat_preecl.append(prida_prothrombin_time)
-                        print('prothrombin_time', selected_param)
+                        # print('prothrombin_time', selected_param)
 
                     elif selected_param == 'prothrombin_time_percent':
                         prida_prothrombin_time_percent = np.array(prothrombin_time_percent_controli)
                         res_mat_preecl.append(prida_prothrombin_time_percent)
-                        print('prothrombin_time_percent', selected_param)
+                        # print('prothrombin_time_percent', selected_param)
 
                     elif selected_param == 'prothrombin_time_inr':
                         prida_prothrombin_time_inr = np.array(prothrombin_time_inr_controli)
                         res_mat_preecl.append(prida_prothrombin_time_inr)
-                        print('prothrombin_time_inr', selected_param)
+                        # print('prothrombin_time_inr', selected_param)
+
+                    elif selected_param == 'plt':
+                        prida_plt = np.array(plt_controli)
+                        res_mat_preecl.append(prida_plt)
+                        print('plt_param', selected_param)
+
+                    elif selected_param == 'mpv':
+                        prida_mpv = np.array(mpv_controli)
+                        res_mat_preecl.append(prida_mpv)
+                        print('mpv', selected_param)
 
 
 
@@ -6498,6 +6512,10 @@ def preeclampsia(request):
                     nbr_squares = 17.5
                 elif len(prida_list_preeclampsia) == 17:
                     nbr_squares = 18.5
+                elif len(prida_list_preeclampsia) == 18:
+                    nbr_squares = 19.5
+                elif len(prida_list_preeclampsia) == 19:
+                    nbr_squares = 20.5
                 ax.set_ylim(nbr_squares, -0.5)
 
 
@@ -6545,7 +6563,484 @@ def preeclampsia(request):
 
     return render(request, 'preeclampsia.html', context3)
 
+def preeclampsia_correlation(request):
+    context3 = {}
+    # prida_preeclampsia_controli = PridaPreeclampsia.objects.all()
+    # prida_preeclampsia_controli_form = PridaPreeclampsiaForm()
 
+    preeclampsia_age_controli = PridaPreeclampsiaCorrelation.objects.values_list('age')
+    preeclampsia_sist_pressure_controli = PridaPreeclampsiaCorrelation.objects.values_list('sist_pressure')
+    preeclampsia_diasist_pressure_controli = PridaPreeclampsiaCorrelation.objects.values_list('diasist_pressure')
+    preeclampsia_gw_controli = PridaPreeclampsiaCorrelation.objects.values_list('gw')
+    preeclampsia_weight_controli = PridaPreeclampsiaCorrelation.objects.values_list('weight')
+    preeclampsia_eai1_controli = PridaPreeclampsiaCorrelation.objects.values_list('eai1')
+    preeclampsia_nea1_controli = PridaPreeclampsiaCorrelation.objects.values_list('nea1')
+    preeclampsia_eai2_controli = PridaPreeclampsiaCorrelation.objects.values_list('eai2')
+    preeclampsia_nea2_controli = PridaPreeclampsiaCorrelation.objects.values_list('nea2')
+    preeclampsia_erythrocytes_controli = PridaPreeclampsiaCorrelation.objects.values_list('erythrocytes')
+    preeclampsia_hgb_controli = PridaPreeclampsiaCorrelation.objects.values_list('hgb')
+    preeclampsia_hct_controli = PridaPreeclampsiaCorrelation.objects.values_list('hct')
+    preeclampsia_mcv_controli = PridaPreeclampsiaCorrelation.objects.values_list('mcv')
+    preeclampsia_mch_controli = PridaPreeclampsiaCorrelation.objects.values_list('mch')
+    preeclampsia_mchc_controli = PridaPreeclampsiaCorrelation.objects.values_list('mchc')
+    preeclampsia_rdw_controli = PridaPreeclampsiaCorrelation.objects.values_list('rdw')
+    preeclampsia_prothrombin_time_controli = PridaPreeclampsiaCorrelation.objects.values_list('prothrombin_time')
+    preeclampsia_prothrombin_time_percent_controli = PridaPreeclampsiaCorrelation.objects.values_list('prothrombin_time_percent')
+    preeclampsia_prothrombin_time_inr_controli = PridaPreeclampsiaCorrelation.objects.values_list('prothrombin_time_inr')
+    preeclampsia_plt_controli = PridaPreeclampsiaCorrelation.objects.values_list('plt')
+    preeclampsia_mpv_controli = PridaPreeclampsiaCorrelation.objects.values_list('mpv')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # preeclampsia_hgb_controli_rounded = np.round(preeclampsia_hgb_controli, 2)
+
+    print('mpv', preeclampsia_mpv_controli)
+
+
+
+    # print('Weight', preeclampsia_weight_controli)
+
+    # print('preeclampsia_gw_controli', preeclampsia_gw_controli)
+    prida_list_preeclampsia = request.POST.getlist('prida_list_preeclampsia')
+
+    sist_pressure_controli = []
+    diasist_pressure_controli = []
+    gw_controli = []
+    weight_controli = []
+    eai1_controli = []
+    nea1_controli = []
+    eai2_controli = []
+    nea2_controli = []
+    erythrocytes_controli = []
+    hgb_controli = []
+    hct_controli = []
+    mcv_controli = []
+    mch_controli = []
+    mchc_controli = []
+    rdw_controli = []
+    prothrombin_time_controli = []
+    prothrombin_time_percent_controli = []
+    prothrombin_time_inr_controli =[]
+    plt_controli = []
+    mpv_controli = []
+
+
+
+
+
+
+    for sist_pr in range(len(preeclampsia_sist_pressure_controli)):
+        res_sist_pr = preeclampsia_sist_pressure_controli[sist_pr]
+        slice_res_sist_pr = res_sist_pr[0][slice(0, 3)]
+        sist_pressure_controli.append(int(slice_res_sist_pr))
+    # print('S', sist_pressure_controli)
+    for diasist_pr in range(len(preeclampsia_diasist_pressure_controli)):
+        res_diasist_pr = preeclampsia_diasist_pressure_controli[diasist_pr]
+        num = res_diasist_pr[0][slice(0, 4)].find('.')
+        slice_res_diasist_pr = res_diasist_pr[0][slice(0, num)]
+        # print('SLICE', num)
+        diasist_pressure_controli.append(int(slice_res_diasist_pr))
+    # print('S', diasist_pressure_controli)
+    for gw in range(len(preeclampsia_gw_controli)):
+        res_gw_controli = preeclampsia_gw_controli[gw]
+        slice_res_gw_controli = res_gw_controli[0][slice(0, 2)]
+        gw_controli.append(int(slice_res_gw_controli))
+    # print('S', gw_controli)
+    for weight in range(len(preeclampsia_weight_controli)):
+        res_weight = preeclampsia_weight_controli[weight]
+        num = res_weight[0][slice(0, 5)].find('.')
+        slice_res_weight = res_weight[0][slice(0, num)]
+        weight_controli.append(int(slice_res_weight))
+    # print('S', weight_controli)
+    for eai1 in preeclampsia_eai1_controli:
+        eai1_controli.append(float(eai1[0]))
+    # print('S', eai1_controli)
+    for nea1 in range(len(preeclampsia_nea1_controli)):
+        res_nea1 = preeclampsia_nea1_controli[nea1]
+        num = res_nea1[0][slice(0, 5)].find('.')
+        slice_res_nea1 = res_nea1[0][slice(0, num)]
+        nea1_controli.append(int(slice_res_nea1))
+    # print('S', nea1_controli)
+    for eai2 in preeclampsia_eai2_controli:
+        eai2_controli.append(float(eai2[0]))
+    # print('S', eai2_controli)
+    for nea2 in range(len(preeclampsia_nea2_controli)):
+        res_nea2 = preeclampsia_nea2_controli[nea2]
+        num = res_nea2[0][slice(0, 3)].find('.')
+        slice_res_nea2 = res_nea2[0][slice(0, num)]
+        nea2_controli.append(int(slice_res_nea2))
+    # print('S', nea2_controli)
+    for erythrocytes in preeclampsia_erythrocytes_controli:
+        erythrocytes_controli.append(float(erythrocytes[0]))
+    preeclampsia_erythrocytes_controli_rounded = np.round(erythrocytes_controli, 2)
+    # print('S', preeclampsia_erythrocytes_controli_rounded)
+    for hgb in range(len(preeclampsia_hgb_controli)):
+        res_hgb = preeclampsia_hgb_controli[hgb]
+        num = res_hgb[0][slice(0, 6)].find('.')
+        slice_res_hgb = res_hgb[0][slice(0, 6)]
+        # print('slice_res_hgb', slice_res_hgb)
+        hgb_controli.append(float(slice_res_hgb))
+    # print('S', hgb_controli)
+    for hct in range(len(preeclampsia_hct_controli)):
+        res_hct = preeclampsia_hct_controli[hct]
+        num = res_hct[0][slice(0, 6)].find('.')
+        slice_res_hct = res_hct[0][slice(0, 6)]
+        # print('slice_res_hgb', slice_res_hgb)
+        hct_controli.append(float(slice_res_hct))
+    # print('S', hct_controli)
+    for mcv in range(len(preeclampsia_mcv_controli)):
+        res_mcv = preeclampsia_mcv_controli[mcv]
+        num = res_mcv[0][slice(0, 6)].find('.')
+        slice_res_mcv = res_mcv[0][slice(0, 6)]
+        # print('slice_res_hgb', slice_res_hgb)
+        mcv_controli.append(float(slice_res_mcv))
+    # print('S', mcv_controli)
+    for mch in range(len(preeclampsia_mch_controli)):
+        res_mch = preeclampsia_mch_controli[mch]
+        num = res_mch[0][slice(0, 7)].find('.')
+        slice_res_mch = res_mch[0][slice(0, num + 2)]
+        # print('num', num)
+        mch_controli.append(float(slice_res_mch))
+    # print('S', mch_controli)
+    for mchc in range(len(preeclampsia_mchc_controli)):
+        res_mchc = preeclampsia_mchc_controli[mchc]
+        num = res_mchc[0][slice(0, 7)].find('.')
+        slice_res_mchc = res_mchc[0][slice(0, num + 4)]
+        # print('num', num)
+        mchc_controli.append(float(slice_res_mchc))
+        # print('mchc_controli', mchc_controli)
+    # print('S', mchc_controli)
+    for rdw in range(len(preeclampsia_rdw_controli)):
+        res_rdw = preeclampsia_rdw_controli[rdw]
+        num = res_rdw[0][slice(0, 9)].find('.')
+        slice_res_rdw = res_rdw[0][slice(0, num + 4)]
+        # print('num', num)
+        rdw_controli.append(float(slice_res_rdw))
+        # print('mchc_controli', mchc_controli)
+    # print('S', rdw_controli)
+    for prothrombin_time in range(len(preeclampsia_prothrombin_time_controli)):
+        res_prothrombin_time = preeclampsia_prothrombin_time_controli[prothrombin_time]
+        num = res_prothrombin_time[0][slice(0, 9)].find('.')
+        slice_res_prothrombin_time = res_prothrombin_time[0][slice(0, num + 4)]
+        # print('num', num)
+        prothrombin_time_controli.append(float(slice_res_prothrombin_time))
+        # print('mchc_controli', mchc_controli)
+    # print('S', prothrombin_time_controli)
+    for prothrombin_time_percent in range(len(preeclampsia_prothrombin_time_percent_controli)):
+        res_prothrombin_time_percent = preeclampsia_prothrombin_time_percent_controli[prothrombin_time_percent]
+        num = res_prothrombin_time_percent[0][slice(0, 6)].find('.')
+        slice_res_prothrombin_time_percent = res_prothrombin_time_percent[0][slice(0, num + 4)]
+        # print('num', num)
+        prothrombin_time_percent_controli.append(float(slice_res_prothrombin_time_percent))
+    # print('S', prothrombin_time_percent_controli)
+    for prothrombin_time_inr in range(len(preeclampsia_prothrombin_time_inr_controli)):
+        res_prothrombin_time_inr = preeclampsia_prothrombin_time_inr_controli[prothrombin_time_inr]
+        num = res_prothrombin_time_inr[0][slice(0, 9)].find('.')
+        slice_res_prothrombin_time_inr = res_prothrombin_time_inr[0][slice(0, num + 4)]
+        # print('num', num)
+        prothrombin_time_inr_controli.append(float(slice_res_prothrombin_time_inr))
+        # print('mchc_controli', mchc_controli)
+    # print('S', prothrombin_time_inr_controli)
+    for plt_param in range(len(preeclampsia_plt_controli)):
+        res_plt = preeclampsia_plt_controli[plt_param]
+        num = res_plt[0][slice(0, 6)].find('.')
+        slice_res_plt = res_plt[0][slice(0, num + 4)]
+        # print('num', num)
+        plt_controli.append(float(slice_res_plt))
+        # print('mchc_controli', mchc_controli)
+    # print('S', plt_controli)
+    for mpv in range(len(preeclampsia_mpv_controli)):
+        res_mpv = preeclampsia_mpv_controli[mpv]
+        num = res_mpv[0][slice(0, 6)].find('.')
+        slice_res_mpv = res_mpv[0][slice(0, num + 4)]
+        # print('num', num)
+        mpv_controli.append(float(slice_res_mpv))
+        # print('mchc_controli', mchc_controli)
+    print('S', mpv_controli)
+
+
+
+
+
+    age_controli = []
+    for age in preeclampsia_age_controli:
+        age_controli.append(int(age[0]))
+
+
+    # print('int_age_controli', type(age_controli))
+
+    # for column_name_controli in prida_list_preeclampsia:
+    #     for row_controli in range(len(prida_list_preeclampsia)):
+    #         # print('row_controli', row_controli)
+    #         if column_name_controli == 'patient':
+    #             # print('column_name_controli', column_name_controli)
+    #             initial_matrix_controli[row_controli] = preeclampsia_patient_controli[0]
+    #         elif column_name_controli == 'age':
+    #             initial_matrix_controli[row_controli] = age_controli[0]
+    #         elif column_name_controli == 'sist_pressure':
+    #             initial_matrix_controli[row_controli] = sist_pressure_controli[0]
+    #         elif column_name_controli == 'diasist+pressure':
+    #             initial_matrix_controli[row_controli] = diasist_pressure_controli[0]
+    #         # print('row data', initial_matrix_controli[row_controli])
+    # print('initial_matrix_controli', initial_matrix_controli)
+
+
+    prida_preeclampsia = PridaPreeclampsia.objects.all()  ## Zarejda model PridaMutations ot models.py
+
+    prida_preeclampsia_form = PridaPreeclampsiaForm()  ## Zarejda form PridaMutationsForm ot forms.py
+
+    # context3['prida_preeclampsia'] = prida_preeclampsia
+    # context3['prida_preeclampsia_form'] = prida_preeclampsia_form
+
+    # form_pre = PreeclampsiaForm()
+    # patients = Patients.objects.all()
+
+    # Visualization of Correlation
+    # matplotlib.use('agg')
+    # plt.style.use('ggplot')
+    # nx = np.arange(10, 20)
+    #
+    # ny = np.array([2, 1, 4, 5, 8, 12, 18, 25, 96, 48])
+    # xyz = np.array([[10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+    #                 [2, 1, 4, 5, 8, 12, 18, 25, 96, 48],
+    #                 [5, 3, 2, 1, 0, -2, -8, -11, -15, -16]])
+    # print('XYZ', xyz)
+
+
+
+
+
+    res_mat_preecl = []
+
+    if request.method == "POST":
+        if 'corr_analysis' in request.POST:
+            print('prida_list_preeclampsia', prida_list_preeclampsia, len(prida_list_preeclampsia))
+            if (len(prida_list_preeclampsia) >= 2):
+                for selected_param in prida_list_preeclampsia:
+                    if selected_param == 'age':
+                        prida_x1 = np.array(age_controli)
+                        res_mat_preecl.append(prida_x1)
+                        # print('AGE', selected_param)
+
+                    elif selected_param == 'sist_pressure':
+                        prida_y1 = np.array(sist_pressure_controli)
+                        res_mat_preecl.append(prida_y1)
+                        # print('SIST PR', selected_param)
+
+                    elif selected_param == 'diasist_pressure':
+                        prida_z1 = np.array(diasist_pressure_controli)
+                        res_mat_preecl.append(prida_z1)
+                        # print('DIASIST PR', selected_param)
+
+                    elif selected_param == 'gw':
+                        prida_gw = np.array(gw_controli)
+                        res_mat_preecl.append(prida_gw)
+                        # print('GW', selected_param)
+
+                    elif selected_param == 'weight':
+                        prida_weight = np.array(weight_controli)
+                        res_mat_preecl.append(prida_weight)
+                        # print('WEIGHT', selected_param)
+
+                    elif selected_param == 'eai1':
+                        prida_eai1 = np.array(eai1_controli)
+                        res_mat_preecl.append(prida_eai1)
+                        # print('EAI1', selected_param)
+
+                    elif selected_param == 'nea1':
+                        prida_nea1 = np.array(nea1_controli)
+                        res_mat_preecl.append(prida_nea1)
+                        # print('NEA1', selected_param)
+
+                    elif selected_param == 'eai2':
+                        prida_eai2 = np.array(eai2_controli)
+                        res_mat_preecl.append(prida_eai2)
+                        # print('EAI1', selected_param)
+
+                    elif selected_param == 'nea2':
+                        prida_nea2 = np.array(nea2_controli)
+                        res_mat_preecl.append(prida_nea2)
+                        # print('NEA2', selected_param)
+
+                    elif selected_param == 'erythrocytes':
+                        prida_erythrocytes = np.array(erythrocytes_controli)
+                        res_mat_preecl.append(prida_erythrocytes)
+                        # print('erythrocytes', selected_param)
+
+                    elif selected_param == 'hgb':
+                        prida_hgb = np.array(hgb_controli)
+                        res_mat_preecl.append(prida_hgb)
+                        # print('erythrocytes', selected_param)
+
+                    elif selected_param == 'hct':
+                        prida_hct = np.array(hct_controli)
+                        res_mat_preecl.append(prida_hct)
+                        # print('hct', selected_param)
+
+                    elif selected_param == 'mcv':
+                        prida_mcv = np.array(mcv_controli)
+                        res_mat_preecl.append(prida_mcv)
+                        # print('mcv', selected_param)
+
+                    elif selected_param == 'mch':
+                        prida_mch = np.array(mch_controli)
+                        res_mat_preecl.append(prida_mch)
+                        # print('mch', selected_param)
+
+                    elif selected_param == 'mchc':
+                        prida_mchc = np.array(mchc_controli)
+                        res_mat_preecl.append(prida_mchc)
+                        # print('mchc', selected_param)
+
+                    elif selected_param == 'rdw':
+                        prida_rdw = np.array(rdw_controli)
+                        res_mat_preecl.append(prida_rdw)
+                        # print('rdw', selected_param)
+
+                    elif selected_param == 'prothrombin_time':
+                        prida_prothrombin_time = np.array(prothrombin_time_controli)
+                        res_mat_preecl.append(prida_prothrombin_time)
+                        # print('prothrombin_time', selected_param)
+
+                    elif selected_param == 'prothrombin_time_percent':
+                        prida_prothrombin_time_percent = np.array(prothrombin_time_percent_controli)
+                        res_mat_preecl.append(prida_prothrombin_time_percent)
+                        # print('prothrombin_time_percent', selected_param)
+
+                    elif selected_param == 'prothrombin_time_inr':
+                        prida_prothrombin_time_inr = np.array(prothrombin_time_inr_controli)
+                        res_mat_preecl.append(prida_prothrombin_time_inr)
+                        # print('prothrombin_time_inr', selected_param)
+
+                    elif selected_param == 'plt':
+                        prida_plt = np.array(plt_controli)
+                        res_mat_preecl.append(prida_plt)
+                        print('plt_param', selected_param)
+
+                    elif selected_param == 'mpv':
+                        prida_mpv = np.array(mpv_controli)
+                        res_mat_preecl.append(prida_mpv)
+                        print('mpv', selected_param)
+
+
+
+                prida_xyz1 = np.array(res_mat_preecl)
+                # print('RES MAT', prida_xyz1)
+                # print('prida_xyz1', prida_xyz1)
+
+                prida_corr_matrix = np.corrcoef(prida_xyz1).round(decimals=3)
+                # print('prida_corr_matrix', prida_corr_matrix)
+
+                fig, ax = plt.subplots()
+                im = ax.imshow(prida_corr_matrix)
+                im.set_clim(-1, 1)
+                ax.grid(False)
+                a_stop = len(prida_list_preeclampsia)
+                array_data_param = np.arange(0, a_stop, 1)
+                # a2 = ['x1', 'y1', 'z1', 'gw']
+                a1 = prida_list_preeclampsia
+                # print('A2 A1', a2, a1)
+
+                ax.xaxis.set(ticks=(array_data_param), ticklabels=(prida_list_preeclampsia))
+                ax.yaxis.set(ticks=(array_data_param), ticklabels=(prida_list_preeclampsia))
+                nbr_squares = 0
+                if len(prida_list_preeclampsia) == 2:
+                    nbr_squares = 1.5
+                elif len(prida_list_preeclampsia) == 3:
+                    nbr_squares = 2.5
+                elif len(prida_list_preeclampsia) == 4:
+                    nbr_squares = 3.5
+                elif len(prida_list_preeclampsia) == 5:
+                    nbr_squares = 4.5
+                elif len(prida_list_preeclampsia) == 6:
+                    nbr_squares = 5.5
+                elif len(prida_list_preeclampsia) == 7:
+                    nbr_squares = 6.5
+                elif len(prida_list_preeclampsia) == 8:
+                    nbr_squares = 7.5
+                elif len(prida_list_preeclampsia) == 9:
+                    nbr_squares = 8.5
+                elif len(prida_list_preeclampsia) == 10:
+                    nbr_squares = 9.5
+                elif len(prida_list_preeclampsia) == 10:
+                    nbr_squares = 10.5
+                elif len(prida_list_preeclampsia) == 11:
+                    nbr_squares = 11.5
+                elif len(prida_list_preeclampsia) == 12:
+                    nbr_squares = 12.5
+                elif len(prida_list_preeclampsia) == 12:
+                    nbr_squares = 13.5
+                elif len(prida_list_preeclampsia) == 13:
+                    nbr_squares = 14.5
+                elif len(prida_list_preeclampsia) == 14:
+                    nbr_squares = 15.5
+                elif len(prida_list_preeclampsia) == 15:
+                    nbr_squares = 16.5
+                elif len(prida_list_preeclampsia) == 16:
+                    nbr_squares = 17.5
+                elif len(prida_list_preeclampsia) == 17:
+                    nbr_squares = 18.5
+                elif len(prida_list_preeclampsia) == 18:
+                    nbr_squares = 19.5
+                elif len(prida_list_preeclampsia) == 19:
+                    nbr_squares = 20.5
+                ax.set_ylim(nbr_squares, -0.5)
+
+
+                for i in range(len(prida_list_preeclampsia)):
+                    for j in range(len(prida_list_preeclampsia)):
+                        ax.text(j, i, prida_corr_matrix[i, j], ha='center', va='center',
+                                color='r')
+                cbar = ax.figure.colorbar(im, ax=ax, format='% .2f')
+
+                fig = plt.gcf()
+                buf = io.BytesIO()
+                fig.savefig(buf, format='png')
+                buf.seek(0)
+                string = base64.b64encode(buf.read())
+                url = urllib.parse.quote(string)
+                context3['key6'] = url
+
+        if 'save' in request.POST:
+            pk = request.POST.get('save')
+            if not pk:
+                form_pre = PreeclampsiaForm(request.POST)
+            else:
+                patient = Patients.objects.get(patient_id=pk)
+                form_pre = PreeclampsiaForm(request.POST, instance=patient)
+            form_pre.save()
+            form_pre = PreeclampsiaForm()
+
+        elif 'delete' in request.POST:
+            pk = request.POST.get('delete')
+            patient = Patients.objects.get(patient_id=pk)
+            patient.delete()
+        elif 'edit' in request.POST:
+            pk = request.POST.get('edit')
+            patient = Patients.objects.get(patient_id=pk)
+            form_pre = PreeclampsiaForm(instance=patient)
+            print('Hello')
+    # context1 = {
+    #     'patients': patients,
+    #     # 'key': s,
+    #     'key6': url,
+    #     'key7': form_pre1['name'],
+    #     'key8': form_pre,
+    #
+    # }
+
+    return render(request, 'preeclampsia_correlation.html', context3)
 def correlation(request):
     # if request.method == 'POST':
     #     form = AuthenticationForm(data=request.POST)
@@ -9310,6 +9805,9 @@ def select_pathology_eng(request):
 
 def preeclampsia_eng_new(request):
     return render(request, 'preeclampsia_eng_new.html')
+
+def preeclampsia_correlation(request):
+    return render(request, 'preeclampsia_correlation.html')
 
 def preeclampsia_controli_eng(request):
     context3 = {}

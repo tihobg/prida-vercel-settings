@@ -64,6 +64,7 @@ urlpatterns = [
 
     # path('', views.home, name='home'),
     path('preeclampsia/', viewsemi.preeclampsia, name='preeclampsia'),
+    path('preeclampsia_correlation/', viewsemi.preeclampsia_correlation, name='preeclampsia_correlation'),
     # path('base/', views.base, name='base'),
     # # path('home/', views.home, name='home'),
     path('about_us_eng/', viewsemi.about_us_eng, name='about_us_eng'),

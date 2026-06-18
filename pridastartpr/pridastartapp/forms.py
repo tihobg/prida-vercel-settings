@@ -1,6 +1,6 @@
 from django import forms
 from .models import (Patients, PatientProba, Score, Prida, Person, PridaMutations, PridaMutations2, PridaPreeclampsia,
-                     PridaControli)
+                     PridaControli, PridaPreeclampsiaCorrelation)
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -57,6 +57,15 @@ class PridaPreeclampsiaForm(forms.ModelForm):
                   'creatine_serum', 'total_protein_serum', 'albumin_serum', 'fibrinugen', 'crp', 'proetin_urine',
                   'asat', 'alat', 'mcv']
 
+class PridaPreeclampsiaCorrelationForm(forms.ModelForm):
+    class Meta:
+        model = PridaPreeclampsiaCorrelation
+
+        fields = ['patient', 'age', 'sist_pressure', 'diasist_pressure', 'gw', 'weight', 'eai1', 'nea1', 'eai2', 'nea2',
+                  'erythrocytes', 'hgb', 'hct', 'mcv', 'mch', 'mchc', 'rdw', 'prothrombin_time',
+                  'prothrombin_time_percent', 'prothrombin_time_inr', 'plt', 'mpv', 'pct', 'pdw_percent',
+                  'creatine_serum', 'total_protein_serum', 'albumin_serum', 'fibrinugen', 'crp', 'proetin_urine',
+                  'asat', 'alat', 'mcv']
 
 class PridaMutationsForm2(forms.ModelForm):
     class Meta:
